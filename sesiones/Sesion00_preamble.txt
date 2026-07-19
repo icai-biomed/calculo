@@ -1,0 +1,68 @@
+% ── Extra packages (not loaded automatically by Quarto/pandoc) ────────────────
+\usepackage{amsfonts,amssymb}
+\usepackage{tikz}
+\usepackage{listings}
+\usepackage{cancel}
+\usepackage{epstopdf}
+\usepackage{float}
+\usepackage{mathpazo}
+\usepackage{multimedia}
+\usepackage{ragged2e}
+
+% ── Setup ─────────────────────────────────────────────────────────────────────
+\sloppy
+\epstopdfsetup{outdir=./}
+\graphicspath{{../fig/}}
+
+% ── Title-page metadata ───────────────────────────────────────────────────────
+% Uses \AtBeginDocument so these run after pandoc has set its own placeholders,
+% ensuring the correct values appear on the title slide.
+\AtBeginDocument{%
+  \title{Sesión 00 \\ Presentación e Introducción}%
+  \subtitle{\small{\it Cálculo - Grado en Ingeniería Biomédica}}%
+  \author[Dpto. Matemática Aplicada - ETSI - ICAI]{%
+    Dpto. de Matemática Aplicada
+    {\small Escuela Técnica Superior de Ingeniería-ICAI}
+    Universidad Pontificia Comillas}%
+  \date{Curso 2026-27}%
+}
+
+% ── Logo placed above the title-page content ──────────────────────────────────
+\addtobeamertemplate{title page}{%
+  \begin{center}
+    \vspace{0.5cm}
+    \includegraphics[width=3cm]{../fig/logoIcaiHorizontal.png}
+  \end{center}%
+}{}
+
+% ── Section title page (chapter-style, centered) ──────────────────────────────
+% Fires on every \section{} call. plain removes header/footer; noframenumbering
+% keeps the slide count clean. The title is centered using the theme's own color.
+\AtBeginSection[]{%
+  \begin{frame}[plain,noframenumbering]
+    \centering
+    \vfill
+    {\usebeamerfont{section title}\usebeamercolor[fg]{structure}\insertsection\par}
+    \vfill
+  \end{frame}%
+}
+
+% ── Custom theorem-like environments ──────────────────────────────────────────
+\newtheorem{Def}{Definición}
+\newtheorem{Propis}{Propiedades}
+\newtheorem{Propi}{Propiedad}
+\newtheorem{Ob}{Observación}
+\newtheorem{Obs}{Observaciones}
+\newtheorem{Ex}{Ejemplo}
+\newtheorem{Ej}{Ejercicio}
+\newtheorem{Exs}{Ejemplos}
+\newtheorem{Teo}{Teorema}
+\newtheorem{Pro}{Proposición}
+\newtheorem{Cor}{Corolario}
+\newtheorem{Proposition}{Proposition}
+\newtheorem{Prueba}{Demostración}
+\theoremstyle{example}
+\newtheorem{Hoja}{Hoja 2A}
+
+% ── Custom commands ────────────────────────────────────────────────────────────
+\providecommand{\abs}[1]{\lvert#1\rvert}

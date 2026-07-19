@@ -1,0 +1,121 @@
+---
+title: "VER PREAMBLE PARA ESTA SESION"
+lang: es
+format:
+  beamer:
+    theme: Madrid
+    fonttheme: default
+    fontsize: 10pt
+    toc: false          # handled manually below; pandoc's toc:true produces a stray }
+    section-titles: false   # \AtBeginSection in preamble.txt creates the section slide
+    include-in-header: Sesion00_preamble.txt
+  html: default
+  docx: default
+---
+
+
+```{=latex}
+  
+  \frametitle{Tabla de contenidos}
+  \tableofcontents
+
+```
+
+# Presentación de la asignatura
+
++ [Guía Docente](https://www.comillas.edu/grados/grado-en-ingenieria-biomedica/#planestudios)
++ Profesor: Fernando San Segundo, [fsansegundo@comillas.edu](mailto:fsansegundo@comillas.edu) 
++ Metodología: cómo cursar con éxito esta asignatura.
+
+# Recursos de la sesión
+
++ [Notebook de la sesión en Colab](https://colab.research.google.com/drive/1K9P41LGTmIuGCPvt2NUwppZmZpcd4vDg?usp=sharing)
+
+
+# Introducción a la idea fundamental del Cálculo Diferencial
+
+
+## La raíz de 2
+
+Los números racionales $\mathbb{Q}$ son las fracciones que se estudian en el colegio, cocientes de números enteros $\mathbb{Z}$. Por lo tanto un número racional se puede escribir
+$$
+\dfrac{m}{n}\quad\text{ con }m, n\in \mathbb{Z}
+$$
+
+\begin{Ob}
+
+La raíz cuadrada de 2 \textbf{no es un número racional}:
+
+\textbf{Argumento rápido:} suponemos $(m/n)^2 = 2$ con m, n sin factores comunes (¡en particular no pueden ser los dos pares!) Entonces $m^2 = 2 n^2$ luego m es par, $m = 2 k$. Pero entonces $2 n^2 = (2 k)^2$, luego $n^2 = 2 k^2$ y $n$ sería también par.
+
+\end{Ob}
+
+Los números racionales tienen desarrollos decimales periódicos (y es fácil pasar de fracción a desarrollo y viceversa). Así que $\sqrt{2}$ tiene un desarrollo decimal no periódico. **¿Cómo lo calcularías?**
+
+## Formulando el problema en el lenguaje de las funciones
+
+Afortunadamente podemos usar varios grandes avances ocurridos en la historia de las Matemáticas:
+
++ La notación algebraica y el uso de $x$:
+$$\sqrt{2} \, \text{ es la solución positiva de la ecuación }\, x^2 - 2 = 0$$
++ La idea de función y su representación gráfica: si definimos la función 
+$$f(x) = x^2 - 2$$
+entonces sus raíces son los cortes de la gráfica de $f$ con el eje (horizontal) $X$.  
+Si piensas en $y = x^2 - 2$ y haces $y = 0$ (para buscar las raíces) tal vez lo veas más claro.
+
+---
+
+## Representación gráfica de estas ideas
+
+La gráfica de $y = x^2 - 2$ es una parábola como la de esta figura. 
+
+\begin{figure}
+\begin{center}\includegraphics[height=4cm]{../fig/Newton01.jpg} 
+%[height=0.3\textheight]
+\end{center}
+\end{figure}
+
+El valor  $\sqrt{2}$ es la coordenada $x$ del punto de corte de la parábola con el semieje positivo $X$.
+
+\begin{Obs}
+Fíjate en que $f(x)$ es negativa en $1$ y positiva  en $2$; la gráfica de $f$ \textbf{corta el eje en el intervalo $(1, 2)$.}
+\end{Obs}
+---
+
+\begin{Def}
+Sea $f:D\subset \mathbb{R} \rightarrow \mathbb{R}$ y $x_0 \in \stackrel{\circ}{D}$. Se define la \textcolor{blue}{derivada de $f$ en $x_0$} como
+$$
+\textcolor{blue}{f'(x_0)=\lim_{x \rightarrow x_0} \frac{f(x)-f(x_0)}{x-x_0}}
+$$
+Haciendo el cambio de variable $h=x-x_0$ queda expresada como
+$$
+\textcolor{blue}{f'(x_0)=\lim_{h \rightarrow 0}\frac{f(x_0+h)-f(x_0)}{h}}
+$$
+\end{Def}
+
+---
+
+## Implementación del método de Newton en Python 
+
+
+
+```python
+def f(x):
+  return(x**2 - 2)
+  
+def df(x):
+  return(2 * x)
+
+def newton_step(x):
+  return(x - f(x) / df(x))
+  
+newton_step(newton_step(1.4))
+# 1.4142135642135643
+
+```
+
+
+Otras cositas
+
+---
+
