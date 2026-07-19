@@ -8,6 +8,9 @@ format:
     fontsize: 10pt
     toc: false          # handled manually below; pandoc's toc:true produces a stray }
     section-titles: false   # \AtBeginSection in preamble.txt creates the section slide
+    slide-level: 2      # without this, top-level (#) headings become frames directly
+                         # instead of \section commands, so \tableofcontents has nothing
+                         # to list and \AtBeginSection never fires
     include-in-header: Sesion00_preamble.txt
   html: default
   docx: default
