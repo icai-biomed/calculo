@@ -139,24 +139,24 @@ Vamos a verlo usando una construcción GeoGebra:
 
 ---
 
-### La idea clave del método
-
 Como habrás observado, el método se basa en la capacidad de resolver este:
 
-
-::: {.callout-warning  icon=false}
-  
 ###  Problema fundacional del Cálculo Diferencial
 
 Dada una función $f(x)$, hallar su **recta tangente** en el punto $(x_0, f(x_0))$
-
-:::
 
 ### Observaciones
 
 + ¿Qué queremos decir cuando hablamos de recta tangente? Vuelve a GeoGebra y reflexiona.
 + El método de Newton también depende de la *forma de la función cerca de la ráiz*. ¿Qué quiere decir esto? ¿Se te ocurre otro caso en el que esta idea no funcionaría? 
 
+::: {.callout-tip  icon=false}
+  
+### Ejercicio 01_A01
+
+Seguro que ya sabes derivar $f(x) = x^2 - 2$ y que la derivada sirve para hallar la recta tangente. ¿Cuál es esa recta tangente a $f(x)$ cuando $x_0 = 1.5$?
+
+:::
 
 
 
