@@ -27,53 +27,101 @@ format:
 # Presentación de la asignatura
 
 ## Documentación importante
+
+::: {.callout-note  icon=false}
+
+
 + [Guía Docente](https://www.comillas.edu/grados/grado-en-ingenieria-biomedica/#planestudios)
 
+:::
+
 ## Profesor
+
+::: {.callout-note  icon=false}
 
 ### Información de contacto:
 
 + Fernando San Segundo, 
 + [fsansegundo@comillas.edu](mailto:fsansegundo@comillas.edu)  
-La vía de contacto preferente es el correo (evitar Teams)
+La vía de contacto preferente es el correo (evitar Teams o teléfono, la respuesta tardará más).
 + Despacho: D-412
 
+:::
 
 ## Metodología
 
+::: {.callout-note  icon=false}
 
 ### Cómo cursar con éxito esta asignatura.
 
 + **¡Usa las tutorías!**
 
+:::
+
 ## Evaluación
+
+::: {.callout-note  icon=false}
+
+### Componentes de la evaluación
+
++ Evaluación continua
++ Examen intercuatimestral
++ Examen final
+
+:::
+
 
 # Recursos de trabajo
 
 ## Recursos computacionales
 
+::: {.callout-note  icon=false}
+
 ### Google Colab
 
++ [Carpeta con notebooks del curso](https://drive.google.com/drive/folders/1-eAdxpL3laKVf8n79jonTdrSa3stJp2A?usp=sharing)
 + Es necesario disponer de una cuenta Google. 
 **No uses tu cuenta personal**
 
+::: 
+
+::: {.callout-note  icon=false}
 
 ### Wolfram Alpha
 
-[]()
+[Enlace con ejemplo de uso](https://www.wolframalpha.com/input?i=derivative+of+f%28x%29+%3D+x%5E2+-+2&lang=es)
+
+:::
+
+::: {.callout-note  icon=false}
 
 ### GeoGebra
 
-[]()
+[Construcciones GeoGebra](https://www.geogebra.org/u/fernando.sansegundo)
+
+:::
+
 
 ## Uso de la IA en la asignatura
 
+::: {.callout-note  icon=false}
 
-# Introducción a la idea fundamental del Cálculo Diferencial
+Ver guía de la universidad
 
-## Enlaces
+:::
+
+
+# Sesión 01. Introducción a la idea fundamental del Cálculo Diferencial
+
+---
+
+**Sesión 01. Introducción a la idea fundacional del Cálculo Diferencial**
+
+![](./portadasSesiones/01-frailecilloNoruega.jpg){#fig-portada width="80%"}
+
 
 + [Notebook de la sesión en Colab](https://colab.research.google.com/drive/1K9P41LGTmIuGCPvt2NUwppZmZpcd4vDg?usp=sharing)
+
 
 ## La raíz de 2
 
@@ -154,11 +202,51 @@ Dada una función $f(x)$, hallar su **recta tangente** en el punto $(x_0, f(x_0)
 
 ::: {.callout-tip  icon=false}
   
-### Ejercicio 01_A01
+### Ejercicio 01_A01a
 
 Seguro que ya sabes derivar $f(x) = x^2 - 2$ y que la derivada sirve para hallar la recta tangente. ¿Cuál es esa recta tangente a $f(x)$ cuando $x_0 = 1.5$?
 
 :::
+
+---
+
+::: {.block}
+### Una iteración del método de Newton
+
+En primer lugar comprueba que:
+
++ la recta tangente a $f(x)$ cuando $x = x_0$ es
+$$y = f(x_0) + f'(x_0) (x - x_0)$$
+
++ El punto de corte de esta recta con el eje $X$ (siguiente aproximación de la raíz es) se obtiene haciendo $y=0$ y despejando $x$. Resultado:
+$$x_1 = x_0 - \dfrac{f(x_0)}{f'(x_0)}$$
+
+:::
+
+::: {.callout-tip  icon=false}
+  
+### Ejercicio 01_A01b
+
+Escribe la ecuación para obtener $x_1$ cuando $f(x) = x^2 - 2$. ¿Qué operaciones necesitas para esto?
+
+:::
+
+## Implementación del método de Newton en Python 
+
+::: {.callout-note  icon=false}
+
+### Cálculo numérico
+
+Si piensas en el tipo de operaciones que sabemos hacer con circuitos electrónicos (sumas y restas, productos y divisiones... las del cole) te darás cuenta de que el anterior ejercicio concluye que el Método de Newton proporciona una base para construir calculadoras.
+
+:::
+
+::: {.callout-warning  icon=false appearance="simple"}
+
+[Notebook de la sesión en Colab](https://colab.research.google.com/drive/1K9P41LGTmIuGCPvt2NUwppZmZpcd4vDg?usp=sharing)
+
+:::
+
 
 
 
@@ -175,9 +263,11 @@ $$
 $$
 \end{Def}
 
+
+
 ---
 
-## Implementación del método de Newton en Python 
+
 
 
 
