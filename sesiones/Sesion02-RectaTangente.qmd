@@ -249,7 +249,6 @@ Si piensas en el tipo de operaciones que sabemos hacer con circuitos electrónic
 
 
 
-
 ---
 
 \begin{Def}

@@ -19,7 +19,7 @@
 % Uses \AtBeginDocument so these run after pandoc has set its own placeholders,
 % ensuring the correct values appear on the title slide.
 \AtBeginDocument{%
-  \title{Sesión 00 \\ Presentación e Introducción}%
+  \title{Sesión 01 \\ Presentación e Introducción}%
   \subtitle{\small{\it Cálculo - Grado en Ingeniería Biomédica}}%
   \author[Dpto. Matemática Aplicada - ETSI - ICAI]{%
     Dpto. de Matemática Aplicada
