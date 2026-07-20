@@ -12,7 +12,7 @@
 % ── Setup ─────────────────────────────────────────────────────────────────────
 \sloppy
 \epstopdfsetup{outdir=./}
-\graphicspath{{../fig/}}
+\graphicspath{{./fig/}}
 
 % ── Title-page metadata ───────────────────────────────────────────────────────
 % Uses \AtBeginDocument so these run after pandoc has set its own placeholders,

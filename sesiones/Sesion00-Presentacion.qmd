@@ -26,17 +26,54 @@ format:
 
 # Presentación de la asignatura
 
+## Documentación importante
 + [Guía Docente](https://www.comillas.edu/grados/grado-en-ingenieria-biomedica/#planestudios)
-+ Profesor: Fernando San Segundo, [fsansegundo@comillas.edu](mailto:fsansegundo@comillas.edu) 
-+ Metodología: cómo cursar con éxito esta asignatura.
 
-# Recursos de la sesión
+## Profesor
 
-+ [Notebook de la sesión en Colab](https://colab.research.google.com/drive/1K9P41LGTmIuGCPvt2NUwppZmZpcd4vDg?usp=sharing)
+### Información de contacto:
+
++ Fernando San Segundo, 
++ [fsansegundo@comillas.edu](mailto:fsansegundo@comillas.edu)  
+La vía de contacto preferente es el correo (evitar Teams)
++ Despacho: D-412
+
+
+## Metodología
+
+
+### Cómo cursar con éxito esta asignatura.
+
++ **¡Usa las tutorías!**
+
+## Evaluación
+
+# Recursos de trabajo
+
+## Recursos computacionales
+
+### Google Colab
+
++ Es necesario disponer de una cuenta Google. 
+**No uses tu cuenta personal**
+
+
+### Wolfram Alpha
+
+[]()
+
+### GeoGebra
+
+[]()
+
+## Uso de la IA en la asignatura
 
 
 # Introducción a la idea fundamental del Cálculo Diferencial
 
+## Enlaces
+
++ [Notebook de la sesión en Colab](https://colab.research.google.com/drive/1K9P41LGTmIuGCPvt2NUwppZmZpcd4vDg?usp=sharing)
 
 ## La raíz de 2
 
@@ -66,14 +103,12 @@ $$f(x) = x^2 - 2$$
 entonces sus raíces son los cortes de la gráfica de $f$ con el eje (horizontal) $X$.  
 Si piensas en $y = x^2 - 2$ y haces $y = 0$ (para buscar las raíces) tal vez lo veas más claro.
 
----
-
 ## Representación gráfica de estas ideas
 
 La gráfica de $y = x^2 - 2$ es una parábola como la de esta figura. 
 
 \begin{figure}
-\begin{center}\includegraphics[height=4cm]{../fig/Newton01.jpg} 
+\begin{center}\includegraphics[height=4cm]{Newton01.jpg} 
 %[height=0.3\textheight]
 \end{center}
 \end{figure}
@@ -83,6 +118,48 @@ El valor  $\sqrt{2}$ es la coordenada $x$ del punto de corte de la parábola con
 \begin{Obs}
 Fíjate en que $f(x)$ es negativa en $1$ y positiva  en $2$; la gráfica de $f$ \textbf{corta el eje en el intervalo $(1, 2)$.}
 \end{Obs}
+
+## El método de Newton
+
+Es fácil encontrar una (pobre) aproximación por tanteo para $\sqrt{2}$. Por ejemplo, como 
+$$1.4^2 = 1.96 < 2 < 1.5^2 = 2.25$$
+podríamos empezar diciendo algo como $\sqrt{2}\approx 1.5$.
+
+¿Como pasamos de esto a una aproximación con diez cifras decimales? A Newton se le ocurrió una de esas ideas suyas: 
+
+1) Tu aproximación inicial es $x_0 = 1.5$
+2) Calcula el valor $y_0 = f(x_0) = x_0^2 - 2 \mapsto$ Sube a la gráfica  
+3) Calcula la **recta tangente** a $f(x)$ en $(x_0, y_0)$.
+4) Llama $x_1$ al punto de corte de esa recta con el eje $\mapsto$ baja por la recta tangente.
+5) Cambia $x_0$ por $x_1$ y **repite** hasta conseguir la precisión deseada.
+
+Vamos a verlo usando una construcción GeoGebra:
+
+[Método de Newton para $\sqrt{2}$](https://www.geogebra.org/m/t5nfjdje)
+
+---
+
+### La idea clave del método
+
+Como habrás observado, el método se basa en la capacidad de resolver este:
+
+
+::: {.callout-warning  icon=false}
+  
+###  Problema fundacional del Cálculo Diferencial
+
+Dada una función $f(x)$, hallar su **recta tangente** en el punto $(x_0, f(x_0))$
+
+:::
+
+### Observaciones
+
++ ¿Qué queremos decir cuando hablamos de recta tangente? Vuelve a GeoGebra y reflexiona.
++ El método de Newton también depende de la *forma de la función cerca de la ráiz*. ¿Qué quiere decir esto? ¿Se te ocurre otro caso en el que esta idea no funcionaría? 
+
+
+
+
 ---
 
 \begin{Def}
@@ -117,8 +194,11 @@ newton_step(newton_step(1.4))
 
 ```
 
-
-Otras cositas
-
 ---
+
+::: {.callout-tip  icon=false}
+  
+### Ejercicio
+
+:::
 
