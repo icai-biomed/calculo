@@ -11,7 +11,10 @@ format:
     slide-level: 2      # without this, top-level (#) headings become frames directly
                          # instead of \section commands, so \tableofcontents has nothing
                          # to list and \AtBeginSection never fires
-    include-in-header: Sesion02_preamble.txt
+    include-in-header:
+      - preambulo_comun.tex
+      - text: |
+          \newcommand{\SesionTitulo}{Sesión 02 \\ Derivada y recta tangente}
   html: default
   docx: default
 ---
