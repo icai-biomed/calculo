@@ -145,10 +145,12 @@ Como habrás observado, el método se basa en la capacidad de resolver este:
 
 Dada una función $f(x)$, hallar su **recta tangente** en el punto $(x_0, f(x_0))$
 
+::: {.block}
 ### Observaciones
 
 + ¿Qué queremos decir cuando hablamos de recta tangente? Vuelve a GeoGebra y reflexiona.
-+ El método de Newton también depende de la *forma de la función cerca de la ráiz*. ¿Qué quiere decir esto? ¿Se te ocurre otro caso en el que esta idea no funcionaría? 
++ El método de Newton también depende de la *forma de la función cerca de la ráiz*. ¿Qué quiere decir esto? ¿Se te ocurre otro caso en el que esta idea no funcionaría?
+:::
 
 ::: {.callout-tip  icon=false}
   
@@ -201,4 +203,3 @@ newton_step(newton_step(1.4))
 ### Ejercicio
 
 :::
-
