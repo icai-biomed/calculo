@@ -114,7 +114,7 @@ Ver guía de la universidad
 
 **Sesión 01. Introducción a la idea fundacional del Cálculo Diferencial**
 
-![](./portadasSesiones/01-frailecilloNoruega.jpg){#fig-portada width="80%"}
+![](./portadasSesiones/01-frailecilloNoruega.jpg){height="60%" fig-align="center"}
 
 
 + [Notebook de la sesión en Colab](https://colab.research.google.com/drive/1K9P41LGTmIuGCPvt2NUwppZmZpcd4vDg?usp=sharing)
@@ -152,11 +152,7 @@ Si piensas en $y = x^2 - 2$ y haces $y = 0$ (para buscar las raíces) tal vez lo
 
 La gráfica de $y = x^2 - 2$ es una parábola como la de esta figura. 
 
-\begin{figure}
-\begin{center}\includegraphics[height=3.5cm]{Newton01.jpg} 
-%[height=0.3\textheight]
-\end{center}
-\end{figure}
+![](./fig/Newton01.jpg){height="40%" fig-align="center"}
 
 El valor  $\sqrt{2}$ es la coordenada $x$ del punto de corte de la parábola con el semieje positivo $X$.
 
@@ -180,12 +176,14 @@ Vamos a verlo usando una [construcción GeoGebra](https://www.geogebra.org/m/t5n
 
 En resumen:
 
+::: {.callout-caution  icon=false appearance="simple"}
 1) Tu aproximación inicial es $x_0 = 1.5$
-2) Calcula el valor $y_0 = f(x_0) = x_0^2 - 2 \mapsto$ Sube a la gráfica  
+2) Calcula el valor $y_0 = f(x_0) = x_0^2 - 2 \to$ Sube a la gráfica  
 3) Calcula la **recta tangente** a $f(x)$ en $(x_0, y_0)$.
-4) Llama $x_1$ al punto de corte de esa recta con el eje $\mapsto$ baja por la recta tangente.
+4) Sea $x_1$ el corte de esa recta con el eje $\to$ baja por la recta tangente.
 5) Cambia $x_0$ por $x_1$ y **repite** hasta conseguir la precisión deseada.
 
+:::
 
 ---
 
@@ -244,6 +242,10 @@ Escribe la ecuación para obtener $x_1$ cuando $f(x) = x^2 - 2$. ¿Qué operacio
 Si piensas en el tipo de operaciones que sabemos hacer con circuitos electrónicos (sumas y restas, productos y divisiones... las del cole) te darás cuenta de que el anterior ejercicio concluye que el Método de Newton proporciona una base para construir calculadoras.
 
 :::
+
+$\quad$
+
+En el siguiente notebook vamos a usar Python para ver en acción el método de Newton.
 
 ::: {.callout-warning  icon=false appearance="simple"}
 

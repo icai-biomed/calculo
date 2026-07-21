@@ -1,5 +1,5 @@
 ---
-title: "VER PREAMBLE PARA ESTA SESION"
+title: "Sesión 02. Derivada y recta tangente."
 lang: es
 format:
   beamer:
@@ -27,266 +27,27 @@ format:
 
 ```
 
-# Presentación de la asignatura
-
-## Documentación importante
-
-::: {.callout-note  icon=false}
-
-
-+ [Guía Docente](https://www.comillas.edu/grados/grado-en-ingenieria-biomedica/#planestudios)
-
-:::
-
-## Profesor
-
-::: {.callout-note  icon=false}
-
-### Información de contacto:
-
-+ Fernando San Segundo, 
-+ [fsansegundo@comillas.edu](mailto:fsansegundo@comillas.edu)  
-La vía de contacto preferente es el correo (evitar Teams o teléfono, la respuesta tardará más).
-+ Despacho: D-412
-
-:::
-
-## Metodología
-
-::: {.callout-note  icon=false}
-
-### Cómo cursar con éxito esta asignatura.
-
-+ **¡Usa las tutorías!**
-
-:::
-
-## Evaluación
-
-::: {.callout-note  icon=false}
-
-### Componentes de la evaluación
-
-+ Evaluación continua
-+ Examen intercuatimestral
-+ Examen final
-
-:::
-
-
-# Recursos de trabajo
-
-## Recursos computacionales
-
-::: {.callout-note  icon=false}
-
-### Google Colab
-
-+ [Carpeta con notebooks del curso](https://drive.google.com/drive/folders/1-eAdxpL3laKVf8n79jonTdrSa3stJp2A?usp=sharing)
-+ Es necesario disponer de una cuenta Google. 
-**No uses tu cuenta personal**
-
-::: 
-
-::: {.callout-note  icon=false}
-
-### Wolfram Alpha
-
-[Enlace con ejemplo de uso](https://www.wolframalpha.com/input?i=derivative+of+f%28x%29+%3D+x%5E2+-+2&lang=es)
-
-:::
-
-::: {.callout-note  icon=false}
-
-### GeoGebra
-
-[Construcciones GeoGebra](https://www.geogebra.org/u/fernando.sansegundo)
-
-:::
-
-
-## Uso de la IA en la asignatura
-
-::: {.callout-note  icon=false}
-
-Ver guía de la universidad
-
-:::
-
-
-# Sesión 01. Introducción a la idea fundamental del Cálculo Diferencial
+# Sesión 02. Derivada y recta tangente.
 
 ---
 
-**Sesión 01. Introducción a la idea fundacional del Cálculo Diferencial**
+**Sesión 02. Derivada y recta tangente.**
 
-![](./portadasSesiones/01-frailecilloNoruega.jpg){#fig-portada width="80%"}
+![](./portadasSesiones/02-Cerceta.jpg){#fig-portada width="80%"}
 
 
 + [Notebook de la sesión en Colab](https://colab.research.google.com/drive/1K9P41LGTmIuGCPvt2NUwppZmZpcd4vDg?usp=sharing)
 
 
-## La raíz de 2
-
-Los números racionales $\mathbb{Q}$ son las fracciones que se estudian en el colegio, cocientes de números enteros $\mathbb{Z}$. Por lo tanto un número racional se puede escribir
-$$
-\dfrac{m}{n}\quad\text{ con }m, n\in \mathbb{Z}
-$$
-
-\begin{Ob}
-
-La raíz cuadrada de 2 \textbf{no es un número racional}:
-
-\textbf{Argumento rápido:} suponemos $(m/n)^2 = 2$ con m, n sin factores comunes (¡en particular no pueden ser los dos pares!) Entonces $m^2 = 2 n^2$ luego m es par, $m = 2 k$. Pero entonces $2 n^2 = (2 k)^2$, luego $n^2 = 2 k^2$ y $n$ sería también par.
-
-\end{Ob}
-
-Los números racionales tienen desarrollos decimales periódicos (y es fácil pasar de fracción a desarrollo y viceversa). Así que $\sqrt{2}$ tiene un desarrollo decimal no periódico. **¿Cómo lo calcularías?**
-
-## Formulando el problema en el lenguaje de las funciones
-
-Afortunadamente podemos usar varios grandes avances ocurridos en la historia de las Matemáticas:
-
-+ La notación algebraica y el uso de $x$:
-$$\sqrt{2} \, \text{ es la solución positiva de la ecuación }\, x^2 - 2 = 0$$
-+ La idea de función y su representación gráfica: si definimos la función 
-$$f(x) = x^2 - 2$$
-entonces sus raíces son los cortes de la gráfica de $f$ con el eje (horizontal) $X$.  
-Si piensas en $y = x^2 - 2$ y haces $y = 0$ (para buscar las raíces) tal vez lo veas más claro.
-
-## Representación gráfica de estas ideas
-
-La gráfica de $y = x^2 - 2$ es una parábola como la de esta figura. 
-
-\begin{figure}
-\begin{center}\includegraphics[height=4cm]{Newton01.jpg} 
-%[height=0.3\textheight]
-\end{center}
-\end{figure}
-
-El valor  $\sqrt{2}$ es la coordenada $x$ del punto de corte de la parábola con el semieje positivo $X$.
-
-\begin{Obs}
-Fíjate en que $f(x)$ es negativa en $1$ y positiva  en $2$; la gráfica de $f$ \textbf{corta el eje en el intervalo $(1, 2)$.}
-\end{Obs}
-
-## El método de Newton
-
-Es fácil encontrar una (pobre) aproximación por tanteo para $\sqrt{2}$. Por ejemplo, como 
-$$1.4^2 = 1.96 < 2 < 1.5^2 = 2.25$$
-podríamos empezar diciendo algo como $\sqrt{2}\approx 1.5$.
-
-¿Como pasamos de esto a una aproximación con diez cifras decimales? A Newton se le ocurrió una de esas ideas suyas: 
-
-1) Tu aproximación inicial es $x_0 = 1.5$
-2) Calcula el valor $y_0 = f(x_0) = x_0^2 - 2 \mapsto$ Sube a la gráfica  
-3) Calcula la **recta tangente** a $f(x)$ en $(x_0, y_0)$.
-4) Llama $x_1$ al punto de corte de esa recta con el eje $\mapsto$ baja por la recta tangente.
-5) Cambia $x_0$ por $x_1$ y **repite** hasta conseguir la precisión deseada.
-
-Vamos a verlo usando una construcción GeoGebra:
-
-[Método de Newton para $\sqrt{2}$](https://www.geogebra.org/m/t5nfjdje)
-
----
-
-Como habrás observado, el método se basa en la capacidad de resolver este:
-
-###  Problema fundacional del Cálculo Diferencial
-
-Dada una función $f(x)$, hallar su **recta tangente** en el punto $(x_0, f(x_0))$
-
-::: {.block}
-### Observaciones
-
-+ ¿Qué queremos decir cuando hablamos de recta tangente? Vuelve a GeoGebra y reflexiona.
-+ El método de Newton también depende de la *forma de la función cerca de la ráiz*. ¿Qué quiere decir esto? ¿Se te ocurre otro caso en el que esta idea no funcionaría?
-:::
+# ¿Qué es la recta tangente?
 
 ::: {.callout-tip  icon=false}
   
-### Ejercicio 01_A01a
+## La aproximación local: mira la función al microscopio.
 
-Seguro que ya sabes derivar $f(x) = x^2 - 2$ y que la derivada sirve para hallar la recta tangente. ¿Cuál es esa recta tangente a $f(x)$ cuando $x_0 = 1.5$?
+
 
 :::
-
----
-
-::: {.block}
-### Una iteración del método de Newton
-
-En primer lugar comprueba que:
-
-+ la recta tangente a $f(x)$ cuando $x = x_0$ es
-$$y = f(x_0) + f'(x_0) (x - x_0)$$
-
-+ El punto de corte de esta recta con el eje $X$ (siguiente aproximación de la raíz es) se obtiene haciendo $y=0$ y despejando $x$. Resultado:
-$$x_1 = x_0 - \dfrac{f(x_0)}{f'(x_0)}$$
-
-:::
-
-::: {.callout-tip  icon=false}
-  
-### Ejercicio 01_A01b
-
-Escribe la ecuación para obtener $x_1$ cuando $f(x) = x^2 - 2$. ¿Qué operaciones necesitas para esto?
-
-:::
-
-## Implementación del método de Newton en Python 
-
-::: {.callout-note  icon=false}
-
-### Cálculo numérico
-
-Si piensas en el tipo de operaciones que sabemos hacer con circuitos electrónicos (sumas y restas, productos y divisiones... las del cole) te darás cuenta de que el anterior ejercicio concluye que el Método de Newton proporciona una base para construir calculadoras.
-
-:::
-
-::: {.callout-warning  icon=false appearance="simple"}
-
-[Notebook de la sesión en Colab](https://colab.research.google.com/drive/1K9P41LGTmIuGCPvt2NUwppZmZpcd4vDg?usp=sharing)
-
-:::
-
-
-
----
-
-\begin{Def}
-Sea $f:D\subset \mathbb{R} \rightarrow \mathbb{R}$ y $x_0 \in \stackrel{\circ}{D}$. Se define la \textcolor{blue}{derivada de $f$ en $x_0$} como
-$$
-\textcolor{blue}{f'(x_0)=\lim_{x \rightarrow x_0} \frac{f(x)-f(x_0)}{x-x_0}}
-$$
-Haciendo el cambio de variable $h=x-x_0$ queda expresada como
-$$
-\textcolor{blue}{f'(x_0)=\lim_{h \rightarrow 0}\frac{f(x_0+h)-f(x_0)}{h}}
-$$
-\end{Def}
-
-
-
----
-
-
-
-
-
-```python
-def f(x):
-  return(x**2 - 2)
-  
-def df(x):
-  return(2 * x)
-
-def newton_step(x):
-  return(x - f(x) / df(x))
-  
-newton_step(newton_step(1.4))
-# 1.4142135642135643
-
-```
 
 ---
 
