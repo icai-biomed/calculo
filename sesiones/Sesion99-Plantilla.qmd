@@ -1,0 +1,90 @@
+---
+title: "Sesión 03. Límites."
+lang: es
+format:
+  beamer:
+    theme: Madrid
+    fonttheme: default
+    fontsize: 10pt
+    toc: false          # handled manually below; pandoc's toc:true produces a stray }
+    section-titles: false   # \AtBeginSection in preamble.txt creates the section slide
+    slide-level: 2      # without this, top-level (#) headings become frames directly
+                         # instead of \section commands, so \tableofcontents has nothing
+                         # to list and \AtBeginSection never fires
+    include-in-header:
+      - preambulo_comun.tex
+      - text: |
+          \newcommand{\SesionTitulo}{Sesión 03 \\ Límites.}
+  html: default
+  docx: default
+---
+
+---
+
+**Sesión 03. Límites.**
+
+![](./portadasSesiones/03-Cerceta.jpg){#fig-portada width="80%"}
+
+
++ [Notebook de la sesión en Colab](https://colab.research.google.com/drive/1dSXEMKJJvizSelqQRumEKDgZjXBaoE1u?usp=sharing)
+
+---
+
+```{=latex}
+  
+  \frametitle{Tabla de contenidos}
+  \tableofcontents
+
+```
+
+# Operaciones con límites 
+
+::: {.callout-note  icon=false}
+
+## Cosas
+
+::: 
+
+
+
+# Indeterminaciones.
+
+::: {.callout-note  icon=false}
+
+## Cosas
+
+::: 
+
+
+# Límites laterales.
+
+::: {.callout-note  icon=false}
+
+## Cosas
+
+::: 
+
+
+# Límites infinitos y límites en infinito.
+
+::: {.callout-note  icon=false}
+
+## Cosas
+
+::: 
+
+
+
+
+# Para la próxima sesión
+
+
+<!-- 
+Límite de una función.
+* Operaciones con límites 
+* Indeterminaciones.
+* Límites laterales.
+* Límites infinitos y límites en infinito.
+* Ejercicios/Ejemplos:
+	* Asíntotas.
+-->
