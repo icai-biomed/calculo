@@ -23,7 +23,7 @@ format:
 
 **Sesión 02. Derivada y recta tangente.**
 
-![](./portadasSesiones/02-Cerceta.jpg){#fig-portada width="80%"}
+![](./portadasSesiones/02-FrailecilloNoruega.jpg){#fig-portada width="80%"}
 
 
 + [Notebook de la sesión en Colab](https://colab.research.google.com/drive/1dSXEMKJJvizSelqQRumEKDgZjXBaoE1u?usp=sharing)
@@ -37,7 +37,7 @@ format:
 
 ```
 
-# ¿Qué es la recta tangente?
+# ¿Qué es la recta tangente? Idea intuitiva
 
 
 <!-- **Sesión 02. Derivada y recta tangente.**
@@ -48,7 +48,6 @@ format:
 + [Notebook de la sesión en Colab](https://colab.research.google.com/drive/1dSXEMKJJvizSelqQRumEKDgZjXBaoE1u?usp=sharing)
 
 --- -->
-
 
 ::: {.callout-note  icon=false}
   
@@ -94,11 +93,11 @@ donde $m$ es la **pendiente** de la recta.
 
 ---
 
-## Hacia la definición de derivada.
+# Hacia la definición de derivada.
 
 ::: {.callout-note  icon=false}
   
-### Estimando la pendiente de la recta tangente
+## Estimando la pendiente de la recta tangente
 
 La idea intuitiva de que la recta tangente se parece mucho a $f(x)$ al hacer zoom en el punto se puede expresar en ecuaciones. Lo que esperamos es:
 $$
@@ -129,7 +128,7 @@ y esta aproximación será mejor al acercar $x$ hacia $x_0$.
 
 + ¿Cómo piensas que ha calculado Python este segundo valor?\newline   
 
-+ Calcula valores aproximados de $\sqrt{1.03}$ y de $\log(1.003)$, pero en este cao usa las fórmulas para las derivadas que ya conoces.\footnote{Salvo que se diga lo contrario, todos los logaritmos son neperianos y todos los ángulos se expresan en radianes.}\newline
++ Calcula valores aproximados de $\sqrt{1.03}$ y de $\log(1.003)$, pero en este caso usa las fórmulas para las derivadas que ya conoces.\footnote{Salvo que se diga lo contrario, todos los logaritmos son neperianos y todos los ángulos se expresan en radianes.}\newline
 
 :::
 
@@ -203,6 +202,8 @@ $$f(x) = \dfrac{x}{1 + e^{1/ x}}$$
 
 :::
 
+
+# Para la próxima sesión
 
 
 <!-- 

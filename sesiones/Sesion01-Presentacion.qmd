@@ -15,18 +15,11 @@ format:
     include-in-header:
       - preambulo_comun.tex
       - text: |
-          \newcommand{\SesionTitulo}{Sesión 01 \\ Introducción a la idea fundamental del Cálculo Diferencial}
+          \newcommand{\SesionTitulo}{Sesión 01 \\ Presentación. \\ Introducción a la idea fundamental del Cálculo Diferencial}
   html: default
   docx: default
 ---
 
-
-```{=latex}
-  
-  \frametitle{Tabla de contenidos}
-  \tableofcontents
-
-```
 
 # Presentación de la asignatura
 
@@ -114,17 +107,27 @@ Ver guía de la universidad
 
 :::
 
-
-# Sesión 01. Introducción a la idea fundamental del Cálculo Diferencial
-
 ---
 
 **Sesión 01. Introducción a la idea fundacional del Cálculo Diferencial**
 
-![](./portadasSesiones/01-frailecilloNoruega.jpg){height="60%" fig-align="center"}
+![](./portadasSesiones/01-MartinPescador.png){height="60%" fig-align="center"}
+
 
 
 + [Notebook de la sesión en Colab](https://colab.research.google.com/drive/1K9P41LGTmIuGCPvt2NUwppZmZpcd4vDg?usp=sharing)
+
+---
+
+```{=latex}
+  
+  \frametitle{Tabla de contenidos}
+  \tableofcontents
+
+```
+
+
+# Introducción a la idea fundamental del Cálculo Diferencial
 
 
 ## La raíz de 2
@@ -261,7 +264,7 @@ En el siguiente notebook vamos a usar Python para ver en acción el método de N
 :::
 
 
-## Para la próxima sesión
+# Para la próxima sesión
 
 
 
