@@ -61,14 +61,14 @@
 % ── Section title page (chapter-style, centered) ──────────────────────────────────
 % Fires on every \section{} call. plain removes header/footer; noframenumbering
 % keeps the slide count clean. The title is centered using the theme's own color.
-\AtBeginSection[]{%
-  \begin{frame}[plain,noframenumbering]
-    \centering
-    \vfill
-    {\usebeamerfont{section title}\usebeamercolor[fg]{structure}\insertsection\par}
-    \vfill
-  \end{frame}%
-}
+% \AtBeginSection[]{%
+%   \begin{frame}[plain,noframenumbering]
+%     \centering
+%     \vfill
+%     {\usebeamerfont{section title}\usebeamercolor[fg]{structure}\insertsection\par}
+%     \vfill
+%   \end{frame}%
+% }
 
 % ── Hyperlink styling (blue + underlined, like a normal web link) ───────────
 % hyperref is loaded here (ahead of the template's own load) so \href can be

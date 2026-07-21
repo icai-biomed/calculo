@@ -19,6 +19,16 @@ format:
   docx: default
 ---
 
+---
+
+**Sesión 02. Derivada y recta tangente.**
+
+![](./portadasSesiones/02-Cerceta.jpg){#fig-portada width="80%"}
+
+
++ [Notebook de la sesión en Colab](https://colab.research.google.com/drive/1dSXEMKJJvizSelqQRumEKDgZjXBaoE1u?usp=sharing)
+
+---
 
 ```{=latex}
   
@@ -27,27 +37,85 @@ format:
 
 ```
 
-# Sesión 02. Derivada y recta tangente.
+# ¿Qué es la recta tangente?
 
----
 
-**Sesión 02. Derivada y recta tangente.**
+<!-- **Sesión 02. Derivada y recta tangente.**
 
 ![](./portadasSesiones/02-Cerceta.jpg){#fig-portada width="80%"}
 
 
-+ [Notebook de la sesión en Colab](https://colab.research.google.com/drive/1K9P41LGTmIuGCPvt2NUwppZmZpcd4vDg?usp=sharing)
++ [Notebook de la sesión en Colab](https://colab.research.google.com/drive/1dSXEMKJJvizSelqQRumEKDgZjXBaoE1u?usp=sharing)
+
+--- -->
 
 
-# ¿Qué es la recta tangente?
-
-::: {.callout-tip  icon=false}
+::: {.callout-note  icon=false}
   
 ## La aproximación local: mira la función al microscopio.
 
+La mejor manera de entender la idea de recta tangente es utilizar una herramienta como GeoGebra para examinar *"al microscopio"* la gráfica de una función. 
 
+Puedes usar [este enlace para examinar la gráfica de $f(x) = \sin(x)$](https://www.geogebra.org/m/fa3vvfwu)
+
+$\qquad$
+
+1) Elige un punto cualquiera de la gráfica de la función. Te sugerimos el origen para empezar, pero asegúrate de probar varios puntos.
+2) Hacer zoom en la gráfica (si tienes rueda en el ratón es lo más cómodo).
+3) ¿Qué observas al aplicar un aumento (anchura de la ventana del orden de centésimas o milésimas)?
+4) Cambia la función seno por otra y repite el proceso varias veces.
 
 :::
+
+---
+
+::: {.callout-note  icon=false}
+  
+### Repaso rápido sobre rectas y sus pendientes
+
+La recta tangente en un punto de la gráfica debería ser entonces esa recta que se ve al hacer zoom en el punto. ¿Cómo convertimos la intuición en ecuaciones? Empezamos recordando qué tipo de ecuación esperamos:  
+$\quad\\$
+
+(Casi) cualquier recta que pasa por $(x_0, f(x_0))$ se puede escribir
+$$y = f(x_0) + m (x - x_0)$$
+donde $m$ es la **pendiente** de la recta.
+
+:::
+
+::: {.callout-tip  icon=false}
+  
+### Ejercicio
+
++ ¿Qué información contiene la pendiente?
++ ¿Por qué hemos dicho *casi*?
++ **Inventa la derivada:** ¿cómo harías para estimar la pendiente de la recta?
+
+:::
+
+---
+
+## Hacia la definición de derivada.
+
+::: {.callout-note  icon=false}
+  
+### Estimando la pendiente de la recta tangente
+
+La idea intuitiva de que la recta tangente se parece mucho a $f(x)$ al hacer zoom en el punto se puede expresar en ecuaciones. Lo que esperamos es:
+$$
+\underbrace{\,\,f(x)\,\,}_{\text{valor función}} \approx \underbrace{f(x_0) + m (x - x_0)}_{\text{valor recta}}
+$$
+y que esta aproximación mejore al *hacer zoom*, esto es al acercar $x$ hacia $x_0$.
+:::
+
+Por lo tanto la pendiente $m$ de la recta tangente a $f(x)$ en $(x_0, f(x_0))$ se puede estimar mediante
+
+::: {.callout-warning  icon=false appearance="simple"}
+$$
+m \approx \dfrac{f(x) - f(x_0)}{x - x_0}
+$$
+:::
+
+y esta aproximación será mejor al acercar $x$ hacia $x_0$.
 
 ---
 
@@ -55,4 +123,91 @@ format:
   
 ### Ejercicio
 
++ Abre el [notebook de esta sesión](https://colab.research.google.com/drive/1dSXEMKJJvizSelqQRumEKDgZjXBaoE1u?usp=sharing) y usa la primera parte para escribir la ecuación de la recta tangente a $f(x) = \sin(x$ en $x_0 = 0$.\newline
+
++ Usa esa recta para calcular un valor aproximada de $\sin(0.03)$. Luego pídele a Python que te calcule ese mismo valor y compara.\newline  
+
++ ¿Cómo piensas que ha calculado Python este segundo valor?\newline   
+
++ Calcula valores aproximados de $\sqrt{1.03}$ y de $\log(1.003)$, pero en este cao usa las fórmulas para las derivadas que ya conoces.\footnote{Salvo que se diga lo contrario, todos los logaritmos son neperianos y todos los ángulos se expresan en radianes.}\newline
+
 :::
+
+# Definición formal de derivada
+
+La idea de límite expresa precisamente ese proceso de *zoom*, de acercar $x$ progresivamente a $x_0$:
+
+::: {.callout-note  icon=false}
+
+## Definición de derivada
+
+La **derivada** de $f(x)$ en $x_0$ es $\displaystyle f'(x_0) = \lim_{x \to x_0} \dfrac{f(x) - f(x_0)}{x - x_0}.$
+
+::: 
+
+::: {.callout-important  icon=false}
+
+El símbolo $x\to x_0$ que aparece en el límite significa aquí: *$x$ se acerca a $x_0$ pero siendo siempre $x\neq x_0$*.
+
+:::
+
+::: {.callout-tip  icon=false}
+  
+### Ejercicio
+
+¿Por qué? En el notebook, trata de calcular `apprx_slope(x0=x0, x = x0)`. ¿Cuál es la respuesta?
+
+:::
+
+---
+
+::: {.callout-tip  icon=false}
+
+### Ejercicios
+
++ Aplica la definición para calcular la derivada de $f(x) = x^2 - 2$  para un punto $x_0$ genérico. Ya sabes cuál es la respuesta, ¿verdad? 
+
+$\quad$
+
++ Por si lo has pensado así, ¿por qué no tiene sentido usar la Regla de L'Hôpital (la discutiremos más adelante) para hacer este ejercicio?  
+
+$\quad$
+
++ ¿Puedes calcular la derivada de $f(x) = \sqrt{x}$ así?  ¿Y la derivada de $f(x) = \sen(x)$ 
+
+:::
+
+::: {.callout-note  icon=false}
+
+### Observaciones:
+
+Hemos visto que la búsqueda de la derivada nos conduce a pensar en límites. Y no son límites triviales, ya que el denominador de la definición de derivada siempre tiende a $0$. En *el mejor de los casos*, se trata de **indeterminaciones 0/0.** Por esta razón, entre otras, necesitamos familiarizarnos con las nociones de límite, continuidad, etc., como haremos a partir de la próxima sesión.
+
+:::
+
+# Limitaciones de la idea de derivada
+
+Vamos a ver varios ejemplos en los que las cosas no son tan sencillas conceptualmente como podría pensarse después de la anterior discusión.
+
+::: {.callout-tip  icon=false}
+
+# Ejercicio.
+
++ Usa [la construcción GeoGebra de antes](https://www.geogebra.org/m/fa3vvfwu) para examinar la gráfica del valor absoluto $f(x) = |x|$ en $x_0 = 0$. ¿Qué ves al hacer zoom? ¿Qué ocurre en $x_0\neq 0$? ¿Puedes escribir una expresión general para $f'(x_0)$?
+
++ Haz lo mismo con $f(x) = \sqrt[3]{x}$, pero únicamente en $x_0 = 0$. Luego vuelve al notebook y trata de calcular aproximaciones de la pendiente de la recta tangente en $x_0 = 0$ igual que hicimos con el seno. ¿Qué sucede? ¿Qué ejercicio previo está relacionado con esto que acabamos de observar?
+
++ Usa la construcción de GeoGebra para explorar con zoom lo que ocurre en el origen. De momento basta con eso, volveremos sobre este problema en la próxima sesión.
+$$f(x) = \dfrac{x}{1 + e^{1/ x}}$$
+ 
+
+:::
+
+
+
+<!-- 
+Definición de derivada, de la r. tgte. al límite.
+- Una derivada es una aproximación.
+- Ejercicios/Ejemplos:
+	- Recta normal.
+	- Valores aproximados. -->

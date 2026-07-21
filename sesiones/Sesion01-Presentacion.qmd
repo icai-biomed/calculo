@@ -1,5 +1,5 @@
 ---
-title: "VER PREAMBLE PARA ESTA SESION"
+title: "Sesión 01. Introducción a la idea fundamental del Cálculo Diferencial"
 lang: es
 format:
   beamer:
@@ -11,7 +11,11 @@ format:
     slide-level: 2      # without this, top-level (#) headings become frames directly
                          # instead of \section commands, so \tableofcontents has nothing
                          # to list and \AtBeginSection never fires
-    include-in-header: Sesion01_preamble.txt
+    #include-in-header: Sesion01_preamble.txt
+    include-in-header:
+      - preambulo_comun.tex
+      - text: |
+          \newcommand{\SesionTitulo}{Sesión 01 \\ Introducción a la idea fundamental del Cálculo Diferencial}
   html: default
   docx: default
 ---
@@ -54,6 +58,9 @@ La vía de contacto preferente es el correo (evitar Teams o teléfono, la respue
 
 ### Cómo cursar con éxito esta asignatura.
 
++ Trabajo diario
++ En serio, ¡trabajo diario!
++ Participa en clase.
 + **¡Usa las tutorías!**
 
 :::
