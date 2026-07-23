@@ -37,32 +37,138 @@ format:
 
 ```
 
-# Operaciones con límites 
+# Continuidad y funciones elementales
 
 ::: {.callout-note  icon=false}
 
-## Cosas
+## Dominio de una función
+
+El **dominio** de una función $f(x)$ es el conjunto de puntos en los que la función está definida y lo llamaremos $\operatorname{Dom}(f)$. 
+
+:::
+
+
+
+---
+
+::: {.callout-note  icon=false}
+
+## Continuidad de una función en un punto
+
+La función $f(x)$ es continua en un punto $x_0$ de su dominio si (lo mismo dicho de varias formas):
+
++ El límite existe y coincide con el valor.  
+
++ El límite se puede calcular *sustituyendo*.  
+
++ $\lim_{x\to x_0}f(x) = f(x_0)$
+
+:::
+
+---
+
+::: {.callout-note  icon=false}
+
+## Continuidad de algunas funciones elementales
+
+Las siguientes funciones son continuas en todos los puntos **de su dominio**:
+
++ Los polinomios y las potencias $x^a$, incluida $\sqrt{x}$.
++ Las funciones trigonométricas seno, coseno, tangente.
++ La exponencial $e^x$ y el logaritmo $\log(x)$.
+
+:::
+
+::: {.callout-warning  icon=false}
+
+### \textcolor{red}{\textbf{¡Atención!}} 
+
+No estamos diciendo que estas funciones sean continuas en todas partes.
+
+:::
+
+
+# Operaciones con límites 
+
+Las siguientes propiedades nos permiten calcular límites dividiéndolos en subproblemas más simples (por ejemplo las funciones elementales). 
+
+::: {.callout-note  icon=false}
+
+## Propiedades de los límites (álgebra de límites)
+
+Sean $f$ y $g$ dos funciones tales que:
+$$ \lim_{x \to x_0} f(x) = l_1 \quad \text{y} \quad \lim_{x \to x_0} g(x) = l_2 \quad \text{con } l_1, l_2 \in \mathbb{R} $$
+
+Entonces se verifica:
+
++ $\lim_{x \to x_0} \left(f(x) \pm g(x)\right) = l_1 \pm l_2$. Límite de la suma es la suma de los límites.  
+
++ $\lim_{x \to x_0} \left(f(x) \cdot g(x)\right) = l_1 \cdot l_2$ Límite del producto es el producto de los límites.  
+
++ Si $l_2 \neq 0$, entonces $\lim_{x \to x_0} \frac{f(x)}{g(x)} = \frac{l_1}{l_2}$ \textcolor{red}{¡Cuidado!}  
+
++ Si $l_1 > 0$, entonces $\exists \lim_{x \to x_0} f(x)^{g(x)} = l_1^{l_2}$
 
 ::: 
-
 
 
 # Indeterminaciones.
 
+Esas mismas propiedades identifican cuáles son los límites más complicados.
+
 ::: {.callout-note  icon=false}
 
-## Cosas
+## Tipos habituales de indeterminaciones
+
++ De tipo algebraico: $\frac{0}{0}$, $\frac{\infty}{\infty}$, $\infty - \infty$, $0 · \infty$.
++ De tipo exponencial: $1^{\infty}$, $\infty^{0}$, $0^0$.  
 
 ::: 
+
+**Observación:** Para estas últimas siempre usaremos que el *logaritmo del límite es el límite del logaritmo*.
 
 
 # Límites laterales.
 
+En bastantes ocasiones al estudiar el comportamiento de una función en un punto $x_0$ tendremos que distinguir cómo se comporta a la izquierda ($x < x_0$) y a la derecha ($x > x_0$) del punto. 
+
 ::: {.callout-note  icon=false}
 
-## Cosas
+## Límites laterales.
+
++ El (desafortunado) símbolo 
+$$\lim_{x\to x_0^-}f(x)$$
+indica que al estudiar este **límite lateral por la izquierda** sólo tenemos en cuenta el comportamiento de $f(x)$ cuando $x < x_0$.
+
++ El **límite lateral por la derecha** $\displaystyle\lim_{x\to x_0^+}f(x)$ se define de forma análoga, con $x > x_0$.
+
++ El límite (sin apellidos) $\displaystyle\lim_{x\to x_0}f(x)$ existe si y sólo si **ambos límites laterales existen y coinciden**. 
 
 ::: 
+
+---
+
+
+::: {.callout-tip  icon=false}
+
+## Ejercicios
+
+**Ejercicio 03_A01**. 
+
++ ¿Cuál es el dominio de $f(x) = \dfrac{1}{1 + e^{1/x}}$?
++ Estudia los límites laterales de esta función en $x_0 = 0$.  
+
+**Ejercicio 03_A02**
+
++ ¿Cuál es el dominio de $f(x) = \arctan(1/x) = \operatorname{atan}(1/x)$?
++ Estudia los límites laterales de esta función en $x_0 = 0$.
+
+:::
+
+
+
+
+## Tipos habituales de indeterminaciones
 
 
 # Límites infinitos y límites en infinito.
