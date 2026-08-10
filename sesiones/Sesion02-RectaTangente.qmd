@@ -81,17 +81,15 @@ donde $m$ es la **pendiente** de la recta.
 
 :::
 
-::: {.callout-tip  icon=false}
+::: {.callout-tip  icon=false appearance="minimal"}
   
-### Ejercicio
+\textbf{\textcolor{blue}{Ejercicio 02A01}} 
 
 + ¿Qué información contiene la pendiente?
 + ¿Por qué hemos dicho *casi*?
 + **Inventa la derivada:** ¿cómo harías para estimar la pendiente de la recta?
 
 :::
-
----
 
 # Hacia la definición de derivada.
 
@@ -101,7 +99,7 @@ donde $m$ es la **pendiente** de la recta.
 
 La idea intuitiva de que la recta tangente se parece mucho a $f(x)$ al hacer zoom en el punto se puede expresar en ecuaciones. Lo que esperamos es:
 $$
-\underbrace{\,\,f(x)\,\,}_{\text{valor función}} \approx \underbrace{f(x_0) + m (x - x_0)}_{\text{valor recta}}
+\underbrace{\,\,f(x)\,\,}_{\text{valor función}} \approx \underbrace{f(x_0) + m\cdot (x - x_0)}_{\text{valor recta}}
 $$
 y que esta aproximación mejore al *hacer zoom*, esto es al acercar $x$ hacia $x_0$.
 :::
@@ -118,17 +116,22 @@ y esta aproximación será mejor al acercar $x$ hacia $x_0$.
 
 ---
 
-::: {.callout-tip  icon=false}
+::: {.callout-tip  icon=false appearance="minimal"}
   
-### Ejercicio
+\textbf{\textcolor{blue}{Ejercicio 02A02}}
 
-+ Abre el [notebook de esta sesión](https://colab.research.google.com/drive/1dSXEMKJJvizSelqQRumEKDgZjXBaoE1u?usp=sharing) y usa la primera parte para escribir la ecuación de la recta tangente a $f(x) = \sin(x$ en $x_0 = 0$.\newline
++ Abre el [notebook de esta sesión](https://colab.research.google.com/drive/1dSXEMKJJvizSelqQRumEKDgZjXBaoE1u?usp=sharing) y usa la primera parte para escribir la ecuación de la recta tangente a $f(x) = \sin(x)$ en $x_0 = 0$.\newline
 
 + Usa esa recta para calcular un valor aproximada de $\sin(0.03)$. Luego pídele a Python que te calcule ese mismo valor y compara.\newline  
 
 + ¿Cómo piensas que ha calculado Python este segundo valor?\newline   
+:::
 
-+ Calcula valores aproximados de $\sqrt{1.03}$ y de $\log(1.003)$, pero en este caso usa las fórmulas para las derivadas que ya conoces.\footnote{Salvo que se diga lo contrario, todos los logaritmos son neperianos y todos los ángulos se expresan en radianes.}\newline
+::: {.callout-tip  icon=false appearance="minimal"}
+  
+\textbf{\textcolor{darkgreen}{Ejercicio 02C01}}
+
+Calcula valores aproximados de $\sqrt{1.03}$ y de $\log(1.003)$, pero en este caso usa las fórmulas para las derivadas que ya conoces.\footnote{Salvo que se diga lo contrario, todos los logaritmos son neperianos y todos los ángulos se expresan en radianes.}\newline
 
 :::
 
@@ -150,19 +153,17 @@ El símbolo $x\to x_0$ que aparece en el límite significa aquí: *$x$ se acerca
 
 :::
 
-::: {.callout-tip  icon=false}
+::: {.callout-tip  icon=false appearance="minimal"}
   
-### Ejercicio
-
-¿Por qué? En el notebook, trata de calcular `apprx_slope(x0=x0, x = x0)`. ¿Cuál es la respuesta?
+\textbf{\textcolor{blue}{Ejercicio 02A03}} ¿Por qué? En el [notebook de la primera sesión](https://colab.research.google.com/drive/1K9P41LGTmIuGCPvt2NUwppZmZpcd4vDg?usp=drive_link), trata de calcular `apprx_slope(x0=x0, x = x0)`. ¿Cuál es la respuesta?
 
 :::
 
 ---
 
-::: {.callout-tip  icon=false}
-
-### Ejercicios
+::: {.callout-tip  icon=false appearance="minimal"}
+  
+\textbf{\textcolor{blue}{Ejercicio 02A04}}
 
 + Aplica la definición para calcular la derivada de $f(x) = x^2 - 2$  para un punto $x_0$ genérico. Ya sabes cuál es la respuesta, ¿verdad? 
 
@@ -188,22 +189,20 @@ Hemos visto que la búsqueda de la derivada nos conduce a pensar en límites. Y 
 
 Vamos a ver varios ejemplos en los que las cosas no son tan sencillas conceptualmente como podría pensarse después de la anterior discusión.
 
-::: {.callout-tip  icon=false}
-
-# Ejercicio.
+::: {.callout-tip  icon=false appearance="minimal"}
+  
+\textbf{\textcolor{blue}{Ejercicio 02A05}}
 
 + Usa [la construcción GeoGebra de antes](https://www.geogebra.org/m/fa3vvfwu) para examinar la gráfica del valor absoluto $f(x) = |x|$ en $x_0 = 0$. ¿Qué ves al hacer zoom? ¿Qué ocurre en $x_0\neq 0$? ¿Puedes escribir una expresión general para $f'(x_0)$?
 
 + Haz lo mismo con $f(x) = \sqrt[3]{x}$, pero únicamente en $x_0 = 0$. Luego vuelve al notebook y trata de calcular aproximaciones de la pendiente de la recta tangente en $x_0 = 0$ igual que hicimos con el seno. ¿Qué sucede? ¿Qué ejercicio previo está relacionado con esto que acabamos de observar?
 
-+ Usa la construcción de GeoGebra para explorar con zoom lo que ocurre en el origen. De momento basta con eso, volveremos sobre este problema en la próxima sesión.
++ Usa la construcción de GeoGebra para explorar con zoom lo que le ocurre en el origen a la función $f(x)$ que aparece debajo. De momento basta con eso, volveremos sobre este problema en la próxima sesión.
 $$f(x) = \dfrac{x}{1 + e^{1/ x}}$$
- 
-
 :::
 
 
-# Para la próxima sesión
+<!-- # Para la próxima sesión -->
 
 
 <!-- 

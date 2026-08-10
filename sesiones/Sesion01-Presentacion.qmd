@@ -212,17 +212,16 @@ Dada una función $f(x)$, hallar su [**recta tangente**]{.underline} en el punto
 + El método de Newton también depende de la *forma de la función cerca de la ráiz*. ¿Qué quiere decir esto? ¿Se te ocurre otro caso en el que esta idea no funcionaría?
 :::
 
-::: {.callout-tip  icon=false}
+::: {.callout-tip  icon=false appearance="minimal"}
   
-### Ejercicio 01_A01a
-
-Seguro que ya sabes derivar $f(x) = x^2 - 2$ y que la derivada sirve para hallar la recta tangente. ¿Cuál es esa recta tangente a $f(x)$ cuando $x_0 = 1.5$?
+\textbf{\textcolor{blue}{Ejercicio 01A01a}} Seguro que ya sabes derivar $f(x) = x^2 - 2$ y que la derivada sirve para hallar la recta tangente. ¿Cuál es esa recta tangente a $f(x)$ cuando $x_0 = 1.5$?
 
 :::
 
 ---
 
 ::: {.callout-note  icon=false}
+
 ### Una iteración del método de Newton
 
 En primer lugar comprueba que:
@@ -235,9 +234,9 @@ $$x_1 = x_0 - \dfrac{f(x_0)}{f'(x_0)}$$
 
 :::
 
-::: {.callout-tip  icon=false}
+::: {.callout-tip  icon=false appearance="minimal"}
   
-### Ejercicio 01_A01b
+\textbf{\textcolor{blue}{Ejercicio 01A01b}}
 
 Escribe la ecuación para obtener $x_1$ cuando $f(x) = x^2 - 2$. ¿Qué operaciones necesitas para esto?
 
@@ -263,8 +262,15 @@ En el siguiente notebook vamos a usar Python para ver en acción el método de N
 
 :::
 
+::: {.callout-tip  icon=false appearance="minimal"}
+  
+\textbf{\textcolor{darkgreen}{Ejercicio 01C01}}
 
-# Para la próxima sesión
+La raíz cúbica de 2 es aproximadamente $1.26$. Usa el método de Newton para calcularla con una precisión de 10 cifras decimales. ¿Qué función debes usar? 
+
+:::
+
+<!-- # Para la próxima sesión -->
 
 
 

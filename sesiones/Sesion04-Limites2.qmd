@@ -1,5 +1,5 @@
 ---
-title: "Sesión 03. Límites y continuidad."
+title: "Sesión 04. Límites y continuidad."
 lang: es
 format:
   beamer:
@@ -250,4 +250,24 @@ $\,$
 
 **Nota:** La función ddel ejercicio 03A04 tiene en el origen una discontinuidad esencial, concretamente lo que llamamos una **discontinuidad de salto finito**.
 
+
+# Límites en infinito y límites infinitos.
+
+Nos gusta pensar en los límites como una especie de *zoom* . Hasta ahora hemos pensado en hacer zoom para *aumentar*. Pero a veces queremos hacer zoom para *alejar* y ver qué pasa cuando $x$ se hace muy grande (positivo o negativo). En términos coloquiales, ¿qué hace la función hacia el borde derecho o izquierdo de la pantalla?
+
+::: {.callout-note  icon=false}
+
+## Asíntotas de una función
+
+::: 
+
+
+::: {.callout-important  appearance="minimal"}
+
+## Ejercicio 03B_01
+
+Hallar las asíntotas de la función $f(x) = \dfrac{x^2 + 1}{x + 2}$.
+
+
+::: 
 
