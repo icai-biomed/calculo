@@ -248,6 +248,6 @@ $\,$
 
 :::
 
-**Nota:** La función ddel ejercicio 03A04 tiene en el origen una discontinuidad esencial, concretamente lo que llamamos una **discontinuidad de salto finito**.
+**Nota:** La función del ejercicio 03A04 tiene en el origen una discontinuidad esencial, concretamente lo que llamamos una **discontinuidad de salto finito**.
 
 
