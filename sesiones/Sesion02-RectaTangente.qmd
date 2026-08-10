@@ -202,12 +202,3 @@ $$f(x) = \dfrac{x}{1 + e^{1/ x}}$$
 :::
 
 
-<!-- # Para la próxima sesión -->
-
-
-<!-- 
-Definición de derivada, de la r. tgte. al límite.
-- Una derivada es una aproximación.
-- Ejercicios/Ejemplos:
-	- Recta normal.
-	- Valores aproximados. -->
