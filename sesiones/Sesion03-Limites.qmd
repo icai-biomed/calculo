@@ -57,9 +57,12 @@ $$(a) f(x) = 1 - e^{-x^2}\qquad (b) f(x) = \frac{x^2 + 1}{x + 2}$$
 
 \textbf{\textcolor{firebrick}{Ejercicio 03B01}}
 
-Hallar el dominio y hacer un dibujo aproximado de las siguientes funciones:
-$$(a)\quad f(x) = \frac{x}{x^2 + 1} \qquad (b)\quad f(x) = e^{1/x} \qquad 
+Hallar el dominio y hacer un dibujo aproximado de las siguientes funciones (para (b) usa GeoGebra):
+\small
+$$(a)\quad f(x) = \frac{x}{x^2 + 1} \quad (b)\quad f(x) = \sqrt{\log(|x^2 - 2| + x + 1)} \quad 
 (c)\quad f(x) = \dfrac{x^3 + x^2}{x^2 - 1}$$
+\normalsize
+
 :::
 
 
@@ -129,7 +132,8 @@ Entonces se verifica:
 
 ::: {.callout-tip  appearance="minimal"}
 
-\textbf{\textcolor{blue}{Ejercicio 03A02a.}} Estúdiese la continuidad de la función $f(x) = \sqrt{x^2 - 4x + 3}$ en la recta real.
+\textbf{\textcolor{blue}{Ejercicio 03A02a.}} Estúdiese la continuidad de la función 
+$$f(x) = \sqrt{x^2 - 4x + 3}$$ 
 
 $\quad$  
 
@@ -184,13 +188,11 @@ $\quad$
 
 :::
 
----
+# Discontinuidades esenciales
 
-::: {.callout-note  icon=false}
+::: {.callout-note  icon=false appearance="simple"}
 
-## Discontinuidades esenciales
-
-Una función tiene una discontinuidad esencial en $x_0$ cuando no existe el límite de $f$ en ese punto. Por tanto, a diferencia de las discontinuidades evitables, las esenciales no pueden ser eliminadas redefiniendo la función en un solo punto. 
+**Definición.** Una función tiene una discontinuidad esencial en $x_0$ cuando no existe el límite de $f$ en ese punto. Por tanto, a diferencia de las discontinuidades evitables, las esenciales no pueden ser eliminadas redefiniendo la función en un solo punto. 
 
 :::
 
@@ -250,4 +252,11 @@ $\,$
 
 **Nota:** La función del ejercicio 03A04 tiene en el origen una discontinuidad esencial, concretamente lo que llamamos una **discontinuidad de salto finito**.
 
+# Observaciones
 
+Para trabajar con **desigualdades**:
+
+  + $|A| < B$ es lo mismo que $-B < A < B$ y produce la intersección de ambas desigualdades.
+  + $|A| > B$ es lo mismo que la unión de $(A < -B)$ con $(A > B)$.
+  + Si sabes que $a < b$ y quieres comparar $f(a)$ con $f(b)$ tienes que pensar en el *crecimiento* de $f$. Por ejemplo, como $0 < 2 < 5$ y $f(x) = 1/x$ es *decreciente en el semieje positivo* entonces $1/2 > 1/5$. 
+  

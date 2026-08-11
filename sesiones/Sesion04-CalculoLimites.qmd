@@ -1,5 +1,5 @@
 ---
-title: "Sesión 04. Límites y continuidad."
+title: "Sesión 04. Más sobre cálculo de límites."
 lang: es
 format:
   beamer:
@@ -14,19 +14,20 @@ format:
     include-in-header:
       - preambulo_comun.tex
       - text: |
-          \newcommand{\SesionTitulo}{Sesión 03 \\ Límites.}
+          \newcommand{\SesionTitulo}{Sesión 04 \\ Más sobre cálculo de límites.}
   html: default
   docx: default
 ---
 
 ---
 
-**Sesión 03. Límites.**
+**Sesión 04. Más sobre cálculo de límites.**
 
-![](./portadasSesiones/03-Cerceta.jpg){#fig-portada width="80%"}
+![](./portadasSesiones/CarracaOkavango.jpg){#fig-portada width="80%"}
 
 
-+ [Notebook de la sesión en Colab](https://colab.research.google.com/drive/1dSXEMKJJvizSelqQRumEKDgZjXBaoE1u?usp=sharing)
++ [Notebook de la sesión en Colab](https://colab.research.google.com/drive/1MWP6sQbx6mYALz5EPvIHAY5Qa1-w8kPY?usp=sharing)
+
 
 ---
 
@@ -36,6 +37,15 @@ format:
   \tableofcontents
 
 ```
+
+# Contenidos
+
+Límites infinitos.  
+		- Asíntotas verticales.  
+	* Límites en infinito.  
+		* Asíntotas horizontales y oblicuas.  
+	* Límite x sin(1/x), Regla del Sandwich.  
+	* Límites logarítmicos. 
 
 # Continuidad y funciones elementales
 
