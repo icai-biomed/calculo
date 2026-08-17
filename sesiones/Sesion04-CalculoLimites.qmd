@@ -38,246 +38,204 @@ format:
 
 ```
 
-# Contenidos
 
-Límites infinitos.  
-		- Asíntotas verticales.  
-	* Límites en infinito.  
-		* Asíntotas horizontales y oblicuas.  
-	* Límite x sin(1/x), Regla del Sandwich.  
-	* Límites logarítmicos. 
-
-# Continuidad y funciones elementales
-
-::: {.callout-note  icon=false}
-
-## Dominio de una función
-
-El **dominio** de una función $f(x)$ es el conjunto de puntos en los que la función está definida y lo llamaremos $\operatorname{Dom}(f)$. 
-
-:::
-
-
-::: {.callout-tip  icon=false appearance="simple"}
-
-\textbf{\textcolor{blue}{Ejercicio 03A01}}
-
-Hallar el dominio y hacer un dibujo aproximado de las siguientes funciones:
-$$(a) f(x) = 1 - e^{-x^2}\qquad (b) f(x) = \frac{x^2 + 1}{x + 2}$$
-
-\textbf{\textcolor{firebrick}{Ejercicio 03B01}}
-
-Hallar el dominio y hacer un dibujo aproximado de las siguientes funciones:
-$$(a)\quad f(x) = \frac{x}{x^2 + 1} \qquad (b)\quad f(x) = e^{1/x} \qquad 
-(c)\quad f(x) = \dfrac{x^3 + x^2}{x^2 - 1}$$
-:::
-
-
-
-
-
----
-
-::: {.callout-note  icon=false}
-
-## Continuidad de una función en un punto
-
-La función $f(x)$ es continua en un punto $x_0$ de su dominio si (lo mismo dicho de varias formas):
-
-+ El límite existe y coincide con el valor.  
-
-+ El límite se puede calcular *sustituyendo*.  
-
-+ $\displaystyle\lim_{x\to x_0}f(x) = f(x_0)$
-
-:::
-
-::: {.callout-note  icon=false}
-
-## Continuidad de algunas funciones elementales
-
-Las siguientes funciones son continuas en todos los puntos **de su dominio**:
-
-+ Los polinomios y las potencias $x^a$, incluida $\sqrt{x}$.
-+ Las funciones trigonométricas seno, coseno, tangente.
-+ La exponencial $e^x$ y el logaritmo $\log(x)$.
-
-:::
-
-::: {.callout-warning  icon=false}
-
-### \textcolor{red}{\textbf{¡Atención!}} 
-
-No estamos diciendo que estas funciones sean continuas en todas partes.
-
-:::
-
-# Operaciones con límites 
-
-Las siguientes propiedades nos permiten discutir límites (y continuidad) dividiéndolos en subproblemas más simples (por ejemplo las funciones elementales). 
-
-::: {.callout-note  icon=false}
-
-## Propiedades de los límites (álgebra de límites)
-
-Sean $f$ y $g$ dos funciones tales que:
-$$ \lim_{x \to x_0} f(x) = l_1 \quad \text{y} \quad \lim_{x \to x_0} g(x) = l_2 \quad \text{con } l_1, l_2 \in \mathbb{R} $$
-
-Entonces se verifica:
-
-+ $\lim_{x \to x_0} \left(f(x) \pm g(x)\right) = l_1 \pm l_2$. Límite de la suma es la suma de los límites.  
-
-+ $\lim_{x \to x_0} \left(f(x) \cdot g(x)\right) = l_1 \cdot l_2$ Límite del producto es el producto de los límites.  
-
-+ Si $l_2 \neq 0$, entonces $\lim_{x \to x_0} \frac{f(x)}{g(x)} = \frac{l_1}{l_2}$ \textcolor{red}{¡Cuidado!}  
-
-+ Si $l_1 > 0$, entonces $\exists \lim_{x \to x_0} f(x)^{g(x)} = l_1^{l_2}$
-
-::: 
-
----
-
-::: {.callout-tip  appearance="minimal"}
-
-\textbf{\textcolor{blue}{Ejercicio 03A02a.}} Estúdiese la continuidad de la función $f(x) = \sqrt{x^2 - 4x + 3}$ en la recta real.
-
-$\quad$  
-
-\textbf{\textcolor{blue}{Ejercicio 03A02b.}} La función 
-$$
-f(x) = \begin{cases}
-\dfrac{\sin(x)}{x} & \text{ si }x\neq 0\\[2mm]
-\quad a & \text{ si }x =  0
-\end{cases}
-$$
-sólo es continua en $x_0 = 0$ si eliges correctamente el valor de $a$. ¿Cuál es ese valor? *Indicaciones:* ¿Por qué no puedes simplemente sustituir $x$ por 0 en la primera fórmula? ¿Cuál es la recta tangente a $\sin(x)$ en $x_0$? Cuando sepas el valor de $a$ dibuja la función en GeoGebra.
-
-:::
-
-Los matemáticos resumen la situación de este último apartado diciendo que la función $f(x)$ tiene una discontinuidad evitable en $x_0 = 0$ y que la discontinuidad se evita eligiendo $a$ con el valor que hemos encontrado.
-
-
-# Indeterminaciones.
-
-Las propiedades de operaciones con límites identifican cuáles son los límites más complicados.
-
-::: {.callout-note  icon=false}
-
-## Tipos habituales de indeterminaciones
-
-+ De tipo algebraico: $\frac{0}{0}$, $\frac{\infty}{\infty}$, $\infty - \infty$, $0 · \infty$.  
-
-+ De tipo exponencial: $1^{\infty}$, $\infty^{0}$, $0^0$.  
-
-::: 
-
-**Observaciones:** 
-
-+ Para estas últimas siempre usaremos que el *logaritmo del límite es el límite del logaritmo*.
-+ Las de tipo $0/0$ son especialmente interesantes porque aparecen (casi) siempre al calcular derivadas mediante límites. 
-
----
-
-::: {.callout-tip  appearance="minimal"}
-
-\textbf{\textcolor{blue}{Ejercicio 03A03a.}} El siguiente límite es una indeterminación de tipo $0/0$:
-$$
-\lim_{x \to 0} \frac{\tan(x) - \sin(x)}{\log(1 + x^3)}
-$$
-Usa los comandos del notebook de esta sesión para calcularlo. ¿Cuál es el resultado?  
-*Nota:* más adelante aprenderemos a calcular este tipo de límites sin necesidad de usar un ordenador.
-
-
-$\quad$  
-
-\textbf{\textcolor{darkgreen}{Ejercicio 03A03b.}} Usa numpy para calcular ese mismo límite de forma aproximada.
-
-:::
-
----
-
-::: {.callout-note  icon=false}
-
-## Discontinuidades esenciales
-
-Una función tiene una discontinuidad esencial en $x_0$ cuando no existe el límite de $f$ en ese punto. Por tanto, a diferencia de las discontinuidades evitables, las esenciales no pueden ser eliminadas redefiniendo la función en un solo punto. 
-
-:::
-
-::: {.callout-tip  appearance="minimal"}
-
-\textbf{\textcolor{blue}{Ejercicio 03A04}} Vamos a considerar la función 
-$f(x) = \sin\left(\dfrac{1}{x}\right)$ 
-y a estudiar su comportamiento en el origen:  
-
-+ Dibuja el intervalo $\left(\dfrac{1}{2\pi}, \dfrac{1}{4\pi}\right)$. Cuando $x$ recorre ese intervalo, ¿qué valores toma $f$?
-+ Haz lo mismo con el intervalo $\left(\dfrac{1}{4\pi}, \dfrac{1}{6\pi}\right)$ y con $\left(\dfrac{1}{6\pi}, \dfrac{1}{8\pi}\right)$. Piensa cómo sería con el intervalo $\left(\dfrac{1}{1000\pi}, \dfrac{1}{1002\pi}\right)$.
-+ Abre (¡después de completar lo anterior!) esta [construcción GeoGebra](https://www.geogebra.org/m/aduc5dy6).
-
-
-$\,$
-
-:::
-
-# Límites laterales.
-
-En bastantes ocasiones al estudiar el comportamiento de una función en un punto $x_0$ tendremos que distinguir cómo se comporta a la izquierda ($x < x_0$) y a la derecha ($x > x_0$) del punto. 
-
-::: {.callout-note  icon=false}
-
-## Límites laterales.
-
-+ El (desafortunado) símbolo 
-$$\lim_{x\to x_0^-}f(x)$$
-indica que al estudiar este **límite lateral por la izquierda** sólo tenemos en cuenta el comportamiento de $f(x)$ cuando $x < x_0$.
-
-+ El **límite lateral por la derecha** $\displaystyle\lim_{x\to x_0^+}f(x)$ se define de forma análoga, con $x > x_0$.
-
-+ El límite (sin apellidos) $\displaystyle\lim_{x\to x_0}f(x)$ existe si y sólo si **ambos límites laterales existen y coinciden**. 
-
-::: 
-
----
-
-
-::: {.callout-tip  appearance="minimal"}
-
-\textbf{\textcolor{blue}{Ejercicio 03A04}}
-
-+ ¿Cuál es el dominio de $f(x) = \dfrac{1}{1 + e^{1/x}}$?
-+ Estudia los límites laterales de esta función en $x_0 = 0$.  
-+ Después dibújala usando alguna de las herramientas que conoces.
-
-$\,$
-
-\textbf{\textcolor{blue}{Ejercicio 03A05}}
-
-+ ¿Cuál es el dominio de $f(x) = \arctan(1/x) = \operatorname{atan}(1/x)$?
-+ Estudia los límites laterales de esta función en $x_0 = 0$.
-+ Después dibújala.
-
-:::
-
-**Nota:** La función ddel ejercicio 03A04 tiene en el origen una discontinuidad esencial, concretamente lo que llamamos una **discontinuidad de salto finito**.
-
-
-# Límites en infinito y límites infinitos.
+# Introducción. 
 
 Nos gusta pensar en los límites como una especie de *zoom* . Hasta ahora hemos pensado en hacer zoom para *aumentar*. Pero a veces queremos hacer zoom para *alejar* y ver qué pasa cuando $x$ se hace muy grande (positivo o negativo). En términos coloquiales, ¿qué hace la función hacia el borde derecho o izquierdo de la pantalla?
 
+$\quad$
+
+También podemos preguntarnos por aquellos casos en los que la función toma valores cada vez más grandes en valor absoluto, hacia los bordes superior o inferior de la pantalla por así decir. En esta sesión vamos a ocuparnos de entender la terminología y las situaciones que pueden presentarse en esos casos
+
+
+# Límites en infinito
+
 ::: {.callout-note  icon=false}
 
-## Asíntotas de una función
+## Idea intuitiva de límite en infinito
+
+Decimos que el *límite en infinito a la derecha* de $f$ es $L$ y escribimos
+$$\lim_{x\to\infty}f(x) = L$$
+si la función se puede hacer tan parecida a $L$ como se desee tomando valores de $x$ suficientemente grandes. De manera similar se define el *límite en infinito a la izquierda*:
+$\displaystyle\lim_{x\to-\infty}f(x)$
+:::
+
+::: {.callout-tip  appearance="minimal"}
+
+\textbf{\textcolor{blue}{Ejercicio 04A01.}} 
+
+¿Cuál es el límite en  infinito de la siguiente función? No se trata de que apliques ningún *método* de Cálculo, lo que debes preguntarte es: "Si uso un valor muy grande, como $x = 10^6$, ¿cuál es aproximadamente el valor de $f(x)$?"
+$$f(x) = \frac{3x^2 - x - 2}{5 x^2 + 7 x - 3}$$
+
+:::
+
+
+---
+
+::: {.callout-note  icon=false}
+
+## Asíntota horizontal a la derecha
+
+Cuando $\displaystyle \lim_{x\to\infty}f(x) = L$, decimos que la recta $y = L$ es una asíntota horizontal a la derecha (análogamente a la izquierda). La siguiente figura muestra un ejemplo típico de una asíntota horizpntal a la derecha.
+
+:::
+
+![](./fig/S04-AsintotaHorizDcha.jpg){#fig-asintotaHorizDcha width="60%" fig-align="center"}
+
+::: {.callout-tip  appearance="minimal"}
+
+\textbf{\textcolor{blue}{Ejercicio 04A02}}
+
+La función es $f(x) = \frac{3x^2}{2x^2 + 1}\arctan(x - 4)$. ¿Cuál es esa asíntota? ¿Hay asíntota a la izquierda?
+
+:::
+
+
+
+
+---
+
+
+::: {.callout-note  icon=false}
+
+## Observaciones
+
++ Cuando decimos
+$$\lim_{x\to\infty}f(x) = \infty$$
+queremos decir que los valores de la función son (todos) tan grandes (y positivos) como se desee para cualquier $x$ suficientemente grande. Otras expresiones similares se interpretan análogamente.
+
+$\quad$
+
++ Hay casos en los que el límite en infinito no existe. Por ejemplo, la función $f(x) = \sin(x)$ no tiene límite en infinito, ya que sus valores oscilan entre -1 y 1 sin acercarse a ningún número en particular.
+
+:::
+
+---
+
+::: {.callout-note  icon=false}
+
+## Asíntotas oblicuas de una función
+
+La recta $y = m x + n$ es una asíntota oblicua de la función $f$ a la derecha si la función y la recta se pueden hacer tan parecidas como se desee tomando valores de $x$ suficientemente grandes (análogamente se define asíntota oblicua a la izquierda). A partir de 
+$$f(x)\approx mx + n \quad \text{cuando } x\to\infty$$
+se obtiene:
+$$\lim_{x\to\infty} \frac{f(x)}{x}  - m + \frac{n}{x} = 0\Rightarrow m = \lim_{x\to\infty} \frac{f(x)}{x}$$
+Y entonces fácilmente se llega a:
+$n = \displaystyle\lim_{x\to\infty} (f(x) - m x)$
+
 
 ::: 
-
 
 ::: {.callout-important  appearance="minimal"}
 
-## Ejercicio 03B_01
+### Nota 
 
-Hallar las asíntotas de la función $f(x) = \dfrac{x^2 + 1}{x + 2}$.
+Una función no puede tener más de una asíntota a la derecha (o a la izquierda). Si $f$ tiene una asíntota oblicua (resp. horizontal) a la derecha, entonces no puede tener asíntota horizontal (resp. oblicua) a la derecha.  
+¿Por qué?
+
+:::
+
+# Límites infinitos
+
+::: {.callout-note  icon=false}
+
+## Idea intuitiva de límite infinito
+
+Decimos que el *límite de $f$ en $x_0$ es infinito* si (todos) los valores de $f$ son tan grandes como se desee cuando $x$ está suficientemente cerca de $x_0$.  
+De forma análoga se define el límite menos infinito. Pero hay que tener en cuenta que los límites laterales pueden ser ambos infinitos, o uno $+\infty$ y el otro $-\infty$, uno finito y otro infinito, etc., como se ilustra en la siguiente figura.
+:::
 
 
-::: 
+![](./fig/S04-LimiteInfinito.jpg){#fig-limiteInfinito width="60%" fig-align="center"}
 
+---
+
+::: {.callout-note  icon=false}
+
+## Asíntota vertical
+
+Cuando la función $f$ tiene un límite infinito o menos infinito en $x_0$, decimos que la recta $x = x_0$ es una asíntota vertical de la función. Basta de hecho con que uno de los límites laterales sea $\infty$ o $-\infty$. Podemos precisar más si es necesario explicando cuáles son los límites laterales de $f$ en $x_0$
+
+:::
+
+
+
+::: {.callout-tip  appearance="minimal"}
+
+\small
+
+\textbf{\textcolor{firebrick}{Ejercicio 04B01.}} Hallar todas las asíntotas de la función $f(x) = \dfrac{x^2 + 1}{x + 2}$.
+
+$\quad$
+
+\textbf{\textcolor{firebrick}{Ejercicio 04B02.}} 
+La función de la anterior figura es $\displaystyle f(x) = \dfrac{x⁴ + 3}{(x - 2)(x + 1)}$
+y tiene una asíntota vertical en $x = 2$. El límite lateral por la derecha en ese punto es $+\infty$. ¿Cómo de cerca (y a la derecha) de $x = 2$ tiene que estar $x$ para poder garantizar que $f(x) > 10^6$?  
+**Indicación:** Si $2 < x < 3$, ¿qué puedes decir de $x^4 +3$ y $x + 1$? ¿Por qué el factor más importante es $x - 2$?
+
+$\quad$
+
+\textbf{\textcolor{darkgreen}{Ejercicio 04C01.}} 
+Mira el [notebook de la sesión](https://colab.research.google.com/drive/1MWP6sQbx6mYALz5EPvIHAY5Qa1-w8kPY?usp=sharing) para encontrar de forma aproximada ese mismo resultado. Después estima de manera similar cómo de cerca debe estar $x$ de -1 por la derecha para garantizar que $f(x) < 10^7$.
+
+\normalsize
+
+:::
+
+# Regla del Sandwich
+
+
+::: {.callout-note  icon=false}
+
+## Límites "cero por acotado"
+
+Supongamos que queremos calcular un límite que tiene **forma de producto**:
+$$\lim_{x \to A} f(x)\, g(x)$$
+donde:
+
++ $A$ puede ser finito o infinito y el límite puede ser lateral.
++ $f(x)$ es una función que **tiende a cero** cuando $x \to A$.
++ $g(x)$ es una función **acotada** en un entorno de $A$. Es decir, existen números $M$ y $N$ tales que $M < f(x) < N$ para todo $x$ cerca de $x_0$.
+
+Entonces:
+$$\lim_{x \to A} f(x) g(x) = 0$$
+:::
+
+::: {.callout-warning  icon=false appearance="minimal"}
+
+\textbf{\textcolor{red}{Atención.}} 
+Nunca es suficiente decir "$g(x)$ está acotada". Debes indicar cuáles son $M$ y $N$.
+
+:::
+
+---
+
+::: {.callout-tip  appearance="minimal"}
+
+\textbf{\textcolor{blue}{Ejercicio 04A03.}}
+
+El ejemplo canónico de la Regla del Sandwich es el límite:
+$\displaystyle\lim_{x \to 0} x \,\sin\left(\frac{1}{x}\right)$   
+Recuerda que ya vimos la función $\sin(1/x)$ en la sesión 03. ¿Cuáles son aquí $M$ y $N$?
+
+:::
+
+::: {.callout-tip  appearance="minimal"}
+
+\small
+
+\textbf{\textcolor{darkgreen}{Ejercicio 04C02.}} 
+Mira el notebook de la sesión para ver cómo se comporta esta función producto cerca del origen. Mira también esta [construcción GeoGebra](https://www.geogebra.org/material/show/id/fqjkbfjg).
+
+$\quad$
+
+\textbf{\textcolor{firebrick}{Ejercicio 04B03.}} Demuestra que 
+$\displaystyle\lim_{x \to 0} \sin(x) \,\left(\dfrac{\log(x)}{x^2 + (\log(x))^2}\right) = 0$   
+
+$\quad$
+
+
+\textbf{\textcolor{darkgreen}{Ejercicio 04C03.}} Dibuja la función.
+
+
+:::
