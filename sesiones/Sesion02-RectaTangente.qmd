@@ -23,7 +23,7 @@ format:
 
 **Sesión 02. Derivada y recta tangente.**
 
-![](./portadasSesiones/02-FrailecilloNoruega.jpg){#fig-portada width="80%"}
+![](./portadasSesiones/02-FrailecilloNoruega.jpg){width="80%"}
 
 
 + [Notebook de la sesión en Colab](https://colab.research.google.com/drive/1dSXEMKJJvizSelqQRumEKDgZjXBaoE1u?usp=sharing)

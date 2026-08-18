@@ -1,5 +1,5 @@
 ---
-title: "Sesión 04. Más sobre cálculo de límites."
+title: "Sesión 05. Teoremas globales sobre funciones continuas y derivables."
 lang: es
 format:
   beamer:
@@ -14,19 +14,20 @@ format:
     include-in-header:
       - preambulo_comun.tex
       - text: |
-          \newcommand{\SesionTitulo}{Sesión 04 \\ Más sobre cálculo de límites.}
+          \newcommand{\SesionTitulo}{Sesión 05 \\ Teoremas globales sobre funciones continuas y derivables.}
   html: default
   docx: default
 ---
 
 ---
 
-**Sesión 04. Más sobre cálculo de límites.**
+**Sesión 05. Teoremas globales sobre funciones continuas y derivables.**
 
-![](./portadasSesiones/04-CarracaOkavango.jpg){width="80%"}
+![](./portadasSesiones/05-ArchibebeComun.png){width="80%"}
 
+Archibebe común, Cantabria.
 
-+ [Notebook de la sesión en Colab](https://colab.research.google.com/drive/1MWP6sQbx6mYALz5EPvIHAY5Qa1-w8kPY?usp=sharing)
++ [Notebook de la sesión en Colab](https://colab.research.google.com/drive/16xDSosCsWaurDy-W0YcsV0VJLcS3Y3zG?usp=sharing)
 
 
 ---
@@ -41,24 +42,88 @@ format:
 
 # Introducción. 
 
-Nos gusta pensar en los límites como una especie de *zoom* . Hasta ahora hemos pensado en hacer zoom para *aumentar*. Pero a veces queremos hacer zoom para *alejar* y ver qué pasa cuando $x$ se hace muy grande (positivo o negativo). En términos coloquiales, ¿qué hace la función hacia el borde derecho o izquierdo de la pantalla?
+Muchas de las herramientas del Cálculo, como las derivadas y los límites, se definen *localmente*. Es decir, examinando el comportamiento de la función en un punto $x_0$ y sus vecinos más cercanos (en un entorno de $x_0$). Es como examinar la función a nivel microscópico. 
 
 $\quad$
 
-También podemos preguntarnos por aquellos casos en los que la función toma valores cada vez más grandes en valor absoluto, hacia los bordes superior o inferior de la pantalla por así decir. En esta sesión vamos a ocuparnos de entender la terminología y las situaciones que pueden presentarse en esos casos
+Pero si queremos hacer afirmaciones a nivel *macroscópico* necesitamos instrumentos que nos permitan hacer ese cambio de escala para ser capaces de decir algo sobre el comportamiento de la función en un intervalo cuyo tamaño pueda ser arbitrariamente grande. Los teoremas que vamos a ver en esta sesión son un ejemplo destacado de esa clase de instrumentos, pero no el único ejemplo que veremos a lo largo del curso. 
 
-
-# Límites en infinito
+# Teorema de Bolzano.
 
 ::: {.callout-note  icon=false}
 
-## Idea intuitiva de límite en infinito
+## Enunciado e intuición detrás del teorema.
 
-Decimos que el *límite en infinito a la derecha* de $f$ es $L$ y escribimos
-$$\lim_{x\to\infty}f(x) = L$$
-si la función se puede hacer tan parecida a $L$ como se desee tomando valores de $x$ suficientemente grandes. De manera similar se define el *límite en infinito a la izquierda*:
-$\displaystyle\lim_{x\to-\infty}f(x)$
+El teorema de Bolzano se resume en: si una función continua cambia de signo en un intervalo, entonces tiene que cruzar el eje $X$ al menos una vez.
+
+$\quad$
+
+**Enunciado formal:** sea $f(x)$ una función continua en $[a, b]$. Supongamos que $f(a)f(b) < 0$ (es decir, $f(a)$ y $f(b)$ son de signos distintos). Entonces existe al menos un valor intermedio $c$ (es decir $a < c < b$) tal que $f(c) = 0$.
+
 :::
+
+::: {.callout-warning  icon=false}
+
+## Notas:
+
++ El teorema dice **al menos un valor $c$**. Pueden ser muchos, piensa en $\sin(x)$ entre 0 y $20\pi$.
++ El teorema no dice dónde está ese valor (o valores) $c$, más allá de que $a < c < b$.
++ La continuidad de $f$ es esencial.
+
+:::
+
+
+
+
+
+# Teorema de Rolle.
+
+::: {.callout-note  icon=false}
+
+## Intuición detrás del teorema. Signo de la derivada y crecimiento.
+
++ Cuando una función sube (es *creciente*) su recta tangente tiene pendiente positiva.
++ Cuando la función baja (es *decreciente*) su recta tangente tiene pendiente negativa.
++ Por tanto, en los puntos donde la función cambia su comportamiento y pasa de crecer a decrecer cabe esperar que su derivada valga 0.
+
+$\quad$
+
+Puedes experimentar con estas ideas usando esta [construcción GeoGebra](https://www.geogebra.org/m/u3cjvucd). La discusión anterior asume tácitamente que la función es **continua y derivable.** Y es muy importante entender que ambas condiciones son necesarias en la discusión que sigue. 
+
+:::
+
+::: {.callout-tip  appearance="minimal"}
+
+\textbf{\textcolor{blue}{Ejercicio 05A01.}} Recuerda lo que aprendimos sobre la derivada del valor absoluto y analiza la frase *"cuando la función pasa en $x_0$ de ser creciente a decreciente, su derivada vale cero en $x_0$"*. 
+
+:::
+
+---
+
+::: {.callout-note  icon=false}
+
+## Teorema de Rolle. 
+
++ Sea $f(x)$ una función continua en el intervalo $[a, b]$ y derivable en $(a, b)$. 
++ Suponemos que $f(a) = f(b)$ (la función empieza y termina a la misma altura).
+
+$\quad$
+
+Entonces existe al menos un punto intermedio $a < c < b$, en principio desconocido, para el que $$f'(c) = 0$$
+
+:::
+
+::: {.callout-tip  appearance="minimal"}
+
+\textbf{\textcolor{blue}{Ejercicio 05A02.}} Dibuja el teorema. Es decir, trata de pensar en ua función para la que $f(a) = f(b)$.  
+
+:::
+
+---
+
+
+# Aplicación a la estimación del número de raíces.
+
 
 ::: {.callout-tip  appearance="minimal"}
 

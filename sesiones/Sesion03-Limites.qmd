@@ -23,7 +23,7 @@ format:
 
 **Sesión 03. Límites.**
 
-![](./portadasSesiones/03-Cerceta.jpg){#fig-portada width="80%"}
+![](./portadasSesiones/03-Cerceta.jpg){width="80%"}
 
 
 + [Notebook de la sesión en Colab](https://colab.research.google.com/drive/1dSXEMKJJvizSelqQRumEKDgZjXBaoE1u?usp=sharing)
