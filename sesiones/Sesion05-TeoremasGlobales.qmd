@@ -48,6 +48,13 @@ $\quad$
 
 Pero si queremos hacer afirmaciones a nivel *macroscópico* necesitamos instrumentos que nos permitan hacer ese cambio de escala para ser capaces de decir algo sobre el comportamiento de la función en un intervalo cuyo tamaño pueda ser arbitrariamente grande. Los teoremas que vamos a ver en esta sesión son un ejemplo destacado de esa clase de instrumentos, pero no el único ejemplo que veremos a lo largo del curso. 
 
+$\quad$
+
+Al final de la sesión veremos como aplicar esos teoremas para estimar el número de raíces de una función $f(x)$. Es decir, soluciones de la ecuación $f(x) = 0$.
+
+
+
+
 # Teorema de Bolzano.
 
 ::: {.callout-note  icon=false}
@@ -72,8 +79,30 @@ $\quad$
 
 :::
 
+---
 
+::: {.callout-tip  appearance="minimal"}
 
+\textbf{\textcolor{blue}{Ejercicio 05A01.}} Demuestra que la gráfica de $f(x) = x^3 - 7 x + 1$ corta al eje $X$. 
+
+$\quad$
+
+\textbf{\textcolor{darkgreen}{Ejercicio 05C01.}} Usa el notebook de esta sesión para explorar las soluciones de $x^3 - 7 x + 1 = 0$ (raíces de $f$).  
+
+$\quad$
+
+\textbf{\textcolor{blue}{Ejercicio 05A02.}} Sean $f$ y $g$ funciones continuas en $[a, b]$ tales que $f(a) < g(a)$ y $f(b) > g(b)$. Demostrar que la gráfica de $f$ corta a la gráfica de $g$ en algún punto del intervalo $(a, b)$. 
+
+$\quad$
+
+\textbf{\textcolor{firebrick}{Ejercicio 05B01.}} **Teorema de los valores  intermedios** Sea $f(x)$ una función continua en $[a, b]$. Supongamos que 
+$$f(a) < M  < f(b)$$
+Demostrar que existe un valor $c \in (a, b)$ tal que $f(c) = M$.
+
+$\quad$
+
+\textbf{\textcolor{firebrick}{Ejercicios Hoja 1b GITI 25-26.}} 12, 13, 14. 
+:::
 
 
 # Teorema de Rolle.
@@ -94,7 +123,7 @@ Puedes experimentar con estas ideas usando esta [construcción GeoGebra](https:/
 
 ::: {.callout-tip  appearance="minimal"}
 
-\textbf{\textcolor{blue}{Ejercicio 05A01.}} Recuerda lo que aprendimos sobre la derivada del valor absoluto y analiza la frase *"cuando la función pasa en $x_0$ de ser creciente a decreciente, su derivada vale cero en $x_0$"*. 
+\textbf{\textcolor{blue}{Ejercicio 05A03.}} Recuerda lo que aprendimos sobre la derivada del valor absoluto y analiza la frase *"cuando la función pasa en $x_0$ de ser creciente a decreciente, su derivada vale cero en $x_0$"*. 
 
 :::
 
@@ -102,7 +131,7 @@ Puedes experimentar con estas ideas usando esta [construcción GeoGebra](https:/
 
 ::: {.callout-note  icon=false}
 
-## Teorema de Rolle. 
+## Teorema de Rolle, enunciado formal. 
 
 + Sea $f(x)$ una función continua en el intervalo $[a, b]$ y derivable en $(a, b)$. 
 + Suponemos que $f(a) = f(b)$ (la función empieza y termina a la misma altura).
@@ -115,63 +144,33 @@ Entonces existe al menos un punto intermedio $a < c < b$, en principio desconoci
 
 ::: {.callout-tip  appearance="minimal"}
 
-\textbf{\textcolor{blue}{Ejercicio 05A02.}} Dibuja el teorema. Es decir, trata de pensar en ua función para la que $f(a) = f(b)$.  
+\textbf{\textcolor{blue}{Ejercicio 05A04.}} Dibuja el teorema. Es decir, trata de pensar en ua función contniua y derivable para la que $f(a) = f(b)$. Y conecta los dos puntos $(a, f(a))$ y $(b, f(b))$. ¿Cuál es el punto o puntos $c$ de tu dibujo?  
 
 :::
-
----
-
 
 # Aplicación a la estimación del número de raíces.
 
+::: {.callout-note  icon=false}
+
+## Acotando por arriba el número de raíces
+
+
+Sea  $f(x)$ una función que tiene derivada continua. 
+
++ Si $f(x)$ tuviera dos raíces distintas, el Teorema de Rolle obligaría a $f'(x)$ a tener al menos una raíz. Por tanto, si sabemos demostrar que $f'(x)$ no tiene ninguna raíz, entonces ¿cuántas raíces puede tener $f$ **como mucho**?
+
++ Si $f(x)$ tiene tres raíces distintas, $f'(x)$ tiene al menos dos. Por tanto, si sabemos demostrar que $f'(x)$ no tiene más de una raíz, entonces ¿cuántas raíces puede tener $f$ **como mucho**?  
+
+Ahora el enunciado general: si sabemos demostrar que $f'(x)$ no tiene más de $K$ raíces, entonces $f(x)$ puede tener  **como mucho** $K + 1$ raíces.
+
+:::
 
 ::: {.callout-tip  appearance="minimal"}
 
-\textbf{\textcolor{blue}{Ejercicio 04A01.}} 
+\textbf{\textcolor{blue}{Ejercicio 05A05a.}} 
 
-¿Cuál es el límite en  infinito de la siguiente función? No se trata de que apliques ningún *método* de Cálculo, lo que debes preguntarte es: "Si uso un valor muy grande, como $x = 10^6$, ¿cuál es aproximadamente el valor de $f(x)$?"
-$$f(x) = \frac{3x^2 - x - 2}{5 x^2 + 7 x - 3}$$
-
-:::
-
-
----
-
-::: {.callout-note  icon=false}
-
-## Asíntota horizontal a la derecha
-
-Cuando $\displaystyle \lim_{x\to\infty}f(x) = L$, decimos que la recta $y = L$ es una asíntota horizontal a la derecha (análogamente a la izquierda). La siguiente figura muestra un ejemplo típico de una asíntota horizpntal a la derecha.
-
-:::
-
-![](./fig/S04-AsintotaHorizDcha.jpg){#fig-asintotaHorizDcha width="60%" fig-align="center"}
-
-::: {.callout-tip  appearance="minimal"}
-
-\textbf{\textcolor{blue}{Ejercicio 04A02}}
-
-La función es $f(x) = \frac{3x^2}{2x^2 + 1}\arctan(x - 4)$. ¿Cuál es esa asíntota? ¿Hay asíntota a la izquierda?
-
-:::
-
-
-
-
----
-
-
-::: {.callout-note  icon=false}
-
-## Observaciones
-
-+ Cuando decimos
-$$\lim_{x\to\infty}f(x) = \infty$$
-queremos decir que los valores de la función son (todos) tan grandes (y positivos) como se desee para cualquier $x$ suficientemente grande. Otras expresiones similares se interpretan análogamente.
-
-$\quad$
-
-+ Hay casos en los que el límite en infinito no existe. Por ejemplo, la función $f(x) = \sin(x)$ no tiene límite en infinito, ya que sus valores oscilan entre -1 y 1 sin acercarse a ningún número en particular.
+Hallar una cota superior del número de raíces de la ecuación:
+$$x^4 + x^3 + x -1/2 = 0$$
 
 :::
 
@@ -179,97 +178,17 @@ $\quad$
 
 ::: {.callout-note  icon=false}
 
-## Asíntotas oblicuas de una función
+## Acotando por abajo el número de raíces
 
-La recta $y = m x + n$ es una asíntota oblicua de la función $f$ a la derecha si la función y la recta se pueden hacer tan parecidas como se desee tomando valores de $x$ suficientemente grandes (análogamente se define asíntota oblicua a la izquierda). A partir de 
-$$f(x)\approx mx + n \quad \text{cuando } x\to\infty$$
-se obtiene:
-$$\lim_{x\to\infty} \frac{f(x)}{x}  - m + \frac{n}{x} = 0\Rightarrow m = \lim_{x\to\infty} \frac{f(x)}{x}$$
-Y entonces fácilmente se llega a:
-$n = \displaystyle\lim_{x\to\infty} (f(x) - m x)$
-
-
-::: 
-
-::: {.callout-important  appearance="minimal"}
-
-### Nota 
-
-Una función no puede tener más de una asíntota a la derecha (o a la izquierda). Si $f$ tiene una asíntota oblicua (resp. horizontal) a la derecha, entonces no puede tener asíntota horizontal (resp. oblicua) a la derecha.  
-¿Por qué?
-
-:::
-
-# Límites infinitos
-
-::: {.callout-note  icon=false}
-
-## Idea intuitiva de límite infinito
-
-Decimos que el *límite de $f$ en $x_0$ es infinito* si (todos) los valores de $f$ son tan grandes como se desee cuando $x$ está suficientemente cerca de $x_0$.  
-De forma análoga se define el límite menos infinito. Pero hay que tener en cuenta que los límites laterales pueden ser ambos infinitos, o uno $+\infty$ y el otro $-\infty$, uno finito y otro infinito, etc., como se ilustra en la siguiente figura.
-:::
-
-
-![](./fig/S04-LimiteInfinito.jpg){#fig-limiteInfinito width="60%" fig-align="center"}
-
----
-
-::: {.callout-note  icon=false}
-
-## Asíntota vertical
-
-Cuando la función $f$ tiene un límite infinito o menos infinito en $x_0$, decimos que la recta $x = x_0$ es una asíntota vertical de la función. Basta de hecho con que uno de los límites laterales sea $\infty$ o $-\infty$. Podemos precisar más si es necesario explicando cuáles son los límites laterales de $f$ en $x_0$
-
-:::
-
-
-
-::: {.callout-tip  appearance="minimal"}
-
-\small
-
-\textbf{\textcolor{firebrick}{Ejercicio 04B01.}} Hallar todas las asíntotas de la función $f(x) = \dfrac{x^2 + 1}{x + 2}$.
++ Si $f(x)$ es una función continua en $[a_1, a_2]$ que cambia de signo en ese intervalo, el Teorema de Bolzano garantiza **al menos** una raíz de $f(x) = 0$ en el intervalo *abierto* $(a_1, a_2)$. 
 
 $\quad$
 
-\textbf{\textcolor{firebrick}{Ejercicio 04B02.}} 
-La función de la anterior figura es $\displaystyle f(x) = \dfrac{x⁴ + 3}{(x - 2)(x + 1)}$
-y tiene una asíntota vertical en $x = 2$. El límite lateral por la derecha en ese punto es $+\infty$. ¿Cómo de cerca (y a la derecha) de $x = 2$ tiene que estar $x$ para poder garantizar que $f(x) > 10^6$?  
-**Indicación:** Si $2 < x < 3$, ¿qué puedes decir de $x^4 +3$ y $x + 1$? ¿Por qué el factor más importante es $x - 2$?
++ Por lo tanto si encontramos $K$ valores $a_1 < a_2 <\ldots < a_k$ tales que $f(a_i)f(a_{i + 1}) < 0$ (es decir, $K$ cambios de signo de la función) el teorema garantiza al menos $K + 1$ raíces distintas de $f$. 
 
 $\quad$
 
-\textbf{\textcolor{darkgreen}{Ejercicio 04C01.}} 
-Mira el [notebook de la sesión](https://colab.research.google.com/drive/1MWP6sQbx6mYALz5EPvIHAY5Qa1-w8kPY?usp=sharing) para encontrar de forma aproximada ese mismo resultado. Después estima de manera similar cómo de cerca debe estar $x$ de -1 por la derecha para garantizar que $f(x) < 10^7$.
-
-\normalsize
-
-:::
-
-# Regla del Sandwich
-
-
-::: {.callout-note  icon=false}
-
-## Límites "cero por acotado"
-
-Supongamos que queremos calcular un límite que tiene **forma de producto**:
-$$\lim_{x \to A} f(x)\, g(x)$$
-donde:
-
-+ $A$ puede ser finito o infinito y el límite puede ser lateral.
-+ $f(x)$ es una función que **tiende a cero** cuando $x \to A$.
-+ $g(x)$ es una función **acotada** en un entorno de $A$. Es decir, existen números $M$ y $N$ tales que $M < f(x) < N$ para todo $x$ cerca de $x_0$.
-
-Entonces:
-$$\lim_{x \to A} f(x) g(x) = 0$$
-:::
-
-::: {.callout-warning  icon=false appearance="minimal"}
-
-\textbf{\textcolor{red}{Atención.}} 
-Nunca es suficiente decir "$g(x)$ está acotada". Debes indicar cuáles son $M$ y $N$.
++ Cuando se combina con el resultado que hemos visto antes, esto permite a menudo identificar exactamente cuantas raíces tiene la función y localizar intervalos *disjuntos* que las contienen.
 
 :::
 
@@ -277,30 +196,197 @@ Nunca es suficiente decir "$g(x)$ está acotada". Debes indicar cuáles son $M$ 
 
 ::: {.callout-tip  appearance="minimal"}
 
-\textbf{\textcolor{blue}{Ejercicio 04A03.}}
+\textbf{\textcolor{blue}{Ejercicio 05A05b.}} 
 
-El ejemplo canónico de la Regla del Sandwich es el límite:
-$\displaystyle\lim_{x \to 0} x \,\sin\left(\frac{1}{x}\right)$   
-Recuerda que ya vimos la función $\sin(1/x)$ en la sesión 03. ¿Cuáles son aquí $M$ y $N$?
+Hallar el número exacto de raíces de la ecuación  
+$$x^4 + x^3 + x -1/2 = 0$$
+Localizar dichas raíces en intervalos disjuntos de longitud 1.
 
 :::
 
 ::: {.callout-tip  appearance="minimal"}
 
-\small
+<!-- \textbf{\textcolor{blue}{Ejercicio 05A01.}} Demuestra que la gráfica de $f(x) = x^3 - 7 x + 1$ corta al eje $X$.  -->
 
-\textbf{\textcolor{darkgreen}{Ejercicio 04C02.}} 
-Mira el notebook de la sesión para ver cómo se comporta esta función producto cerca del origen. Mira también esta [construcción GeoGebra](https://www.geogebra.org/material/show/id/fqjkbfjg).
+<!-- \textbf{\textcolor{blue}{Ejercicio 05A02.}} Sean $f$ y $g$ funciones continuas en $[a, b]$ tales que $f(a) < g(a)$ y $f(b) > g(b)$. Demostrar que la gráfica de $f$ corta a la gráfica de $g$ en algún punto del intervalo $(a, b)$.  -->
 
-$\quad$
+<!-- \textbf{\textcolor{firebrick}{Ejercicio 05B01.}} **Teorema de los valores  intermedios** Sea $f(x)$ una función continua en $[a, b]$. Supongamos que  -->
+<!-- $$f(a) < M  < f(b)$$ -->
+<!-- Demostrar que existe un valor $c \in (a, b)$ tal que $f(c) = M$. -->
 
-\textbf{\textcolor{firebrick}{Ejercicio 04B03.}} Demuestra que 
-$\displaystyle\lim_{x \to 0} \sin(x) \,\left(\dfrac{\log(x)}{x^2 + (\log(x))^2}\right) = 0$   
-
-$\quad$
-
-
-\textbf{\textcolor{darkgreen}{Ejercicio 04C03.}} Dibuja la función.
-
+\textbf{\textcolor{firebrick}{Ejercicios Hoja 1b GITI 25-26.}} 12, 13, 14. 
 
 :::
+
+
+
+
+<!-- --- -->
+
+<!-- ::: {.callout-note  icon=false} -->
+
+<!-- ## Asíntota horizontal a la derecha -->
+
+<!-- Cuando $\displaystyle \lim_{x\to\infty}f(x) = L$, decimos que la recta $y = L$ es una asíntota horizontal a la derecha (análogamente a la izquierda). La siguiente figura muestra un ejemplo típico de una asíntota horizpntal a la derecha. -->
+
+<!-- ::: -->
+
+<!-- ![](./fig/S04-AsintotaHorizDcha.jpg){#fig-asintotaHorizDcha width="60%" fig-align="center"} -->
+
+<!-- ::: {.callout-tip  appearance="minimal"} -->
+
+<!-- \textbf{\textcolor{blue}{Ejercicio 04A02}} -->
+
+<!-- La función es $f(x) = \frac{3x^2}{2x^2 + 1}\arctan(x - 4)$. ¿Cuál es esa asíntota? ¿Hay asíntota a la izquierda? -->
+
+<!-- ::: -->
+
+
+
+
+<!-- --- -->
+
+
+<!-- ::: {.callout-note  icon=false} -->
+
+<!-- ## Observaciones -->
+
+<!-- + Cuando decimos -->
+<!-- $$\lim_{x\to\infty}f(x) = \infty$$ -->
+<!-- queremos decir que los valores de la función son (todos) tan grandes (y positivos) como se desee para cualquier $x$ suficientemente grande. Otras expresiones similares se interpretan análogamente. -->
+
+<!-- $\quad$ -->
+
+<!-- + Hay casos en los que el límite en infinito no existe. Por ejemplo, la función $f(x) = \sin(x)$ no tiene límite en infinito, ya que sus valores oscilan entre -1 y 1 sin acercarse a ningún número en particular. -->
+
+<!-- ::: -->
+
+<!-- --- -->
+
+<!-- ::: {.callout-note  icon=false} -->
+
+<!-- ## Asíntotas oblicuas de una función -->
+
+<!-- La recta $y = m x + n$ es una asíntota oblicua de la función $f$ a la derecha si la función y la recta se pueden hacer tan parecidas como se desee tomando valores de $x$ suficientemente grandes (análogamente se define asíntota oblicua a la izquierda). A partir de  -->
+<!-- $$f(x)\approx mx + n \quad \text{cuando } x\to\infty$$ -->
+<!-- se obtiene: -->
+<!-- $$\lim_{x\to\infty} \frac{f(x)}{x}  - m + \frac{n}{x} = 0\Rightarrow m = \lim_{x\to\infty} \frac{f(x)}{x}$$ -->
+<!-- Y entonces fácilmente se llega a: -->
+<!-- $n = \displaystyle\lim_{x\to\infty} (f(x) - m x)$ -->
+
+
+<!-- :::  -->
+
+<!-- ::: {.callout-important  appearance="minimal"} -->
+
+<!-- ### Nota  -->
+
+<!-- Una función no puede tener más de una asíntota a la derecha (o a la izquierda). Si $f$ tiene una asíntota oblicua (resp. horizontal) a la derecha, entonces no puede tener asíntota horizontal (resp. oblicua) a la derecha.   -->
+<!-- ¿Por qué? -->
+
+<!-- ::: -->
+
+<!-- # Límites infinitos y asíntotas -->
+
+<!-- ::: {.callout-note  icon=false} -->
+
+<!-- ## Idea intuitiva de límite infinito -->
+
+<!-- Decimos que el *límite de $f$ en $x_0$ es infinito* si (todos) los valores de $f$ son tan grandes como se desee cuando $x$ está suficientemente cerca de $x_0$.   -->
+<!-- De forma análoga se define el límite menos infinito. Pero hay que tener en cuenta que los límites laterales pueden ser ambos infinitos, o uno $+\infty$ y el otro $-\infty$, uno finito y otro infinito, etc., como se ilustra en la siguiente figura. -->
+<!-- ::: -->
+
+
+<!-- ![](./fig/S04-LimiteInfinito.jpg){#fig-limiteInfinito width="60%" fig-align="center"} -->
+
+<!-- --- -->
+
+<!-- ::: {.callout-note  icon=false} -->
+
+<!-- ## Asíntota vertical -->
+
+<!-- Cuando la función $f$ tiene un límite infinito o menos infinito en $x_0$, decimos que la recta $x = x_0$ es una asíntota vertical de la función. Basta de hecho con que uno de los límites laterales sea $\infty$ o $-\infty$. Podemos precisar más si es necesario explicando cuáles son los límites laterales de $f$ en $x_0$ -->
+
+<!-- ::: -->
+
+
+
+<!-- ::: {.callout-tip  appearance="minimal"} -->
+
+<!-- \small -->
+
+<!-- \textbf{\textcolor{firebrick}{Ejercicio 04B01.}} Hallar todas las asíntotas de la función $f(x) = \dfrac{x^2 + 1}{x + 2}$. -->
+
+<!-- $\quad$ -->
+
+<!-- \textbf{\textcolor{firebrick}{Ejercicio 04B02.}}  -->
+<!-- La función de la anterior figura es $\displaystyle f(x) = \dfrac{x⁴ + 3}{(x - 2)(x + 1)}$ -->
+<!-- y tiene una asíntota vertical en $x = 2$. El límite lateral por la derecha en ese punto es $+\infty$. ¿Cómo de cerca (y a la derecha) de $x = 2$ tiene que estar $x$ para poder garantizar que $f(x) > 10^6$?   -->
+<!-- **Indicación:** Si $2 < x < 3$, ¿qué puedes decir de $x^4 +3$ y $x + 1$? ¿Por qué el factor más importante es $x - 2$? -->
+
+<!-- $\quad$ -->
+
+<!-- \textbf{\textcolor{darkgreen}{Ejercicio 04C01.}}  -->
+<!-- Mira el [notebook de la sesión](https://colab.research.google.com/drive/1MWP6sQbx6mYALz5EPvIHAY5Qa1-w8kPY?usp=sharing) para encontrar de forma aproximada ese mismo resultado. Después estima de manera similar cómo de cerca debe estar $x$ de -1 por la derecha para garantizar que $f(x) < 10^7$. -->
+
+<!-- \normalsize -->
+
+<!-- ::: -->
+
+<!-- # Regla del Sandwich -->
+
+
+<!-- ::: {.callout-note  icon=false} -->
+
+<!-- ## Límites "cero por acotado" -->
+
+<!-- Supongamos que queremos calcular un límite que tiene **forma de producto**: -->
+<!-- $$\lim_{x \to A} f(x)\, g(x)$$ -->
+<!-- donde: -->
+
+<!-- + $A$ puede ser finito o infinito y el límite puede ser lateral. -->
+<!-- + $f(x)$ es una función que **tiende a cero** cuando $x \to A$. -->
+<!-- + $g(x)$ es una función **acotada** en un entorno de $A$. Es decir, existen números $M$ y $N$ tales que $M < f(x) < N$ para todo $x$ cerca de $x_0$. -->
+
+<!-- Entonces: -->
+<!-- $$\lim_{x \to A} f(x) g(x) = 0$$ -->
+<!-- ::: -->
+
+<!-- ::: {.callout-warning  icon=false appearance="minimal"} -->
+
+<!-- \textbf{\textcolor{red}{Atención.}}  -->
+<!-- Nunca es suficiente decir "$g(x)$ está acotada". Debes indicar cuáles son $M$ y $N$. -->
+
+<!-- ::: -->
+
+<!-- --- -->
+
+<!-- ::: {.callout-tip  appearance="minimal"} -->
+
+<!-- \textbf{\textcolor{blue}{Ejercicio 04A03.}} -->
+
+<!-- El ejemplo canónico de la Regla del Sandwich es el límite: -->
+<!-- $\displaystyle\lim_{x \to 0} x \,\sin\left(\frac{1}{x}\right)$    -->
+<!-- Recuerda que ya vimos la función $\sin(1/x)$ en la sesión 03. ¿Cuáles son aquí $M$ y $N$? -->
+
+<!-- ::: -->
+
+<!-- ::: {.callout-tip  appearance="minimal"} -->
+
+<!-- \small -->
+
+<!-- \textbf{\textcolor{darkgreen}{Ejercicio 04C02.}}  -->
+<!-- Mira el notebook de la sesión para ver cómo se comporta esta función producto cerca del origen. Mira también esta [construcción GeoGebra](https://www.geogebra.org/material/show/id/fqjkbfjg). -->
+
+<!-- $\quad$ -->
+
+<!-- \textbf{\textcolor{firebrick}{Ejercicio 04B03.}} Demuestra que  -->
+<!-- $\displaystyle\lim_{x \to 0} \sin(x) \,\left(\dfrac{\log(x)}{x^2 + (\log(x))^2}\right) = 0$    -->
+
+<!-- $\quad$ -->
+
+
+<!-- \textbf{\textcolor{darkgreen}{Ejercicio 04C03.}} Dibuja la función. -->
+
+
+<!-- ::: -->

@@ -48,7 +48,7 @@ $\quad$
 También podemos preguntarnos por aquellos casos en los que la función toma valores cada vez más grandes en valor absoluto, hacia los bordes superior o inferior de la pantalla por así decir. En esta sesión vamos a ocuparnos de entender la terminología y las situaciones que pueden presentarse en esos casos
 
 
-# Límites en infinito
+# Límites en infinito. Asíntotas horizontales y oblicuas.
 
 ::: {.callout-note  icon=false}
 
@@ -135,7 +135,7 @@ Una función no puede tener más de una asíntota a la derecha (o a la izquierda
 
 :::
 
-# Límites infinitos
+# Límites infinitos. Asíntotas verticales.
 
 ::: {.callout-note  icon=false}
 
