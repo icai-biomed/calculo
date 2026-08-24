@@ -26,7 +26,7 @@ format:
 ![](./portadasSesiones/03-Cerceta.jpg){width="80%"}
 
 
-+ [Notebook de la sesión en Colab](https://colab.research.google.com/drive/1dSXEMKJJvizSelqQRumEKDgZjXBaoE1u?usp=sharing)
++ [Notebook de la sesión en Colab](https://colab.research.google.com/drive/1RMJObxsXXGOmecQ06LmpzePtN3WNijg4?usp=sharing)
 
 ---
 

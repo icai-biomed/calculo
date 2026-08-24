@@ -52,7 +52,26 @@ $\quad$
 
 Al final de la sesión veremos como aplicar esos teoremas para estimar el número de raíces de una función $f(x)$. Es decir, soluciones de la ecuación $f(x) = 0$.
 
+# Derivada y continuidad.
 
+::: {.callout-note  icon=false}
+
+# Examinando el límite de la definición de derivada
+
+Recuerda la definición de derivada como límite:
+$$
+f'(x_0) = \lim_{x\to x_0}\dfrac{f(x) - f(x_0)}{x - x_0}
+$$
+El denominador siempre \underline{tiende a cero}.  Si en un cociente y el denominador tiende a 0, la  \underline{única forma} de que el límite exista es que el numerador tienda a 0 (para que sea 0/0 y la indeterminación se resuelva). Por tanto debe ser:
+$$
+\lim_{x\to x_0}f(x) - f(x_0) = 0,\quad\text{ es decir }\lim_{x\to x_0}f(x) = f(x_0) 
+$$
+Eso significa que $f$ es continua en $x_0$. La mejor forma de recordar este resultado es así:  
+
+**Si $f$ no es continua en $x_0$ entonces no puede ser derivable en $x_0$.** Al revés no funciona: ya conoces ejemplos de funciones continuas sin derivada, ¿verdad?
+
+
+:::
 
 
 # Teorema de Bolzano.
@@ -101,7 +120,7 @@ Demostrar que existe un valor $c \in (a, b)$ tal que $f(c) = M$.
 
 $\quad$
 
-\textbf{\textcolor{firebrick}{Ejercicios Hoja 1b GITI 25-26.}} 12, 13, 14. 
+\textbf{\textcolor{firebrick}{Hoja 1b GITI 25-26.}} Ejercicios 12, 13, 14, 15. 
 :::
 
 
@@ -206,15 +225,7 @@ Localizar dichas raíces en intervalos disjuntos de longitud 1.
 
 ::: {.callout-tip  appearance="minimal"}
 
-<!-- \textbf{\textcolor{blue}{Ejercicio 05A01.}} Demuestra que la gráfica de $f(x) = x^3 - 7 x + 1$ corta al eje $X$.  -->
-
-<!-- \textbf{\textcolor{blue}{Ejercicio 05A02.}} Sean $f$ y $g$ funciones continuas en $[a, b]$ tales que $f(a) < g(a)$ y $f(b) > g(b)$. Demostrar que la gráfica de $f$ corta a la gráfica de $g$ en algún punto del intervalo $(a, b)$.  -->
-
-<!-- \textbf{\textcolor{firebrick}{Ejercicio 05B01.}} **Teorema de los valores  intermedios** Sea $f(x)$ una función continua en $[a, b]$. Supongamos que  -->
-<!-- $$f(a) < M  < f(b)$$ -->
-<!-- Demostrar que existe un valor $c \in (a, b)$ tal que $f(c) = M$. -->
-
-\textbf{\textcolor{firebrick}{Ejercicios Hoja 1b GITI 25-26.}} 12, 13, 14. 
+\textbf{\textcolor{firebrick}{Hoja 2B GITI 25-26.}} Ejercicios 11, 12, 13, 14, 15. 
 
 :::
 

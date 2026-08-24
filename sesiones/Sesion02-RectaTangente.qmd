@@ -201,4 +201,61 @@ Vamos a ver varios ejemplos en los que las cosas no son tan sencillas conceptual
 $$f(x) = \dfrac{x}{1 + e^{1/ x}}$$
 :::
 
+# Ecuación de la recta tangente.
+
+
+::: {.callout-note  icon=false}
+
+### Recta tangente y término de error.
+
+Podemos resumir la discusión anterior diciendo que 
+$$f(x) \approx f(x_0) + f'(x_0)\cdot (x - x_0)\text{ para }x \text{ cerca de } x_0.$$
+Pero si queremos explicar mejor en qué sentido el término derecho es una buena aproximación de $f$ cerca de $x_0$ podemos precisarlo diciendo que:
+$$f(x) = f(x_0) + f'(x_0)\cdot (x - x_0) + \epsilon(x)$$
+donde $\epsilon$ es un **término de error pequeño** comparado con $x - x_0$. Eso a su vez se traduce en que:
+$$
+\lim_{x\to x_0}\dfrac{\epsilon(x)}{x - x_0} = 0
+$$
+En resumen **la recta tangente a $f$ en $x_0$ es $y = f(x_0) + f'(x_0)\, (x - x_0)$**
+
+
+:::
+
+# Cálculo de valores aproximados
+
+::: {.callout-note  icon=false}
+
+### La recta tangente como sustituto de la función (y como calculadora).
+
+Supongamos que queremos calcular $f(x)$ y que $x$ es un valor que está cerca de un punto $x_0$ sencillo para el que el cálculo es mucho más fácil (mira el ejercicio de abajo donde $x = 0.02$ mientras $x_0 = 0$). Puesto que 
+$$f(x) = \text{(recta tangente)} + \text{(error pequeño)} \text{ para }x \text{ cerca de }x_0$$
+podemos usar esta fórmula para obtener
+$$f(x) \approx f(x_0) + f'(x_0)\, (x - x_0)$$
+:::
+
+
+::: {.callout-tip  icon=false appearance="minimal"}
+  
+\textbf{\textcolor{blue}{Ejercicio 02A06}} Calcula el valor aproximado de $\sqrt{1.02}$ usando la recta tangente a $f(x) = \sqrt{1 + x}$  en $x_0 = 0$. Calcula también aproximadamente $\log(1.0013)$. ¿Qué operaciones has necesitado?
+
+$\quad$
+
+\textbf{\textcolor{firebrick}{Hoja 2B GITI 25-26.}} Ejercicio 10. 
+
+:::
+
+
+# Observaciones
+
+En la definición de recta tangente hemos dicho que el error $\epsilon(x)$ es pequeño porque 
+$$
+\lim_{x\to x_0}\dfrac{\epsilon(x)}{x - x_0} = 0
+$$
+Los matemáticos comparan a menudo el tamaño dos funciones $f(x)$ y $g(x)$ con este tipo de cocientes. Por ejemplo, cuando $x$ está cerca de $x_0 = 0$ los valores de $x^{3}$ y $x^{10}$ son ambos pequeños. Pero ¿cuál se hace pequeño más rápido al acercar $x$ a $0$? Si lo piensas verás que $x^{10}$ disminuye mucho más rápido. Y una forma de decir lo mismo es viendo que
+$$
+\lim_{x\to x_0}\dfrac{x^{10}}{x^3} = 0
+$$  
+En general, si $\displaystyle\lim_{x\to x_0}\dfrac{f(x)}{g(x)} = 0$ podemos estar seguros de que cuando $x\to x_0$, el valor de $f(x)$ se hace pequeño más rápido que el de $g(x)$.
+
+
 
