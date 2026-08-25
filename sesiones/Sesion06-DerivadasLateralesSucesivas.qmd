@@ -189,4 +189,4 @@ Y eso dice que **debemos usar** como derivada del producto la expresión que ya 
 $$(f\cdot g)'(x_0) = f'(x_0)g(x_0) + f(x_0)g'(x_0)$$
 :::
 
-En la próxima sesión veremos otras reglas de derivación que se obtienen mediante (versiones técnicamente más complicadas de) este mismo método. 
+La derivada del cociente se obtiene de forma similar, pero el análisis del error es técnicamente más complicado. En la próxima sesión veremos otras reglas de derivación. 
