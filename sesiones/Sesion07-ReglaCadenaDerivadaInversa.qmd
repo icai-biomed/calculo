@@ -97,7 +97,14 @@ $$(f\circ g)' = f'(g(x_0)) \cdot g'(x_0)$$
 
 ::: {.callout-tip  appearance="minimal"}
 
-\textbf{\textcolor{blue}{Ejercicio 07A01.}} Calcula las siguientes derivadas
+\textbf{\textcolor{blue}{Ejercicio 07A01.}} Calcula las siguientes derivadas, identificando primero en cada caso las funciones $f$ y $g$ y los puntos donde se calculan las derivadas:
+
+(a) $x \to \sin(3x^2 - 5x)$ en $x_0 = 0$.  
+
+(b) $x \to \sqrt[3]{4 - x^2}$ en $x_0 = 2$.  
+(c) $x \to  e^{\cos(2x)}$ en $x_0 = \pi$.  
+(d) $x \to \cos^3(x^2 + \pi/3)$ en $x_0 = \sqrt{\pi}$.  
+(e) $x \to \sqrt{1 + \sin^2(3x)}$ en $x_0 = \pi/3$.  
 
 
 $\quad$
