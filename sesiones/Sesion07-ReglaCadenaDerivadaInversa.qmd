@@ -1,0 +1,192 @@
+---
+title: "Sesión 07. Regla de la cadena. Derivada de la función inversa y derivación logarítmica."
+lang: es
+format:
+  beamer:
+    theme: Madrid
+    fonttheme: default
+    fontsize: 10pt
+    toc: false          # handled manually below; pandoc's toc:true produces a stray }
+    section-titles: false   # \AtBeginSection in preamble.txt creates the section slide
+    slide-level: 2      # without this, top-level (#) headings become frames directly
+                         # instead of \section commands, so \tableofcontents has nothing
+                         # to list and \AtBeginSection never fires
+    include-in-header:
+      - preambulo_comun.tex
+      - text: |
+          \newcommand{\SesionTitulo}{Sesión 07 \\ Regla de la cadena. Derivada de la función inversa y derivación logarítmica.}
+  html: default
+  docx: default
+---
+
+---
+
+**Sesión 07. Regla de la cadena. Derivada de la función inversa y derivación logarítmica.**
+
+![](./portadasSesiones/06-CurrucaCabecinegra.jpg){width="80%"}
+
+Curruca cabecinegra, Madrid.
+
++ [Notebook de la sesión en Colab](https://colab.research.google.com/drive/16xDSosCsWaurDy-W0YcsV0VJLcS3Y3zG?usp=sharing)
+
+
+---
+
+```{=latex}
+  
+  \frametitle{Tabla de contenidos}
+  \tableofcontents
+
+```
+
+
+# Introducción. 
+
+Ya sabemos que la derivada es uno de los conceptos básicos del Cálculo. En esta sesión vamos a ampliar nuestro vocabulario y nuestro repertorio de herramientas para trabajar con derivadas.
+
+$\quad$
+
+
+# Derivadas laterales
+
+::: {.callout-note  icon=false}
+
+## Derivada como límite
+
+La derivada es el límite 
+$$
+f'(x_0) = \displaystyle\lim_{x\to x_0}\dfrac{f(x) - f(x_0)}{x - x_0}
+$$
+Y como en cualquier límite, se pueden considerar los dos límites laterales: las denominadas **derivadas laterales** por la izquierda $f'{_-}(x_0)$ y por la derecha $f'{_+}(x_0)$. La función es derivable en $x_0$ si ambas existen y coinciden.
+
+:::
+
+
+::: {.callout-tip  appearance="minimal"}
+
+\textbf{\textcolor{blue}{Ejercicio 06A01.}} Ya conoces un ejemplo en el que las derivadas laterales existen ambas pero no coinciden. ¿Cuál es esa función?
+
+$\quad$
+
+\textbf{\textcolor{blue}{Ejercicio 06A02.}} Las derivadas laterales también pueden ser infinitas (una o ambas). ¿Algún ejemplo?
+
+:::
+
+---
+
+::: {.callout-tip  appearance="minimal"}
+
+\textbf{\textcolor{darkgreen}{Ejercicio 06C01.}} Usa el notebook de esta sesión para ampliar los ejercicios previos. 
+
+$\quad$
+
+\textbf{\textcolor{blue}{Ejercicio 06A03.}} Estudiar, en los puntos $x = -1$ y $x = 0$, la existencia de derivada de la función
+$$
+f(x) = \begin{cases}
+    -(2x + 1) & \text{si } x \le -1 \\
+    x^2       & \text{si } -1 < x < 0 \\
+    \operatorname{sen} x   & \text{si } x \ge 0
+\end{cases}
+$$
+
+$\quad$
+
+\textbf{\textcolor{firebrick}{Ejercicios Hoja 2B GITI 25-26.}} 3, 4, 5 y 7. 
+
+:::
+
+
+# Derivadas sucesivas
+
+::: {.callout-note  icon=false}
+
+## Notación para la derivada segunda y derivadas sucesivas
+
+Como ya sabes, la derivada segunda es la derivada de la derivada. Se representa como $f''$. En el caso de la función seno:
+$$(\sin x)'' = ((\sin x)')' = (\cos x)' = -\sin x$$ 
+De forma análoga se definen derivadas terceras, etc. Para órdenes de derivación $k$ altos usaremos símbolos como $f^{(k)}$.
+
+:::
+
+::: {.callout-note  icon=false}
+
+## Reglas de derivación y operadores
+
+En secundaria aprendiste reglas de derivación de sumas, productos, cocientes y  funciones elementales. Esos resultados son *atajos* para no tener que calcular las derivadas mediante límites cada vez. Pero también puedes verlos como operaciones que convierten funciones en otras funciones. Los matemáticos llaman **operadores** a estos objetos que producen una función a partir de otra. Las derivadas sucesivas son ejemplos de operadores.
+
+:::
+
+
+---
+
+\small
+
+::: {.callout-tip  appearance="minimal"}
+
+\textbf{\textcolor{blue}{Ejercicio 06A03.}} Hallar las dos primeras derivadas $f(x) = \dfrac{1}{\sqrt{1 + x}} + \sin^2 x$. 
+
+$\quad$
+
+
+\textbf{\textcolor{blue}{Ejercicio 06A04.}} Calcula las tres primeras derivadas sucesivas de $f(x) = (x + 2)\,e^x$. ¿Te atreves a dar una fórmula general?  
+
+$\quad$
+
+\textbf{\textcolor{darkgreen}{Ejercicio 06C02.}} Usa el notebook de esta sesión para explorar la derivación sucesiva de funciones. Aquí tienes un ejemplo de como usar [Wolfram Alpha para calcular derivadas sucesivas](https://www.wolframalpha.com/input?i=6-th+order+derivative+of+%28x+%2B+2%29exp%28x%29&lang=es). 
+
+$\quad$
+
+\textbf{\textcolor{firebrick}{Ejercicio 06B01.}} Si no lo has hecho ya, termina la práctica de derivación de la Sesión 01. 
+
+:::
+
+\normalsize
+
+::: {.callout-note  icon=false}
+
+## Interpretación de las derivadas sucesivas
+
+La derivada primera está relacionada con la pendiente de la recta tangente y, por tanto, con el crecimiento de la función. Todavía no disponemos de las herramientas para saber cómo se interpretan los valores de las derivadas segundas y de orden mayor, las veremos en próximas sesiones. Podemos al menos intuir que hay ideas que no se pueden entender utilizando rectas. Por ejemplo, la *curvatura*. 
+
+:::
+
+# Observaciones
+
+::: {.callout-note  icon=false}
+
+## Reglas de derivación: derivada de la suma.
+
+En la segunda sesión del curso, al buscar la pendiente de la recta tangente llegamos a una expresión como esta:
+$$
+f(x) = f(x_0) + f'(x_0)\cdot (x - x_0) + \epsilon
+$$
+donde $\epsilon$ es un error pequeño comparado con $x - x_0$. Si tienes una segunda función $g(x)$ derivable en $x_0$ entonces:
+$$g(x) = g(x_0) + g'(x_0)\cdot (x - x_0) + \hat\epsilon$$
+Y sumando y agrupando términos:
+$$(f(x) + g(x)) = (f(x_0) + g(x_0)) + \underbrace{(f'(x_0) + g'(x_0))}_{\text{pendiente}}\cdot (x - x_0) + (\epsilon + \hat\epsilon)$$
+La parte destacada de esta fórmula muestra que **la derivada de la suma es la suma de las derivadas.**
+
+:::
+
+---
+
+::: {.callout-note  icon=false}
+
+## Derivada del producto
+
+¿Alguna vez te has preguntado por qué la derivada del producto **no** es el *producto de las derivadas*? El anterior resultado puede parecer poco emocionante, pero las cosas mejoran mucho al pensar en productos. Si en lugar de sumar multiplicas las expresiones de $f(x)$ y $g(x)$ obtienes (reagrupando):
+
+\small
+$$
+\begin{array}{c}
+(f(x) \cdot g(x)) = (f(x_0) \cdot g(x_0)) + \\[2mm]  \underbrace{(f'(x_0)g(x_0) + f(x_0)g'(x_0))}_{\text{pendiente}}\cdot (x - x_0) + \text{\scriptsize (errores pequeños comparados con }x - x_0)
+\end{array}
+$$
+\normalsize
+
+Y eso dice que **debemos usar** como derivada del producto la expresión que ya conoces:
+
+$$(f\cdot g)'(x_0) = f'(x_0)g(x_0) + f(x_0)g'(x_0)$$
+:::
+
+En la próxima sesión veremos otras reglas de derivación que se obtienen mediante (versiones técnicamente más complicadas de) este mismo método. 
