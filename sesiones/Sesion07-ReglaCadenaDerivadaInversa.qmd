@@ -239,12 +239,15 @@ $$
 
 ::: {.callout-note  icon=false}
 
-## Inversas locales {.fragile}
+## Inversas locales
+
+\small
 
 ¿Qué hace diferentes estos dos ejemplos? La respuesta está en las gráficas de $x^2$ por un lado y de $x^3$ por otro. La función cubo es creciente, mientras que el cuadrado es decreciente en el semieje $x < 0$ y creciente en $x > 0$. Como ilustra la figura eso hace que, sea cual sea el $x$ de partida, existen dos puntos de la gráfica a altura $x^2$. La "inversa" $\sqrt{\phantom{2}}$ siempre baja al eje $X$ desde el punto de la derecha. Si empezaste con $x$ a la derecha, no hay problema. Pero si empezaste a la izquierda, no funciona. La función $\sqrt{\phantom{2}}$ es una **inversa local**, que sólo funciona a la derecha (para $x > 0$).
 
 ![](./fig/S07-InversaLocalFuncionCuadrado.jpg){height="3cm" fig-align="center"}
-Hay otra inversa local definida mediante $-\sqrt{\phantom{2}}$ que funciona a la izquierda, para $x < 0$. Pero es importante entender que **no hay una inversa global que funcione para todos los valores de $x$**.
+Hay otra inversa local definida mediante $-\sqrt{\phantom{2}}$ que funciona a la izquierda, para $x < 0$. Pero es importante entender que **no hay una inversa global que funcione para todos los valores de $x$**. Exploraremos esto con más detalle en el notebook de la sesión.
 
+\normalsize
 :::
 
