@@ -102,14 +102,19 @@ $$(f\circ g)' = f'(g(x_0)) \cdot g'(x_0)$$
 (a) $x \to \sin(3x^2 - 5x)$ en $x_0 = 0$.  
 
 (b) $x \to \sqrt[3]{4 - x^2}$ en $x_0 = 2$.  
-(c) $x \to  e^{\cos(2x)}$ en $x_0 = \pi$.  
+
+(c) $x \to  e^{\cos(2x)}$ en $x_0 = \pi/6$. ¡Repasa seno y coseno de ángulos notables!  
+
 (d) $x \to \cos^3(x^2 + \pi/3)$ en $x_0 = \sqrt{\pi}$.  
+
 (e) $x \to \sqrt{1 + \sin^2(3x)}$ en $x_0 = \pi/3$.  
 
 
 $\quad$
 
-\textbf{\textcolor{blue}{Ejercicio 06A02.}} Las derivadas laterales también pueden ser infinitas (una o ambas). ¿Algún ejemplo?
+\textbf{\textcolor{firebrick}{Ejercicios Hoja 2B GITI 25-26.}} 4 y 5. 
+
+\textbf{\textcolor{darkgreen}{Ejercicio 07C01.}} Usa el notebook de esta sesión para hacer los ejercicios previos. 
 
 :::
 
@@ -117,7 +122,6 @@ $\quad$
 
 ::: {.callout-tip  appearance="minimal"}
 
-\textbf{\textcolor{darkgreen}{Ejercicio 06C01.}} Usa el notebook de esta sesión para ampliar los ejercicios previos. 
 
 $\quad$
 
