@@ -27,7 +27,7 @@ format:
 
 Aguila Calzada, P.N. Doñana, Cádiz.
 
-+ [Notebook de la sesión en Colab](https://colab.research.google.com/drive/16xDSosCsWaurDy-W0YcsV0VJLcS3Y3zG?usp=sharing)
++ [Notebook de la sesión en Colab](https://colab.research.google.com/drive/1Bh7SBUUaxHCjsY34Di8n1tNZSXe0kZTD?usp=sharing)
 
 
 ---
@@ -44,6 +44,8 @@ Aguila Calzada, P.N. Doñana, Cádiz.
 
 En esta sesión continuamos ampliando el catálogo de reglas de derivación, empezando por la Regla de la Cadena. Este resultado nos permite derivar funciones compuestas. Para entender la composición de funciones puede resultar útil pensar en una calculadora que tiene teclas para funciones como el seno, el logaritmo, la raíz cuadrada, etc. Cuando introducimos un número $x$, si pulsamos dos teclas consecutivamente, por ejemplo el seno y después la raíz, estamos calculando el valor de la función compuesta $\sqrt{\sin{x}}$. Y puesto que sabemos derivar por separado el seno y la raíz, queremos aprovechar esos conocimientos para derivar esta composición, que es *"una función dentro de otra función"*.
 
+Asumimos, como con el resto de reglas de derivación, que tienes ya alguna experiencia aplicando la Regla de la Cadena. El objetivo aquí es darte un margen para repasar su uso y alcanzar una comprensión conceptual  más profunda de sus implicaciones.
+
 También nos asomaremos al tema de las funciones inversas. Haremos una versión simplificada, para entender los conceptos básicos, porque ese tema tiene bastante complejidad teórica y cubrirlo con rigor va más allá de los objetivos de este curso.
 
 $\quad$
@@ -57,12 +59,46 @@ $\quad$
 
 La composición de las funciones $f(x)$ y $g(x)$ se define como la función 
 $$(f\circ g)(x) = f(g(x))$$
+Suponiendo que todos los valores involucrados están en los dominios de las funciones, sea $g(x_0) = y_0$ y sea $f(y_0) = z_0$. Usaremos a menudo diagramas como este para indicar la forma en la que los valores viajan a través de las funciones en la composición:
+$$
+\begin{tikzpicture}[baseline=(current bounding box.center)]
+\node (x0) {$x_0$};
+\node (y0) [right=2cm of x0] {$y_0$};
+\node (z0) [right=2cm of y0] {$z_0$};
+\draw[->] (x0) -- (y0) node[midway, above] {$g$};
+\draw[->] (y0) -- (z0) node[midway, above] {$f$};
+\end{tikzpicture}
+$$
 :::
 
+---
+
+::: {.callout-note  icon=false}
+
+## Regla de la Cadena
+
+En las condiciones anteriores, si $g$ es derivable en $x_0$ y $f$ es derivable en $y_0 = g(x_0)$, entonces la composición $f \circ g$ es derivable en $x_0$ y se cumple: 
+$$(f\circ g)' = f'(g(x_0)) \cdot g'(x_0)$$
+:::
+
+**Observaciones:** 
+
++ Es **esencial** que las derivadas de $f$ y $g$ se evalúen en los puntos correctos. Usa diagramas como el de la página anterior en caso de duda.
++ La Regla de la Cadena se puede aplicar a composiciones más profundas, con más de dos funciones.
++ La Regla de la Cadena se obtiene de forma natural aproximando cada función por su recta tangente. Entonces, para aproximar $f(g(x))$ ($g$ dentro de $f$) lo que hacemos es sustituir la recta tangente de $g$ dentro de la recta tangente de $f$, reorganizar para que sea la ecuación de una recta y mirar su pendiente.
 
 ::: {.callout-tip  appearance="minimal"}
 
-\textbf{\textcolor{blue}{Ejercicio 06A01.}} Ya conoces un ejemplo en el que las derivadas laterales existen ambas pero no coinciden. ¿Cuál es esa función?
+\textbf{\textcolor{firebrick}{Ejercicio 07B01.}} Comprueba que así se obtiene la Regla de la Cadena. Indicación: es mejor que uses la notación $y = g(x)$, $z = f(y)$ para evitar confusiones. 
+
+:::
+
+---
+
+::: {.callout-tip  appearance="minimal"}
+
+\textbf{\textcolor{blue}{Ejercicio 07A01.}} Calcula las siguientes derivadas
+
 
 $\quad$
 
