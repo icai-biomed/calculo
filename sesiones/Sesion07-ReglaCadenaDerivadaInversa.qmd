@@ -108,11 +108,49 @@ $$(f\circ g)' = f'(g(x_0)) \cdot g'(x_0)$$
 
 $\quad$
 
-\textbf{\textcolor{firebrick}{Ejercicios Hoja 2B GITI 25-26.}} 4 y 5. 
+\textbf{\textcolor{firebrick}{Ejercicios Hoja 2B GITI 25-26.}} 4 y 5 (salvo $a^{\sin x}$). 
 
 $\quad$
 
 \textbf{\textcolor{darkgreen}{Ejercicio 07C01.}} Usa el notebook de esta sesión para hacer los ejercicios previos. 
+
+:::
+
+---
+
+\small
+
+::: {.callout-note  icon=false}
+
+## Derivación logarítmica
+
+Recuerda que la derivada de la función logaritmo natural es
+$(\log x)' = \frac{1}{x}$.
+La Regla de la Cadena se puede usar junto con este resultado para derivar funciones de forma exponencial $f(x) = g(x)^{h(x)}$ (asumimos que $g(x) > 0$ para que el logaritmo esté definido y que $g$ y $h$ son derivables).
+
+$(1)$ Primero tomamos el logaritmo y usamos sus propiedades:
+$$\log f(x) = h(x) \log(g(x))$$
+$(2)$ Puesto que ambos lados son iguales, sus derivadas también. Usando la derivada del producto, la del logaritmo y la Regla de la Cadena obtenemos:
+$$\left(\log f(x)\right)' = \underbrace{\frac{f'(x)}{f(x)}}_{\text{deriv. izda.}} = 
+\underbrace{h'(x) \log(g(x)) + h(x) \cdot \frac{g'(x)}{g(x)}}_{\text{deriv. dcha.}}$$
+
+$(3)$ Despejando, y recordando la definición de $f(x)$,  eso conduce a esta fórmula para $f'(x)$:
+$$f'(x) = f(x) \left(h'(x) \log(g(x)) + h(x) \cdot \frac{g'(x)}{g(x)}\right)$$
+**Nota:** Es mucho mejor aplicar estos pasos cada vez que recordar esta fórmula.
+:::
+\normalsize
+
+
+---
+
+::: {.callout-tip  appearance="minimal"}
+
+\textbf{\textcolor{blue}{Ejercicio 07A02.}} Calcula la derivada de $f(x) = x^x$
+
+$\quad$
+
+\textbf{\textcolor{firebrick}{Ejercicios Hoja 2B GITI 25-26.}} 5b y 7.  
+
 
 :::
 
@@ -126,150 +164,87 @@ $\quad$
 Sea $f(x)$ una función. A menudo conviene pensar en una función como una especie de máquina que convierte números en números. La notación $y = f(x)$ indica que un número $x$ entra en la función y un único número (esto es esencial) $y$  sale de la función. En un diagrama
 $\begin{tikzcd}x \arrow[rr, "f"] & & y \end{tikzcd}$
 
-La función inversa de $f(x)$ es, hablando informalmente, una función $f^{-1}(y)$ que deshace lo que ha hecho $f(x)$ llevándonos de vuelta, de la $y$ a la $x$. Un ejemplo típico es la función $y = x^3$ y su inversa $x = \sqrt[3]{y}$. 
+Hablando informalmente, la inversa de $f(x)$ es una función $f^{-1}(y)$ que deshace lo que ha hecho $f(x)$ llevándonos de vuelta de la $y$ a la $x$. Un ejemplo típico es la función $y = x^3$ y su inversa $x = \sqrt[3]{y}$. 
+\small
 $$
 \begin{tikzcd}
 x \arrow[rr, bend left=30, "f"] & & y \arrow[ll, bend left=30, "f^{-1}"]
 \end{tikzcd}
 $$
-**Importante:** la notación es mala. Pero **nunca** confundas la inversa $f^{-1}$ con la potencia negativa, que es  $\frac{1}{f(x)}$. Recuerda que $\sqrt[3]{y}$ **NO** es $1/y^3$.
+\normalsize
+**Cuidado, la notación es mala.** NO confundas la inversa $f^{-1}$ con la potencia negativa, que es  $\frac{1}{f(x)}$. Recuerda que $\sqrt[3]{y}$ NO es $1/y^3$.  
+**No siempre existe la inversa** (ver *Observaciones* al final de la sesión).
 
 :::
 
+## {.fragile}
+
+
+::: {.callout-note  icon=false}
+
+## Derivada de la inversa
+
+Vamos a ver cómo podemos relacionar la derivada de $f$ con la de su inversa. Supongamos por tanto que:
+
+*  $f$ es derivable en $x_0$ 
+* $y_0 = f(x_0)$ 
+* existe la inversa $f^{-1}$ y es derivable en $y_0$. 
+
+Empezamos observando que para todos los $x$ de un entorno de $x_0$ se debe cumplir
+$$f^{-1}(f(x)) = x$$
+Si los dos lados de esta ecuación son iguales, sus derivadas también lo serán, Así que, aplicando la Regla de la Cadena:
+$$(f^{-1})'(f(x))\cdot f'(x) = 1$$
+En particular, sustituyendo $x = x_0$ obtenemos
+$$(f^{-1})'(y_0)\cdot f'(x_0) = 1,\quad\text{ es decir }\quad (f^{-1})'(y_0) = \frac{1}{f'(x_0)}$$
+:::
+
+---
+
+::: {.callout-tip  appearance="minimal"}
+
+\textbf{\textcolor{blue}{Ejercicio 07A03.}} Recuerda que $(\tan(x))' = 1 + \tan^2(x)$. Úsalo para hallar, mediante la fórmula para la derivada de la inversa, cuál es la derivada de la función arcotangente. *Sugerencia de notación:* empieza con $y = f(x) = \tan(x)$ y escribe $f^{-1}(y) = \arctan(y)$. 
+
+
+$\quad$
+
+\textbf{\textcolor{firebrick}{Ejercicios Hoja 2B GITI 25-26.}} 6, 8 y 9. 
+
+
+:::
+
+# Observaciones {.fragile}
+
+::: {.callout-note  icon=false}
+
+## No siempre existe una inversa sencilla (global)
+
+Hemos dicho que el cubo y la raíz cúbica son un ejemplo típico de función y su inversa. Para esas funciones, si empiezas con un valor $x$ *cualquiera*, calculas $y = x^3$ para después calcular $\sqrt[3]{y}$, *siempre* volverás al mismo valor $x$ de partida.
+
+\small
+$$
+\begin{tikzcd}
+x \arrow[rr, bend left=30, "x^3"] & & y \arrow[ll, bend left=30, "y^{1/3}"]
+\end{tikzcd}
+$$
+\normalsize
+¿Por qué no hemos elegido el cuadrado y la raíz cuadrada? Ese caso no es tan sencillo. Por ejemplo, si empezamos en $x = -2$ terminaremos en $2$:  
+$$
+x = -2 \quad \Rightarrow \quad y = x^2 = 4 \quad \Rightarrow \sqrt{y} = 2
+$$
+*Recuerda* que $\sqrt{\phantom{2}}$ siempre se refiere a la raíz positiva (como la tecla de una calculadora) y que una función toma un valor a lo sumo. *No puedes* escribir $\pm\sqrt{\phantom{2}}$ y *elegir* el valor, porque $\pm\sqrt{\phantom{2}}$ no es una función.
+
+:::
+
+## {.fragile}
 
 ::: {.callout-note  icon=false}
 
 ## Inversas locales {.fragile}
 
-Hemos dicho que el cubo y la raíz cúbica son un ejemplo típico de función y su inversa. Para este par de funciones todo es como se espera: si empiezas con un valor $x$ *cualquiera*, calculas $y = x^3$ para después calcular $\sqrt[3]{y}$, *siempre* volverás al mismo valor $x$ de partida.
+¿Qué hace diferentes estos dos ejemplos? La respuesta está en las gráficas de $x^2$ por un lado y de $x^3$ por otro. La función cubo es creciente, mientras que el cuadrado es decreciente en el semieje $x < 0$ y creciente en $x > 0$. Como ilustra la figura eso hace que, sea cual sea el $x$ de partida, existen dos puntos de la gráfica a altura $x^2$. La "inversa" $\sqrt{\phantom{2}}$ siempre baja al eje $X$ desde el punto de la derecha. Si empezaste con $x$ a la derecha, no hay problema. Pero si empezaste a la izquierda, no funciona. La función $\sqrt{\phantom{2}}$ es una **inversa local**, que sólo funciona a la derecha (para $x > 0$).
 
-¿Y por qué no hemos elegido el cuadrado y la raíz cuadrada? Porque en ese caso no es tan sencillo, como muestra este ejemplo:
-$$
-x = -2 \quad \Rightarrow \quad y = x^2 = 4 \quad \Rightarrow \sqrt{y} = 2
-$$
-Como ves, empezamos en $x = -2$ y terminamos en $2$. 
+![](./fig/S07-InversaLocalFuncionCuadrado.jpg){height="3cm" fig-align="center"}
+Hay otra inversa local definida mediante $-\sqrt{\phantom{2}}$ que funciona a la izquierda, para $x < 0$. Pero es importante entender que **no hay una inversa global que funcione para todos los valores de $x$**.
 
 :::
 
----
-
-**Observaciones:** 
-
-+ Es **esencial** que las derivadas de $f$ y $g$ se evalúen en los puntos correctos. Usa diagramas como el de la página anterior en caso de duda.
-
-
-::: {.callout-tip  appearance="minimal"}
-
-
-$\quad$
-
-\textbf{\textcolor{blue}{Ejercicio 06A03.}} Estudiar, en los puntos $x = -1$ y $x = 0$, la existencia de derivada de la función
-$$
-f(x) = \begin{cases}
-    -(2x + 1) & \text{si } x \le -1 \\
-    x^2       & \text{si } -1 < x < 0 \\
-    \operatorname{sen} x   & \text{si } x \ge 0
-\end{cases}
-$$
-
-$\quad$
-
-\textbf{\textcolor{firebrick}{Ejercicios Hoja 2B GITI 25-26.}} 3, 4, 5 y 7. 
-
-:::
-
-
-# Derivadas sucesivas
-
-::: {.callout-note  icon=false}
-
-## Notación para la derivada segunda y derivadas sucesivas
-
-Como ya sabes, la derivada segunda es la derivada de la derivada. Se representa como $f''$. En el caso de la función seno:
-$$(\sin x)'' = ((\sin x)')' = (\cos x)' = -\sin x$$ 
-De forma análoga se definen derivadas terceras, etc. Para órdenes de derivación $k$ altos usaremos símbolos como $f^{(k)}$.
-
-:::
-
-::: {.callout-note  icon=false}
-
-## Reglas de derivación y operadores
-
-En secundaria aprendiste reglas de derivación de sumas, productos, cocientes y  funciones elementales. Esos resultados son *atajos* para no tener que calcular las derivadas mediante límites cada vez. Pero también puedes verlos como operaciones que convierten funciones en otras funciones. Los matemáticos llaman **operadores** a estos objetos que producen una función a partir de otra. Las derivadas sucesivas son ejemplos de operadores.
-
-:::
-
-
----
-
-\small
-
-::: {.callout-tip  appearance="minimal"}
-
-\textbf{\textcolor{blue}{Ejercicio 06A03.}} Hallar las dos primeras derivadas $f(x) = \dfrac{1}{\sqrt{1 + x}} + \sin^2 x$. 
-
-$\quad$
-
-
-\textbf{\textcolor{blue}{Ejercicio 06A04.}} Calcula las tres primeras derivadas sucesivas de $f(x) = (x + 2)\,e^x$. ¿Te atreves a dar una fórmula general?  
-
-$\quad$
-
-\textbf{\textcolor{darkgreen}{Ejercicio 06C02.}} Usa el notebook de esta sesión para explorar la derivación sucesiva de funciones. Aquí tienes un ejemplo de como usar [Wolfram Alpha para calcular derivadas sucesivas](https://www.wolframalpha.com/input?i=6-th+order+derivative+of+%28x+%2B+2%29exp%28x%29&lang=es). 
-
-$\quad$
-
-\textbf{\textcolor{firebrick}{Ejercicio 06B01.}} Si no lo has hecho ya, termina la práctica de derivación de la Sesión 01. 
-
-:::
-
-\normalsize
-
-::: {.callout-note  icon=false}
-
-## Interpretación de las derivadas sucesivas
-
-La derivada primera está relacionada con la pendiente de la recta tangente y, por tanto, con el crecimiento de la función. Todavía no disponemos de las herramientas para saber cómo se interpretan los valores de las derivadas segundas y de orden mayor, las veremos en próximas sesiones. Podemos al menos intuir que hay ideas que no se pueden entender utilizando rectas. Por ejemplo, la *curvatura*. 
-
-:::
-
-# Observaciones
-
-::: {.callout-note  icon=false}
-
-## Reglas de derivación: derivada de la suma.
-
-En la segunda sesión del curso, al buscar la pendiente de la recta tangente llegamos a una expresión como esta:
-$$
-f(x) = f(x_0) + f'(x_0)\cdot (x - x_0) + \epsilon
-$$
-donde $\epsilon$ es un error pequeño comparado con $x - x_0$. Si tienes una segunda función $g(x)$ derivable en $x_0$ entonces:
-$$g(x) = g(x_0) + g'(x_0)\cdot (x - x_0) + \hat\epsilon$$
-Y sumando y agrupando términos:
-$$(f(x) + g(x)) = (f(x_0) + g(x_0)) + \underbrace{(f'(x_0) + g'(x_0))}_{\text{pendiente}}\cdot (x - x_0) + (\epsilon + \hat\epsilon)$$
-La parte destacada de esta fórmula muestra que **la derivada de la suma es la suma de las derivadas.**
-
-:::
-
----
-
-::: {.callout-note  icon=false}
-
-## Derivada del producto
-
-¿Alguna vez te has preguntado por qué la derivada del producto **no** es el *producto de las derivadas*? El anterior resultado puede parecer poco emocionante, pero las cosas mejoran mucho al pensar en productos. Si en lugar de sumar multiplicas las expresiones de $f(x)$ y $g(x)$ obtienes (reagrupando):
-
-\small
-$$
-\begin{array}{c}
-(f(x) \cdot g(x)) = (f(x_0) \cdot g(x_0)) + \\[2mm]  \underbrace{(f'(x_0)g(x_0) + f(x_0)g'(x_0))}_{\text{pendiente}}\cdot (x - x_0) + \text{\scriptsize (errores pequeños comparados con }x - x_0)
-\end{array}
-$$
-\normalsize
-
-Y eso dice que **debemos usar** como derivada del producto la expresión que ya conoces:
-
-$$(f\cdot g)'(x_0) = f'(x_0)g(x_0) + f(x_0)g'(x_0)$$
-:::
-
-En la próxima sesión veremos otras reglas de derivación que se obtienen mediante (versiones técnicamente más complicadas de) este mismo método. 

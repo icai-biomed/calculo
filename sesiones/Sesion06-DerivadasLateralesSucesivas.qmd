@@ -119,28 +119,25 @@ En secundaria aprendiste reglas de derivación de sumas, productos, cocientes y 
 
 ---
 
-\small
+
 
 ::: {.callout-tip  appearance="minimal"}
 
+\small
+
 \textbf{\textcolor{blue}{Ejercicio 06A03.}} Hallar las dos primeras derivadas $f(x) = \dfrac{1}{\sqrt{1 + x}} + \sin^2 x$. 
 
-$\quad$
+\textbf{\textcolor{blue}{Ejercicio 06A04.}} Calcula las tres primeras derivadas sucesivas de $f(x) = (x + 2)\,e^x$. ¿Te atreves a dar una fórmula general?    
 
+\textbf{\textcolor{darkgreen}{Ejercicio 06C02.}} Usa el notebook de esta sesión para explorar la derivación sucesiva de funciones. Aquí tienes un ejemplo de como usar [Wolfram Alpha para calcular derivadas sucesivas](https://www.wolframalpha.com/input?i=6-th+order+derivative+of+%28x+%2B+2%29exp%28x%29&lang=es).  
 
-\textbf{\textcolor{blue}{Ejercicio 06A04.}} Calcula las tres primeras derivadas sucesivas de $f(x) = (x + 2)\,e^x$. ¿Te atreves a dar una fórmula general?  
+\textbf{\textcolor{firebrick}{Ejercicio 06B01.}} Si no lo has hecho ya, termina la práctica de derivación de la Sesión 01.  
 
-$\quad$
-
-\textbf{\textcolor{darkgreen}{Ejercicio 06C02.}} Usa el notebook de esta sesión para explorar la derivación sucesiva de funciones. Aquí tienes un ejemplo de como usar [Wolfram Alpha para calcular derivadas sucesivas](https://www.wolframalpha.com/input?i=6-th+order+derivative+of+%28x+%2B+2%29exp%28x%29&lang=es). 
-
-$\quad$
-
-\textbf{\textcolor{firebrick}{Ejercicio 06B01.}} Si no lo has hecho ya, termina la práctica de derivación de la Sesión 01. 
-
-:::
+\textbf{\textcolor{firebrick}{Ejercicio 06B02.}} Busca una fórmula para $(f(x)g(x)h(x))'$. ¿Y si son 10 funciones? 
 
 \normalsize
+:::
+
 
 ::: {.callout-note  icon=false}
 
