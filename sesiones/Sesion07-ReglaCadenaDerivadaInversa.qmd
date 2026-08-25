@@ -51,7 +51,7 @@ También nos asomaremos al tema de las funciones inversas. Haremos una versión 
 $\quad$
 
 
-# Regla de la Cadena
+# Regla de la Cadena {.fragile}
 
 ::: {.callout-note  icon=false}
 
@@ -61,13 +61,9 @@ La composición de las funciones $f(x)$ y $g(x)$ se define como la función
 $$(f\circ g)(x) = f(g(x))$$
 Suponiendo que todos los valores involucrados están en los dominios de las funciones, sea $g(x_0) = y_0$ y sea $f(y_0) = z_0$. Usaremos a menudo diagramas como este para indicar la forma en la que los valores viajan a través de las funciones en la composición:
 $$
-\begin{tikzpicture}[baseline=(current bounding box.center)]
-\node (x0) {$x_0$};
-\node (y0) [right=2cm of x0] {$y_0$};
-\node (z0) [right=2cm of y0] {$z_0$};
-\draw[->] (x0) -- (y0) node[midway, above] {$g$};
-\draw[->] (y0) -- (z0) node[midway, above] {$f$};
-\end{tikzpicture}
+\begin{tikzcd}
+x_0 \arrow[r, "g"] & y_0 \arrow[r, "f"] & z_0
+\end{tikzcd}
 $$
 :::
 
@@ -114,11 +110,53 @@ $\quad$
 
 \textbf{\textcolor{firebrick}{Ejercicios Hoja 2B GITI 25-26.}} 4 y 5. 
 
+$\quad$
+
 \textbf{\textcolor{darkgreen}{Ejercicio 07C01.}} Usa el notebook de esta sesión para hacer los ejercicios previos. 
 
 :::
 
+# Derivada de la función inversa {.fragile}
+
+
+::: {.callout-note  icon=false}
+
+## Función inversa
+
+Sea $f(x)$ una función. A menudo conviene pensar en una función como una especie de máquina que convierte números en números. La notación $y = f(x)$ indica que un número $x$ entra en la función y un único número (esto es esencial) $y$  sale de la función. En un diagrama
+$\begin{tikzcd}x \arrow[rr, "f"] & & y \end{tikzcd}$
+
+La función inversa de $f(x)$ es, hablando informalmente, una función $f^{-1}(y)$ que deshace lo que ha hecho $f(x)$ llevándonos de vuelta, de la $y$ a la $x$. Un ejemplo típico es la función $y = x^3$ y su inversa $x = \sqrt[3]{y}$. 
+$$
+\begin{tikzcd}
+x \arrow[rr, bend left=30, "f"] & & y \arrow[ll, bend left=30, "f^{-1}"]
+\end{tikzcd}
+$$
+**Importante:** la notación es mala. Pero **nunca** confundas la inversa $f^{-1}$ con la potencia negativa, que es  $\frac{1}{f(x)}$. Recuerda que $\sqrt[3]{y}$ **NO** es $1/y^3$.
+
+:::
+
+
+::: {.callout-note  icon=false}
+
+## Inversas locales {.fragile}
+
+Hemos dicho que el cubo y la raíz cúbica son un ejemplo típico de función y su inversa. Para este par de funciones todo es como se espera: si empiezas con un valor $x$ *cualquiera*, calculas $y = x^3$ para después calcular $\sqrt[3]{y}$, *siempre* volverás al mismo valor $x$ de partida.
+
+¿Y por qué no hemos elegido el cuadrado y la raíz cuadrada? Porque en ese caso no es tan sencillo, como muestra este ejemplo:
+$$
+x = -2 \quad \Rightarrow \quad y = x^2 = 4 \quad \Rightarrow \sqrt{y} = 2
+$$
+Como ves, empezamos en $x = -2$ y terminamos en $2$. 
+
+:::
+
 ---
+
+**Observaciones:** 
+
++ Es **esencial** que las derivadas de $f$ y $g$ se evalúen en los puntos correctos. Usa diagramas como el de la página anterior en caso de duda.
+
 
 ::: {.callout-tip  appearance="minimal"}
 
