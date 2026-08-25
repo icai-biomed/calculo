@@ -23,9 +23,9 @@ format:
 
 **Sesión 07. Regla de la cadena. Derivada de la función inversa y derivación logarítmica.**
 
-![](./portadasSesiones/06-CurrucaCabecinegra.jpg){width="80%"}
+![](./portadasSesiones/07-AguilaCalzada_Cadiz.png){width="80%"}
 
-Curruca cabecinegra, Madrid.
+Aguila Calzada, P.N. Doñana, Cádiz.
 
 + [Notebook de la sesión en Colab](https://colab.research.google.com/drive/16xDSosCsWaurDy-W0YcsV0VJLcS3Y3zG?usp=sharing)
 
@@ -42,23 +42,21 @@ Curruca cabecinegra, Madrid.
 
 # Introducción. 
 
-Ya sabemos que la derivada es uno de los conceptos básicos del Cálculo. En esta sesión vamos a ampliar nuestro vocabulario y nuestro repertorio de herramientas para trabajar con derivadas.
+En esta sesión continuamos ampliando el catálogo de reglas de derivación, empezando por la Regla de la Cadena. Este resultado nos permite derivar funciones compuestas. Para entender la composición de funciones puede resultar útil pensar en una calculadora que tiene teclas para funciones como el seno, el logaritmo, la raíz cuadrada, etc. Cuando introducimos un número $x$, si pulsamos dos teclas consecutivamente, por ejemplo el seno y después la raíz, estamos calculando el valor de la función compuesta $\sqrt{\sin{x}}$. Y puesto que sabemos derivar por separado el seno y la raíz, queremos aprovechar esos conocimientos para derivar esta composición, que es *"una función dentro de otra función"*.
+
+También nos asomaremos al tema de las funciones inversas. Haremos una versión simplificada, para entender los conceptos básicos, porque ese tema tiene bastante complejidad teórica y cubrirlo con rigor va más allá de los objetivos de este curso.
 
 $\quad$
 
 
-# Derivadas laterales
+# Regla de la Cadena
 
 ::: {.callout-note  icon=false}
 
-## Derivada como límite
+## Composición de funciones
 
-La derivada es el límite 
-$$
-f'(x_0) = \displaystyle\lim_{x\to x_0}\dfrac{f(x) - f(x_0)}{x - x_0}
-$$
-Y como en cualquier límite, se pueden considerar los dos límites laterales: las denominadas **derivadas laterales** por la izquierda $f'{_-}(x_0)$ y por la derecha $f'{_+}(x_0)$. La función es derivable en $x_0$ si ambas existen y coinciden.
-
+La composición de las funciones $f(x)$ y $g(x)$ se define como la función 
+$$(f\circ g)(x) = f(g(x))$$
 :::
 
 
