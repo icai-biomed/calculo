@@ -1,0 +1,161 @@
+---
+title: "Sesión 08. Polinomios de Taylor."
+lang: es
+format:
+  beamer:
+    theme: Madrid
+    fonttheme: default
+    fontsize: 10pt
+    toc: false          # handled manually below; pandoc's toc:true produces a stray }
+    section-titles: false   # \AtBeginSection in preamble.txt creates the section slide
+    slide-level: 2      # without this, top-level (#) headings become frames directly
+                         # instead of \section commands, so \tableofcontents has nothing
+                         # to list and \AtBeginSection never fires
+    include-in-header:
+      - preambulo_comun.tex
+      - text: |
+          \newcommand{\SesionTitulo}{Sesión 08 \\ Polinomios de Taylor.}
+  html: default
+  docx: default
+---
+
+---
+
+**Sesión 08. Polinomios de Taylor.**
+
+![](./portadasSesiones/08-CogujadaMontesinaArganda.png){width="80%"}
+
+Cogujada Montesina, Arganda del Rey, Madrid.
+
++ [Notebook de la sesión en Colab](https://colab.research.google.com/drive/1q-nuGvTMHt2TE9X3iZk_wwnMdWuRyWZt?usp=sharing)
+
+
+---
+
+```{=latex}
+  
+  \frametitle{Tabla de contenidos}
+  \tableofcontents
+
+```
+
+
+# Introducción. 
+
+
+$\quad$
+
+
+# Polinomio de Taylor {.fragile}
+
+::: {.callout-note  icon=false}
+
+## Definición y parte principal de una función.
+
+Supongamos que $f$ es una función derivable $n$ veces en $x_0$. Entonces su **polinomio de Taylor de orden $n$ en $x_0$** es:
+\scriptsize
+$$
+Pf_{n;x_0}(x) = \underbrace{f(x_0) + f'(x_0)(x - x_0)}_{\text{recta tgte, en }x_0}+ \dfrac{f'(x_0)}{2!}(x - x_0) + \dfrac{f^{(3)}(x_0)}{3!}(x - x_0)^3 + \cdots + 
+ \dfrac{f^{(n)}(x_0)}{n!}(x - x_0)^n
+$$
+\normalsize
+La **parte principal** de $f$ en $x_0$ es el término no nulo de grado más bajo en este polinomio. 
+:::
+
+**Observaciones:** 
+
++ $k! = k \cdot (k - 1)\cdot\cdots\cdot 3\cdot 2\cdot 1$ es el *factorial* de $k$. Recuerda $0! = 1$.
++ Fíjate en que, como hemos indicado, los dos primeros términos definen la recta tangente a $f$ en $x_0$.
++ En la próxima sesión veremos que la parte principal sirve para resolver muchas indeterminaciones, generalizando la Regla de L'Hôpital que tal vez ya conoces.
+
+---
+
+**Observaciones adicionales:** 
+
+\small
+
++ Cuando no haya riesgo de confusión simplificaremos la notación escribiendo simplemente $P_n(x)$  
++ El polinomio de Taylor en el caso especial en que $x_0 = 0$ se denomina polinomio de Maclaurin.  
++ En general, no es fácil hallar una fórmula sencilla para la derivada de orden $n$ de una función y, por consiguiente, para el polinomio de Taylor de orden $n$. Los primeros dos ejercicios exploran algunos casos en que sí existen esas fórmulas.  
++ El ejercicio  08B01 ilustra la idea de que: *"si quieres que dos funciones se parezcan mucho, haz que tengan las mismas derivadas"*.
+
+\normalsize
+
+::: {.callout-tip  appearance="minimal"}
+
+\textbf{\textcolor{blue}{Ejercicio 08A01.}} Hallar: (a) el polinomio de Maclaurin de orden 2 de $f(x) = (x + 2)e^x$. (b) el polinomio de Taylor de orden $n$ de $f(x) = e^x$ en $x = 0$ y $x = 1$.
+
+\textbf{\textcolor{firebrick}{Ejercicio 08B01.}} Comprueba que el polinomio de Taylor de orden 3 cumple:
+\small
+$$P_3(x_0) = f(x_0),\quad P'_3(x_0) = f'(x_0),\quad P''_3(x_0) = f''(x_0),\quad P'''_3(x_0) = f'''(x_0).$$
+\normalsize
+
+\textbf{\textcolor{firebrick}{Ejercicios Hoja 2B GITI 25-26.}} 17. 
+
+\textbf{\textcolor{darkgreen}{Ejercicio 08C01.}} Usa el notebook de esta sesión para rehacer el ejercicio 08A01. 
+
+:::
+
+# Error al aproximar $f$ por su polinomio de Taylor
+
+::: {.callout-note  icon=false}
+
+## Definición del error para orden $n$
+
+El error del polinomio de Taylor de de orden $n$  de $f$ en $x_0$ se define como la diferencia entre el polinomio y la función:
+$$
+Ef_{n;x_0}(x) = Pf_{n;x_0}(x) - f(x)
+$$
+A menudo escribiremos simplemente $E_n$ si no hay ambigüedad. 
+
+La intuición nos dice que, en condiciones normales, el error $E_n$ se hace muy pequeño cuando $x\to x_0$. Pero ¿podemos hacer más precisa esa idea? ¿Cómo de pequeño, pequeño *comparado con qué*? Esta última pregunta contiene la idea clave.
+
+:::
+
+
+
+
+---
+
+::: {.callout-note  icon=false}
+
+## Polinomios de Taylor que debes conocer.
+
+\small
++ $sen(x) = x - \frac{x^3}{3!} + \frac{x^5}{5!} + \dots + (-1)^n \frac{x^{2n+1}}{(2n+1)!} + o(x^{2n+1})$  
+
+$\quad$ 
+
++ $cos(x) = 1 - \frac{x^2}{2!} + \frac{x^4}{4!} + \dots + (-1)^n \frac{x^{2n}}{(2n)!} + o(x^{2n})$  
+
+$\quad$ 
+
++ $sh(x) = x + \frac{x^3}{3!} + \frac{x^5}{5!} + \dots + \frac{x^{2n+1}}{(2n+1)!} + o(x^{2n+1})$  
+
+$\quad$ 
+
++ $ch(x) = 1 + \frac{x^2}{2!} + \frac{x^4}{4!} + \dots + \frac{x^{2n}}{(2n)!} + o(x^{2n})$  
+
+$\quad$ 
+
++ $e^x = 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \dots + \frac{x^n}{n!} + o(x^n)$  
+
+$\quad$ 
+
++ $Log(1 + x) = x - \frac{x^2}{2} + \frac{x^3}{3} + \dots + (-1)^{n-1}\frac{x^n}{n} + o(x^n)$  
+
+$\quad$ 
+
++ $arctg(x) = x - \frac{x^3}{3} + \frac{x^5}{5} + \dots + (-1)^n \frac{x^{2n+1}}{2n+1} + o(x^{2n+1})$  
+
+$\quad$ 
+
++ $\sqrt{1 + x} = 1 + \frac{x}{2} - \frac{x^2}{8} + \frac{x^{3}}{16} + o(x^{3})$  
+
+$\quad$ 
+
++ $\tan(x) = x + \frac{x^3}{3} + \frac{2}{15}x^5 + o(x^{5})$
+
+\normalsize
+:::
+
