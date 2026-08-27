@@ -42,8 +42,15 @@ Cogujada Montesina, Arganda del Rey, Madrid.
 
 # Introducción. 
 
+Los polinomios de Taylor surgen como una continuación natural de la idea de recta tangente. Dijimos en su momento que la recta tangente no puede ayudarnos con la idea de curvatura de una función, simplemente *porque las rectas no se curvan*. Pero los polinomios de grado dos, cuyas gráficas son parábolas, sí que se curvan. Así que podemos preguntarnos ¿cuál es la parábola que mejor aproxima a $f(x)$ cerca de $x_0$? Y más en general, dado un número natural $n= 1, 2, 3,\ldots$, ¿cuál es el polinomio de grado $n$ que mejor aproxima a $f(x)$ cerca de $x_0$?
+
+$\quad$ 
+
+En esta sesión vamos a conocer la respuesta que da el Cálculo a esa pregunta. De momento, antes de sumergirnos en las ecuaciones, empezaremos explorando la idea mediante esta [construcción GeoGebra](https://www.geogebra.org/m/bnqzrhch).
 
 $\quad$
+
+También vamos a dedicar parte de la sesión a entender en detalle cuál es el error que se comete al sustituir una función por su polinomio de Taylor. En próximas sesiones pondremos a trabajar a estos polinomios y veremos algunas de sus muchas aplicaciones.
 
 
 # Polinomio de Taylor {.fragile}
@@ -159,3 +166,19 @@ $\quad$
 \normalsize
 :::
 
+
+---
+
+::: {.callout-tip  appearance="minimal"}
+
+\textbf{\textcolor{darkgreen}{Ejercicio 08C02.}} Usa el notebook de esta sesión para añadir dos términos más a las dos últimas fórmulas de esta tabla. 
+
+\textbf{\textcolor{darkgreen}{Ejercicio 08C03.}} Usa el notebook de esta sesión para hallar el polinomio de Taylor de orden alto (por ejemplo $n = 8$) de $f(x) = \dfrac{1}{1 + x}$.
+
+\textbf{\textcolor{blue}{Ejercicio 08A02.}} Mira en la tabla el polinomio de Taylor de $$f(x) = \log(1 + x)$$ ¿Cuál es la derivada de $f(x)$? ¿Cuál es la derivada *término a término* de su polinomio de Taylor? Piensa en el resultado.
+
+\textbf{\textcolor{blue}{Ejercicio 08A03.}} Mira en la tabla el polinomio de Taylor de $f(x) = \arctan(x)$. ¿Cuál es la derivada de $f(x)$? ¿Cuál es la derivada *término a término* de su polinomio de Taylor? Ahora sustituye $x$ por $x^2$ en la función $\frac{1}{1 + x}$ *y también en su polinomio*. Piensa en el resultado.
+
+\textbf{\textcolor{darkgreen}{Ejercicio 08C04.}} Usa la tabla y sustituye $x$ por $x^3$ en la función $\sin(x)$. Usa sympy para obtener el desarrollo de Taylor de esa función $\sin(x^3)$. Piensa en el resultado. Haz experimentos similares con otras funciones.
+
+:::
