@@ -110,23 +110,65 @@ $$P_3(x_0) = f(x_0),\quad P'_3(x_0) = f'(x_0),\quad P''_3(x_0) = f''(x_0),\quad 
 ## Definición del error para orden $n$
 
 El error del polinomio de Taylor de de orden $n$  de $f$ en $x_0$ se define como la diferencia entre el polinomio y la función:
+\small
 $$
 Ef_{n;x_0}(x) = Pf_{n;x_0}(x) - f(x)
 $$
-A menudo escribiremos simplemente $E_n$ si no hay ambigüedad. 
+\normalsize
+Si no hay ambigüedad escribiremos simplemente $E_n$ . La intuición nos dice que, en condiciones normales, el error $E_n$ se hace muy pequeño cuando $x\to x_0$. Pero ¿podemos hacer más precisa esa idea? ¿Cómo de pequeño, pequeño *comparado con qué*? Esta última pregunta contiene la idea clave.
 
-La intuición nos dice que, en condiciones normales, el error $E_n$ se hace muy pequeño cuando $x\to x_0$. Pero ¿podemos hacer más precisa esa idea? ¿Cómo de pequeño, pequeño *comparado con qué*? Esta última pregunta contiene la idea clave.
+:::
+
+::: {.callout-tip  appearance="minimal"}
+
+\textbf{\textcolor{darkgreen}{Ejercicio 08A0.}} Completa la siguiente expresión (asumimos que $A, B\neq 0$ y que $p, q \geq 0$, todos números reales):
+\small
+$$
+\lim_{x\to x_0}\dfrac{A\, (x - x_0)^p}{B\, (x - x_0)^q} = 
+\begin{cases}
+?? & \text{ si } p\, >\, q \\
+?? & \text{ si } p\, =\, q \\
+?? & \text{ si } p\, <\, q \\
+\end{cases}
+$$
+\normalsize
 
 :::
 
 
+---
+
+
+::: {.callout-note  icon=false}
+
+## Infinitésimos y orden del error $E_n$
+
+El objetivo del anterior ejercicio es pensar en $m$ y $n$ en términos de *velocidad*. ¿Quién tiende a 0 más rápido, el numerador o el denominador? 
+
+Vamos a añadir un poco de vocabulario a la discusión. Una función que tiende a $0$ en $x_0$ es un **infinitésimo en $x_0$**.  Las funciones como $A(x - x_0)^p$ (para $p>0$) son los **infinitésimos estándar en $x_0$**. Y definen una escala natural de velocidad. Cuando tenemos un infinitésimo $f(x)$ en $x_0$ y nos preguntamos *¿cómo de rápido tiende a 0?* podemos buscar un infinitésimo estándar para el que se cumpla:
+$$
+\lim_{x\to x_0}\dfrac{f(x)}{A\, (x - x_0)^p} = 1 
+$$
+Este 1 significa "tienden a 0 exactamente igual de rápido". En ese caso decimos que $f(x)$ es un infinitésimo de orden $n$ en $x_0$. 
+
+:::
+
+
+
+::: {.callout-tip  appearance="minimal"}
+
+\textbf{\textcolor{darkgreen}{Ejercicio 08C05.}}
+
+Usa el notebook de esta sesión para explorar esta idea del orden de un infinitésimo.  
+
+:::
 
 
 ---
 
 ::: {.callout-note  icon=false}
 
-## Polinomios de Taylor que debes conocer.
+## Polinomios de Taylor que \underline{debes} conocer.
 
 \small
 + $sen(x) = x - \frac{x^3}{3!} + \frac{x^5}{5!} + \dots + (-1)^n \frac{x^{2n+1}}{(2n+1)!} + o(x^{2n+1})$  
