@@ -42,16 +42,17 @@ Cogujada Montesina, Arganda del Rey, Madrid.
 
 # Introducción. 
 
-Los polinomios de Taylor surgen como una continuación natural de la idea de recta tangente. Dijimos en su momento que la recta tangente no puede ayudarnos con la idea de curvatura de una función, simplemente *porque las rectas no se curvan*. Pero los polinomios de grado dos, cuyas gráficas son parábolas, sí que se curvan. Así que podemos preguntarnos ¿cuál es la parábola que mejor aproxima a $f(x)$ cerca de $x_0$? Y más en general, dado un número natural $n= 1, 2, 3,\ldots$, ¿cuál es el polinomio de grado $n$ que mejor aproxima a $f(x)$ cerca de $x_0$?
+\small 
 
-$\quad$ 
+Los polinomios de Taylor surgen como una continuación natural de la idea de recta tangente. Dijimos en su momento que la recta tangente no puede ayudarnos con la idea de curvatura de una función, simplemente *porque las rectas no se curvan*. Pero los polinomios de grado dos, cuyas gráficas son parábolas, sí que se curvan. Así que podemos preguntarnos ¿cuál es la parábola que mejor aproxima a $f(x)$ cerca de $x_0$? Y más en general, dado un número natural $n= 1, 2, 3,\ldots$, ¿cuál es el polinomio de grado $n$ que mejor aproxima a $f(x)$ cerca de $x_0$? En esta sesión vamos a conocer la respuesta que da el Cálculo a esa pregunta. De momento, antes de sumergirnos en las ecuaciones, empezaremos explorando la idea mediante esta [construcción GeoGebra](https://www.geogebra.org/m/bnqzrhch).
 
-En esta sesión vamos a conocer la respuesta que da el Cálculo a esa pregunta. De momento, antes de sumergirnos en las ecuaciones, empezaremos explorando la idea mediante esta [construcción GeoGebra](https://www.geogebra.org/m/bnqzrhch).
+Aprenderemos a calcular polinomios de Taylor de manera eficiente. Esta es una habilidad similar a derivar, que nos abrirá la puerta a muchas aplicaciones de esos polinomios. Y como en muchos casos, esto significa que hay que aprender unas reglas y una tabla. 
 
 $\quad$
 
 También vamos a dedicar parte de la sesión a entender en detalle cuál es el error que se comete al sustituir una función por su polinomio de Taylor. En próximas sesiones pondremos a trabajar a estos polinomios y veremos algunas de sus muchas aplicaciones.
 
+\normalsize
 
 # Polinomio de Taylor {.fragile}
 
@@ -206,12 +207,14 @@ $$
 
 \small
 
-::: {.callout-warning icon=false}
+::: {.callout-note icon=false}
 
-## Trabajando con polinomios de Taylor
+## Parte principal en funciones generales
 
-En esta y en las próximas sesiones vamos a aprender a calcular polinomios de Taylor de manera eficiente, sin necesidad de calcular una a una las $n$ derivadas que aparecen en su expresión. Esta es una habilidad similar a derivar, que nos abrirá la puerta a muchas aplicaciones de los polinomios. Y como en muchos casos, esto significa que hay que aprender unas reglas  y una tabla. 
-
+A veces necesitaremos definir la parte principal de una función sin depender del polinomio de Taylor (que a veces no existe, ver el notebook de esta sesión). En general decimos que $PP_{x_0}(f(x)) = A (x - x_0)^p$ cuando
+$$
+\lim_{x\to x_0}\dfrac{f(x)}{A (x - x_0)^p} = 1 \quad \text{ ¡}\,p \text{ no es necesariamente natural!}
+$$
 :::
 
 
@@ -222,8 +225,9 @@ En esta y en las próximas sesiones vamos a aprender a calcular polinomios de Ta
 $(1)$ $O((x - x_0)^n) + O((x - x_0)^n) = O((x - x_0)^n)$  
 $(2)$ Si $n < m$, entonces $O((x - x_0)^n) \cdot O((x - x_0)^m) = O((x - x_0)^{n}$  (el orden más bajo prevalece en las sumas).  
 $(3)$ $O((x - x_0)^p) \cdot O((x - x_0)^q) = O((x - x_0)^{p + q}$  
-$(4)$ Si $P_n(x)$ y $R_n(x)$ son resp. el polinomio de MacLaurin y el resto de $f(x)$ entonces el polinomio de MacLaurin de $f(Ax^k)$ se obtiene por la misma sustitución (¡observa el orden!):
-$$f(Ax^k) = P_n(Ax^k) + O(x^{k\cdot n})$$
+$(4)$ Si $P_n(x)$ y $R_n(x)$ son resp. el polinomio de MacLaurin y el resto de $f(x)$ entonces para $k = 1, 2, 3, \ldots$ el polinomio de MacLaurin de $f(Ax^k)$ se obtiene por la misma sustitución (¡observa el orden!):
+$$f(Ax^k) = P_n(Ax^k) + O(x^{k\cdot n})\quad \text{ para }A\neq 0$$
+$(5)$ Si $p > 0$ (no necesariamente natural) entonces la parte principal en $0$ de $f(Ax^k)$ se obtiene sustituyendo $x$ por $Ax^k$ en la parte principal de $f$ en $0$.
 :::
 
 \normalsize
@@ -303,7 +307,7 @@ $\quad$
 
 \textbf{\textcolor{blue}{Ejercicio 08A07.}} Hallar el orden y la parte principal en $x_0 = 0$ de $$f(x) = e^x + \log(1+ x)−1−2x−\frac{x^3}{2}$$
 
-\textbf{\textcolor{firebrick}{Ejercicios Hoja 2B GITI 25-26.}} 24 y 25(a).
+\textbf{\textcolor{firebrick}{Ejercicios Hoja 2B GITI 25-26.}} 24 y 25(a).  
 
 \textbf{\textcolor{darkgreen}{Ejercicio 08C05.}} Comprueba estos resultados usando el notebook de la sesión.
 
