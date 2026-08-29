@@ -109,13 +109,13 @@ $$P_3(x_0) = f(x_0),\quad P'_3(x_0) = f'(x_0),\quad P''_3(x_0) = f''(x_0),\quad 
 
 ## Definición del error para orden $n$
 
-El error del polinomio de Taylor de de orden $n$  de $f$ en $x_0$ se define como la diferencia entre el polinomio y la función:
+El **resto** del polinomio de Taylor de de orden $n$  de $f$ en $x_0$ se define como la diferencia entre el polinomio y la función. Y el **error* es el valor absoluto del resto:
 \small
 $$
-Ef_{n;x_0}(x) = Pf_{n;x_0}(x) - f(x)
+Rf_{n;x_0}(x) = Pf_{n;x_0}(x) - f(x),\qquad Rf_{n;x_0}(x)= |Ef_{n;x_0}(x)|
 $$
 \normalsize
-Si no hay ambigüedad escribiremos simplemente $E_n$ . La intuición nos dice que, en condiciones normales, el error $E_n$ se hace muy pequeño cuando $x\to x_0$. Pero ¿podemos hacer más precisa esa idea? ¿Cómo de pequeño, pequeño *comparado con qué*? Esta última pregunta contiene la idea clave.
+Si no hay ambigüedad escribiremos simplemente $R_n$ . La intuición nos dice que, en condiciones normales, el error $E_n$ se hace muy pequeño cuando $x\to x_0$.  ¿Podemos hacer más precisa esa idea? El error es pequeño *¿comparado con qué*? Esta última pregunta contiene la idea clave.
 
 :::
 
@@ -141,7 +141,7 @@ $$
 
 ::: {.callout-note  icon=false}
 
-## Infinitésimos y orden del error $E_n$
+## Infinitésimos y su orden
 
 El objetivo del anterior ejercicio es pensar en $m$ y $n$ en términos de *velocidad*. ¿Quién tiende a 0 más rápido, el numerador o el denominador? 
 
@@ -163,12 +163,78 @@ Usa el notebook de esta sesión para explorar esta idea del orden de un infinit�
 
 :::
 
-
 ---
+
+\small
 
 ::: {.callout-note  icon=false}
 
-## Polinomios de Taylor que \underline{debes} conocer.
+
+## Orden del resto $R_n$. Notación $O((x - x_0)^p)$.
+
+¿Qué tiene que ver esta discusión de los infinitésimos con el resto $R_n$ del polinomio de Taylor? El siguiente resultado, que no vamos a demostrar, muestra la conexión:
+
+
+::: {.block}
+
+### Orden del resto del polinomio de Taylor
+
+El *resto* $R_n$ (del polinomio de Taylor de orden $n$ para $f$ en $x_0$) **es un infinitésimo de orden mayor que $n$** en $x_0$.
+:::
+
+Vamos a usar mucho frases como esta última, así que merece la pena introducir esta notación;
+
+El símbolo $O((x - x_0)^p)$ significa **un infinitésimo de orden mayor que $n$** en $x_0$. 
+
+:::
+
+
+::: {.callout-tip  appearance="minimal"}
+
+\textbf{\textcolor{firebrick}{Ejercicio 08B02.}} **IMPORTANTE:** Recuerda que el primer término no mulo del polinomio de Taylor de $f(x)$ en $x_0$ es la parte principal de $f(x)$, que llamaremos $PP_{x_0}(f(x))$. Comprueba entonces que 
+$$
+\lim_{x\to x_0}\dfrac{f(x)}{PP_{x_0}(f(x))} = 1 
+$$
+**Pista:** rellena la interrogación en $f(x) = PP_{x_0}(f(x)) + O((x - x_0))^{??}$
+
+:::
+
+
+\normalsize
+
+---
+
+\small
+
+::: {.callout-warning icon=false}
+
+## Trabajando con polinomios de Taylor
+
+En esta y en las próximas sesiones vamos a aprender a calcular polinomios de Taylor de manera eficiente, sin necesidad de calcular una a una las $n$ derivadas que aparecen en su expresión. Esta es una habilidad similar a derivar, que nos abrirá la puerta a muchas aplicaciones de los polinomios. Y como en muchos casos, esto significa que hay que aprender unas reglas  y una tabla. 
+
+:::
+
+
+::: {.callout-note icon=false}
+
+## Propiedades de la notación $O((x - x_0)^p)$
+
+$(1)$ $O((x - x_0)^n) + O((x - x_0)^n) = O((x - x_0)^n)$  
+$(2)$ Si $n < m$, entonces $O((x - x_0)^n) \cdot O((x - x_0)^m) = O((x - x_0)^{n}$  (el orden más bajo prevalece en las sumas).  
+$(3)$ $O((x - x_0)^p) \cdot O((x - x_0)^q) = O((x - x_0)^{p + q}$  
+$(4)$ Si $P_n(x)$ y $R_n(x)$ son resp. el polinomio de MacLaurin y el resto de $f(x)$ entonces el polinomio de MacLaurin de $f(Ax^k)$ se obtiene por la misma sustitución (¡observa el orden!):
+$$f(Ax^k) = P_n(Ax^k) + O(x^{k\cdot n})$$
+:::
+
+\normalsize
+
+---
+
+
+
+::: {.callout-note  icon=false}
+
+## Polinomios de Taylor (Maclaurin) que \underline{debes} conocer.
 
 \small
 + $sen(x) = x - \frac{x^3}{3!} + \frac{x^5}{5!} + \dots + (-1)^n \frac{x^{2n+1}}{(2n+1)!} + o(x^{2n+1})$  
@@ -222,5 +288,23 @@ $\quad$
 \textbf{\textcolor{blue}{Ejercicio 08A03.}} Mira en la tabla el polinomio de Taylor de $f(x) = \arctan(x)$. ¿Cuál es la derivada de $f(x)$? ¿Cuál es la derivada *término a término* de su polinomio de Taylor? Ahora sustituye $x$ por $x^2$ en la función $\frac{1}{1 + x}$ *y también en su polinomio*. Piensa en el resultado.
 
 \textbf{\textcolor{darkgreen}{Ejercicio 08C04.}} Usa la tabla y sustituye $x$ por $x^3$ en la función $\sin(x)$. Usa sympy para obtener el desarrollo de Taylor de esa función $\sin(x^3)$. Piensa en el resultado. Haz experimentos similares con otras funciones.
+
+:::
+
+---
+
+::: {.callout-tip  appearance="minimal"}
+
+\textbf{\textcolor{blue}{Ejercicio 08A04.}} Hallar el desarrollo de Maclaurin de orden 12 de la función $f(x) = \cos(x^3)$
+
+\textbf{\textcolor{blue}{Ejercicio 08A05.}} Hallar el desarrollo de Maclaurin de orden 8 de la función $f(x) = \sqrt{1+ x^4}$
+
+\textbf{\textcolor{blue}{Ejercicio 08A06.}} Este ejercicio ilustra las propiedades (1) y (2) de la notación $O$. ¿Cuál es la parte principal en $x_0 =0$ de la función $f(x) = \sin(x^2) - \log{1 + x^4}$? ¿Y cuál es la parte principal en $x_0 =0$ de la función $f(x) = \cos(x) - \log{1 - x^2}$? ¿Ves la diferencia entre ambos casos? La palabra clave aquí es *cancelación*.
+
+\textbf{\textcolor{blue}{Ejercicio 08A07.}} Hallar el orden y la parte principal en $x_0 = 0$ de $$f(x) = e^x + \log(1+ x)−1−2x−\frac{x^3}{2}$$
+
+\textbf{\textcolor{firebrick}{Ejercicios Hoja 2B GITI 25-26.}} 24 y 25(a).
+
+\textbf{\textcolor{darkgreen}{Ejercicio 08C05.}} Comprueba estos resultados usando el notebook de la sesión.
 
 :::
