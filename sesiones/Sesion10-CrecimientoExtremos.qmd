@@ -1,0 +1,155 @@
+---
+title: "Sesión 10. Crecimiento y extremos de una función."
+lang: es
+format:
+  beamer:
+    theme: Madrid
+    fonttheme: default
+    fontsize: 10pt
+    toc: false          # handled manually below; pandoc's toc:true produces a stray }
+    section-titles: false   # \AtBeginSection in preamble.txt creates the section slide
+    slide-level: 2      # without this, top-level (#) headings become frames directly
+                         # instead of \section commands, so \tableofcontents has nothing
+                         # to list and \AtBeginSection never fires
+    include-in-header:
+      - preambulo_comun.tex
+      - text: |
+          \newcommand{\SesionTitulo}{Sesión 10 \\ Crecimiento y extremos de una función.}
+  html: default
+  docx: default
+---
+
+---
+
+**Sesión 10. Crecimiento y extremos de una función.**
+
+![](./portadasSesiones/10-CurrucaCapirotada.JPG){width="80%" fig-align="center"}
+
+Curruca capirotada, Villaviciosa, Asturias.
+
++ [Notebook de la sesión en Colab](https://colab.research.google.com/drive/1PRPhNHIJUiIC7ZQEekBShl3-Os3MsQrz?usp=sharing)
+
+
+---
+
+```{=latex}
+  
+  \frametitle{Tabla de contenidos}
+  \tableofcontents
+
+```
+
+
+# Introducción. 
+
+\small
+
+Cuando los métodos del Cálculo aparecieron en la época de Newton, el contenido de esta sesión fue, sin duda y entre otras muchas, una de las principales razones que causaron un enorme interés en comprender la, por entonces, *nueva matemática*. Una vez que un problema se traducía al lenguaje de las funciones, el Cálculo ofrecía en muchos casos un procedimiento práctico para encontrar la solución óptima a ese problema de entre todas las posibles. El Cálculo fue y sigue siendo por esa razón el principal fundamento de los métodos de Optimización. Hasta entonces la técnica, la industria y la ciencia habían avanzado a menudo a tientas, por prueba y error y sin tener la certeza sobre si la solución alcanzada era la mejor posible. Al despejar ese camino los métodos del Cálculo demostraron una capacidad transformadora que los convierten, sin exageración, en uno de los más valiosos  patrimonios intelectuales de la humanidad. 
+
+$\quad$
+
+Pero descendamos a un terreno más concreto. En esta sesión vamos a aprender a utilizar las derivadas para analizar el crecimiento y decrecimiento de una función. Veremos también cómo caracterizar los valores extremos (máximos o mínimos) que la función puede alzanzar en un conjunto de valores de la variable. Y lo ilustraremos con algunos ejemplos que permiten atisbar el alcance de estos métodos.  
+
+\normalsize
+
+# Crecimiento y decrecimiento de una función. Extremos locales. {.fragile}
+
+::: {.callout-note  icon=false}
+
+## Vocabulario básico sobre crecimiento.
+
+\small
+
+Una función $f(x)$ es **creciente** en un intervalo $I$ si para cualesquiera dos puntos $a < b$ de $I$ se cumple $f(a)\leq f(b)$. La función es **estrictamente creciente** si siempre se cumple la desigualdad estricta $f(a) < f(b)$.
+
+De modo análogo se define **decreciente** y **estrictamente decreciente**. 
+
+Desde el principio queremos invitarte a pensar en que, incluso en el caso de funciones sencillas estrictamente crecientes o decrecientes, existen cuatro tipos básicos de comportamiento, de (a) a (d) en esta figura.
+
+\qquad\qquad\qquad\qquad\qquad![](./fig/S10-FuncionesMonotonas.png){width="35%"}
+
+Las gráficas de muchas funciones sencillas se pueden ver como una concatenación de arcos de uno de estos tipos.
+
+\normalsize
+
+:::
+
+---
+
+::: {.callout-note  icon=false}
+
+## Y vocabulario básico sobre extremos.
+
+\small
+
+La función $f(x)$ alcanza un **máximo local o relativo** en $x_0$ si existe un intervalo $I$ que contiene a $x_0$ tal que $f(x) \leq f(x_0)$ para todo $x$ de $I$ (y con $x$ en el dominio de $f$). De modo análogo se define un **mínimo local o relativo.** Los máximos y mínimos locales se denominan conjuntamente **extremos locales.** Busca en la siguiente figura arcos de los tipos (a) hasta (d).
+
+\qquad\qquad\qquad![](./fig/S10-ExtremosLocales.png){width="70%"}
+
+Cuando $f(x)\geq f(x_0)$ para todos los $x$ del dominio de $f$ decimos que $f$ alcanza un **máximo absoluto** en $x_0$. 
+
+\normalsize
+
+:::
+
+# Relación entre crecimiento y signo de la derivada. 
+
+::: {.callout-note  icon=false}
+
+## Interpretación del signo de la derivada
+
+\small
+
+Aunque ya lo avanzamos al discutir el Teorema de Rolle, vamos a hacer un enunciado formal. Sea $f$ una función derivable en todos los puntos de un intervalo $I$ contenido en su dominio. Entonces:
+
+$(1)$ $f$ es creciente en $I$ si y sólo si$f'(x)\geq 0$ para todo $x$ de $I$.  
+$(2)$ $f$ es decreciente en $I$ si y sólo si $f'(x)\leq 0$ para todo $x$ de $I$.  
+$(3)$ $f$ es *estrictamente* creciente en $I$ si y sólo si $f'(x)> 0$ para todo $x$ de $I$.  
+$(4)$ $f$ es *estrictamente* decreciente en $I$ si y sólo si $f'(x)<0$ para todo $x$ de $I$.   
+
+De esa manera, si sabemos analizar el signo de $f'(x)$, entenderemos el crecimiento y decrecimiento de $f(x)$. 
+
+Con esta [construcción GeoGebra](https://www.geogebra.org/m/rx5HHTT8) puedes explorar estas ideas.
+
+\normalsize
+
+:::
+
+
+::: {.callout-tip  appearance="minimal"}
+
+\textbf{\textcolor{blue}{Ejercicio 10A01.}} Analizar el signo de la derivada e identificar intervalos de crecimiento y decrecimiento para la función:
+$$f(x) = (x^2 −3x + 1)e^x$$
+:::
+
+# Relación entre extremos locales y signo de la derivada. Criterio de la derivada primera.
+
+Blablabla
+
+
+# Derivadas de orden superior y extremos locales.
+
+Taylor es la idea clave.
+
+
+---
+
+::: {.callout-tip  appearance="minimal"}
+
+\textbf{\textcolor{blue}{Ejercicio 09A01.}} Usar el método que hemos descrito (o L'Hôpital si conviene) para calcular los siguientes límites:
+
+$(a) \quad \displaystyle\lim_{x\to 0}\dfrac{x - \sin(x)}{x^3}$\qquad
+$(b) \quad \displaystyle\lim_{x\to 0}\dfrac{\arcsin(x^2) \cos(x) \tan(\sqrt[3]{x}) \log(1+ x^{2/3})}{x^3 + \sin(x^5)}$
+
+
+$(c) \quad \displaystyle\lim_{x\to 0}\dfrac{e^{2x} - \cos{2x}}{e^{5x} - \cos{3x}}$. \qquad 
+$(d) \quad \displaystyle\lim_{x\to 0}\dfrac{2\cos{x} + x^2 - 2}{x^4}$.
+
+
+$(e) \quad \displaystyle\lim_{x\to 0}\dfrac{1 - \sqrt{1 + x^4}\cos(2x^2)}{x\, (\tan x -\sinh x)}$ \qquad 
+$(f)\quad \displaystyle\color{red}{\lim_{ x\to 2}}\color{black}\dfrac{x^3 - 3x^2 + 4}{x^3 - x^2 -8x + 12}$
+
+:::
+
+\normalsize
+

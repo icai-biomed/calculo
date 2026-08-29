@@ -110,7 +110,7 @@ $$P_3(x_0) = f(x_0),\quad P'_3(x_0) = f'(x_0),\quad P''_3(x_0) = f''(x_0),\quad 
 
 ## Definición del error para orden $n$
 
-El **resto** del polinomio de Taylor de de orden $n$  de $f$ en $x_0$ se define como la diferencia entre el polinomio y la función. Y el **error* es el valor absoluto del resto:
+El **resto** del polinomio de Taylor de de orden $n$  de $f$ en $x_0$ se define como la diferencia entre el polinomio y la función. Y el **error** es el valor absoluto del resto:
 \small
 $$
 Rf_{n;x_0}(x) = Pf_{n;x_0}(x) - f(x),\qquad Rf_{n;x_0}(x)= |Ef_{n;x_0}(x)|
@@ -213,7 +213,7 @@ $$
 
 A veces necesitaremos definir la parte principal de una función sin depender del polinomio de Taylor (que a veces no existe, ver el notebook de esta sesión). En general decimos que $PP_{x_0}(f(x)) = A (x - x_0)^p$ cuando
 $$
-\lim_{x\to x_0}\dfrac{f(x)}{A (x - x_0)^p} = 1 \quad \text{ ¡}\,p \text{ no es necesariamente natural!}
+\lim_{x\to x_0}\dfrac{f(x)}{A (x - x_0)^p} = 1 \quad \text{ ¡aquí }\,p \text{ no es necesariamente natural!}
 $$
 :::
 
@@ -283,32 +283,35 @@ $\quad$
 
 ::: {.callout-tip  appearance="minimal"}
 
-\textbf{\textcolor{darkgreen}{Ejercicio 08C02.}} Usa el notebook de esta sesión para añadir dos términos más a las dos últimas fórmulas de esta tabla. 
+\textbf{\textcolor{blue}{Ejercicio 08A02.}} Hallar el desarrollo de Maclaurin de orden 12 de la función $f(x) = \cos(x^3)$
 
-\textbf{\textcolor{darkgreen}{Ejercicio 08C03.}} Usa el notebook de esta sesión para hallar el polinomio de Taylor de orden alto (por ejemplo $n = 8$) de $f(x) = \dfrac{1}{1 + x}$.
+\textbf{\textcolor{blue}{Ejercicio 08A03.}} Hallar el desarrollo de Maclaurin de orden 8 de la función $f(x) = \sqrt{1+ x^4}$
 
-\textbf{\textcolor{blue}{Ejercicio 08A02.}} Mira en la tabla el polinomio de Taylor de $$f(x) = \log(1 + x)$$ ¿Cuál es la derivada de $f(x)$? ¿Cuál es la derivada *término a término* de su polinomio de Taylor? Piensa en el resultado.
+\textbf{\textcolor{blue}{Ejercicio 08A04.}} Hallar el desarrollo de Maclaurin de orden 8 de la función $f(x) = \cos(x^3)\sqrt{1+ x^4}$.
 
-\textbf{\textcolor{blue}{Ejercicio 08A03.}} Mira en la tabla el polinomio de Taylor de $f(x) = \arctan(x)$. ¿Cuál es la derivada de $f(x)$? ¿Cuál es la derivada *término a término* de su polinomio de Taylor? Ahora sustituye $x$ por $x^2$ en la función $\frac{1}{1 + x}$ *y también en su polinomio*. Piensa en el resultado.
+\textbf{\textcolor{blue}{Ejercicio 08A05.}} Este ejercicio ilustra las propiedades (1) y (2) de la notación $O$. ¿Cuál es la parte principal en $x_0 =0$ de la función $f(x) = \sin(x^2) - \log{1 + x^4}$? ¿Y cuál es la parte principal en $x_0 =0$ de la función $f(x) = \cos(x) - \log{1 - x^2}$? ¿Ves la diferencia entre ambos casos? La palabra clave aquí es *cancelación*.
 
-\textbf{\textcolor{darkgreen}{Ejercicio 08C04.}} Usa la tabla y sustituye $x$ por $x^3$ en la función $\sin(x)$. Usa sympy para obtener el desarrollo de Taylor de esa función $\sin(x^3)$. Piensa en el resultado. Haz experimentos similares con otras funciones.
+\textbf{\textcolor{blue}{Ejercicio 08A06.}} Hallar la parte principal en $x_0 = 0$ de $$f(x) = e^x + \log(1+ x)−1−2x−\frac{x^3}{2}$$
+
+\textbf{\textcolor{firebrick}{Ejercicios Hoja 2B GITI 25-26.}} 24 y 25(a).  
+
+\textbf{\textcolor{darkgreen}{Ejercicio 08C05.}} Comprueba estos resultados usando el notebook de la sesión.
 
 :::
+
 
 ---
 
 ::: {.callout-tip  appearance="minimal"}
 
-\textbf{\textcolor{blue}{Ejercicio 08A04.}} Hallar el desarrollo de Maclaurin de orden 12 de la función $f(x) = \cos(x^3)$
+\textbf{\textcolor{darkgreen}{Ejercicio 08C02.}} Usa el notebook de esta sesión para añadir dos términos más a las dos últimas fórmulas de la tabla de polinomios de Taylor. 
 
-\textbf{\textcolor{blue}{Ejercicio 08A05.}} Hallar el desarrollo de Maclaurin de orden 8 de la función $f(x) = \sqrt{1+ x^4}$
+\textbf{\textcolor{darkgreen}{Ejercicio 08C03.}} Usa el notebook de esta sesión para hallar el polinomio de Taylor de orden alto (por ejemplo $n = 8$) de $f(x) = \dfrac{1}{1 + x}$.
 
-\textbf{\textcolor{blue}{Ejercicio 08A06.}} Este ejercicio ilustra las propiedades (1) y (2) de la notación $O$. ¿Cuál es la parte principal en $x_0 =0$ de la función $f(x) = \sin(x^2) - \log{1 + x^4}$? ¿Y cuál es la parte principal en $x_0 =0$ de la función $f(x) = \cos(x) - \log{1 - x^2}$? ¿Ves la diferencia entre ambos casos? La palabra clave aquí es *cancelación*.
+\textbf{\textcolor{blue}{Ejercicio 08A07.}} Mira en la tabla el polinomio de Taylor de $$f(x) = \log(1 + x)$$ ¿Cuál es la derivada de $f(x)$? ¿Cuál es la derivada *término a término* de su polinomio de Taylor? Piensa en el resultado.
 
-\textbf{\textcolor{blue}{Ejercicio 08A07.}} Hallar el orden y la parte principal en $x_0 = 0$ de $$f(x) = e^x + \log(1+ x)−1−2x−\frac{x^3}{2}$$
+\textbf{\textcolor{blue}{Ejercicio 08A08.}} Mira en la tabla el polinomio de Taylor de $f(x) = \arctan(x)$. ¿Cuál es la derivada de $f(x)$? ¿Cuál es la derivada *término a término* de su polinomio de Taylor? Ahora sustituye $x$ por $x^2$ en la función $\frac{1}{1 + x}$ *y también en su polinomio*. ¿Hay relación el ejercicio anterior?
 
-\textbf{\textcolor{firebrick}{Ejercicios Hoja 2B GITI 25-26.}} 24 y 25(a).  
-
-\textbf{\textcolor{darkgreen}{Ejercicio 08C05.}} Comprueba estos resultados usando el notebook de la sesión.
+\textbf{\textcolor{darkgreen}{Ejercicio 08C04.}} Usa la tabla y sustituye $x$ por $x^3$ en la función $\sin(x)$. Usa sympy para obtener el desarrollo de Taylor de esa función $\sin(x^3)$. Piensa en el resultado. Haz experimentos similares con otras funciones.
 
 :::

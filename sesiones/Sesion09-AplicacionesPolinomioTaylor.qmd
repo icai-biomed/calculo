@@ -27,7 +27,7 @@ format:
 
 Tarabilla europea, Villaviciosa, Asturias.
 
-+ [Notebook de la sesión en Colab](https://colab.research.google.com/drive/1q-nuGvTMHt2TE9X3iZk_wwnMdWuRyWZt?usp=sharing)
++ [Notebook de la sesión en Colab](https://colab.research.google.com/drive/1ukwLVqFnomVJNxsBhNZAR-UhmgpRi6RN?usp=sharing)
 
 
 ---
@@ -46,7 +46,8 @@ Ahora que sabemos qué son los polinomios de Taylor y hemos aprendido a calcular
 
 $\quad$
 
-Al discutir esta segunda aplicación vamos a profundizar más en el resto del polinomio de Taylor, utilizando la *fórmula del error de Lagrange*. Esta fórmula nos va a permitir estimar de qué orden de magnitud (décimas, milésimas, etc.) es el error que cometemos al aproximar una función por el valor de su polinomio de Taylor.
+Al discutir esta segunda aplicación vamos a profundizar más en el resto del polinomio de Taylor, utilizando la *fórmula del error de Lagrange*. Esta fórmula nos va a permitir estimar de qué orden de magnitud (décimas, milésimas, etc.) es el error que cometemos al aproximar una función por el valor de su polinomio de Taylor. La fórmula de Lagrange permite entender el comportamiento y el tamaño del resto al describirlo como una combinación de factores cuyos comportamientos son más sencillos de analizar por separado.
+
 
 
 # Límites mediante polinomios de Taylor {.fragile}
@@ -92,13 +93,16 @@ Si las derivadas se anulan volvemos a repetir el proceso. Eso es, en esencia, la
 
 \textbf{\textcolor{blue}{Ejercicio 09A01.}} Usar el método que hemos descrito (o L'Hôpital si conviene) para calcular los siguientes límites:
 
-$(a) \quad \displaystyle\lim_{x\to 0}\dfrac{\arcsin(x^2) \cos(x) \tan(\sqrt[3]{x}) \log(1+ x^{2/3})}{x^3 + \sin(x^5)}$
+$(a) \quad \displaystyle\lim_{x\to 0}\dfrac{x - \sin(x)}{x^3}$\qquad
+$(b) \quad \displaystyle\lim_{x\to 0}\dfrac{\arcsin(x^2) \cos(x) \tan(\sqrt[3]{x}) \log(1+ x^{2/3})}{x^3 + \sin(x^5)}$
 
 
-$(b) \quad \displaystyle\lim_{x\to 0}\dfrac{e^{2x} - \cos{2x}}{e^{5x} - \cos{3x}}$. \qquad $(c) \quad \displaystyle\lim_{x\to 0}\dfrac{2\cos{x} + x^2 - 2}{x^4}$.
+$(c) \quad \displaystyle\lim_{x\to 0}\dfrac{e^{2x} - \cos{2x}}{e^{5x} - \cos{3x}}$. \qquad 
+$(d) \quad \displaystyle\lim_{x\to 0}\dfrac{2\cos{x} + x^2 - 2}{x^4}$.
 
 
-$(d) \quad \displaystyle\lim_{x\to 0}\dfrac{1 - \sqrt{1 + x^4}\cos(2x^2)}{x\, (\tan x -\sinh x)}$ \qquad $(e)\quad \displaystyle\color{red}{\lim_{ x\to 2}}\color{black}\dfrac{x^3 - 3x^2 + 4}{x^3 - x^2 -8x + 12}$
+$(e) \quad \displaystyle\lim_{x\to 0}\dfrac{1 - \sqrt{1 + x^4}\cos(2x^2)}{x\, (\tan x -\sinh x)}$ \qquad 
+$(f)\quad \displaystyle\color{red}{\lim_{ x\to 2}}\color{black}\dfrac{x^3 - 3x^2 + 4}{x^3 - x^2 -8x + 12}$
 
 :::
 
@@ -106,20 +110,82 @@ $(d) \quad \displaystyle\lim_{x\to 0}\dfrac{1 - \sqrt{1 + x^4}\cos(2x^2)}{x\, (\
 
 ---
 
+\small
+
+::: {.callout-note  icon="false"}
+
+## Método de cálculo de la parte principal en un caso particular importante 
+
+Sea $f(x)$ un **infinitésimo en $0$** y sea 
+$$PP_0(f(x)) = A x^p$$
+Si $g(x)$ es un infinitésimo en $x_0$, entonces:
+$$PP_{x_0}(f(g(x))) = A\cdot PP_{x_0}((g(x))^p)$$
+Por ejemplo, $PP_0(1 - \cos x) = \frac{x^2}{2}$, luego $A = 1/2, p = 2$ en este caso. Con eso:
+$$PP(1 - \cos{(\sin x)}) = \dfrac{PP\left(\sin^2 x\right)}{2} = \dfrac{x^2}{2}$$
+
+
+:::
+
 
 ::: {.callout-tip  appearance="minimal"}
 
-\textbf{\textcolor{firebrick}{Ejercicios Hoja 2B GITI 25-26.}} 24 y 25(a).
+\textbf{\textcolor{firebrick}{Ejercicio 09B01.}} Calcula la parte principal de $e^{\sin^2 x} - 1$.
 
-\textbf{\textcolor{blue}{Ejercicio 08A04.}} Hallar el desarrollo de Maclaurin de orden 12 de la función $f(x) = \cos(x^3)$
+\textbf{\textcolor{firebrick}{Ejercicio 09B02.}} Comprueba que si $f(x)$ es un infinitésimo en $x_0$ entonces $PP_{x_0}(\log(1 + f(x))) = PP_{x_0}(f(x))$.
 
-\textbf{\textcolor{blue}{Ejercicio 08A05.}} Hallar el desarrollo de Maclaurin de orden 8 de la función $f(x) = \sqrt{1+ x^4}$
+\textbf{\textcolor{firebrick}{Ejercicios Hoja 2B GITI 25-26.}} 22 y 24.
 
-\textbf{\textcolor{blue}{Ejercicio 08A06.}} Este ejercicio ilustra las propiedades (1) y (2) de la notación $O$. ¿Cuál es la parte principal en $x_0 =0$ de la función $f(x) = \sin(x^2) - \log{1 + x^4}$? ¿Y cuál es la parte principal en $x_0 =0$ de la función $f(x) = \cos(x) - \log{1 - x^2}$? ¿Ves la diferencia entre ambos casos? La palabra clave aquí es *cancelación*.
+:::
 
-\textbf{\textcolor{blue}{Ejercicio 08A07.}} Hallar el orden y la parte principal en $x_0 = 0$ de $$f(x) = e^x + \log(1+ x)−1−2x−\frac{x^3}{2}$$
+# Fórmula de Lagrange para el resto del polinomio de Taylor
 
+\small
 
-\textbf{\textcolor{darkgreen}{Ejercicio 08C05.}} Comprueba estos resultados usando el notebook de la sesión.
+::: {.callout-note  icon="false"}
+
+## Descripción de la estructura del resto
+
+Si $f$ es $n + 1$ veces derivable en un entorno de $x_0$ entonces el *resto* $R_n$ del polinomio de Taylor de orden $n$ para $f$ en $x_0$ viene dado por:
+$$
+R_n(x) = \dfrac{f^{(n + 1)}(c)}{(n+1)!}(x - x_0)^{n + 1}
+$$
+con $c$ un valor (en general desconocido) situado entre $x$ y $x_0$. 
+
+:::
+
+\small
+
+**Observaciones:** 
+
++ La fórmula dice que $R_n(x)$ es casi idéntico al término de orden $n + 1$ del polinomio de Taylor, salvo porque la derivada se calcula en $c$ y no en $x_0$.
++ Aunque $c$ es normalmente desconocido, al saber en qué intervalo se encuentra a menudo podemos fácilmente **acotar** el valor (absoluto) de la derivada $n + 1$ en ese intervalo y así acotar el error al aproximar $f(x)$ por el valor del polinomio de Taylor $P_n(x)$.
+
+\normalsize
+
+---
+
+::: {.callout-tip  appearance="minimal"}
+
+\small
+
+\textbf{\textcolor{blue}{Ejercicio 09A02.}} Calcular de forma aproximada $\sqrt{1.02}$ utilizando el polinomio de Maclaurin de orden 2 de $f(x) = \sqrt{1 + x}$. Usar la fórmula de Lagrange para estimar el error cometido.
+
+$\quad$
+
+\textbf{\textcolor{darkgreen}{Ejercicio 09C01.}} Usa el notebook para revisar este resultado. Supongamos que quieres calcular ese valor con nueve cifras decimales de precisión, de manera que si las muestras en la pantalla de una calculadora todas sean correctas. Busca, por prueba y error, qué orden del polinomio debes usar.
+
+$\quad$
+
+\textbf{\textcolor{blue}{Ejercicio 09A03.}} Calcula $e$ con un error menor que $0.0001$. 
+
+$\quad$
+
+\textbf{\textcolor{darkgreen}{Ejercicio 09C02.}} Usa el notebook para confirmar que tu resultado del anterior ejercicio es correcto.
+
+$\quad$
+
+\textbf{\textcolor{firebrick}{Ejercicios Hoja 2B GITI 25-26.}} 18 y 19.
+
+\normalsize
 
 :::
