@@ -1,0 +1,310 @@
+---
+title: "Sesión 08. Polinomios de Taylor."
+lang: es
+format:
+  beamer:
+    theme: Madrid
+    fonttheme: default
+    fontsize: 10pt
+    toc: false          # handled manually below; pandoc's toc:true produces a stray }
+    section-titles: false   # \AtBeginSection in preamble.txt creates the section slide
+    slide-level: 2      # without this, top-level (#) headings become frames directly
+                         # instead of \section commands, so \tableofcontents has nothing
+                         # to list and \AtBeginSection never fires
+    include-in-header:
+      - preambulo_comun.tex
+      - text: |
+          \newcommand{\SesionTitulo}{Sesión 08 \\ Polinomios de Taylor.}
+  html: default
+  docx: default
+---
+
+---
+
+**Sesión 08. Polinomios de Taylor.**
+
+![](./portadasSesiones/08-CogujadaMontesinaArganda.png){width="80%"}
+
+Cogujada Montesina, Arganda del Rey, Madrid.
+
++ [Notebook de la sesión en Colab](https://colab.research.google.com/drive/1q-nuGvTMHt2TE9X3iZk_wwnMdWuRyWZt?usp=sharing)
+
+
+---
+
+```{=latex}
+  
+  \frametitle{Tabla de contenidos}
+  \tableofcontents
+
+```
+
+
+# Introducción. 
+
+Los polinomios de Taylor surgen como una continuación natural de la idea de recta tangente. Dijimos en su momento que la recta tangente no puede ayudarnos con la idea de curvatura de una función, simplemente *porque las rectas no se curvan*. Pero los polinomios de grado dos, cuyas gráficas son parábolas, sí que se curvan. Así que podemos preguntarnos ¿cuál es la parábola que mejor aproxima a $f(x)$ cerca de $x_0$? Y más en general, dado un número natural $n= 1, 2, 3,\ldots$, ¿cuál es el polinomio de grado $n$ que mejor aproxima a $f(x)$ cerca de $x_0$?
+
+$\quad$ 
+
+En esta sesión vamos a conocer la respuesta que da el Cálculo a esa pregunta. De momento, antes de sumergirnos en las ecuaciones, empezaremos explorando la idea mediante esta [construcción GeoGebra](https://www.geogebra.org/m/bnqzrhch).
+
+$\quad$
+
+También vamos a dedicar parte de la sesión a entender en detalle cuál es el error que se comete al sustituir una función por su polinomio de Taylor. En próximas sesiones pondremos a trabajar a estos polinomios y veremos algunas de sus muchas aplicaciones.
+
+
+# Polinomio de Taylor {.fragile}
+
+::: {.callout-note  icon=false}
+
+## Definición y parte principal de una función.
+
+Supongamos que $f$ es una función derivable $n$ veces en $x_0$. Entonces su **polinomio de Taylor de orden $n$ en $x_0$** es:
+\scriptsize
+$$
+Pf_{n;x_0}(x) = \underbrace{f(x_0) + f'(x_0)(x - x_0)}_{\text{recta tgte, en }x_0}+ \dfrac{f'(x_0)}{2!}(x - x_0) + \dfrac{f^{(3)}(x_0)}{3!}(x - x_0)^3 + \cdots + 
+ \dfrac{f^{(n)}(x_0)}{n!}(x - x_0)^n
+$$
+\normalsize
+La **parte principal** de $f$ en $x_0$ es el término no nulo de grado más bajo en este polinomio. 
+:::
+
+**Observaciones:** 
+
++ $k! = k \cdot (k - 1)\cdot\cdots\cdot 3\cdot 2\cdot 1$ es el *factorial* de $k$. Recuerda $0! = 1$.
++ Fíjate en que, como hemos indicado, los dos primeros términos definen la recta tangente a $f$ en $x_0$.
++ En la próxima sesión veremos que la parte principal sirve para resolver muchas indeterminaciones, generalizando la Regla de L'Hôpital que tal vez ya conoces.
+
+---
+
+**Observaciones adicionales:** 
+
+\small
+
++ Cuando no haya riesgo de confusión simplificaremos la notación escribiendo simplemente $P_n(x)$  
++ El polinomio de Taylor en el caso especial en que $x_0 = 0$ se denomina polinomio de Maclaurin.  
++ En general, no es fácil hallar una fórmula sencilla para la derivada de orden $n$ de una función y, por consiguiente, para el polinomio de Taylor de orden $n$. Los primeros dos ejercicios exploran algunos casos en que sí existen esas fórmulas.  
++ El ejercicio  08B01 ilustra la idea de que: *"si quieres que dos funciones se parezcan mucho, haz que tengan las mismas derivadas"*.
+
+\normalsize
+
+::: {.callout-tip  appearance="minimal"}
+
+\textbf{\textcolor{blue}{Ejercicio 08A01.}} Hallar: (a) el polinomio de Maclaurin de orden 2 de $f(x) = (x + 2)e^x$. (b) el polinomio de Taylor de orden $n$ de $f(x) = e^x$ en $x = 0$ y $x = 1$.
+
+\textbf{\textcolor{firebrick}{Ejercicio 08B01.}} Comprueba que el polinomio de Taylor de orden 3 cumple:
+\small
+$$P_3(x_0) = f(x_0),\quad P'_3(x_0) = f'(x_0),\quad P''_3(x_0) = f''(x_0),\quad P'''_3(x_0) = f'''(x_0).$$
+\normalsize
+
+\textbf{\textcolor{firebrick}{Ejercicios Hoja 2B GITI 25-26.}} 17. 
+
+\textbf{\textcolor{darkgreen}{Ejercicio 08C01.}} Usa el notebook de esta sesión para rehacer el ejercicio 08A01. 
+
+:::
+
+# Error al aproximar $f$ por su polinomio de Taylor
+
+::: {.callout-note  icon=false}
+
+## Definición del error para orden $n$
+
+El **resto** del polinomio de Taylor de de orden $n$  de $f$ en $x_0$ se define como la diferencia entre el polinomio y la función. Y el **error* es el valor absoluto del resto:
+\small
+$$
+Rf_{n;x_0}(x) = Pf_{n;x_0}(x) - f(x),\qquad Rf_{n;x_0}(x)= |Ef_{n;x_0}(x)|
+$$
+\normalsize
+Si no hay ambigüedad escribiremos simplemente $R_n$ . La intuición nos dice que, en condiciones normales, el error $E_n$ se hace muy pequeño cuando $x\to x_0$.  ¿Podemos hacer más precisa esa idea? El error es pequeño *¿comparado con qué*? Esta última pregunta contiene la idea clave.
+
+:::
+
+::: {.callout-tip  appearance="minimal"}
+
+\textbf{\textcolor{darkgreen}{Ejercicio 08A0.}} Completa la siguiente expresión (asumimos que $A, B\neq 0$ y que $p, q \geq 0$, todos números reales):
+\small
+$$
+\lim_{x\to x_0}\dfrac{A\, (x - x_0)^p}{B\, (x - x_0)^q} = 
+\begin{cases}
+?? & \text{ si } p\, >\, q \\
+?? & \text{ si } p\, =\, q \\
+?? & \text{ si } p\, <\, q \\
+\end{cases}
+$$
+\normalsize
+
+:::
+
+
+---
+
+
+::: {.callout-note  icon=false}
+
+## Infinitésimos y su orden
+
+El objetivo del anterior ejercicio es pensar en $m$ y $n$ en términos de *velocidad*. ¿Quién tiende a 0 más rápido, el numerador o el denominador? 
+
+Vamos a añadir un poco de vocabulario a la discusión. Una función que tiende a $0$ en $x_0$ es un **infinitésimo en $x_0$**.  Las funciones como $A(x - x_0)^p$ (para $p>0$) son los **infinitésimos estándar en $x_0$**. Y definen una escala natural de velocidad. Cuando tenemos un infinitésimo $f(x)$ en $x_0$ y nos preguntamos *¿cómo de rápido tiende a 0?* podemos buscar un infinitésimo estándar para el que se cumpla:
+$$
+\lim_{x\to x_0}\dfrac{f(x)}{A\, (x - x_0)^p} = 1 
+$$
+Este 1 significa "tienden a 0 exactamente igual de rápido". En ese caso decimos que $f(x)$ es un infinitésimo de orden $n$ en $x_0$. 
+
+:::
+
+
+
+::: {.callout-tip  appearance="minimal"}
+
+\textbf{\textcolor{darkgreen}{Ejercicio 08C05.}}
+
+Usa el notebook de esta sesión para explorar esta idea del orden de un infinitésimo.  
+
+:::
+
+---
+
+\small
+
+::: {.callout-note  icon=false}
+
+
+## Orden del resto $R_n$. Notación $O((x - x_0)^p)$.
+
+¿Qué tiene que ver esta discusión de los infinitésimos con el resto $R_n$ del polinomio de Taylor? El siguiente resultado, que no vamos a demostrar, muestra la conexión:
+
+
+::: {.block}
+
+### Orden del resto del polinomio de Taylor
+
+El *resto* $R_n$ (del polinomio de Taylor de orden $n$ para $f$ en $x_0$) **es un infinitésimo de orden mayor que $n$** en $x_0$.
+:::
+
+Vamos a usar mucho frases como esta última, así que merece la pena introducir esta notación;
+
+El símbolo $O((x - x_0)^p)$ significa **un infinitésimo de orden mayor que $n$** en $x_0$. 
+
+:::
+
+
+::: {.callout-tip  appearance="minimal"}
+
+\textbf{\textcolor{firebrick}{Ejercicio 08B02.}} **IMPORTANTE:** Recuerda que el primer término no mulo del polinomio de Taylor de $f(x)$ en $x_0$ es la parte principal de $f(x)$, que llamaremos $PP_{x_0}(f(x))$. Comprueba entonces que 
+$$
+\lim_{x\to x_0}\dfrac{f(x)}{PP_{x_0}(f(x))} = 1 
+$$
+**Pista:** rellena la interrogación en $f(x) = PP_{x_0}(f(x)) + O((x - x_0))^{??}$
+
+:::
+
+
+\normalsize
+
+---
+
+\small
+
+::: {.callout-warning icon=false}
+
+## Trabajando con polinomios de Taylor
+
+En esta y en las próximas sesiones vamos a aprender a calcular polinomios de Taylor de manera eficiente, sin necesidad de calcular una a una las $n$ derivadas que aparecen en su expresión. Esta es una habilidad similar a derivar, que nos abrirá la puerta a muchas aplicaciones de los polinomios. Y como en muchos casos, esto significa que hay que aprender unas reglas  y una tabla. 
+
+:::
+
+
+::: {.callout-note icon=false}
+
+## Propiedades de la notación $O((x - x_0)^p)$
+
+$(1)$ $O((x - x_0)^n) + O((x - x_0)^n) = O((x - x_0)^n)$  
+$(2)$ Si $n < m$, entonces $O((x - x_0)^n) \cdot O((x - x_0)^m) = O((x - x_0)^{n}$  (el orden más bajo prevalece en las sumas).  
+$(3)$ $O((x - x_0)^p) \cdot O((x - x_0)^q) = O((x - x_0)^{p + q}$  
+$(4)$ Si $P_n(x)$ y $R_n(x)$ son resp. el polinomio de MacLaurin y el resto de $f(x)$ entonces el polinomio de MacLaurin de $f(Ax^k)$ se obtiene por la misma sustitución (¡observa el orden!):
+$$f(Ax^k) = P_n(Ax^k) + O(x^{k\cdot n})$$
+:::
+
+\normalsize
+
+---
+
+
+
+::: {.callout-note  icon=false}
+
+## Polinomios de Taylor (Maclaurin) que \underline{debes} conocer.
+
+\small
++ $sen(x) = x - \frac{x^3}{3!} + \frac{x^5}{5!} + \dots + (-1)^n \frac{x^{2n+1}}{(2n+1)!} + o(x^{2n+1})$  
+
+$\quad$ 
+
++ $cos(x) = 1 - \frac{x^2}{2!} + \frac{x^4}{4!} + \dots + (-1)^n \frac{x^{2n}}{(2n)!} + o(x^{2n})$  
+
+$\quad$ 
+
++ $sh(x) = x + \frac{x^3}{3!} + \frac{x^5}{5!} + \dots + \frac{x^{2n+1}}{(2n+1)!} + o(x^{2n+1})$  
+
+$\quad$ 
+
++ $ch(x) = 1 + \frac{x^2}{2!} + \frac{x^4}{4!} + \dots + \frac{x^{2n}}{(2n)!} + o(x^{2n})$  
+
+$\quad$ 
+
++ $e^x = 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \dots + \frac{x^n}{n!} + o(x^n)$  
+
+$\quad$ 
+
++ $Log(1 + x) = x - \frac{x^2}{2} + \frac{x^3}{3} + \dots + (-1)^{n-1}\frac{x^n}{n} + o(x^n)$  
+
+$\quad$ 
+
++ $arctg(x) = x - \frac{x^3}{3} + \frac{x^5}{5} + \dots + (-1)^n \frac{x^{2n+1}}{2n+1} + o(x^{2n+1})$  
+
+$\quad$ 
+
++ $\sqrt{1 + x} = 1 + \frac{x}{2} - \frac{x^2}{8} + \frac{x^{3}}{16} + o(x^{3})$  
+
+$\quad$ 
+
++ $\tan(x) = x + \frac{x^3}{3} + \frac{2}{15}x^5 + o(x^{5})$
+
+\normalsize
+:::
+
+
+---
+
+::: {.callout-tip  appearance="minimal"}
+
+\textbf{\textcolor{darkgreen}{Ejercicio 08C02.}} Usa el notebook de esta sesión para añadir dos términos más a las dos últimas fórmulas de esta tabla. 
+
+\textbf{\textcolor{darkgreen}{Ejercicio 08C03.}} Usa el notebook de esta sesión para hallar el polinomio de Taylor de orden alto (por ejemplo $n = 8$) de $f(x) = \dfrac{1}{1 + x}$.
+
+\textbf{\textcolor{blue}{Ejercicio 08A02.}} Mira en la tabla el polinomio de Taylor de $$f(x) = \log(1 + x)$$ ¿Cuál es la derivada de $f(x)$? ¿Cuál es la derivada *término a término* de su polinomio de Taylor? Piensa en el resultado.
+
+\textbf{\textcolor{blue}{Ejercicio 08A03.}} Mira en la tabla el polinomio de Taylor de $f(x) = \arctan(x)$. ¿Cuál es la derivada de $f(x)$? ¿Cuál es la derivada *término a término* de su polinomio de Taylor? Ahora sustituye $x$ por $x^2$ en la función $\frac{1}{1 + x}$ *y también en su polinomio*. Piensa en el resultado.
+
+\textbf{\textcolor{darkgreen}{Ejercicio 08C04.}} Usa la tabla y sustituye $x$ por $x^3$ en la función $\sin(x)$. Usa sympy para obtener el desarrollo de Taylor de esa función $\sin(x^3)$. Piensa en el resultado. Haz experimentos similares con otras funciones.
+
+:::
+
+---
+
+::: {.callout-tip  appearance="minimal"}
+
+\textbf{\textcolor{blue}{Ejercicio 08A04.}} Hallar el desarrollo de Maclaurin de orden 12 de la función $f(x) = \cos(x^3)$
+
+\textbf{\textcolor{blue}{Ejercicio 08A05.}} Hallar el desarrollo de Maclaurin de orden 8 de la función $f(x) = \sqrt{1+ x^4}$
+
+\textbf{\textcolor{blue}{Ejercicio 08A06.}} Este ejercicio ilustra las propiedades (1) y (2) de la notación $O$. ¿Cuál es la parte principal en $x_0 =0$ de la función $f(x) = \sin(x^2) - \log{1 + x^4}$? ¿Y cuál es la parte principal en $x_0 =0$ de la función $f(x) = \cos(x) - \log{1 - x^2}$? ¿Ves la diferencia entre ambos casos? La palabra clave aquí es *cancelación*.
+
+\textbf{\textcolor{blue}{Ejercicio 08A07.}} Hallar el orden y la parte principal en $x_0 = 0$ de $$f(x) = e^x + \log(1+ x)−1−2x−\frac{x^3}{2}$$
+
+\textbf{\textcolor{firebrick}{Ejercicios Hoja 2B GITI 25-26.}} 24 y 25(a).
+
+\textbf{\textcolor{darkgreen}{Ejercicio 08C05.}} Comprueba estos resultados usando el notebook de la sesión.
+
+:::
