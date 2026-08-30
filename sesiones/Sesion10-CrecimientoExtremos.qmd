@@ -330,3 +330,24 @@ $$f(b) - f(a) = f'(c)\cdot (b - a)$$
 
 **Observación:** para empezar a entender la utilidad del teorema, fíjate en que siempre se cumple $b - a > 0$. Así que el signo del *incremento global* de $f$ en $[a, b]$ coincide con el signo de $f'(c)$. Aunque no sepas el valor de $c$, si sabes que $f' > 0$ en el intervalo, entonces puedes decir que $f(a)$ es ...   
 Como ves, este teorema traslada la información sobre $f'$ a estimaciones sobre incrementos de $f$.
+
+---
+
+::: {.callout-note  icon=false}
+
+## Interpretación geométrica del Teorema del Valor Medio
+
+\small
+
+Cuando la igualdad del Teorema del Valor Medio se escribe en forma de cociente del incremento de $f(x)$ y el incremento de la variable $x$
+$$\dfrac{f(b) - f(a)}{b - a} = f'(c)$$
+se presta a una interpretación geométrica muy intuitiva. El cociente de la izquierda es la *pendiente de la recta secante* que une $(a, f(a)$ con $(b, f(b)$. Y entonces el teorema viene a decir que las derivadas (pendientes locales o instantáneas) no pueden ser ni todo el rato mayores ni todo el rato menores que esa *pendiente media*. En algún punto (o en varios) ambas cantidades deben coincidir, como ilustra la figura.
+
+\qquad\qquad\qquad\qquad\qquad![](./fig/S10-TVM-InterpretacionGeom.png){width="35%"}
+
+\normalsize
+
+
+:::
+
+
