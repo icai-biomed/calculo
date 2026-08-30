@@ -92,7 +92,7 @@ Cuando $f(x)\geq f(x_0)$ para todos los $x$ del dominio de $f$ decimos que $f$ a
 
 :::
 
-# Relación entre crecimiento y signo de la derivada. 
+# Relación entre crecimiento y signo de la derivada. Puntos críticos.
 
 ::: {.callout-note  icon=false}
 
@@ -119,37 +119,214 @@ Con esta [construcción GeoGebra](https://www.geogebra.org/m/rx5HHTT8) puedes ex
 ::: {.callout-tip  appearance="minimal"}
 
 \textbf{\textcolor{blue}{Ejercicio 10A01.}} Analizar el signo de la derivada e identificar intervalos de crecimiento y decrecimiento para la función:
-$$f(x) = (x^2 −3x + 1)e^x$$
+$f(x) = (x^2 −3x + 1)e^x$
 :::
 
-# Relación entre extremos locales y signo de la derivada. Criterio de la derivada primera.
 
-Blablabla
+# Relación entre extremos locales y signo de la derivada. 
 
+::: {.callout-note  icon=false}
 
-# Derivadas de orden superior y extremos locales.
+## Puntos críticos y extremos
 
-Taylor es la idea clave.
+\small
 
+Identificar los intervalos en los que el signo de la derivada se mantiene constante conduce a localizar los **puntos críticos** de la función, que son de dos tipos:
 
----
++ puntos donde $f'(x) = 0$
++ puntos donde $f'$ no existe. **¡No olvides este tipo de puntos!**
 
-::: {.callout-tip  appearance="minimal"}
-
-\textbf{\textcolor{blue}{Ejercicio 09A01.}} Usar el método que hemos descrito (o L'Hôpital si conviene) para calcular los siguientes límites:
-
-$(a) \quad \displaystyle\lim_{x\to 0}\dfrac{x - \sin(x)}{x^3}$\qquad
-$(b) \quad \displaystyle\lim_{x\to 0}\dfrac{\arcsin(x^2) \cos(x) \tan(\sqrt[3]{x}) \log(1+ x^{2/3})}{x^3 + \sin(x^5)}$
+::: {.block}
 
 
-$(c) \quad \displaystyle\lim_{x\to 0}\dfrac{e^{2x} - \cos{2x}}{e^{5x} - \cos{3x}}$. \qquad 
-$(d) \quad \displaystyle\lim_{x\to 0}\dfrac{2\cos{x} + x^2 - 2}{x^4}$.
+### Condición necesaria **pero no suficiente** de extremo 
 
+\small
 
-$(e) \quad \displaystyle\lim_{x\to 0}\dfrac{1 - \sqrt{1 + x^4}\cos(2x^2)}{x\, (\tan x -\sinh x)}$ \qquad 
-$(f)\quad \displaystyle\color{red}{\lim_{ x\to 2}}\color{black}\dfrac{x^3 - 3x^2 + 4}{x^3 - x^2 -8x + 12}$
+Todos los extremos locales de $f$ son puntos críticos de $f$. ¡No funciona al revés! 
+
+\normalsize
 
 :::
 
 \normalsize
 
+:::
+
+::: {.callout-warning  icon=false appearance=minimal}
+
+\small
+
+**Ejemplos clave:** recuerda siempre estos ejemplos, en el origen:
+$$
+\underbrace{f(x) = x^2}_{f'=0,\text{ extremo}},\qquad 
+\underbrace{f(x) = x^3}_{f'=0,\text{ no extremo}},\qquad 
+\underbrace{f(x) = |x|}_{f' \text{ no existe, extremo}},\qquad 
+\underbrace{f(x) = \frac{1}{x^2}}_{f' \text{ no existe, no extremo}}
+$$
+
+\normalsize
+
+:::
+
+---
+
+::: {.callout-note  icon=false}
+
+## Criterio de la derivada primera (cambios de signo de $f'$).
+
+\small
+
+Sea $x_0$ un punto crítico de $f$ y supongamos que **$f$ es continua en $x_0$**. 
++ Si existe un intervalo $(a, b)$ que contiene a $x_0$ tal que:   
+$f' > 0$ en $(a, x_0)$ y $f' < 0$ en $(x_0, b)$.  
+Entonces $f$ alcanza un **máximo local** en $x_0$.
+
++ Análogamente, si existe un intervalo $(a, b)$ que contiene a $x_0$ tal que:   
+$f' < 0$ en $(a, x_0)$ y $f' > 0$ en $(x_0, b)$.  
+Entonces $f$ alcanza un **mínimo local** en $x_0$.
+
++ Finalmente, si $f'$ no cambia de signo al pasar por $x_0$, entonces $f$ **no alcanza extremo local** en $x_0$.
+
+\normalsize
+
+:::
+
+\small
+
+**Observaciones:**
+
++ Una de las virtudes del criterio de la derivada primera es que se puede aplicar a puntos donde $f$ no es derivable.
+
++ **La continuidad sin embargo es esencial**. Recuerda $f(x) = \frac{1}{x^2}$.
+
++ Para aplicarlo eficazmente piensa siempre en **factorizar la derivada** y analizar el signo de cada factor; después combínalos.
+
+\normalsize
+
+---
+
+::: {.callout-tip  appearance="minimal"}
+
+\textbf{\textcolor{blue}{Ejercicio 10A02.}} Usa esto y los resultados de 10A01 para clasificar los extremos locales de $f(x) = (x^2 −3x + 1)e^x$.
+
+$\quad$
+
+\textbf{\textcolor{blue}{Ejercicio 10A02.}} Hallar los intervalos de crecimiento y los extremos relativos de la función:
+$$
+f(x) = \begin{cases}-x&\text{ si }x< 0\\x^2-2x&\text{ si }x\geq 0\end{cases}
+$$
+
+$\quad$
+
+\textbf{\textcolor{firebrick}{Ejercicio 10B01.}} Analiza el crecimiento y los posibles extremos locales de $f(x) = x^5 - 15 x^3 + 1$.
+
+$\quad$
+
+\textbf{\textcolor{darkgreen}{Ejercicio 10C01.}} Usa el notebook de esta sesión para dibujar estas funciones y confirmar tus resultados.
+
+$\quad$
+
+\textbf{\textcolor{firebrick}{Ejercicios Hoja 2B GITI 25-26.}} 26, 27, 28.
+
+:::
+
+
+# Derivadas de orden superior y extremos locales.
+
+::: {.callout-note  icon=false}
+
+## Análisis de puntos críticos mediante el polinomio de Taylor
+
+\small
+
+Aunque el criterio de la derivada primera es muy útil, su uso depende de nuestra capacidad de analizar el signo de $f'$. Es necesario por tanto disponer de alternativas cuando eso resulta difícil. La idea clave es que el polinomio de Taylor describe la forma de la función cerca del punto crítico que estemos examinando. Vamos a usar el siguiente ejercicio para explorar esta idea.
+
+\normalsize
+
+:::
+
+::: {.callout-tip  appearance="minimal"}
+
+\small
+
+\textbf{\textcolor{blue}{Ejercicio 10A03.}} 
+
+$(1)$ Supongamos que sabes que $f(3) = 7$, $f'(3) = 0$, $f''(3) = -4$. ¿Cómo te imaginas la gráfica de $f$ cerca de $x_0 = 3$?
+
+\quad
+
+$(2)$  ¿Qué cambiaría si fuera $f''(3) = 8$, manteniendo los valores $f(3)$ y  $f'(3)$?
+
+\quad
+
+$(2)$  Ahora supongamos que 
+$$
+f(3) = 7,\quad f'(3) = 0,\quad f''(3) = 0,\quad\ldots\quad,\, f^{(7)}(3) = 0,\quad f^{(8)}(3) = -2.
+$$
+¿Cómo es la gráfica de $f$ cerca de $x_0 = 3$?
+
+\normalsize
+
+:::
+
+---
+
+::: {.callout-note  icon=false}
+
+## Criterio de las derivadas de orden superior
+
+\small
+
+Sea $f(x)$ una función con $n$ derivadas continuas en un punto crítico $x_0$.
+Supongamos que 
+$$
+f′(x_0) = f′′(x_0) = \cdots = f^{(n−1)}(x_0) = 0\text{ pero que } f^{(n)}(x_0)\neq= 0
+$$ 
+Es decir, $n$ corresponde a la **primera derivada no nula después de que la primera derivada sea nula.** Entonces:
+
++ Si $n$ es par y $f^{(n)}(x_0) < 0$, $f$ alcanza un **máximo** local  en $x_0$.
++ Si $n$ es par y $f^{(n)}(x_0) > 0$, $f$ alcanza un **mínimo** local  en $x_0$.
++ Si $n$ es impar, $f$ **no** alcanza un extremo local en $x_0$.
+
+\normalsize
+:::
+
+
+::: {.callout-tip  appearance="minimal"}
+
+\small
+
+\textbf{\textcolor{blue}{Ejercicio 10A04.}} Estudia si la función 
+$$f(x) =\dfrac{x^{6}}{2} - e^{x^{6}} + \sin(x^{6}) + \cos(x^{3})$$
+tiene un extremo local en $x_0 = 0$ y en tal caso, identifica de qué tipo es.   
+**Indicación:** Taylor. 
+
+\textbf{\textcolor{darkgreen}{Ejercicio 10C02.}} Haz los cálculos del ejercicio 10A04 **primero a mano**  y luego usa el notebook de esta sesión para comprobarlos.  
+
+
+:::
+
+# Ampliación: Teorema del Valor Medio
+
+\small
+
+Aunque no vamos a usarlo directamente, este teorema está detrás de varios de los resultados que hemos visto en esta sesión. Y es uno de esos teoremas globales valiosísimos, porque nos permite pasar de la **escala local microscópica** de la derivada en un punto, a la *escala global macroscópica* de un intervalo cuyo tamaño puede ser muy grande
+
+\normalsize
+
+::: {.callout-note  icon=false}
+
+## Teorema del Valor Medio
+
+\small
+
+Sea $f$ una función continua en $[a, b]$ y derivable en $(a, b)$. Entonces existe al menos un valor $c \in (a, b)$, en principio desconocido, tal que
+$$f(b) - f(a) = f'(c)\cdot (b - a)$$
+
+\normalsize
+
+:::
+
+**Observación:** para empezar a entender la utilidad del teorema, fíjate en que siempre se cumple $b - a > 0$. Así que el signo del *incremento global* de $f$ en $[a, b]$ coincide con el signo de $f'(c)$. Aunque no sepas el valor de $c$, si sabes que $f' > 0$ en el intervalo, entonces puedes decir que $f(a)$ es ...   
+Como ves, este teorema traslada la información sobre $f'$ a estimaciones sobre incrementos de $f$.
