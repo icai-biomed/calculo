@@ -44,11 +44,10 @@ Curruca capirotada, Villaviciosa, Asturias.
 
 \small
 
-Cuando los métodos del Cálculo aparecieron en la época de Newton, el contenido de esta sesión fue, sin duda y entre otras muchas, una de las principales razones que causaron un enorme interés en comprender la, por entonces, *nueva matemática*. Una vez que un problema se traducía al lenguaje de las funciones, el Cálculo ofrecía en muchos casos un procedimiento práctico para encontrar la solución óptima a ese problema de entre todas las posibles. El Cálculo fue y sigue siendo por esa razón el principal fundamento de los métodos de Optimización. Hasta entonces la técnica, la industria y la ciencia habían avanzado a menudo a tientas, por prueba y error y sin tener la certeza sobre si la solución alcanzada era la mejor posible. Al despejar ese camino los métodos del Cálculo demostraron una capacidad transformadora que los convierten, sin exageración, en uno de los más valiosos  patrimonios intelectuales de la humanidad. 
+En esta sesión vamos a usar los resultados sobre valores extremos que hemos obtenido en la anterior sesión para encontrar las soluciones óptimas a varios problemas que sirven de ejemplo de las aplicaciones del Cálculo. La primera idea que debemos tener presente es que no todos los problemas de optimización tienen solución. Si buscamos el valor máximo de $1/x$ en el intervalo $(0, 1)$ no lo encontraremos porque la función toma en ese intervalo valores arbitrariamente grandes cuando $x\to 0$. Así que empezaremos por un resultado teórico que nos permite  
 
 $\quad$
 
-Pero descendamos a un terreno más concreto. En esta sesión vamos a aprender a utilizar las derivadas para analizar el crecimiento y decrecimiento de una función. Veremos también cómo caracterizar los valores extremos (máximos o mínimos) que la función puede alzanzar en un conjunto de valores de la variable. Y lo ilustraremos con algunos ejemplos que permiten atisbar el alcance de estos métodos.  
 
 \normalsize
 
