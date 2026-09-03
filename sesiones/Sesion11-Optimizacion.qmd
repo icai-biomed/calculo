@@ -23,11 +23,11 @@ format:
 
 **Sesión 11. Optimización.**
 
-![](./portadasSesiones/10-CurrucaCapirotada.JPG){width="80%" fig-align="center"}
+![](./portadasSesiones/11-CollalbaRubia.png){width="80%" fig-align="center"}
 
-Curruca capirotada, Villaviciosa, Asturias.
+Collalba Rubia Occidental, P.N. Monfragüe, Cáceres
 
-+ [Notebook de la sesión en Colab](https://colab.research.google.com/drive/1PRPhNHIJUiIC7ZQEekBShl3-Os3MsQrz?usp=sharing)
++ [Notebook de la sesión en Colab](https://colab.research.google.com/drive/1egx27sXXs1OcuPTi8MudARTQ-voxEm1S?usp=sharing)
 
 
 ---
@@ -44,71 +44,24 @@ Curruca capirotada, Villaviciosa, Asturias.
 
 \small
 
-En esta sesión vamos a usar los resultados sobre valores extremos que hemos obtenido en la anterior sesión para encontrar las soluciones óptimas a varios problemas que sirven de ejemplo de las aplicaciones del Cálculo. La primera idea que debemos tener presente es que no todos los problemas de optimización tienen solución. Si buscamos el valor máximo de $1/x$ en el intervalo $(0, 1)$ no lo encontraremos porque la función toma en ese intervalo valores arbitrariamente grandes cuando $x\to 0$. Así que empezaremos por un resultado teórico que nos permite  
+En esta sesión vamos a usar los resultados sobre valores extremos que hemos obtenido en la anterior sesión para encontrar las soluciones óptimas a varios problemas que sirven de ejemplo de las aplicaciones del Cálculo. La primera idea que debemos tener presente es que no todos los problemas de optimización tienen solución. Si buscamos el valor máximo de $1/x$ en el intervalo $(0, 1)$ no lo encontraremos porque la función toma en ese intervalo valores arbitrariamente grandes cuando $x\to 0$. Así que empezaremos por un resultado teórico que nos permite identificar un tipo muy amplio de problemas para los que la existencia de solución óptima está garantizada. 
 
 $\quad$
 
+Como verás al analizar los problemas de optimización, hay dos fases bien diferenciadas: la primera consiste en modelizar el problema. Es decir, traducirlo al lenguaje de las Matemáticas. En particular, en este curso, al lenguaje de las funciones y el Cálculo,  La segunda fase es muchas veces más mecánica y consiste en aplicar los resultados de la sesión previa para identificar los extremos entre los que se encuentra la solución óptima deseada.
+
 
 \normalsize
 
-# Crecimiento y decrecimiento de una función. Extremos locales. {.fragile}
+# Extremos absolutos. Teorema de Weierstrass. {.fragile}
 
 ::: {.callout-note  icon=false}
 
-## Vocabulario básico sobre crecimiento.
+## Extremos absolutos
 
 \small
 
-Una función $f(x)$ es **creciente** en un intervalo $I$ si para cualesquiera dos puntos $a < b$ de $I$ se cumple $f(a)\leq f(b)$. La función es **estrictamente creciente** si siempre se cumple la desigualdad estricta $f(a) < f(b)$.
-
-De modo análogo se define **decreciente** y **estrictamente decreciente**. 
-
-Desde el principio queremos invitarte a pensar en que, incluso en el caso de funciones sencillas estrictamente crecientes o decrecientes, existen cuatro tipos básicos de comportamiento, de (a) a (d) en esta figura.
-
-\qquad\qquad\qquad\qquad\qquad![](./fig/S10-FuncionesMonotonas.png){width="35%"}
-
-Las gráficas de muchas funciones sencillas se pueden ver como una concatenación de arcos de uno de estos tipos.
-
-\normalsize
-
-:::
-
----
-
-::: {.callout-note  icon=false}
-
-## Y vocabulario básico sobre extremos.
-
-\small
-
-La función $f(x)$ alcanza un **máximo local o relativo** en $x_0$ si existe un intervalo $I$ que contiene a $x_0$ tal que $f(x) \leq f(x_0)$ para todo $x$ de $I$ (y con $x$ en el dominio de $f$). De modo análogo se define un **mínimo local o relativo.** Los máximos y mínimos locales se denominan conjuntamente **extremos locales.** Busca en la siguiente figura arcos de los tipos (a) hasta (d).
-
-\qquad\qquad\qquad![](./fig/S10-ExtremosLocales.png){width="70%"}
-
-Cuando $f(x)\geq f(x_0)$ para todos los $x$ del dominio de $f$ decimos que $f$ alcanza un **máximo absoluto** en $x_0$. 
-
-\normalsize
-
-:::
-
-# Relación entre crecimiento y signo de la derivada. Puntos críticos.
-
-::: {.callout-note  icon=false}
-
-## Interpretación del signo de la derivada
-
-\small
-
-Aunque ya lo avanzamos al discutir el Teorema de Rolle, vamos a hacer un enunciado formal. Sea $f$ una función derivable en todos los puntos de un intervalo $I$ contenido en su dominio. Entonces:
-
-$(1)$ $f$ es creciente en $I$ si y sólo si$f'(x)\geq 0$ para todo $x$ de $I$.  
-$(2)$ $f$ es decreciente en $I$ si y sólo si $f'(x)\leq 0$ para todo $x$ de $I$.  
-$(3)$ $f$ es *estrictamente* creciente en $I$ si y sólo si $f'(x)> 0$ para todo $x$ de $I$.  
-$(4)$ $f$ es *estrictamente* decreciente en $I$ si y sólo si $f'(x)<0$ para todo $x$ de $I$.   
-
-De esa manera, si sabemos analizar el signo de $f'(x)$, entenderemos el crecimiento y decrecimiento de $f(x)$. 
-
-Con esta [construcción GeoGebra](https://www.geogebra.org/m/rx5HHTT8) puedes explorar estas ideas.
+Vamos a pensar en un subconjunto $A$ de la recta real. Típicamente $A$ será un intervalo , que puede ser de alguno del tipo $[a, b]$ (cerrado y acotado), o $(a, b)$ (abierto y acotado), o también $[a, \infty)$ y otros tipos similares. La función $f(x)$ alcanza en el punto $x_0$ de $A$ un  **máximo absoluto en $A$** si $f(x_0) \geq f(x)$ para todo $x\in A$. De modo análogo se define un **mínimo absoluto** en $A$.
 
 \normalsize
 
@@ -116,53 +69,51 @@ Con esta [construcción GeoGebra](https://www.geogebra.org/m/rx5HHTT8) puedes ex
 
 
 ::: {.callout-tip  appearance="minimal"}
+\small
+\textbf{\textcolor{blue}{Ejercicio 11A01.}} Vamos a pensar en la función $f(x) = \dfrac{1}{1 + x^2}$
 
-\textbf{\textcolor{blue}{Ejercicio 10A01.}} Analizar el signo de la derivada e identificar intervalos de crecimiento y decrecimiento para la función:
-$f(x) = (x^2 −3x + 1)e^x$
+$(a)$ Empezamos pensando en el intervalo $A = [-1, 1]$. ¿Existen el máximo y el mínimo absoluto de $f(x)$ en $A$? Y en ese caso ¿dónde se alcanzan y cuánto valen? *Indicación:* estudia el crecimiento de $f$ (no necesitas derivadas para esto).
+
+$(b)$ ¿Y si cambiamos al intervalo $A = (-1, 1)$?  ¿Qué ocurre cuando $A = [0, \infty)$?
+
+$(c)$ Piensa ahora en $f(x) = \arctan(x)$ y analiza distintos tipos de intervalo (incluyendo $A = \mathbb R$).
+
+\textbf{\textcolor{darkgreen}{Ejercicio 11C01.}} Usa el notebook para visualizar estas funciones.
+
+\normalsize
+
 :::
 
 
-# Relación entre extremos locales y signo de la derivada. 
+---
 
 ::: {.callout-note  icon=false}
 
-## Puntos críticos y extremos
+## La función importa tanto como el intervalo
 
 \small
 
-Identificar los intervalos en los que el signo de la derivada se mantiene constante conduce a localizar los **puntos críticos** de la función, que son de dos tipos:
-
-+ puntos donde $f'(x) = 0$
-+ puntos donde $f'$ no existe. **¡No olvides este tipo de puntos!**
-
-::: {.block}
-
-
-### Condición necesaria **pero no suficiente** de extremo 
-
-\small
-
-Todos los extremos locales de $f$ son puntos críticos de $f$. ¡No funciona al revés! 
+Los ejercicios anteriores pueden haberte dejado con la impresión de que la forma del intervalo es la clave del problema. Pero en realidad es la relación entre el intervalo y la función la que determina si existen o no extremos absolutos. En particular, la continuidad de la función en el intervalo es muy relevante.
 
 \normalsize
 
 :::
 
-\normalsize
 
-:::
-
-::: {.callout-warning  icon=false appearance=minimal}
-
+::: {.callout-tip  appearance="minimal"}
 \small
 
-**Ejemplos clave:** recuerda siempre estos ejemplos, en el origen:
-$$
-\underbrace{f(x) = x^2}_{f'=0,\text{ extremo}},\qquad 
-\underbrace{f(x) = x^3}_{f'=0,\text{ no extremo}},\qquad 
-\underbrace{f(x) = |x|}_{f' \text{ no existe, extremo}},\qquad 
-\underbrace{f(x) = \frac{1}{x^2}}_{f' \text{ no existe, no extremo}}
-$$
+\textbf{\textcolor{blue}{Ejercicio 11A03.}} Pensemos ahora en la función $f(x) = \dfrac{x}{x^2 - 1}$
+
+$(a)$ Haz ¡a mano! un dibujo aproximado de la gráfica de la función, sin complicarte demasiado en cuentas. 
+
+$(b)$ En el intervalo $A = [-2, 2]$, ¿existen el máximo y el mínimo absoluto de $f(x)$ en $A$? 
+
+$(b)$ ¿Y si cambiamos al intervalo $A = (-1, 1)$?  
+
+\textbf{\textcolor{darkgreen}{Ejercicio 11C02.}} \underline{Después}, usa el notebook para visualizar esta función y confirmar tus ideas.
+
+\textbf{\textcolor{blue}{Ejercicio 11A04.}} ¿Y qué ocurre con $f(x) = \dfrac{1}{1 + e^{1/x}}$ en $[-1, 1]$? Ya vimos esta función en la sesión 3.
 
 \normalsize
 
@@ -170,182 +121,125 @@ $$
 
 ---
 
+Los anteriores ejemplos han preparado el terreno para el enunciado de este teorema, otro de esos teoremas globales importantes como el de Bolzano o el de Rolle.
+
 ::: {.callout-note  icon=false}
 
-## Criterio de la derivada primera (cambios de signo de $f'$).
+## Teorema de Weirstrass
 
 \small
 
-Sea $x_0$ un punto crítico de $f$ y supongamos que **$f$ es continua en $x_0$**. 
-+ Si existe un intervalo $(a, b)$ que contiene a $x_0$ tal que:   
-$f' > 0$ en $(a, x_0)$ y $f' < 0$ en $(x_0, b)$.  
-Entonces $f$ alcanza un **máximo local** en $x_0$.
-
-+ Análogamente, si existe un intervalo $(a, b)$ que contiene a $x_0$ tal que:   
-$f' < 0$ en $(a, x_0)$ y $f' > 0$ en $(x_0, b)$.  
-Entonces $f$ alcanza un **mínimo local** en $x_0$.
-
-+ Finalmente, si $f'$ no cambia de signo al pasar por $x_0$, entonces $f$ **no alcanza extremo local** en $x_0$.
-
+Sea $f(x)$ **continua** en un intervalo **cerrado y acotado** $[a, b]$ (ver las observaciones más abajo). Entonces $f(x)$ alcanza en ese intervalo un *máximo absoluto* y un **mínimo absoluto**. Es decir, existe (al menos) un punto $x_m$ del intervalo y (al menos) un punto $x_M$ del intervalo tales que:
+$$m = f(x_m) \leq f(x) \leq f(x_M) = M,\quad\text{ sea cual sea }\,x \in [a, b]$$
 \normalsize
 
 :::
 
 \small
 
-**Observaciones:**
+**Observaciones:** 
 
-+ Una de las virtudes del criterio de la derivada primera es que se puede aplicar a puntos donde $f$ no es derivable.
-
-+ **La continuidad sin embargo es esencial**. Recuerda $f(x) = \frac{1}{x^2}$.
-
-+ Para aplicarlo eficazmente piensa siempre en **factorizar la derivada** y analizar el signo de cada factor; después combínalos.
++ $m$ y $M$ son el mínimo y el máximo absolutos, $x_m$ y $x_M$ son puntos donde se alcanzan.
++ **Importante:** los extremos abolutos pueden alcanzarse en los extremos $a$ y $b$ del intervalo.
++ Un intervalo cerrado y acotado es un intervalo **compacto**.
++ Que $f$ sea continua en $[a, b]$ significa tres cosas: (1) que es continua en $x$ para $a < x < b$ (2) que es continua por la izquierda en $a$ (3) y continua por la derecha en $b$.
 
 \normalsize
 
----
+# Solución de problemas sencillos de optimización
 
-::: {.callout-tip  appearance="minimal"}
-
-\textbf{\textcolor{blue}{Ejercicio 10A02.}} Usa esto y los resultados de 10A01 para clasificar los extremos locales de $f(x) = (x^2 −3x + 1)e^x$.
-
-$\quad$
-
-\textbf{\textcolor{blue}{Ejercicio 10A02.}} Hallar los intervalos de crecimiento y los extremos relativos de la función:
-$$
-f(x) = \begin{cases}-x&\text{ si }x< 0\\x^2-2x&\text{ si }x\geq 0\end{cases}
-$$
-
-$\quad$
-
-\textbf{\textcolor{firebrick}{Ejercicio 10B01.}} Analiza el crecimiento y los posibles extremos locales de $f(x) = x^5 - 15 x^3 + 1$.
-
-$\quad$
-
-\textbf{\textcolor{darkgreen}{Ejercicio 10C01.}} Usa el notebook de esta sesión para dibujar estas funciones y confirmar tus resultados.
-
-$\quad$
-
-\textbf{\textcolor{firebrick}{Ejercicios Hoja 2B GITI 25-26.}} 26, 27, 28.
-
-:::
-
-
-# Derivadas de orden superior y extremos locales.
 
 ::: {.callout-note  icon=false}
 
-## Análisis de puntos críticos mediante el polinomio de Taylor
+## ¿En qué sentido son sencillos y cómo se resuelven?
 
 \small
 
-Aunque el criterio de la derivada primera es muy útil, su uso depende de nuestra capacidad de analizar el signo de $f'$. Es necesario por tanto disponer de alternativas cuando eso resulta difícil. La idea clave es que el polinomio de Taylor describe la forma de la función cerca del punto crítico que estemos examinando. Vamos a usar el siguiente ejercicio para explorar esta idea.
+Nos referimos a problemas en los que se pide identificar los extremos absolutos de una **función $f(x)$ conocida en un intervalo compacto $[a, b]$ también conocido**. En ese caso los pasos para resolver el problema son simplemente:
+
+$(1)$ Identificar los **puntos críticos** $x_1,\ldots, x_p$ de $f$ en el intervalo abierto $(a, b)$. Recuerda que son de dos tipos. ¡Repasa si no sabes cuáles!
+
+$(2)$ Evalúa $f(x_1), \ldots, f(x_p)$ y **también** $f(a)$, $f(b)$. El valor (o valores) más bajo entre estos te conduce al mínimo absoluto y el valor más alto conduce al máximo absoluto.
 
 \normalsize
 
 :::
 
 ::: {.callout-tip  appearance="minimal"}
+\small
+
+\textbf{\textcolor{blue}{Ejercicio 11A05.}} Hallar los máximos y mínimos absolutos de las siguientes funciones en los
+intervalos que se indican:
+$$
+(a)\quad g(x) = \sqrt{x^2 - x + 3},\quad x\in[1, 2]\qquad\quad\quad 
+$$
+
+$$
+(b)\quad f (x)= 2 x^3 − 15 x^2 + 24 x + 7,\quad  x\in [0, 6].
+$$
+
+
+\normalsize
+
+:::
+
+# Problemas de optimización con modelización
+
+::: {.callout-note  icon=false}
+
+## Método paso a paso
 
 \small
 
-\textbf{\textcolor{blue}{Ejercicio 10A03.}} 
-
-$(1)$ Supongamos que sabes que $f(3) = 7$, $f'(3) = 0$, $f''(3) = -4$. ¿Cómo te imaginas la gráfica de $f$ cerca de $x_0 = 3$?
+$(1)$ Identificar la cantidad $G$ de la que queremos obtener el máximo o mínimo absolutos. Para esto a menudo es esencial hacer un **buen dibujo** e identificar y nombrar todos los elementos relevantes del problema.
 
 \quad
 
-$(2)$  ¿Qué cambiaría si fuera $f''(3) = 8$, manteniendo los valores $f(3)$ y  $f'(3)$?
+$(2)$ Usar las condiciones del problema para expresar $G$ como una función $G(x)$ de una *única variable*. Llamamos a $G(x)$ la **función objetivo** del problema.
 
 \quad
 
-$(2)$  Ahora supongamos que 
-$$
-f(3) = 7,\quad f'(3) = 0,\quad f''(3) = 0,\quad\ldots\quad,\, f^{(7)}(3) = 0,\quad f^{(8)}(3) = -2.
-$$
-¿Cómo es la gráfica de $f$ cerca de $x_0 = 3$?
+$(3)$ Identificar y a ser posible visualizar distintas soluciones del problema, correspondientes a distintos valores de $x$. Si se hace correctamente, esto debería dar como resultado el **intervalo** de valores $[a, b]$ en el que optimizamos.
+
+
+
+$(4)$ En este punto el problema se ha convertido en un problema *sencillo* de optimización en el sentido que hemos dicho antes y podemos aplicar el método que ya conoces.
 
 \normalsize
 
 :::
-
----
-
-::: {.callout-note  icon=false}
-
-## Criterio de las derivadas de orden superior
-
 \small
 
-Sea $f(x)$ una función con $n$ derivadas continuas en un punto crítico $x_0$.
-Supongamos que 
-$$
-f′(x_0) = f′′(x_0) = \cdots = f^{(n−1)}(x_0) = 0\text{ pero que } f^{(n)}(x_0)\neq= 0
-$$ 
-Es decir, $n$ corresponde a la **primera derivada no nula después de que la primera derivada sea nula.** Entonces:
-
-+ Si $n$ es par y $f^{(n)}(x_0) < 0$, $f$ alcanza un **máximo** local  en $x_0$.
-+ Si $n$ es par y $f^{(n)}(x_0) > 0$, $f$ alcanza un **mínimo** local  en $x_0$.
-+ Si $n$ es impar, $f$ **no** alcanza un extremo local en $x_0$.
+**Observaciones:**  $(1)$ Los pasos 1 a 3, especialmente el 1, son los más complicados y requieren práctica. $(2)$ Los problemas *sencillos* lo son *conceptualmente*. En muchos casos las operaciones necesarias pueden ser sumamente complicadas. 
 
 \normalsize
-:::
+
+---
 
 
 ::: {.callout-tip  appearance="minimal"}
 
-\small
+\textbf{\textcolor{blue}{Ejercicio 11A06.}} Hallar las dimensiones del rectángulo de área máxima que tiene un lado sobre el
+eje $X$ y está inscrito en el triángulo determinado por las rectas $y = 0$, $y = x$ e $y= 4 - 2x$.
 
-\textbf{\textcolor{blue}{Ejercicio 10A04.}} Estudia si la función 
-$$f(x) =\dfrac{x^{6}}{2} - e^{x^{6}} + \sin(x^{6}) + \cos(x^{3})$$
-tiene un extremo local en $x_0 = 0$ y en tal caso, identifica de qué tipo es.   
-**Indicación:** Taylor. 
+$\quad$
 
-\textbf{\textcolor{darkgreen}{Ejercicio 10C02.}} Haz los cálculos del ejercicio 10A04 **primero a mano**  y luego usa el notebook de esta sesión para comprobarlos.  
+\textbf{\textcolor{blue}{Ejercicio 11A07.}} Hallar el radio y la altura del cilindro circular inscrito en una esfera de radio R que
+tenga volumen máximo.
 
+$\quad$
 
-:::
+\textbf{\textcolor{firebrick}{Ejercicio 10B01.}} Busca en un libro de Cálculo un problema de optimización interesante y prepara la solución.
 
-# Ampliación: Teorema del Valor Medio
+$\quad$
 
-\small
+\textbf{\textcolor{darkgreen}{Ejercicio 10C01.}} Para entender la observación sobre problemas sencillos. Analiza los extremos absolutos de 
+$$f(x) = \dfrac{8\sin^4(x)\cos(x)}{\sin⁴(x) + 2 cos^2(x)}$$
+en el intervalo $[0, 2\pi]$. Puedes usar el ordenador para explorar este problema.
 
-Aunque no vamos a usarlo directamente, este teorema está detrás de varios de los resultados que hemos visto en esta sesión. Y es uno de esos teoremas globales valiosísimos, porque nos permite pasar de la **escala local microscópica** de la derivada en un punto, a la *escala global macroscópica* de un intervalo cuyo tamaño puede ser muy grande
+$\quad$
 
-\normalsize
-
-::: {.callout-note  icon=false}
-
-## Teorema del Valor Medio
-
-\small
-
-Sea $f$ una función continua en $[a, b]$ y derivable en $(a, b)$. Entonces existe al menos un valor $c \in (a, b)$, en principio desconocido, tal que
-$$f(b) - f(a) = f'(c)\cdot (b - a)$$
-
-\normalsize
-
-:::
-
-**Observación:** para empezar a entender la utilidad del teorema, fíjate en que siempre se cumple $b - a > 0$. Así que el signo del *incremento global* de $f$ en $[a, b]$ coincide con el signo de $f'(c)$. Aunque no sepas el valor de $c$, si sabes que $f' > 0$ en el intervalo, entonces puedes decir que $f(a)$ es ...   
-Como ves, este teorema traslada la información sobre $f'$ a estimaciones sobre incrementos de $f$.
-
----
-
-::: {.callout-note  icon=false}
-
-## Interpretación geométrica del Teorema del Valor Medio
-
-\small
-
-Cuando la igualdad del Teorema del Valor Medio se escribe en forma de cociente del incremento de $f(x)$ y el incremento de la variable $x$
-$$\dfrac{f(b) - f(a)}{b - a} = f'(c)$$
-se presta a una interpretación geométrica muy intuitiva. El cociente de la izquierda es la *pendiente de la recta secante* que une $(a, f(a)$ con $(b, f(b)$. Y entonces el teorema viene a decir que las derivadas (pendientes locales o instantáneas) no pueden ser ni todo el rato mayores ni todo el rato menores que esa *pendiente media*. En algún punto (o en varios) ambas cantidades deben coincidir, como ilustra la figura.
-
-\qquad\qquad\qquad\qquad\qquad![](./fig/S10-TVM-InterpretacionGeom.png){width="35%"}
-
-\normalsize
-
+\textbf{\textcolor{firebrick}{Ejercicios Hoja 2B GITI 25-26.}} 30, 32 y 33.
 
 :::
 

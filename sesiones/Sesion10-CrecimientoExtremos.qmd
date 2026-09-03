@@ -212,7 +212,7 @@ Entonces $f$ alcanza un **mínimo local** en $x_0$.
 
 $\quad$
 
-\textbf{\textcolor{blue}{Ejercicio 10A02.}} Hallar los intervalos de crecimiento y los extremos relativos de la función:
+\textbf{\textcolor{blue}{Ejercicio 10A03.}} Hallar los intervalos de crecimiento y los extremos relativos de la función:
 $$
 f(x) = \begin{cases}-x&\text{ si }x< 0\\x^2-2x&\text{ si }x\geq 0\end{cases}
 $$
@@ -250,7 +250,7 @@ Aunque el criterio de la derivada primera es muy útil, su uso depende de nuestr
 
 \small
 
-\textbf{\textcolor{blue}{Ejercicio 10A03.}} 
+\textbf{\textcolor{blue}{Ejercicio 10A04.}} 
 
 $(1)$ Supongamos que sabes que $f(3) = 7$, $f'(3) = 0$, $f''(3) = -4$. ¿Cómo te imaginas la gráfica de $f$ cerca de $x_0 = 3$?
 
@@ -297,7 +297,7 @@ Es decir, $n$ corresponde a la **primera derivada no nula después de que la pri
 
 \small
 
-\textbf{\textcolor{blue}{Ejercicio 10A04.}} Estudia si la función 
+\textbf{\textcolor{blue}{Ejercicio 10A05.}} Estudia si la función 
 $$f(x) =\dfrac{x^{6}}{2} - e^{x^{6}} + \sin(x^{6}) + \cos(x^{3})$$
 tiene un extremo local en $x_0 = 0$ y en tal caso, identifica de qué tipo es.   
 **Indicación:** Taylor. 
