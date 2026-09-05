@@ -89,19 +89,26 @@ La función $f(x)$ es continua en un punto $x_0$ de su dominio si (lo mismo dich
 
 ## Continuidad de algunas funciones elementales
 
+\small
 Las siguientes funciones son continuas en todos los puntos **de su dominio**:
 
 + Los polinomios y las potencias $x^a$, incluida $\sqrt{x}$.
 + Las funciones trigonométricas seno, coseno, tangente.
 + La exponencial $e^x$ y el logaritmo $\log(x)$.
 
+Además la **composición** $f(g(x))$ de dos funciones continuas $f$ y $g$ es continua (como en $\sin(x^2)$).
+
+\normalsize
+
 :::
 
-::: {.callout-warning  icon=false}
+::: {.callout-warning  appearance="minimal"}
 
-### \textcolor{red}{\textbf{¡Atención!}} 
+##
 
-No estamos diciendo que estas funciones sean continuas en todas partes.
+\small
+**\textcolor{red}{\textbf{¡Atención!}}** No estamos diciendo que estas funciones sean continuas en todas partes.
+\normalsize
 
 :::
 
@@ -202,8 +209,8 @@ $\quad$
 $f(x) = \sin\left(\dfrac{1}{x}\right)$ 
 y a estudiar su comportamiento en el origen:  
 
-+ Dibuja el intervalo $\left(\dfrac{1}{2\pi}, \dfrac{1}{4\pi}\right)$. Cuando $x$ recorre ese intervalo, ¿qué valores toma $f$?
-+ Haz lo mismo con el intervalo $\left(\dfrac{1}{4\pi}, \dfrac{1}{6\pi}\right)$ y con $\left(\dfrac{1}{6\pi}, \dfrac{1}{8\pi}\right)$. Piensa cómo sería con el intervalo $\left(\dfrac{1}{1000\pi}, \dfrac{1}{1002\pi}\right)$.
++ Dibuja el intervalo $\left(\dfrac{1}{4\pi}, \dfrac{1}{2\pi}\right)$. Cuando $x$ recorre ese intervalo, ¿qué valores toma $f$?
++ Haz lo mismo con el intervalo $\left(\dfrac{1}{6\pi}, \dfrac{1}{4\pi}\right)$ y con $\left(\dfrac{1}{8\pi}, \dfrac{1}{6\pi}\right)$. Piensa cómo sería con el intervalo $\left(\dfrac{1}{1002\pi}, \dfrac{1}{1000\pi}\right)$.
 + Abre (¡después de completar lo anterior!) esta [construcción GeoGebra](https://www.geogebra.org/m/aduc5dy6).
 
 
