@@ -230,7 +230,7 @@ Mira el notebook de la sesión para ver cómo se comporta esta función producto
 $\quad$
 
 \textbf{\textcolor{firebrick}{Ejercicio 04B03.}} Demuestra que 
-$\displaystyle\lim_{x \to 0} \sin(x) \,\left(\dfrac{\log(x)}{x^2 + (\log(x))^2}\right) = 0$   
+$\displaystyle\lim_{x \to 0} \sin(x) \,\left(\dfrac{(\log(x))^2}{x^2 + (\log(x))^2}\right) = 0$   
 
 $\quad$
 
