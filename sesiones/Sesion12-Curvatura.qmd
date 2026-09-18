@@ -1,0 +1,246 @@
+---
+title: "Sesión 11. Optimización."
+lang: es
+format:
+  beamer:
+    theme: Madrid
+    fonttheme: default
+    fontsize: 10pt
+    toc: false          # handled manually below; pandoc's toc:true produces a stray }
+    section-titles: false   # \AtBeginSection in preamble.txt creates the section slide
+    slide-level: 2      # without this, top-level (#) headings become frames directly
+                         # instead of \section commands, so \tableofcontents has nothing
+                         # to list and \AtBeginSection never fires
+    include-in-header:
+      - preambulo_comun.tex
+      - text: |
+          \newcommand{\SesionTitulo}{Sesión 11 \\ Optimización.}
+  html: default
+  docx: default
+---
+
+---
+
+**Sesión 11. Optimización.**
+
+![](./portadasSesiones/11-CollalbaRubia.png){width="80%" fig-align="center"}
+
+Collalba Rubia Occidental, P.N. Monfragüe, Cáceres
+
++ [Notebook de la sesión en Colab](https://colab.research.google.com/drive/1egx27sXXs1OcuPTi8MudARTQ-voxEm1S?usp=sharing)
+
+
+---
+
+```{=latex}
+  
+  \frametitle{Tabla de contenidos}
+  \tableofcontents
+
+```
+
+
+# Introducción. 
+
+\small
+
+En esta sesión vamos a usar los resultados sobre valores extremos que hemos obtenido en la anterior sesión para encontrar las soluciones óptimas a varios problemas que sirven de ejemplo de las aplicaciones del Cálculo. La primera idea que debemos tener presente es que no todos los problemas de optimización tienen solución. Si buscamos el valor máximo de $1/x$ en el intervalo $(0, 1)$ no lo encontraremos porque la función toma en ese intervalo valores arbitrariamente grandes cuando $x\to 0$. Así que empezaremos por un resultado teórico que nos permite identificar un tipo muy amplio de problemas para los que la existencia de solución óptima está garantizada. 
+
+$\quad$
+
+Como verás al analizar los problemas de optimización, hay dos fases bien diferenciadas: la primera consiste en modelizar el problema. Es decir, traducirlo al lenguaje de las Matemáticas. En particular, en este curso, al lenguaje de las funciones y el Cálculo,  La segunda fase es muchas veces más mecánica y consiste en aplicar los resultados de la sesión previa para identificar los extremos entre los que se encuentra la solución óptima deseada.
+
+
+\normalsize
+
+# Extremos absolutos. Teorema de Weierstrass. {.fragile}
+
+::: {.callout-note  icon=false}
+
+## Extremos absolutos
+
+\small
+
+Vamos a pensar en un subconjunto $A$ de la recta real. Típicamente $A$ será un intervalo , que puede ser de alguno del tipo $[a, b]$ (cerrado y acotado), o $(a, b)$ (abierto y acotado), o también $[a, \infty)$ y otros tipos similares. La función $f(x)$ alcanza en el punto $x_0$ de $A$ un  **máximo absoluto en $A$** si $f(x_0) \geq f(x)$ para todo $x\in A$. De modo análogo se define un **mínimo absoluto** en $A$.
+
+\normalsize
+
+:::
+
+
+::: {.callout-tip  appearance="minimal"}
+\small
+\textbf{\textcolor{blue}{Ejercicio 11A01.}} Vamos a pensar en la función $f(x) = \dfrac{1}{1 + x^2}$
+
+$(a)$ Empezamos pensando en el intervalo $A = [-1, 1]$. ¿Existen el máximo y el mínimo absoluto de $f(x)$ en $A$? Y en ese caso ¿dónde se alcanzan y cuánto valen? *Indicación:* estudia el crecimiento de $f$ (no necesitas derivadas para esto).
+
+$(b)$ ¿Y si cambiamos al intervalo $A = (-1, 1)$?  ¿Qué ocurre cuando $A = [0, \infty)$?
+
+$(c)$ Piensa ahora en $f(x) = \arctan(x)$ y analiza distintos tipos de intervalo (incluyendo $A = \mathbb R$).
+
+\textbf{\textcolor{darkgreen}{Ejercicio 11C01.}} Usa el notebook para visualizar estas funciones.
+
+\normalsize
+
+:::
+
+
+---
+
+::: {.callout-note  icon=false}
+
+## La función importa tanto como el intervalo
+
+\small
+
+Los ejercicios anteriores pueden haberte dejado con la impresión de que la forma del intervalo es la clave del problema. Pero en realidad es la relación entre el intervalo y la función la que determina si existen o no extremos absolutos. En particular, la continuidad de la función en el intervalo es muy relevante.
+
+\normalsize
+
+:::
+
+
+::: {.callout-tip  appearance="minimal"}
+\small
+
+\textbf{\textcolor{blue}{Ejercicio 11A03.}} Pensemos ahora en la función $f(x) = \dfrac{x}{x^2 - 1}$
+
+$(a)$ Haz ¡a mano! un dibujo aproximado de la gráfica de la función, sin complicarte demasiado en cuentas. 
+
+$(b)$ En el intervalo $A = [-2, 2]$, ¿existen el máximo y el mínimo absoluto de $f(x)$ en $A$? 
+
+$(b)$ ¿Y si cambiamos al intervalo $A = (-1, 1)$?  
+
+\textbf{\textcolor{darkgreen}{Ejercicio 11C02.}} \underline{Después}, usa el notebook para visualizar esta función y confirmar tus ideas.
+
+\textbf{\textcolor{blue}{Ejercicio 11A04.}} ¿Y qué ocurre con $f(x) = \dfrac{1}{1 + e^{1/x}}$ en $[-1, 1]$? Ya vimos esta función en la sesión 3.
+
+\normalsize
+
+:::
+
+---
+
+Los anteriores ejemplos han preparado el terreno para el enunciado de este teorema, otro de esos teoremas globales importantes como el de Bolzano o el de Rolle.
+
+::: {.callout-note  icon=false}
+
+## Teorema de Weirstrass
+
+\small
+
+Sea $f(x)$ **continua** en un intervalo **cerrado y acotado** $[a, b]$ (ver las observaciones más abajo). Entonces $f(x)$ alcanza en ese intervalo un *máximo absoluto* y un **mínimo absoluto**. Es decir, existe (al menos) un punto $x_m$ del intervalo y (al menos) un punto $x_M$ del intervalo tales que:
+$$m = f(x_m) \leq f(x) \leq f(x_M) = M,\quad\text{ sea cual sea }\,x \in [a, b]$$
+\normalsize
+
+:::
+
+\small
+
+**Observaciones:** 
+
++ $m$ y $M$ son el mínimo y el máximo absolutos, $x_m$ y $x_M$ son puntos donde se alcanzan.
++ **Importante:** los extremos abolutos pueden alcanzarse en los extremos $a$ y $b$ del intervalo.
++ Un intervalo cerrado y acotado es un intervalo **compacto**.
++ Que $f$ sea continua en $[a, b]$ significa tres cosas: (1) que es continua en $x$ para $a < x < b$ (2) que es continua por la izquierda en $a$ (3) y continua por la derecha en $b$.
+
+\normalsize
+
+# Solución de problemas sencillos de optimización
+
+
+::: {.callout-note  icon=false}
+
+## ¿En qué sentido son sencillos y cómo se resuelven?
+
+\small
+
+Nos referimos a problemas en los que se pide identificar los extremos absolutos de una **función $f(x)$ conocida en un intervalo compacto $[a, b]$ también conocido**. En ese caso los pasos para resolver el problema son simplemente:
+
+$(1)$ Identificar los **puntos críticos** $x_1,\ldots, x_p$ de $f$ en el intervalo abierto $(a, b)$. Recuerda que son de dos tipos. ¡Repasa si no sabes cuáles!
+
+$(2)$ Evalúa $f(x_1), \ldots, f(x_p)$ y **también** $f(a)$, $f(b)$. El valor (o valores) más bajo entre estos te conduce al mínimo absoluto y el valor más alto conduce al máximo absoluto.
+
+\normalsize
+
+:::
+
+::: {.callout-tip  appearance="minimal"}
+\small
+
+\textbf{\textcolor{blue}{Ejercicio 11A05.}} Hallar los máximos y mínimos absolutos de las siguientes funciones en los
+intervalos que se indican:
+$$
+(a)\quad g(x) = \sqrt{x^2 - x + 3},\quad x\in[1, 2]\qquad\quad\quad 
+$$
+
+$$
+(b)\quad f (x)= 2 x^3 − 15 x^2 + 24 x + 7,\quad  x\in [0, 6].
+$$
+
+
+\normalsize
+
+:::
+
+# Problemas de optimización con modelización
+
+::: {.callout-note  icon=false}
+
+## Método paso a paso
+
+\small
+
+$(1)$ Identificar la cantidad $G$ de la que queremos obtener el máximo o mínimo absolutos. Para esto a menudo es esencial hacer un **buen dibujo** e identificar y nombrar todos los elementos relevantes del problema.
+
+\quad
+
+$(2)$ Usar las condiciones del problema para expresar $G$ como una función $G(x)$ de una *única variable*. Llamamos a $G(x)$ la **función objetivo** del problema.
+
+\quad
+
+$(3)$ Identificar y a ser posible visualizar distintas soluciones del problema, correspondientes a distintos valores de $x$. Si se hace correctamente, esto debería dar como resultado el **intervalo** de valores $[a, b]$ en el que optimizamos.
+
+
+
+$(4)$ En este punto el problema se ha convertido en un problema *sencillo* de optimización en el sentido que hemos dicho antes y podemos aplicar el método que ya conoces.
+
+\normalsize
+
+:::
+\small
+
+**Observaciones:**  $(1)$ Los pasos 1 a 3, especialmente el 1, son los más complicados y requieren práctica. $(2)$ Los problemas *sencillos* lo son *conceptualmente*. En muchos casos las operaciones necesarias pueden ser sumamente complicadas. 
+
+\normalsize
+
+---
+
+
+::: {.callout-tip  appearance="minimal"}
+
+\textbf{\textcolor{blue}{Ejercicio 11A06.}} Hallar las dimensiones del rectángulo de área máxima que tiene un lado sobre el
+eje $X$ y está inscrito en el triángulo determinado por las rectas $y = 0$, $y = x$ e $y= 4 - 2x$.
+
+$\quad$
+
+\textbf{\textcolor{blue}{Ejercicio 11A07.}} Hallar el radio y la altura del cilindro circular inscrito en una esfera de radio R que
+tenga volumen máximo.
+
+$\quad$
+
+\textbf{\textcolor{firebrick}{Ejercicio 10B01.}} Busca en un libro de Cálculo un problema de optimización interesante y prepara la solución.
+
+$\quad$
+
+\textbf{\textcolor{darkgreen}{Ejercicio 10C01.}} Para entender la observación sobre problemas sencillos. Analiza los extremos absolutos de 
+$$f(x) = \dfrac{8\sin^4(x)\cos(x)}{\sin⁴(x) + 2 cos^2(x)}$$
+en el intervalo $[0, 2\pi]$. Puedes usar el ordenador para explorar este problema.
+
+$\quad$
+
+\textbf{\textcolor{firebrick}{Ejercicios Hoja 2B GITI 25-26.}} 30, 32 y 33.
+
+:::
+
+
