@@ -1,5 +1,5 @@
 ---
-title: "Sesión 11. Optimización."
+title: "Sesión 12. Curvatura."
 lang: es
 format:
   beamer:
@@ -14,20 +14,18 @@ format:
     include-in-header:
       - preambulo_comun.tex
       - text: |
-          \newcommand{\SesionTitulo}{Sesión 11 \\ Optimización.}
+          \newcommand{\SesionTitulo}{Sesión 12 \\ Curvatura.}
   html: default
   docx: default
 ---
 
 ---
 
-**Sesión 11. Optimización.**
+**Sesión 12. Curvatura.**
 
-![](./portadasSesiones/11-CollalbaRubia.png){width="80%" fig-align="center"}
+![](./portadasSesiones/12-Torcecuellos.JPG){width="80%" fig-align="center"}
 
-Collalba Rubia Occidental, P.N. Monfragüe, Cáceres
-
-+ [Notebook de la sesión en Colab](https://colab.research.google.com/drive/1egx27sXXs1OcuPTi8MudARTQ-voxEm1S?usp=sharing)
++ [Notebook de la sesión en Colab](https://colab.research.google.com/drive/12s2l2WK2jA0iK_PTBW9QIvw6lhdiAHrW?usp=sharing)
 
 
 ---
@@ -44,76 +42,63 @@ Collalba Rubia Occidental, P.N. Monfragüe, Cáceres
 
 \small
 
-En esta sesión vamos a usar los resultados sobre valores extremos que hemos obtenido en la anterior sesión para encontrar las soluciones óptimas a varios problemas que sirven de ejemplo de las aplicaciones del Cálculo. La primera idea que debemos tener presente es que no todos los problemas de optimización tienen solución. Si buscamos el valor máximo de $1/x$ en el intervalo $(0, 1)$ no lo encontraremos porque la función toma en ese intervalo valores arbitrariamente grandes cuando $x\to 0$. Así que empezaremos por un resultado teórico que nos permite identificar un tipo muy amplio de problemas para los que la existencia de solución óptima está garantizada. 
+Esta sesión breve sirve para cerrar el capítulo del curso dedicado al Cálculo Diferencial en funciones de una variable y sus aplicaciones. El último tema que vamos a tratar es la noción de curvatura, estrechamente relacionada con el concepto de convexidad. Estas propiedades geométricas de las gráficas de las funciones son muy importantes cuando se estudian métodos más avanzados de optimización y, en general, al hacer un análisis más detallado de las propiedades de las funciones. Además, nos permiten entender que las derivadas de orden superior aportan información adicional sobre el comportamiento de la función.
 
 $\quad$
 
-Como verás al analizar los problemas de optimización, hay dos fases bien diferenciadas: la primera consiste en modelizar el problema. Es decir, traducirlo al lenguaje de las Matemáticas. En particular, en este curso, al lenguaje de las funciones y el Cálculo,  La segunda fase es muchas veces más mecánica y consiste en aplicar los resultados de la sesión previa para identificar los extremos entre los que se encuentra la solución óptima deseada.
-
-
 \normalsize
 
-# Extremos absolutos. Teorema de Weierstrass. {.fragile}
+# Convexidad {.fragile}
 
 ::: {.callout-note  icon=false}
 
-## Extremos absolutos
+## Relación entre la gráfica de una función y su recta tangente
 
 \small
 
-Vamos a pensar en un subconjunto $A$ de la recta real. Típicamente $A$ será un intervalo , que puede ser de alguno del tipo $[a, b]$ (cerrado y acotado), o $(a, b)$ (abierto y acotado), o también $[a, \infty)$ y otros tipos similares. La función $f(x)$ alcanza en el punto $x_0$ de $A$ un  **máximo absoluto en $A$** si $f(x_0) \geq f(x)$ para todo $x\in A$. De modo análogo se define un **mínimo absoluto** en $A$.
+Para hablar de curvatura tenemos necesariamente que ir más allá de las rectas. Pero basta con pensar en las parábolas más sencillas de todas para encontrar *casi* todo lo que necesitamos. En la siguiente figura hemos incluido las dos parábolas $y = x^2$ e $y = -x^2$. Además hemos coloreado cuatro *ramas* en las gráficas. Fíjate en que la rama derecha (para $x>0$) de $y=x^2$ así como la rama izquierda de $y = -x^2$ son ambas crecientes. Pero crecen *de forma distinta*.
 
 \normalsize
 
-:::
+![](./fig/S12-Parabolas.png){width="40%" fig-align="center"}
 
-
-::: {.callout-tip  appearance="minimal"}
-\small
-\textbf{\textcolor{blue}{Ejercicio 11A01.}} Vamos a pensar en la función $f(x) = \dfrac{1}{1 + x^2}$
-
-$(a)$ Empezamos pensando en el intervalo $A = [-1, 1]$. ¿Existen el máximo y el mínimo absoluto de $f(x)$ en $A$? Y en ese caso ¿dónde se alcanzan y cuánto valen? *Indicación:* estudia el crecimiento de $f$ (no necesitas derivadas para esto).
-
-$(b)$ ¿Y si cambiamos al intervalo $A = (-1, 1)$?  ¿Qué ocurre cuando $A = [0, \infty)$?
-
-$(c)$ Piensa ahora en $f(x) = \arctan(x)$ y analiza distintos tipos de intervalo (incluyendo $A = \mathbb R$).
-
-\textbf{\textcolor{darkgreen}{Ejercicio 11C01.}} Usa el notebook para visualizar estas funciones.
-
-\normalsize
+De la misma forma, las dos ramas decrecientes (la izquierda en $y=x^2$ y la derecha en $y = -x^2$) también decrecen de distinta forma. 
 
 :::
-
 
 ---
 
 ::: {.callout-note  icon=false}
 
-## La función importa tanto como el intervalo
+## La relación con la recta tangente.
 
 \small
 
-Los ejercicios anteriores pueden haberte dejado con la impresión de que la forma del intervalo es la clave del problema. Pero en realidad es la relación entre el intervalo y la función la que determina si existen o no extremos absolutos. En particular, la continuidad de la función en el intervalo es muy relevante.
+Es importante entender que la derivada primera no puede ayudarnos a distinguir entre esas dos formas de crecer. Dos funciones crecientes pueden tener la misma recta tangente pero crecer de formas distintas.
 
 \normalsize
 
 :::
 
-
 ::: {.callout-tip  appearance="minimal"}
 \small
 
-\textbf{\textcolor{blue}{Ejercicio 11A03.}} Pensemos ahora en la función $f(x) = \dfrac{x}{x^2 - 1}$
+\textbf{\textcolor{blue}{Ejercicio 12A01.}} Fíjate en las dos funciones $f(x) = e^x - 1$ y $g(x) = \log(1 + x)$. ¿Cuál es su recta tangente en $x_0 = 0$?
 
-$(a)$ Haz ¡a mano! un dibujo aproximado de la gráfica de la función, sin complicarte demasiado en cuentas. 
+\textbf{\textcolor{darkgreen}{Ejercicio 12C01.}} Usa el notebook para visualizar estas funciones y su recta tangente. ¿Qué puedes decir sobre la *posición* de la recta tangente con respecto a las funciones?
 
-$(b)$ En el intervalo $A = [-2, 2]$, ¿existen el máximo y el mínimo absoluto de $f(x)$ en $A$? 
+:::
 
-$(b)$ ¿Y si cambiamos al intervalo $A = (-1, 1)$?  
+::: {.callout-note  icon=false}
 
-\textbf{\textcolor{darkgreen}{Ejercicio 11C02.}} \underline{Después}, usa el notebook para visualizar esta función y confirmar tus ideas.
+## Convexidad en funciones derivables
 
-\textbf{\textcolor{blue}{Ejercicio 11A04.}} ¿Y qué ocurre con $f(x) = \dfrac{1}{1 + e^{1/x}}$ en $[-1, 1]$? Ya vimos esta función en la sesión 3.
+\small
+
+El ejercicio anterior sirve de base para entender esta terminología:
+
+Sea $f(x)$ derivable en un entorno de $x_0$. Si la gráfica de $f(x)$ en ese entorno queda por encima de la recta tangente a $f$ en $x_0$ entonces decimos que $f$ es **convexa** en $x_0$. Si la gráfica queda por debajo de la recta tangente, entonces $f$ es **cóncava** en $x_0$.  
+Y diremos que $f$ es convexa (o cóncava) en $(a, b)$ cuando lo sea en cada punto de ese intervalo.
 
 \normalsize
 
@@ -121,126 +106,130 @@ $(b)$ ¿Y si cambiamos al intervalo $A = (-1, 1)$?
 
 ---
 
-Los anteriores ejemplos han preparado el terreno para el enunciado de este teorema, otro de esos teoremas globales importantes como el de Bolzano o el de Rolle.
-
 ::: {.callout-note  icon=false}
 
-## Teorema de Weirstrass
+## Puntos de inflexión
 
 \small
 
-Sea $f(x)$ **continua** en un intervalo **cerrado y acotado** $[a, b]$ (ver las observaciones más abajo). Entonces $f(x)$ alcanza en ese intervalo un *máximo absoluto* y un **mínimo absoluto**. Es decir, existe (al menos) un punto $x_m$ del intervalo y (al menos) un punto $x_M$ del intervalo tales que:
-$$m = f(x_m) \leq f(x) \leq f(x_M) = M,\quad\text{ sea cual sea }\,x \in [a, b]$$
-\normalsize
-
-:::
-
-\small
-
-**Observaciones:** 
-
-+ $m$ y $M$ son el mínimo y el máximo absolutos, $x_m$ y $x_M$ son puntos donde se alcanzan.
-+ **Importante:** los extremos abolutos pueden alcanzarse en los extremos $a$ y $b$ del intervalo.
-+ Un intervalo cerrado y acotado es un intervalo **compacto**.
-+ Que $f$ sea continua en $[a, b]$ significa tres cosas: (1) que es continua en $x$ para $a < x < b$ (2) que es continua por la izquierda en $a$ (3) y continua por la derecha en $b$.
-
-\normalsize
-
-# Solución de problemas sencillos de optimización
-
-
-::: {.callout-note  icon=false}
-
-## ¿En qué sentido son sencillos y cómo se resuelven?
-
-\small
-
-Nos referimos a problemas en los que se pide identificar los extremos absolutos de una **función $f(x)$ conocida en un intervalo compacto $[a, b]$ también conocido**. En ese caso los pasos para resolver el problema son simplemente:
-
-$(1)$ Identificar los **puntos críticos** $x_1,\ldots, x_p$ de $f$ en el intervalo abierto $(a, b)$. Recuerda que son de dos tipos. ¡Repasa si no sabes cuáles!
-
-$(2)$ Evalúa $f(x_1), \ldots, f(x_p)$ y **también** $f(a)$, $f(b)$. El valor (o valores) más bajo entre estos te conduce al mínimo absoluto y el valor más alto conduce al máximo absoluto.
-
-\normalsize
-
-:::
-
-::: {.callout-tip  appearance="minimal"}
-\small
-
-\textbf{\textcolor{blue}{Ejercicio 11A05.}} Hallar los máximos y mínimos absolutos de las siguientes funciones en los
-intervalos que se indican:
-$$
-(a)\quad g(x) = \sqrt{x^2 - x + 3},\quad x\in[1, 2]\qquad\quad\quad 
-$$
-
-$$
-(b)\quad f (x)= 2 x^3 − 15 x^2 + 24 x + 7,\quad  x\in [0, 6].
-$$
-
-
-\normalsize
-
-:::
-
-# Problemas de optimización con modelización
-
-::: {.callout-note  icon=false}
-
-## Método paso a paso
-
-\small
-
-$(1)$ Identificar la cantidad $G$ de la que queremos obtener el máximo o mínimo absolutos. Para esto a menudo es esencial hacer un **buen dibujo** e identificar y nombrar todos los elementos relevantes del problema.
+Si $x_0$ es un punto del dominio de $f$ donde la función cambia de cóncava a convexa o viceversa, diremos que $x_0$ es un **punto de inflexión** de $f$.
 
 \quad
 
-$(2)$ Usar las condiciones del problema para expresar $G$ como una función $G(x)$ de una *única variable*. Llamamos a $G(x)$ la **función objetivo** del problema.
-
-\quad
-
-$(3)$ Identificar y a ser posible visualizar distintas soluciones del problema, correspondientes a distintos valores de $x$. Si se hace correctamente, esto debería dar como resultado el **intervalo** de valores $[a, b]$ en el que optimizamos.
-
-
-
-$(4)$ En este punto el problema se ha convertido en un problema *sencillo* de optimización en el sentido que hemos dicho antes y podemos aplicar el método que ya conoces.
+El ejemplo más sencillo en el que puedes pensar es el punto $x_0 = 0$ en la gráfica de $f(x) = x^3$. 
 
 \normalsize
 
 :::
+
+\quad
+
+
+::: {.callout-tip  appearance="minimal"}
 \small
 
-**Observaciones:**  $(1)$ Los pasos 1 a 3, especialmente el 1, son los más complicados y requieren práctica. $(2)$ Los problemas *sencillos* lo son *conceptualmente*. En muchos casos las operaciones necesarias pueden ser sumamente complicadas. 
+\textbf{\textcolor{blue}{Ejercicio 12A02.}} ¿Cuáles son los puntos de inflexión de $f(x) = \sin(x)$? ¿Y cuáles son los de $g(x) = \sin(3 x + \pi/3)$?  
+
+*Un poco más difícil, usa tu intuición geométrica:* ¿Dónde crees que están los puntos de inflexión de $h(x) = x + \sin(x)$?
+
+\quad
+
+\textbf{\textcolor{darkgreen}{Ejercicio 12C02.}} Usa el notebook para visualizar la gráfica de 
+$$f(x) = -120 x^6 + 1466x^5 - 7105x^4 + 17454x^3 - 22952x^2 + 15352x - 4095$$
+**Indicación:** Utiliza un intervalo vertical (`ylim`)  con $-200\leq y \leq 50$.  
+¿Cuántos puntos de inflexión observas? Haz una estimación *a ojo* de dónde se encuentran.
+
+
+:::
+
+
+# Derivadas de orden superior  y convexidad
+
+::: {.callout-note  icon=false}
+
+## La "parábola tangente"
+
+\small
+
+Cuando una función tiene $f''(x_0)\neq 0$ sabemos que su desarrollo de Taylor de orden 2 en $x_0$ es:
+$$f(x) = \underbrace{f(x_0) + f'(x_0) (x - x_0) + \dfrac{f''(x_0)}{2} (x - x_0)^2}_{\text{parábola tangente}} + E_2(x)$$
+Como hemos indicado, el polinomio de orden dos define una parábola de ecuación $y = f(x_0) + f'(x_0) (x - x_0) + \dfrac{f''(x_0)}{2} (x - x_0)^2$ que es la *parábola tangente* a la gráfica de $f$.  La idea entonces es que si nuestra función se parece a la parábola cerca de $x_0$, su concavidad/convexidad coincidirá con la de esa parábola. 
 
 \normalsize
 
----
+:::
 
 
 ::: {.callout-tip  appearance="minimal"}
 
-\textbf{\textcolor{blue}{Ejercicio 11A06.}} Hallar las dimensiones del rectángulo de área máxima que tiene un lado sobre el
-eje $X$ y está inscrito en el triángulo determinado por las rectas $y = 0$, $y = x$ e $y= 4 - 2x$.
+\small
 
-$\quad$
+\textbf{\textcolor{blue}{Ejercicio 12A03.}} Vuelve a examinar las parábolas $y= x^2$ e $y = -x^2$ e identifica qué ramas son cóncavas y cuáles son convexas. Piensa en las derivadas segundas de estas parábolas. Haz una tabla de doble entrada de signos de las derivadas primera y segunda y coloca cada rama en la celda correspondiente.
 
-\textbf{\textcolor{blue}{Ejercicio 11A07.}} Hallar el radio y la altura del cilindro circular inscrito en una esfera de radio R que
-tenga volumen máximo.
+:::
 
-$\quad$
+---
 
-\textbf{\textcolor{firebrick}{Ejercicio 10B01.}} Busca en un libro de Cálculo un problema de optimización interesante y prepara la solución.
+Este último ejercicio prepara el terreno para el siguiente resultado:
 
-$\quad$
+::: {.callout-note  icon=false}
 
-\textbf{\textcolor{darkgreen}{Ejercicio 10C01.}} Para entender la observación sobre problemas sencillos. Analiza los extremos absolutos de 
-$$f(x) = \dfrac{8\sin^4(x)\cos(x)}{\sin⁴(x) + 2 cos^2(x)}$$
-en el intervalo $[0, 2\pi]$. Puedes usar el ordenador para explorar este problema.
+## La derivada segunda y la convexidad.
 
-$\quad$
+\small
 
-\textbf{\textcolor{firebrick}{Ejercicios Hoja 2B GITI 25-26.}} 30, 32 y 33.
+Si $f$ es dos veces derivable en un intervalo $(a, b)$ y $f''(x) > 0$ para $x\in(a, b)$, entonces $f$ es convexa en $(a, b)$ (es como $x^2$). De manera análoga, si $f''(x) < 0$ en $(a, b)$, entonces $f$ es cóncava en $(a, b)$ (es como $-x^2$).
+
+Si existe un punto $x_0$ de $(a, b)$ en el que $f''$ cambia de signo, entonces $x_0$ es un punto de inflexión de $f$.
+
+\normalsize
+
+:::
+
+\small
+**Observaciones:**.  
+$(1)$ Recuerda que hemos asumido que $f''$ existe en todos los puntos de $(a, b)$.  
+$(2)$ Es muy importante entender que **en un punto de inflexión la recta tangente no tiene por qué ser horizontal.** Lo que ocurre en esos puntos es que la gráfica *cruza al otro lado* de la recta tangente.
+
+\normalsize
+
+
+::: {.callout-tip  appearance="minimal"}
+
+\small
+
+\textbf{\textcolor{blue}{Ejercicio 12A04.}} Estudiar la concavidad y convexidad y hallar los puntos de inflexión de la función
+$$f(x) = x^3 + 3 x^2 + x + 1$$
+\textbf{\textcolor{blue}{Ejercicio 12A05.}} Estudia los puntos de inflexión de $f(x) = x + \sin(x)$ (ya vista en el Ejercicio 12A02.)
+
+\normalsize
+
+:::
+
+---
+
+
+::: {.callout-note  icon=false}
+
+## Polinomio de Taylor y concavidad
+
+\small
+
+Los ceros de la derivada segunda (o los puntos donde no existe) son los candidatos evidentes a ser puntos de inflexión. Si podemos analizar el signo de la derivada segunda, las cosas son más fáciles. Pero en ocasiones esto no es fácil y es bueno disponer de otro criterio, basado en el polinomio de Taylor como el que vimos para extremos locales. 
+
+En concreto: sea $f(x)$ una función suficientemente derivable en un entorno del punto $x_0$. Supongamos que $f′′(x_0) = 0$ y que la primera derivada no nula de $f(x)$ en $x_0$ **posterior a la segunda** es de orden impar. Entonces $f$ tiene un punto de inflexión en $x_0$.
+
+\normalsize
 
 :::
 
 
+::: {.callout-tip  appearance="minimal"}
+
+\small
+
+
+
+\textbf{\textcolor{firebrick}{Ejercicios Hoja 2B GITI 25-26.}} 34b(b), 35 y 36.
+
+:::
