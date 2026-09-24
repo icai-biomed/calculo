@@ -63,7 +63,7 @@ También vamos a dedicar parte de la sesión a entender en detalle cuál es el e
 Supongamos que $f$ es una función derivable $n$ veces en $x_0$. Entonces su **polinomio de Taylor de orden $n$ en $x_0$** es:
 \scriptsize
 $$
-Pf_{n;x_0}(x) = \underbrace{f(x_0) + f'(x_0)(x - x_0)}_{\text{recta tgte, en }x_0}+ \dfrac{f'(x_0)}{2!}(x - x_0) + \dfrac{f^{(3)}(x_0)}{3!}(x - x_0)^3 + \cdots + 
+Pf_{n;x_0}(x) = \underbrace{f(x_0) + f'(x_0)(x - x_0)}_{\text{recta tgte, en }x_0}+ \dfrac{f''(x_0)}{2!}(x - x_0) + \dfrac{f^{(3)}(x_0)}{3!}(x - x_0)^3 + \cdots + 
  \dfrac{f^{(n)}(x_0)}{n!}(x - x_0)^n
 $$
 \normalsize
@@ -113,7 +113,7 @@ $$P_3(x_0) = f(x_0),\quad P'_3(x_0) = f'(x_0),\quad P''_3(x_0) = f''(x_0),\quad 
 El **resto** del polinomio de Taylor de de orden $n$  de $f$ en $x_0$ se define como la diferencia entre el polinomio y la función. Y el **error** es el valor absoluto del resto:
 \small
 $$
-Rf_{n;x_0}(x) = Pf_{n;x_0}(x) - f(x),\qquad Rf_{n;x_0}(x)= |Ef_{n;x_0}(x)|
+Rf_{n;x_0}(x) = f(x) - Pf_{n;x_0}(x),\qquad Ef_{n;x_0}(x)= |Rf_{n;x_0}(x)|
 $$
 \normalsize
 Si no hay ambigüedad escribiremos simplemente $R_n$ . La intuición nos dice que, en condiciones normales, el error $E_n$ se hace muy pequeño cuando $x\to x_0$.  ¿Podemos hacer más precisa esa idea? El error es pequeño *¿comparado con qué*? Esta última pregunta contiene la idea clave.
@@ -150,7 +150,7 @@ Vamos a añadir un poco de vocabulario a la discusión. Una función que tiende 
 $$
 \lim_{x\to x_0}\dfrac{f(x)}{A\, (x - x_0)^p} = 1 
 $$
-Este 1 significa "tienden a 0 exactamente igual de rápido". En ese caso decimos que $f(x)$ es un infinitésimo de orden $n$ en $x_0$. 
+Este 1 significa "tienden a 0 exactamente igual de rápido". En ese caso decimos que $f(x)$ es un infinitésimo de orden $p$ en $x_0$. 
 
 :::
 
@@ -185,7 +185,7 @@ El *resto* $R_n$ (del polinomio de Taylor de orden $n$ para $f$ en $x_0$) **es u
 
 Vamos a usar mucho frases como esta última, así que merece la pena introducir esta notación;
 
-El símbolo $O((x - x_0)^p)$ significa **un infinitésimo de orden mayor que $n$** en $x_0$. 
+El símbolo $O((x - x_0)^n)$ significa **un infinitésimo de orden mayor que $n$** en $x_0$. 
 
 :::
 
@@ -223,7 +223,7 @@ $$
 ## Propiedades de la notación $O((x - x_0)^p)$
 
 $(1)$ $O((x - x_0)^n) + O((x - x_0)^n) = O((x - x_0)^n)$  
-$(2)$ Si $n < m$, entonces $O((x - x_0)^n) \cdot O((x - x_0)^m) = O((x - x_0)^{n}$  (el orden más bajo prevalece en las sumas).  
+$(2)$ Si $n < m$, entonces $O((x - x_0)^n) + O((x - x_0)^m) = O((x - x_0)^{n}$  (el orden más bajo prevalece en las sumas).  
 $(3)$ $O((x - x_0)^p) \cdot O((x - x_0)^q) = O((x - x_0)^{p + q}$  
 $(4)$ Si $P_n(x)$ y $R_n(x)$ son resp. el polinomio de MacLaurin y el resto de $f(x)$ entonces para $k = 1, 2, 3, \ldots$ el polinomio de MacLaurin de $f(Ax^k)$ se obtiene por la misma sustitución (¡observa el orden!):
 $$f(Ax^k) = P_n(Ax^k) + O(x^{k\cdot n})\quad \text{ para }A\neq 0$$
@@ -289,7 +289,7 @@ $\quad$
 
 \textbf{\textcolor{blue}{Ejercicio 08A04.}} Hallar el desarrollo de Maclaurin de orden 8 de la función $f(x) = \cos(x^3)\sqrt{1+ x^4}$.
 
-\textbf{\textcolor{blue}{Ejercicio 08A05.}} Este ejercicio ilustra las propiedades (1) y (2) de la notación $O$. ¿Cuál es la parte principal en $x_0 =0$ de la función $f(x) = \sin(x^2) - \log{1 + x^4}$? ¿Y cuál es la parte principal en $x_0 =0$ de la función $f(x) = \cos(x) - \log{1 - x^2}$? ¿Ves la diferencia entre ambos casos? La palabra clave aquí es *cancelación*.
+\textbf{\textcolor{blue}{Ejercicio 08A05.}} Este ejercicio ilustra las propiedades (1) y (2) de la notación $O$. ¿Cuál es la parte principal en $x_0 =0$ de la función $f(x) = \sin(x^2) - \log(1 + x^4)$? ¿Y cuál es la parte principal en $x_0 =0$ de la función $f(x) = \sin(x^2) - \log(1 - x^2)$? ¿Ves la diferencia entre ambos casos? La palabra clave aquí es *cancelación*.
 
 \textbf{\textcolor{blue}{Ejercicio 08A06.}} Hallar la parte principal en $x_0 = 0$ de $$f(x) = e^x + \log(1+ x)−1−2x−\frac{x^3}{2}$$
 
