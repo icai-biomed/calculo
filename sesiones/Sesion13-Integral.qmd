@@ -1,0 +1,271 @@
+---
+title: "Sesión 13. La integral."
+lang: es
+format:
+  beamer:
+    theme: Madrid
+    fonttheme: default
+    fontsize: 10pt
+    toc: false          # handled manually below; pandoc's toc:true produces a stray }
+    section-titles: false   # \AtBeginSection in preamble.txt creates the section slide
+    slide-level: 2      # without this, top-level (#) headings become frames directly
+                         # instead of \section commands, so \tableofcontents has nothing
+                         # to list and \AtBeginSection never fires
+    include-in-header:
+      - preambulo_comun.tex
+      - text: |
+          \newcommand{\SesionTitulo}{Sesión 13 \\ La integral.}
+  html: default
+  docx: default
+---
+
+---
+
+**Sesión 13. La integral.**
+
+![](./portadasSesiones/13-MochueloCasaCampo.jpg){width="80%" fig-align="center"}
+
++ [Notebook de la sesión en Colab](https://colab.research.google.com/drive/1srqdvKUUfwySsaMPpxx-TZBWa29YCh-X?usp=sharing)
+
+
+---
+
+```{=latex}
+  
+  \frametitle{Tabla de contenidos}
+  \tableofcontents
+
+```
+
+
+# Introducción. 
+
+\small
+
+Con esta sesión comenzamos el estudio de la otra gran protagonista del Cálculo, la integral. Al igual que ocurre con la derivada, la motivación inicial que se utiliza habitualmente en los libros de texto puede resultar engañosa. Se dice a menudo que la motivación de la integral es el cálculo de áreas. Y es cierto que ese es el contexto donde las ideas resultan más intuitivas. Pero queremos enfatizar desde el principio que, si su única aplicación fuera el cálculo de áreas la integral sería una herramienta mucho menos importante y no ocuparía en el estudio del Cálculo el espacio que vamos a dedicarle. 
+
+
+En las próximas sesiones veremos que la integral es una idea muy general que permite descomponer un problema como suma de las contribuciones de muchos (¡muchísimos!) elementos pequeños o sencillos en algún sentido, para obtener el resultado global combinado que producen. Por poner un ejemplo, en Física se aprende la Ley de la Gravedad que nos dice cómo es la fuerza de gravedad que ejerce una *párticula*. Pero cuando queremos aplicar esa ley para entender el efecto de la gravedad terrestre sobre el vuelo de un ave, no tiene sentido pensar en la Tierra como una partícula. Debemos ser capaces entonces de pasar de lo microscópico (partículas) a lo macroscópico (la Tierra). La integral es la operación matemática que nos permite ese cambio de perspectiva. Y no queremos dejar de mencionar que las aplicaciones de la integral en Probabilidad y Estadística son, por si mismas, suficientes para justificar el tiempo que vamos a dedicarle. 
+
+\normalsize
+
+# Problemas de área {.fragile}
+
+::: {.callout-note  icon=false}
+
+## Fórmulas clásicas de área
+
+\small
+
+Los primeros problemas de área que encontro la humanidad tienen que ver con figuras geométricas muy sencillas, como los rectángulos, triángulos y otras similares: trapecios, polígonos regulares, etc. Las fórmulas para el área de esas figuras y las propiedades básicas del área (como la aditividad) serían durante muchos siglos suficientes para las necesidades técnicas de la época. Con una excepción notable: el círculo es una figura muy sencilla de trazar (una estaca clavada en el suelo y una cuerda tensa bastan) y muy utilizada. Pero la fórmula del área del círculo no es evidente, como atestiguan los documentos más antiguos que tratan del tema y que usan expresiones erróneas del área. 
+
+\quad
+
+Podemos asociar la visión moderna con el nombre de Arquímedes, que en el 250 a.C. estableció $\pi r^2$ y dio un valor aproximado de $\pi\approx 31/7$ utilizando un método que ilustramos con la siguiente [construcción GeoGebra](https://www.geogebra.org/m/auz8umw8). En esa construcción verás que la idea de Arquímedes consiste en *atrapar* el área del círculo entre la de dos polígonos regulares, **uno por exceso y uno por defecto** y a continuación **reducir iterativamente el error** aumentando el número de lados.
+
+Como veremos a continuación, el enfoque de Arquímedes es visionariamente moderno, adelántandose en más de mil años al desarrollo del Cálculo integral. 
+
+\normalsize
+
+
+:::
+
+# Área bajo la gráfica de una función y sumas de Riemann
+
+\small
+
+En el siglo XVII  se planteó una reformulación del problema del área en el lenguaje de las funciones. El concepto no se estableció con rigor hasta el siglo XIX (con Riemann), pero las ideas básicas ya estaban presentes en tiempos de Newton y Leibniz. 
+
+::: {.callout-note  icon=false}
+
+## Área bajo la gráfica de una función
+
+\small
+
+Dada una función $f(x)$ y un intervalo $[a, b]$ (piensa por ejemplo en $f(x) = x^2$ y $[0, 1]$) queremos estudiar el área bajo la gráfica de $f(x)$ y sobre ese intervalo, como ilustra la figura.
+
+![](./fig/S13-AreaBajoGrafica.jpg){width="30%" fig-align="center"}
+
+\normalsize
+
+:::
+
+::: {.callout-tip  appearance="minimal"}
+\small
+
+\textbf{\textcolor{blue}{Ejercicio 13A01.}} Este problema de área es más general de lo que parece. Dibuja el área bajo la gráfica de $f(x) = \sqrt{1 - x^2}$ en el intervalo $[-1, 1]$.
+
+\normalsize
+
+:::
+
+---
+
+[https://www.geogebra.org/m/gzHCQuPt](https://www.geogebra.org/m/gzHCQuPt)
+
+
+::: {.callout-note  icon=false}
+
+## La relación con la recta tangente.
+
+\small
+
+Es importante entender que la derivada primera no puede ayudarnos a distinguir entre esas dos formas de crecer. Dos funciones crecientes pueden tener la misma recta tangente pero crecer de formas distintas.
+
+\normalsize
+
+:::
+
+::: {.callout-tip  appearance="minimal"}
+\small
+
+\textbf{\textcolor{blue}{Ejercicio 12A01.}} Fíjate en las dos funciones $f(x) = e^x - 1$ y $g(x) = \log(1 + x)$. ¿Cuál es su recta tangente en $x_0 = 0$?
+
+\textbf{\textcolor{darkgreen}{Ejercicio 12C01.}} Usa el notebook para visualizar estas funciones y su recta tangente. ¿Qué puedes decir sobre la *posición* de la recta tangente con respecto a las funciones?
+
+:::
+
+::: {.callout-note  icon=false}
+
+## Convexidad en funciones derivables
+
+\small
+
+El ejercicio anterior sirve de base para entender esta terminología:
+
+Sea $f(x)$ derivable en un entorno de $x_0$. Si la gráfica de $f(x)$ en ese entorno queda por encima de la recta tangente a $f$ en $x_0$ entonces decimos que $f$ es **convexa** en $x_0$. Si la gráfica queda por debajo de la recta tangente, entonces $f$ es **cóncava** en $x_0$.  
+Y diremos que $f$ es convexa (o cóncava) en $(a, b)$ cuando lo sea en cada punto de ese intervalo.
+
+\normalsize
+
+:::
+
+---
+
+::: {.callout-note  icon=false}
+
+## Puntos de inflexión
+
+\small
+
+Si $x_0$ es un punto del dominio de $f$ donde la función cambia de cóncava a convexa o viceversa, diremos que $x_0$ es un **punto de inflexión** de $f$.
+
+\quad
+
+El ejemplo más sencillo en el que puedes pensar es el punto $x_0 = 0$ en la gráfica de $f(x) = x^3$. 
+
+\normalsize
+
+:::
+
+\quad
+
+
+::: {.callout-tip  appearance="minimal"}
+\small
+
+\textbf{\textcolor{blue}{Ejercicio 12A02.}} ¿Cuáles son los puntos de inflexión de $f(x) = \sin(x)$? ¿Y cuáles son los de $g(x) = \sin(3 x + \pi/3)$?  
+
+*Un poco más difícil, usa tu intuición geométrica:* ¿Dónde crees que están los puntos de inflexión de $h(x) = x + \sin(x)$?
+
+\quad
+
+\textbf{\textcolor{darkgreen}{Ejercicio 12C02.}} Usa el notebook para visualizar la gráfica de 
+$$f(x) = -120 x^6 + 1466x^5 - 7105x^4 + 17454x^3 - 22952x^2 + 15352x - 4095$$
+**Indicación:** Utiliza un intervalo vertical (`ylim`)  con $-200\leq y \leq 50$.  
+¿Cuántos puntos de inflexión observas? Haz una estimación *a ojo* de dónde se encuentran.
+
+
+:::
+
+
+# Derivadas de orden superior  y convexidad
+
+::: {.callout-note  icon=false}
+
+## La "parábola tangente"
+
+\small
+
+Cuando una función tiene $f''(x_0)\neq 0$ sabemos que su desarrollo de Taylor de orden 2 en $x_0$ es:
+$$f(x) = \underbrace{f(x_0) + f'(x_0) (x - x_0) + \dfrac{f''(x_0)}{2} (x - x_0)^2}_{\text{parábola tangente}} + E_2(x)$$
+Como hemos indicado, el polinomio de orden dos define una parábola de ecuación $y = f(x_0) + f'(x_0) (x - x_0) + \dfrac{f''(x_0)}{2} (x - x_0)^2$ que es la *parábola tangente* a la gráfica de $f$.  La idea entonces es que si nuestra función se parece a la parábola cerca de $x_0$, su concavidad/convexidad coincidirá con la de esa parábola. 
+
+\normalsize
+
+:::
+
+
+::: {.callout-tip  appearance="minimal"}
+
+\small
+
+\textbf{\textcolor{blue}{Ejercicio 12A03.}} Vuelve a examinar las parábolas $y= x^2$ e $y = -x^2$ e identifica qué ramas son cóncavas y cuáles son convexas. Piensa en las derivadas segundas de estas parábolas. Haz una tabla de doble entrada de signos de las derivadas primera y segunda y coloca cada rama en la celda correspondiente.
+
+:::
+
+---
+
+Este último ejercicio prepara el terreno para el siguiente resultado:
+
+::: {.callout-note  icon=false}
+
+## La derivada segunda y la convexidad.
+
+\small
+
+Si $f$ es dos veces derivable en un intervalo $(a, b)$ y $f''(x) > 0$ para $x\in(a, b)$, entonces $f$ es convexa en $(a, b)$ (es como $x^2$). De manera análoga, si $f''(x) < 0$ en $(a, b)$, entonces $f$ es cóncava en $(a, b)$ (es como $-x^2$).
+
+Si existe un punto $x_0$ de $(a, b)$ en el que $f''$ cambia de signo, entonces $x_0$ es un punto de inflexión de $f$.
+
+\normalsize
+
+:::
+
+\small
+**Observaciones:**.  
+$(1)$ Recuerda que hemos asumido que $f''$ existe en todos los puntos de $(a, b)$.  
+$(2)$ Es muy importante entender que **en un punto de inflexión la recta tangente no tiene por qué ser horizontal.** Lo que ocurre en esos puntos es que la gráfica *cruza al otro lado* de la recta tangente.
+
+\normalsize
+
+
+::: {.callout-tip  appearance="minimal"}
+
+\small
+
+\textbf{\textcolor{blue}{Ejercicio 12A04.}} Estudiar la concavidad y convexidad y hallar los puntos de inflexión de la función
+$$f(x) = x^3 + 3 x^2 + x + 1$$
+\textbf{\textcolor{blue}{Ejercicio 12A05.}} Estudia los puntos de inflexión de $f(x) = x + \sin(x)$ (ya vista en el Ejercicio 12A02.)
+
+\normalsize
+
+:::
+
+---
+
+
+::: {.callout-note  icon=false}
+
+## Polinomio de Taylor y concavidad
+
+\small
+
+Los ceros de la derivada segunda (o los puntos donde no existe) son los candidatos evidentes a ser puntos de inflexión. Si podemos analizar el signo de la derivada segunda, las cosas son más fáciles. Pero en ocasiones esto no es fácil y es bueno disponer de otro criterio, basado en el polinomio de Taylor como el que vimos para extremos locales. 
+
+En concreto: sea $f(x)$ una función suficientemente derivable en un entorno del punto $x_0$. Supongamos que $f′′(x_0) = 0$ y que la primera derivada no nula de $f(x)$ en $x_0$ **posterior a la segunda** es de orden impar. Entonces $f$ tiene un punto de inflexión en $x_0$.
+
+\normalsize
+
+:::
+
+
+::: {.callout-tip  appearance="minimal"}
+
+\small
+
+
+
+\textbf{\textcolor{firebrick}{Ejercicios Hoja 2B GITI 25-26.}} 34b(b), 35 y 36.
+
+:::
