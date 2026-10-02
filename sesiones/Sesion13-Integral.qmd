@@ -101,20 +101,141 @@ Dada una función $f(x)$ y un intervalo $[a, b]$ (piensa por ejemplo en $f(x) = 
 
 ---
 
-[https://www.geogebra.org/m/gzHCQuPt](https://www.geogebra.org/m/gzHCQuPt)
-
-
 ::: {.callout-note  icon=false}
 
-## La relación con la recta tangente.
+## Aproximaciones al área bajo la gráfica
 
 \small
 
-Es importante entender que la derivada primera no puede ayudarnos a distinguir entre esas dos formas de crecer. Dos funciones crecientes pueden tener la misma recta tangente pero crecer de formas distintas.
+La forma en la que vamos a abordar este problema es típica del Cálculo. Sea $A$ el área bajo la gráfica de $f(x)$ y sobre el intervalo $[a, b]$. Definimos una aproximación:
+$$A = \text{aproximación} + \text{error}$$
+y construimos un procedimiento para hacer ese error tan pequeño como sea necesario. 
+
+¿Cómo vamos a hacer esa aproximación? Mediante la suma de áreas muy sencillas: áreas de rectángulos. La siguiente figura ilustra esta idea.
+
+![](./fig/S13-SumaRiemann.png){width="50%" fig-align="center"}
+
+¿Cómo conseguimos que el error se haga pequeño? Aumentando el número de rectángulos. 
+
+Para llevar adelante este plan necesitamos un poco de terminología.
 
 \normalsize
 
 :::
+
+
+---
+
+\small
+
+En la figura de la página anterior hemos aproximado el área bajo $f$ y sobre el intervalo $[1, 3]$ usando siete rectángulos. Las bases de esos rectángulos (en el eje $X$) dividen el intervalo en siete subintervalos (no hace falta que sean del mismo tamaño). Esta subdivisión es lo que llamamos una partición. 
+
+\normalsize
+
+::: {.callout-note  icon=false}
+
+## Particiones y sumas de Riemann
+
+\small
+
+Formalmente, una **partición** del intervalo $[a, b]$ es una colección de $n + 1$ puntos
+$$x_0 = a < x_1 < x_2 < \cdots < x_n = b$$
+Esos $n + 1$ puntos dividen $[a, b]$ en $n$ subintervalos  (las bases de los rectángulos):
+$$I_0 = [x_0, x_1], \ldots, I_k = [x_{k - 1}, x_k],\ldots, I_n = [x_{n - 1}, x_n]$$
+Para definir los rectángulos necesitamos además una altura (y queremos que tenga algo que ver con $f$). Para cada subintervalo $I_k = [x_{k - 1}, x_k]$ desde $k = 1$  hasta $k = n$, sea $x_k^*$ un punto de $I_k$. Entonces la **suma de Riemann** correspondiente es: 
+$$S = \sum_{k = 1}^n f(x_k^*)(t_k - t_{k - 1}) = \sum_{k = 1}^n\text{(área del rectángulo k-ésimo)}$$
+¿Cómo se eligen los valores de los $t_k$ y los $x_k^*$? Vamos a conectar esto con las ideas de Arquímedes.
+
+\normalsize
+
+:::
+
+---
+
+
+::: {.callout-note  icon=false}
+
+## Sumas superiores e inferiores
+
+\small
+
+Recuerda que Arquímedes atrapaba el área del círculo entre el área de un polígono exterior, la *aproximación por exceso*, y uno interior, la *aproximación por defecto*. Vamos a hacer lo mismo en el caso de funciones:
+
+Para no complicarnos, supongamos que $f$ es continua en $[a, b]$. Entonces dado cualquier subintervalo $I_k$ de una partición, el Teorema de Weierstrass garantiza que existen:
+$$
+\begin{cases}
+m_k = \text{mínimo absoluto de } f \text{ en }I_K\\[3mm]
+M_k = \text{máximo absoluto de } f \text{ en }I_K\\
+\end{cases}
+$$
+Y podemos usarlos para definir unas sumas de Riemann especiales. La suma inferior (*lower*) y superior (*upper*) de la partición $P$ con subintervalos $I_k$ son:
+$$L(f, P) = \sum_{k = 1}^n m_k (t_k - t_{k - 1}), \qquad 
+U(f, P) = \sum_{k = 1}^n m_k (t_k - t_{k - 1}) $$
+
+Usa esta [construcción GeoGebra](https://www.geogebra.org/m/swvce9wb) o el notebook de la sesión para entender como se comportan las sumas superior e inferior al considerar particiones con muchos rectángulos.  
+
+\normalsize
+
+:::
+
+---
+
+
+::: {.callout-note  icon=false}
+
+## La integral (caso de una función continua)
+
+\small
+
+Esos experimentos han debido convencerte de que, al menos en casos sencillos, (1) la suma inferior es una aproximación por defecto al área, (2) la suma superior es una aproximación por exceso y (3) que, al aumentar el número de rectángulos, las dos sumas inferior y superior se parecen cada vez más. 
+
+Concretemos: sea $f$ continua en $[a, b]$. Dada una partición $P$ con subintervalos $I_k$, el **diámetro** de la partición es la longitud del mayor de esos subintervalos. Entonces, si consideramos **particiones con un diámetro suficientemente pequeño** (¡por tanto con muchos subintervalos!) la diferencia 
+$$U(f, P) - L(f, P)$$
+puede hacerse tan pequeña como se quiera y existe un único número, la **integral** de $f$ en $[a, b]$ que denotamos con 
+$$\int_a^b f(x) dx$$
+tal que, sea cual sea la partición $P$, se cumple:
+$$L(f, P)\leq \int_a^b f(x) dx \leq U(f, P)$$
+
+
+\normalsize
+
+:::
+
+---
+
+
+::: {.callout-note  icon=false}
+
+## ¿Y qué pasa con las sumas de Riemann?
+
+\small
+
+Para una partición $P$ cualquiera, independientemente de como se elijan los valores $x_k^*$ para formar la suma de Riemann, siempre se cumple esta desigualdad. 
+$$L(f, P) \,\leq\,  \sum_{k = 1}^n f(x_k^*)(t_k - t_{k - 1})  \,\leq\, U(f, P)$$
+Por lo tanto *para particiones con un diámetro suficientemente pequeño* se tiene
+$$\int_a^b f(x)dx \approx \sum_{k = 1}^n f(x_k^*)(t_k - t_{k - 1})$$
+insistimos, independientemente de como se elijan los $x_k^*$. 
+
+\normalsize
+
+:::
+
+
+
+---
+
+
+
+![](https://rreece.github.io/outline-of-philosophy/img/leibniz-1675-summa-and-diff.jpg)
+
+
+
+
+---
+
+
+
+---
 
 ::: {.callout-tip  appearance="minimal"}
 \small
@@ -125,139 +246,6 @@ Es importante entender que la derivada primera no puede ayudarnos a distinguir e
 
 :::
 
-::: {.callout-note  icon=false}
-
-## Convexidad en funciones derivables
-
-\small
-
-El ejercicio anterior sirve de base para entender esta terminología:
-
-Sea $f(x)$ derivable en un entorno de $x_0$. Si la gráfica de $f(x)$ en ese entorno queda por encima de la recta tangente a $f$ en $x_0$ entonces decimos que $f$ es **convexa** en $x_0$. Si la gráfica queda por debajo de la recta tangente, entonces $f$ es **cóncava** en $x_0$.  
-Y diremos que $f$ es convexa (o cóncava) en $(a, b)$ cuando lo sea en cada punto de ese intervalo.
-
-\normalsize
-
-:::
-
----
-
-::: {.callout-note  icon=false}
-
-## Puntos de inflexión
-
-\small
-
-Si $x_0$ es un punto del dominio de $f$ donde la función cambia de cóncava a convexa o viceversa, diremos que $x_0$ es un **punto de inflexión** de $f$.
-
-\quad
-
-El ejemplo más sencillo en el que puedes pensar es el punto $x_0 = 0$ en la gráfica de $f(x) = x^3$. 
-
-\normalsize
-
-:::
-
-\quad
-
-
-::: {.callout-tip  appearance="minimal"}
-\small
-
-\textbf{\textcolor{blue}{Ejercicio 12A02.}} ¿Cuáles son los puntos de inflexión de $f(x) = \sin(x)$? ¿Y cuáles son los de $g(x) = \sin(3 x + \pi/3)$?  
-
-*Un poco más difícil, usa tu intuición geométrica:* ¿Dónde crees que están los puntos de inflexión de $h(x) = x + \sin(x)$?
-
-\quad
-
-\textbf{\textcolor{darkgreen}{Ejercicio 12C02.}} Usa el notebook para visualizar la gráfica de 
-$$f(x) = -120 x^6 + 1466x^5 - 7105x^4 + 17454x^3 - 22952x^2 + 15352x - 4095$$
-**Indicación:** Utiliza un intervalo vertical (`ylim`)  con $-200\leq y \leq 50$.  
-¿Cuántos puntos de inflexión observas? Haz una estimación *a ojo* de dónde se encuentran.
-
-
-:::
-
-
-# Derivadas de orden superior  y convexidad
-
-::: {.callout-note  icon=false}
-
-## La "parábola tangente"
-
-\small
-
-Cuando una función tiene $f''(x_0)\neq 0$ sabemos que su desarrollo de Taylor de orden 2 en $x_0$ es:
-$$f(x) = \underbrace{f(x_0) + f'(x_0) (x - x_0) + \dfrac{f''(x_0)}{2} (x - x_0)^2}_{\text{parábola tangente}} + E_2(x)$$
-Como hemos indicado, el polinomio de orden dos define una parábola de ecuación $y = f(x_0) + f'(x_0) (x - x_0) + \dfrac{f''(x_0)}{2} (x - x_0)^2$ que es la *parábola tangente* a la gráfica de $f$.  La idea entonces es que si nuestra función se parece a la parábola cerca de $x_0$, su concavidad/convexidad coincidirá con la de esa parábola. 
-
-\normalsize
-
-:::
-
-
-::: {.callout-tip  appearance="minimal"}
-
-\small
-
-\textbf{\textcolor{blue}{Ejercicio 12A03.}} Vuelve a examinar las parábolas $y= x^2$ e $y = -x^2$ e identifica qué ramas son cóncavas y cuáles son convexas. Piensa en las derivadas segundas de estas parábolas. Haz una tabla de doble entrada de signos de las derivadas primera y segunda y coloca cada rama en la celda correspondiente.
-
-:::
-
----
-
-Este último ejercicio prepara el terreno para el siguiente resultado:
-
-::: {.callout-note  icon=false}
-
-## La derivada segunda y la convexidad.
-
-\small
-
-Si $f$ es dos veces derivable en un intervalo $(a, b)$ y $f''(x) > 0$ para $x\in(a, b)$, entonces $f$ es convexa en $(a, b)$ (es como $x^2$). De manera análoga, si $f''(x) < 0$ en $(a, b)$, entonces $f$ es cóncava en $(a, b)$ (es como $-x^2$).
-
-Si existe un punto $x_0$ de $(a, b)$ en el que $f''$ cambia de signo, entonces $x_0$ es un punto de inflexión de $f$.
-
-\normalsize
-
-:::
-
-\small
-**Observaciones:**.  
-$(1)$ Recuerda que hemos asumido que $f''$ existe en todos los puntos de $(a, b)$.  
-$(2)$ Es muy importante entender que **en un punto de inflexión la recta tangente no tiene por qué ser horizontal.** Lo que ocurre en esos puntos es que la gráfica *cruza al otro lado* de la recta tangente.
-
-\normalsize
-
-
-::: {.callout-tip  appearance="minimal"}
-
-\small
-
-\textbf{\textcolor{blue}{Ejercicio 12A04.}} Estudiar la concavidad y convexidad y hallar los puntos de inflexión de la función
-$$f(x) = x^3 + 3 x^2 + x + 1$$
-\textbf{\textcolor{blue}{Ejercicio 12A05.}} Estudia los puntos de inflexión de $f(x) = x + \sin(x)$ (ya vista en el Ejercicio 12A02.)
-
-\normalsize
-
-:::
-
----
-
-
-::: {.callout-note  icon=false}
-
-## Polinomio de Taylor y concavidad
-
-\small
-
-Los ceros de la derivada segunda (o los puntos donde no existe) son los candidatos evidentes a ser puntos de inflexión. Si podemos analizar el signo de la derivada segunda, las cosas son más fáciles. Pero en ocasiones esto no es fácil y es bueno disponer de otro criterio, basado en el polinomio de Taylor como el que vimos para extremos locales. 
-
-En concreto: sea $f(x)$ una función suficientemente derivable en un entorno del punto $x_0$. Supongamos que $f′′(x_0) = 0$ y que la primera derivada no nula de $f(x)$ en $x_0$ **posterior a la segunda** es de orden impar. Entonces $f$ tiene un punto de inflexión en $x_0$.
-
-\normalsize
-
-:::
 
 
 ::: {.callout-tip  appearance="minimal"}
@@ -269,3 +257,4 @@ En concreto: sea $f(x)$ una función suficientemente derivable en un entorno del
 \textbf{\textcolor{firebrick}{Ejercicios Hoja 2B GITI 25-26.}} 34b(b), 35 y 36.
 
 :::
+
