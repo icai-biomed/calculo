@@ -220,8 +220,23 @@ insistimos, independientemente de como se elijan los $x_k^*$.
 
 :::
 
+---
 
+::: {.callout-note  icon=false}
 
+## ¿Y qué pasa con las funciones no continuas? Funciones continuas a trozos.
+
+\small
+
+La integral existe para una clase más amplia de funciones. De momento, vamos a imponer que la función esté acotada en $[a, b]$. Es decir, que existan cotas inferior y superior $c$ y $C$ tales que
+$$c < f(x) < C\quad\text{ para todo }x\text{ de }[a, b]$$
+Al hacer esto estamos excluyendo por ejemplo a las funciones que tienen una asíntota vertical. Volveremos a pensar en ellas más adelante, pero de momento las aparcamos y decimos que una función acotada es **continua a trozos** en $[a, b]$ si existe a lo sumo una cantidad finita de puntos del intervalo en los que $f$ tiene una discontinuidad de salto (finito, claro). 
+
+Y el resultado útil es que para las funciones continuas a trozos la teoría de la integral funciona exactamente igual.
+
+\normalsize
+
+:::
 ---
 
 
