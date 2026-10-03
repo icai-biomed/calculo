@@ -61,14 +61,27 @@ Los primeros problemas de área que encontro la humanidad tienen que ver con fig
 
 \quad
 
-Podemos asociar la visión moderna con el nombre de Arquímedes, que en el 250 a.C. estableció $\pi r^2$ y dio un valor aproximado de $\pi\approx 31/7$ utilizando un método que ilustramos con la siguiente [construcción GeoGebra](https://www.geogebra.org/m/auz8umw8). En esa construcción verás que la idea de Arquímedes consiste en *atrapar* el área del círculo entre la de dos polígonos regulares, **uno por exceso y uno por defecto** y a continuación **reducir iterativamente el error** aumentando el número de lados.
+Podemos asociar la visión moderna con el nombre de Arquímedes, que en el 250 a.C. estableció $\pi r^2$ y dio un valor aproximado de $\pi\approx 22/7$ utilizando un método que ilustramos con la siguiente [construcción GeoGebra](https://www.geogebra.org/m/auz8umw8). En esa construcción verás que la idea de Arquímedes consiste en *atrapar* el área del círculo entre la de dos polígonos regulares, **uno por exceso y uno por defecto** y a continuación **reducir iterativamente el error** aumentando el número de lados.
 
 Como veremos a continuación, el enfoque de Arquímedes es visionariamente moderno, adelántandose en más de mil años al desarrollo del Cálculo integral. 
 
 \normalsize
 
-
 :::
+
+---
+
+Esta captura de la construcción GeoGebra demuestra con $n = 14$ que $3 < \pi < 3.2$. 
+
+
+![](./fig/S13-AreaCirculoArquimedes.jpg){width="80%" fig-align="center"}
+
+Arquímedes demostró (con $n = 96$) que 
+$$
+\dfrac{223}{71} < \pi < \dfrac{22}{7}
+$$
+
+
 
 # Área bajo la gráfica de una función y sumas de Riemann
 
@@ -143,8 +156,8 @@ $$x_0 = a < x_1 < x_2 < \cdots < x_n = b$$
 Esos $n + 1$ puntos dividen $[a, b]$ en $n$ subintervalos  (las bases de los rectángulos):
 $$I_0 = [x_0, x_1], \ldots, I_k = [x_{k - 1}, x_k],\ldots, I_n = [x_{n - 1}, x_n]$$
 Para definir los rectángulos necesitamos además una altura (y queremos que tenga algo que ver con $f$). Para cada subintervalo $I_k = [x_{k - 1}, x_k]$ desde $k = 1$  hasta $k = n$, sea $x_k^*$ un punto de $I_k$. Entonces la **suma de Riemann** correspondiente es: 
-$$S = \sum_{k = 1}^n f(x_k^*)(t_k - t_{k - 1}) = \sum_{k = 1}^n\text{(área del rectángulo k-ésimo)}$$
-¿Cómo se eligen los valores de los $t_k$ y los $x_k^*$? Vamos a conectar esto con las ideas de Arquímedes.
+$$S = \sum_{k = 1}^n f(x_k^*)(x_k - x_{k - 1}) = \sum_{k = 1}^n\text{(área del rectángulo k-ésimo)}$$
+¿Cómo se eligen los valores de los $x_k$ y los $x_k^*$? Vamos a conectar esto con las ideas de Arquímedes.
 
 \normalsize
 
@@ -164,13 +177,13 @@ Recuerda que Arquímedes atrapaba el área del círculo entre el área de un pol
 Para no complicarnos, supongamos que $f$ es continua en $[a, b]$. Entonces dado cualquier subintervalo $I_k$ de una partición, el Teorema de Weierstrass garantiza que existen:
 $$
 \begin{cases}
-m_k = \text{mínimo absoluto de } f \text{ en }I_K\\[3mm]
-M_k = \text{máximo absoluto de } f \text{ en }I_K\\
+m_k = \text{mínimo absoluto de } f \text{ en }I_k\\[3mm]
+M_k = \text{máximo absoluto de } f \text{ en }I_k\\
 \end{cases}
 $$
 Y podemos usarlos para definir unas sumas de Riemann especiales. La suma inferior (*lower*) y superior (*upper*) de la partición $P$ con subintervalos $I_k$ son:
-$$L(f, P) = \sum_{k = 1}^n m_k (t_k - t_{k - 1}), \qquad 
-U(f, P) = \sum_{k = 1}^n m_k (t_k - t_{k - 1}) $$
+$$L(f, P) = \sum_{k = 1}^n m_k (x_k - x_{k - 1}), \qquad 
+U(f, P) = \sum_{k = 1}^n m_k (x_k - x_{k - 1})$$
 
 Usa esta [construcción GeoGebra](https://www.geogebra.org/m/swvce9wb) o el notebook de la sesión para entender como se comportan las sumas superior e inferior al considerar particiones con muchos rectángulos.  
 
@@ -203,6 +216,37 @@ $$L(f, P)\leq \int_a^b f(x) dx \leq U(f, P)$$
 
 ---
 
+::: {.callout-note  icon=false}
+
+## Funciones acotadas integrables
+
+\small
+
+Una función esté acotada en $[a, b]$ cuando existen *cotas inferior* y *superior* $c$ y $C$ tales que
+$$c < f(x) < C\quad\text{ para todo }x\text{ de }[a, b]$$
+Al hacer esto estamos excluyendo por ejemplo a las funciones que tienen una asíntota vertical. Volveremos a pensar en ellas más adelante, pero de momento las aparcamos
+
+Una función acotada es **integrable** cuando  la diferencia $U(f, P) - L(f, P)$ puede hacerse tan pequeña como se quiera tomando particiones con diámetro suficientemente pequeño. La página anterior dice que **las funciones continuas son siempre integrables**.
+
+\normalsize
+
+:::
+
+::: {.callout-note  icon=false}
+
+## Funciones continuas a trozos.
+
+\small
+
+Decimos que una función *acotada* es **continua a trozos** en $[a, b]$ si existe a lo sumo una cantidad finita de puntos del intervalo en los que $f$ tiene una discontinuidad de salto (finito, claro). Las funciones continuas a trozos son también integrables y para ellas también existe la integral 
+$$\int_a^b f(x)\,dx$$
+
+\normalsize
+
+:::
+
+---
+
 
 ::: {.callout-note  icon=false}
 
@@ -211,10 +255,43 @@ $$L(f, P)\leq \int_a^b f(x) dx \leq U(f, P)$$
 \small
 
 Para una partición $P$ cualquiera, independientemente de como se elijan los valores $x_k^*$ para formar la suma de Riemann, siempre se cumple esta desigualdad. 
-$$L(f, P) \,\leq\,  \sum_{k = 1}^n f(x_k^*)(t_k - t_{k - 1})  \,\leq\, U(f, P)$$
+$$L(f, P) \,\leq\,  \sum_{k = 1}^n f(x_k^*)(x_k - x_{k - 1})  \,\leq\, U(f, P)$$
 Por lo tanto *para particiones con un diámetro suficientemente pequeño* se tiene
-$$\int_a^b f(x)dx \approx \sum_{k = 1}^n f(x_k^*)(t_k - t_{k - 1})$$
+$$\int_a^b f(x)dx \approx \sum_{k = 1}^n f(x_k^*)(x_k - x_{k - 1})$$
 insistimos, independientemente de como se elijan los $x_k^*$. 
+
+\normalsize
+
+:::
+
+::: {.callout-tip  appearance="minimal"}
+
+\small
+
+\textbf{\textcolor{darkgreen}{Ejercicio 13C01.}} Usa el notebook para experimentar con esto, en el caso de $\int_0^1 x^2\, dx$ o de $\int_0^\pi\sin^2 x\,dx$. En concreto, usa una partición con $N = 50$ subintervalos del mismo tamaño y usa Python para elegir **al azar** un punto $x_k^*$ dentro de cada subintervalo $I_k$ de la partición. ¿Qué ocurre si tomas $N = 500$?
+
+\normalsize
+
+:::
+
+
+
+---
+
+::: {.callout-note  icon=false}
+
+## Qué hay detrás del símbolo de la integral. Sumas y diferenciales.
+
+\small
+
+Aquí puedes ver uno de los primeros [documentos donde Leibniz utilizó ese símbolo para la integral](https://rreece.github.io/outline-of-philosophy/img/leibniz-1675-summa-and-diff.jpg), El símbolo $\int$ es esencialmente una S de suma. 
+
+![](https://rreece.github.io/outline-of-philosophy/img/leibniz-1675-summa-and-diff.jpg){width="40%" fig-align="center"}
+
+El ingrediente $dx$ es el **diferencial** de $x$, que corresponde a las bases de los rectángulos definidos por la partición del intervalo. En el contexto de las sumas de Riemann a menudo se representa la longitud de una de esas bases con el símbolo $\Delta x$, que se lee *"incremento"* de $x$. Y entonces podemos representar conceptualmente la aproximación mediante sumas de Riemann:
+mediante esta **ecuación de discretización**
+$$\int_a^b f(x)dx \approx \sum_{a}^b f(x)\Delta x$$
+Al hablar de aplicaciones de la integral volveremos sobre estas ideas.
 
 \normalsize
 
@@ -224,52 +301,73 @@ insistimos, independientemente de como se elijan los $x_k^*$.
 
 ::: {.callout-note  icon=false}
 
-## ¿Y qué pasa con las funciones no continuas? Funciones continuas a trozos.
+## Área con signo. 
 
 \small
 
-La integral existe para una clase más amplia de funciones. De momento, vamos a imponer que la función esté acotada en $[a, b]$. Es decir, que existan cotas inferior y superior $c$ y $C$ tales que
-$$c < f(x) < C\quad\text{ para todo }x\text{ de }[a, b]$$
-Al hacer esto estamos excluyendo por ejemplo a las funciones que tienen una asíntota vertical. Volveremos a pensar en ellas más adelante, pero de momento las aparcamos y decimos que una función acotada es **continua a trozos** en $[a, b]$ si existe a lo sumo una cantidad finita de puntos del intervalo en los que $f$ tiene una discontinuidad de salto (finito, claro). 
+Hasta ahora hemos supuesto tácitamente que $f(x)$ era positiva en el intervalo $[a, b]$ y así hemos motivado la integral como el área bajo la curva. Pero ¿qué hacemos si la función $f$ toma valores negativos en $[a, b]$? ¿Cuánto queremos que valga por ejemplo la integral del seno entre 0 y $2 \pi$?
 
-Y el resultado útil es que para las funciones continuas a trozos la teoría de la integral funciona exactamente igual.
+![](./fig/13-AreaConSigno.png){width="35%" fig-align="center"}
+
+Las dos regiones coloreadas de esa figura tiene el mismo área (que vale 2). Podemos decidir entonces entre estas dos  **opciones:**  
+$\displaystyle \int_0^{2\pi}\sin x\,dx = 0\qquad \text{ o bien }\qquad \int_0^{2\pi}\sin x\,dx = 2 + 2 = 4$  
+Si nuestra única preocupación fuera el cálculo de áreas, la segunda opción sería más tentadora. Pero en la mayoría de las aplicaciones de la integral, su valor como *suma* es más importante. Cuando sumamos cantidades con signo preferimos la cancelación de positivos y negativos. Así, la opción **útil** es la primera, y diremos que la integral es el **área con signo** y que las regiones situadas bajo el eje $X$ tienen *área negativa*. En la próxima sesión volveremos a esta discusión.
+
+\normalsize
+
+
+:::
+
+---
+
+::: {.callout-note  icon=false}
+
+## Ampliación: la Regla del Trapecio
+
+\small
+
+Hemos usado rectángulos para definir las sumas de Riemann que nos dan una aproximación al valor de la integral. Pero eso no quiere decir que no podamos usar otras figuras para obtener aproximaciones mejores. Por ejemplo, si en lugar de usar un único valor de $f$ para construir un rectángulo usamos un trapecio con las dos alturas de $f$ al principio y al fial de cada intervalo, podemos obtener una aproximación más rápida al valor de la integral. 
+
+Recuerda que en un trapecio de base $b$ y con alturas $h_1$ y $h_2$ el área es 
+$$b \, \dfrac{(h_1 + h_2)}{2}$$ 
+Usando esto para construir un trapecio en cada subintervalo $I_k$ de la partición se obtiene la Regla del Trapecio:
+$$
+\int_a^b f(x)\, dx \approx \sum_{k = 1}^n \left(\dfrac{f(x_k) +  f(x_{k - 1})}{2}\right) (x_k - x_{k - 1}) 
+$$
+
+\normalsize
+:::
+
+::: {.callout-tip  appearance="minimal"}
+
+\small
+
+\textbf{\textcolor{darkgreen}{Ejercicio 13C02.}} Usa el notebook para experimentar con la Regla del Trapecio.
 
 \normalsize
 
 :::
----
+
+
+<!-- ::: {.callout-tip  appearance="minimal"} -->
+
+<!-- \small -->
+
+<!-- \textbf{\textcolor{blue}{Ejercicio 12A01.}} Fíjate en las dos funciones $f(x) = e^x - 1$ y $g(x) = \log(1 + x)$. ¿Cuál es su recta tangente en $x_0 = 0$? -->
+
+<!-- \textbf{\textcolor{darkgreen}{Ejercicio 12C01.}} Usa el notebook para visualizar estas funciones y su recta tangente. ¿Qué puedes decir sobre la *posición* de la recta tangente con respecto a las funciones? -->
+
+<!-- ::: -->
 
 
 
-![](https://rreece.github.io/outline-of-philosophy/img/leibniz-1675-summa-and-diff.jpg)
+<!-- ::: {.callout-tip  appearance="minimal"} -->
+
+<!-- \small -->
 
 
 
+<!-- \textbf{\textcolor{firebrick}{Ejercicios Hoja 2B GITI 25-26.}} 34b(b), 35 y 36. -->
 
----
-
-
-
----
-
-::: {.callout-tip  appearance="minimal"}
-\small
-
-\textbf{\textcolor{blue}{Ejercicio 12A01.}} Fíjate en las dos funciones $f(x) = e^x - 1$ y $g(x) = \log(1 + x)$. ¿Cuál es su recta tangente en $x_0 = 0$?
-
-\textbf{\textcolor{darkgreen}{Ejercicio 12C01.}} Usa el notebook para visualizar estas funciones y su recta tangente. ¿Qué puedes decir sobre la *posición* de la recta tangente con respecto a las funciones?
-
-:::
-
-
-
-::: {.callout-tip  appearance="minimal"}
-
-\small
-
-
-
-\textbf{\textcolor{firebrick}{Ejercicios Hoja 2B GITI 25-26.}} 34b(b), 35 y 36.
-
-:::
+<!-- ::: -->
 
