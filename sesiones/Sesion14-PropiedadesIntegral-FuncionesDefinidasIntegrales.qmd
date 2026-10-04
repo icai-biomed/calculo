@@ -1,0 +1,373 @@
+---
+title: "Sesión 13. La integral."
+lang: es
+format:
+  beamer:
+    theme: Madrid
+    fonttheme: default
+    fontsize: 10pt
+    toc: false          # handled manually below; pandoc's toc:true produces a stray }
+    section-titles: false   # \AtBeginSection in preamble.txt creates the section slide
+    slide-level: 2      # without this, top-level (#) headings become frames directly
+                         # instead of \section commands, so \tableofcontents has nothing
+                         # to list and \AtBeginSection never fires
+    include-in-header:
+      - preambulo_comun.tex
+      - text: |
+          \newcommand{\SesionTitulo}{Sesión 13 \\ La integral.}
+  html: default
+  docx: default
+---
+
+---
+
+**Sesión 13. La integral.**
+
+![](./portadasSesiones/13-MochueloCasaCampo.jpg){width="80%" fig-align="center"}
+
++ [Notebook de la sesión en Colab](https://colab.research.google.com/drive/1srqdvKUUfwySsaMPpxx-TZBWa29YCh-X?usp=sharing)
+
+
+---
+
+```{=latex}
+  
+  \frametitle{Tabla de contenidos}
+  \tableofcontents
+
+```
+
+
+# Introducción. 
+
+\small
+
+Con esta sesión comenzamos el estudio de la otra gran protagonista del Cálculo, la integral. Al igual que ocurre con la derivada, la motivación inicial que se utiliza habitualmente en los libros de texto puede resultar engañosa. Se dice a menudo que la motivación de la integral es el cálculo de áreas. Y es cierto que ese es el contexto donde las ideas resultan más intuitivas. Pero queremos enfatizar desde el principio que, si su única aplicación fuera el cálculo de áreas la integral sería una herramienta mucho menos importante y no ocuparía en el estudio del Cálculo el espacio que vamos a dedicarle. 
+
+
+En las próximas sesiones veremos que la integral es una idea muy general que permite descomponer un problema como suma de las contribuciones de muchos (¡muchísimos!) elementos pequeños o sencillos en algún sentido, para obtener el resultado global combinado que producen. Por poner un ejemplo, en Física se aprende la Ley de la Gravedad que nos dice cómo es la fuerza de gravedad que ejerce una *párticula*. Pero cuando queremos aplicar esa ley para entender el efecto de la gravedad terrestre sobre el vuelo de un ave, no tiene sentido pensar en la Tierra como una partícula. Debemos ser capaces entonces de pasar de lo microscópico (partículas) a lo macroscópico (la Tierra). La integral es la operación matemática que nos permite ese cambio de perspectiva. Y no queremos dejar de mencionar que las aplicaciones de la integral en Probabilidad y Estadística son, por si mismas, suficientes para justificar el tiempo que vamos a dedicarle. 
+
+\normalsize
+
+# Problemas de área {.fragile}
+
+::: {.callout-note  icon=false}
+
+## Fórmulas clásicas de área
+
+\small
+
+Los primeros problemas de área que encontro la humanidad tienen que ver con figuras geométricas muy sencillas, como los rectángulos, triángulos y otras similares: trapecios, polígonos regulares, etc. Las fórmulas para el área de esas figuras y las propiedades básicas del área (como la aditividad) serían durante muchos siglos suficientes para las necesidades técnicas de la época. Con una excepción notable: el círculo es una figura muy sencilla de trazar (una estaca clavada en el suelo y una cuerda tensa bastan) y muy utilizada. Pero la fórmula del área del círculo no es evidente, como atestiguan los documentos más antiguos que tratan del tema y que usan expresiones erróneas del área. 
+
+\quad
+
+Podemos asociar la visión moderna con el nombre de Arquímedes, que en el 250 a.C. estableció $\pi r^2$ y dio un valor aproximado de $\pi\approx 22/7$ utilizando un método que ilustramos con la siguiente [construcción GeoGebra](https://www.geogebra.org/m/auz8umw8). En esa construcción verás que la idea de Arquímedes consiste en *atrapar* el área del círculo entre la de dos polígonos regulares, **uno por exceso y uno por defecto** y a continuación **reducir iterativamente el error** aumentando el número de lados.
+
+Como veremos a continuación, el enfoque de Arquímedes es visionariamente moderno, adelántandose en más de mil años al desarrollo del Cálculo integral. 
+
+\normalsize
+
+:::
+
+---
+
+Esta captura de la construcción GeoGebra demuestra con $n = 14$ que $3 < \pi < 3.2$. 
+
+
+![](./fig/S13-AreaCirculoArquimedes.jpg){width="80%" fig-align="center"}
+
+Arquímedes demostró (con $n = 96$) que 
+$$
+\dfrac{223}{71} < \pi < \dfrac{22}{7}
+$$
+
+
+
+# Área bajo la gráfica de una función y sumas de Riemann
+
+\small
+
+En el siglo XVII  se planteó una reformulación del problema del área en el lenguaje de las funciones. El concepto no se estableció con rigor hasta el siglo XIX (con Riemann), pero las ideas básicas ya estaban presentes en tiempos de Newton y Leibniz. 
+
+::: {.callout-note  icon=false}
+
+## Área bajo la gráfica de una función
+
+\small
+
+Dada una función $f(x)$ y un intervalo $[a, b]$ (piensa por ejemplo en $f(x) = x^2$ y $[0, 1]$) queremos estudiar el área bajo la gráfica de $f(x)$ y sobre ese intervalo, como ilustra la figura.
+
+![](./fig/S13-AreaBajoGrafica.jpg){width="30%" fig-align="center"}
+
+\normalsize
+
+:::
+
+::: {.callout-tip  appearance="minimal"}
+\small
+
+\textbf{\textcolor{blue}{Ejercicio 13A01.}} Este problema de área es más general de lo que parece. Dibuja el área bajo la gráfica de $f(x) = \sqrt{1 - x^2}$ en el intervalo $[-1, 1]$.
+
+\normalsize
+
+:::
+
+---
+
+::: {.callout-note  icon=false}
+
+## Aproximaciones al área bajo la gráfica
+
+\small
+
+La forma en la que vamos a abordar este problema es típica del Cálculo. Sea $A$ el área bajo la gráfica de $f(x)$ y sobre el intervalo $[a, b]$. Definimos una aproximación:
+$$A = \text{aproximación} + \text{error}$$
+y construimos un procedimiento para hacer ese error tan pequeño como sea necesario. 
+
+¿Cómo vamos a hacer esa aproximación? Mediante la suma de áreas muy sencillas: áreas de rectángulos. La siguiente figura ilustra esta idea.
+
+![](./fig/S13-SumaRiemann.png){width="50%" fig-align="center"}
+
+¿Cómo conseguimos que el error se haga pequeño? Aumentando el número de rectángulos. 
+
+Para llevar adelante este plan necesitamos un poco de terminología.
+
+\normalsize
+
+:::
+
+
+---
+
+\small
+
+En la figura de la página anterior hemos aproximado el área bajo $f$ y sobre el intervalo $[1, 3]$ usando siete rectángulos. Las bases de esos rectángulos (en el eje $X$) dividen el intervalo en siete subintervalos (no hace falta que sean del mismo tamaño). Esta subdivisión es lo que llamamos una partición. 
+
+\normalsize
+
+::: {.callout-note  icon=false}
+
+## Particiones y sumas de Riemann
+
+\small
+
+Formalmente, una **partición** del intervalo $[a, b]$ es una colección de $n + 1$ puntos
+$$x_0 = a < x_1 < x_2 < \cdots < x_n = b$$
+Esos $n + 1$ puntos dividen $[a, b]$ en $n$ subintervalos  (las bases de los rectángulos):
+$$I_0 = [x_0, x_1], \ldots, I_k = [x_{k - 1}, x_k],\ldots, I_n = [x_{n - 1}, x_n]$$
+Para definir los rectángulos necesitamos además una altura (y queremos que tenga algo que ver con $f$). Para cada subintervalo $I_k = [x_{k - 1}, x_k]$ desde $k = 1$  hasta $k = n$, sea $x_k^*$ un punto de $I_k$. Entonces la **suma de Riemann** correspondiente es: 
+$$S = \sum_{k = 1}^n f(x_k^*)(x_k - x_{k - 1}) = \sum_{k = 1}^n\text{(área del rectángulo k-ésimo)}$$
+¿Cómo se eligen los valores de los $x_k$ y los $x_k^*$? Vamos a conectar esto con las ideas de Arquímedes.
+
+\normalsize
+
+:::
+
+---
+
+
+::: {.callout-note  icon=false}
+
+## Sumas superiores e inferiores
+
+\small
+
+Recuerda que Arquímedes atrapaba el área del círculo entre el área de un polígono exterior, la *aproximación por exceso*, y uno interior, la *aproximación por defecto*. Vamos a hacer lo mismo en el caso de funciones:
+
+Para no complicarnos, supongamos que $f$ es continua en $[a, b]$. Entonces dado cualquier subintervalo $I_k$ de una partición, el Teorema de Weierstrass garantiza que existen:
+$$
+\begin{cases}
+m_k = \text{mínimo absoluto de } f \text{ en }I_k\\[3mm]
+M_k = \text{máximo absoluto de } f \text{ en }I_k\\
+\end{cases}
+$$
+Y podemos usarlos para definir unas sumas de Riemann especiales. La suma inferior (*lower*) y superior (*upper*) de la partición $P$ con subintervalos $I_k$ son:
+$$L(f, P) = \sum_{k = 1}^n m_k (x_k - x_{k - 1}), \qquad 
+U(f, P) = \sum_{k = 1}^n m_k (x_k - x_{k - 1})$$
+
+Usa esta [construcción GeoGebra](https://www.geogebra.org/m/swvce9wb) o el notebook de la sesión para entender como se comportan las sumas superior e inferior al considerar particiones con muchos rectángulos.  
+
+\normalsize
+
+:::
+
+---
+
+
+::: {.callout-note  icon=false}
+
+## La integral (caso de una función continua)
+
+\small
+
+Esos experimentos han debido convencerte de que, al menos en casos sencillos, (1) la suma inferior es una aproximación por defecto al área, (2) la suma superior es una aproximación por exceso y (3) que, al aumentar el número de rectángulos, las dos sumas inferior y superior se parecen cada vez más. 
+
+Concretemos: sea $f$ continua en $[a, b]$. Dada una partición $P$ con subintervalos $I_k$, el **diámetro** de la partición es la longitud del mayor de esos subintervalos. Entonces, si consideramos **particiones con un diámetro suficientemente pequeño** (¡por tanto con muchos subintervalos!) la diferencia 
+$$U(f, P) - L(f, P)$$
+puede hacerse tan pequeña como se quiera y existe un único número, la **integral** de $f$ en $[a, b]$ que denotamos con 
+$$\int_a^b f(x) dx$$
+tal que, sea cual sea la partición $P$, se cumple:
+$$L(f, P)\leq \int_a^b f(x) dx \leq U(f, P)$$
+
+
+\normalsize
+
+:::
+
+---
+
+::: {.callout-note  icon=false}
+
+## Funciones acotadas integrables
+
+\small
+
+Una función esté acotada en $[a, b]$ cuando existen *cotas inferior* y *superior* $c$ y $C$ tales que
+$$c < f(x) < C\quad\text{ para todo }x\text{ de }[a, b]$$
+Al hacer esto estamos excluyendo por ejemplo a las funciones que tienen una asíntota vertical. Volveremos a pensar en ellas más adelante, pero de momento las aparcamos
+
+Una función acotada es **integrable** cuando  la diferencia $U(f, P) - L(f, P)$ puede hacerse tan pequeña como se quiera tomando particiones con diámetro suficientemente pequeño. La página anterior dice que **las funciones continuas son siempre integrables**.
+
+\normalsize
+
+:::
+
+::: {.callout-note  icon=false}
+
+## Funciones continuas a trozos.
+
+\small
+
+Decimos que una función *acotada* es **continua a trozos** en $[a, b]$ si existe a lo sumo una cantidad finita de puntos del intervalo en los que $f$ tiene una discontinuidad de salto (finito, claro). Las funciones continuas a trozos son también integrables y para ellas también existe la integral 
+$$\int_a^b f(x)\,dx$$
+
+\normalsize
+
+:::
+
+---
+
+
+::: {.callout-note  icon=false}
+
+## ¿Y qué pasa con las sumas de Riemann?
+
+\small
+
+Para una partición $P$ cualquiera, independientemente de como se elijan los valores $x_k^*$ para formar la suma de Riemann, siempre se cumple esta desigualdad. 
+$$L(f, P) \,\leq\,  \sum_{k = 1}^n f(x_k^*)(x_k - x_{k - 1})  \,\leq\, U(f, P)$$
+Por lo tanto *para particiones con un diámetro suficientemente pequeño* se tiene
+$$\int_a^b f(x)dx \approx \sum_{k = 1}^n f(x_k^*)(x_k - x_{k - 1})$$
+insistimos, independientemente de como se elijan los $x_k^*$. 
+
+\normalsize
+
+:::
+
+::: {.callout-tip  appearance="minimal"}
+
+\small
+
+\textbf{\textcolor{darkgreen}{Ejercicio 13C01.}} Usa el notebook para experimentar con esto, en el caso de $\int_0^1 x^2\, dx$ o de $\int_0^\pi\sin^2 x\,dx$. En concreto, usa una partición con $N = 50$ subintervalos del mismo tamaño y usa Python para elegir **al azar** un punto $x_k^*$ dentro de cada subintervalo $I_k$ de la partición. ¿Qué ocurre si tomas $N = 500$?
+
+\normalsize
+
+:::
+
+
+
+---
+
+::: {.callout-note  icon=false}
+
+## Qué hay detrás del símbolo de la integral. Sumas y diferenciales.
+
+\small
+
+Aquí puedes ver uno de los primeros [documentos donde Leibniz utilizó ese símbolo para la integral](https://rreece.github.io/outline-of-philosophy/img/leibniz-1675-summa-and-diff.jpg), El símbolo $\int$ es esencialmente una S de suma. 
+
+![](https://rreece.github.io/outline-of-philosophy/img/leibniz-1675-summa-and-diff.jpg){width="40%" fig-align="center"}
+
+El ingrediente $dx$ es el **diferencial** de $x$, que corresponde a las bases de los rectángulos definidos por la partición del intervalo. En el contexto de las sumas de Riemann a menudo se representa la longitud de una de esas bases con el símbolo $\Delta x$, que se lee *"incremento"* de $x$. Y entonces podemos representar conceptualmente la aproximación mediante sumas de Riemann:
+mediante esta **ecuación de discretización**
+$$\int_a^b f(x)dx \approx \sum_{a}^b f(x)\Delta x$$
+Al hablar de aplicaciones de la integral volveremos sobre estas ideas.
+
+\normalsize
+
+:::
+
+---
+
+::: {.callout-note  icon=false}
+
+## Área con signo. 
+
+\small
+
+Hasta ahora hemos supuesto tácitamente que $f(x)$ era positiva en el intervalo $[a, b]$ y así hemos motivado la integral como el área bajo la curva. Pero ¿qué hacemos si la función $f$ toma valores negativos en $[a, b]$? ¿Cuánto queremos que valga por ejemplo la integral del seno entre 0 y $2 \pi$?
+
+![](./fig/13-AreaConSigno.png){width="35%" fig-align="center"}
+
+Las dos regiones coloreadas de esa figura tiene el mismo área (que vale 2). Podemos decidir entonces entre estas dos  **opciones:**  
+$\displaystyle \int_0^{2\pi}\sin x\,dx = 0\qquad \text{ o bien }\qquad \int_0^{2\pi}\sin x\,dx = 2 + 2 = 4$  
+Si nuestra única preocupación fuera el cálculo de áreas, la segunda opción sería más tentadora. Pero en la mayoría de las aplicaciones de la integral, su valor como *suma* es más importante. Cuando sumamos cantidades con signo preferimos la cancelación de positivos y negativos. Así, la opción **útil** es la primera, y diremos que la integral es el **área con signo** y que las regiones situadas bajo el eje $X$ tienen *área negativa*. En la próxima sesión volveremos a esta discusión.
+
+\normalsize
+
+
+:::
+
+---
+
+::: {.callout-note  icon=false}
+
+## Ampliación: la Regla del Trapecio
+
+\small
+
+Hemos usado rectángulos para definir las sumas de Riemann que nos dan una aproximación al valor de la integral. Pero eso no quiere decir que no podamos usar otras figuras para obtener aproximaciones mejores. Por ejemplo, si en lugar de usar un único valor de $f$ para construir un rectángulo usamos un trapecio con las dos alturas de $f$ al principio y al fial de cada intervalo, podemos obtener una aproximación más rápida al valor de la integral. 
+
+Recuerda que en un trapecio de base $b$ y con alturas $h_1$ y $h_2$ el área es 
+$$b \, \dfrac{(h_1 + h_2)}{2}$$ 
+Usando esto para construir un trapecio en cada subintervalo $I_k$ de la partición se obtiene la Regla del Trapecio:
+$$
+\int_a^b f(x)\, dx \approx \sum_{k = 1}^n \left(\dfrac{f(x_k) +  f(x_{k - 1})}{2}\right) (x_k - x_{k - 1}) 
+$$
+
+\normalsize
+:::
+
+::: {.callout-tip  appearance="minimal"}
+
+\small
+
+\textbf{\textcolor{darkgreen}{Ejercicio 13C02.}} Usa el notebook para experimentar con la Regla del Trapecio.
+
+\normalsize
+
+:::
+
+
+<!-- ::: {.callout-tip  appearance="minimal"} -->
+
+<!-- \small -->
+
+<!-- \textbf{\textcolor{blue}{Ejercicio 12A01.}} Fíjate en las dos funciones $f(x) = e^x - 1$ y $g(x) = \log(1 + x)$. ¿Cuál es su recta tangente en $x_0 = 0$? -->
+
+<!-- \textbf{\textcolor{darkgreen}{Ejercicio 12C01.}} Usa el notebook para visualizar estas funciones y su recta tangente. ¿Qué puedes decir sobre la *posición* de la recta tangente con respecto a las funciones? -->
+
+<!-- ::: -->
+
+
+
+<!-- ::: {.callout-tip  appearance="minimal"} -->
+
+<!-- \small -->
+
+
+
+<!-- \textbf{\textcolor{firebrick}{Ejercicios Hoja 2B GITI 25-26.}} 34b(b), 35 y 36. -->
+
+<!-- ::: -->
+
