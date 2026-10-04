@@ -23,7 +23,10 @@ format:
 
 **Sesión 13. La integral.**
 
-![](./portadasSesiones/13-MochueloCasaCampo.jpg){width="80%" fig-align="center"}
+![](./portadasSesiones/14-Torcecuellos.JPG){width="80%" fig-align="center"}
+
+
+
 
 + [Notebook de la sesión en Colab](https://colab.research.google.com/drive/1srqdvKUUfwySsaMPpxx-TZBWa29YCh-X?usp=sharing)
 
