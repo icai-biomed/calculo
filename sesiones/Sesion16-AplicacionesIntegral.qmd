@@ -139,21 +139,17 @@ $$\int_a^b f(x)\,dx = \int_{a + K}^{b + K} f(x - K)\,dx$$
 
 **Nota:** Estas propiedad se puede combinar a menudo con la simetría, si se cumple por ejemplo $f(x - x_0) = -f(x_0 - x)$ ($f$ es impar respecto a $x_0$)
 
-# Funciones definidas mediante integrales
+---
 
 ::: {.callout-note  icon=false}
 
-## Propiedades de simetría
+## Valor medio e integral
 
 \small
-Sea $f$ integrable en un **intervalo simétrico** $[-a, a]$. Entonces
 
-- Si $f$ es **impar**, con $f(-x) = -f(x)$, entonces $\displaystyle\int_{-a}^a f(x)\,dx = 0$
-- Si $f$ es **par**, con $f(-x) = f(x)$, entonces 
-$\displaystyle\int_{-a}^a f(x)\,dx = 2 \int_0^a f(x)\,dx = 0$
+¿Como definiría el valor medio de $f(x)$ en $[a, b]$?
+
 \normalsize
-
-**Nota:** Para aplicar bien estas propiedades es esencial tener en cuenta el intervalo y la función.
 
 :::
 
