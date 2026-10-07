@@ -45,7 +45,9 @@ format:
 
 \small
 
+La primera parte de esta sesión continúa el trabajo de la anterior, analizando las propiedades básicas de la integral. En esa primera parte no hay nada demasiado sorprendente, porque todas las propiedades resultan intuitivas al apoyarse en la noción de área o al tener en cuenta que la integral es, en esencia, una suma. 
 
+La segunda parte, casi al final, introduce la idea de funciones definidas mediante integrales. Como veremos, este es el paso clave para preparar el terreno para el Teorema Fundamental del Cálculo y la Regla de Barrow que veremos en la próxima sesión. 
 
 \normalsize
 
@@ -119,9 +121,10 @@ Sea $f$ integrable en un **intervalo simétrico** $[-a, a]$. Entonces
 - Si $f$ es **impar**, con $f(-x) = -f(x)$, entonces $\displaystyle\int_{-a}^a f(x)\,dx = 0$
 - Si $f$ es **par**, con $f(-x) = f(x)$, entonces 
 $\displaystyle\int_{-a}^a f(x)\,dx = 2 \int_0^a f(x)\,dx = 0$
-\normalsize
 
 **Nota:** Para aplicar bien estas propiedades es esencial tener en cuenta el intervalo y la función.
+
+\normalsize
 
 :::
 
@@ -143,39 +146,51 @@ $$\int_a^b f(x)\,dx = \int_{a + K}^{b + K} f(x - K)\,dx$$
 
 ::: {.callout-note  icon=false}
 
-## Propiedades de simetría
+## Integral con intervalo variable
 
 \small
-Sea $f$ integrable en un **intervalo simétrico** $[-a, a]$. Entonces
 
-- Si $f$ es **impar**, con $f(-x) = -f(x)$, entonces $\displaystyle\int_{-a}^a f(x)\,dx = 0$
-- Si $f$ es **par**, con $f(-x) = f(x)$, entonces 
-$\displaystyle\int_{-a}^a f(x)\,dx = 2 \int_0^a f(x)\,dx = 0$
+Al discutir la aditividad de los intervalos $\int_a^b f(x)\,dx = \int_a^c f(x)\,dx\, + \int_c^b f(x)\,dx$
+hemos usado esta [construcción GeoGebra](https://www.geogebra.org/m/p8rffjbh) para *mover el valor del límite de integración* $c$. Al hacer eso hemos deslizado la idea de que el valor de la integral puede considerarse como una función de $c$:
+$$\text{valor de }c\longrightarrow\int_a^c f(x)\,dx$$
+Esta forma de definir una función a partir de una integral con límite variable va a ser una de las ideas fundamentales del Cálculo y vamos a analizarla con detalle. Pero para hacerlo necesitamos una notación algo más cómoda. En primer lugar, nos gusta llamar $x$ a la variable en las funciones. Así que escribiremos
+$$F(x) = \int_a^x f(t)\,dt$$
+Fíjate en que cambiamos también el nombre de la variable de integración de $x$ a $t$ para no confundirlas. 
+
 \normalsize
-
-**Nota:** Para aplicar bien estas propiedades es esencial tener en cuenta el intervalo y la función.
 
 :::
 
+--- 
 
+::: {.callout-tip  appearance="minimal"}
 
+\small
 
+\textbf{\textcolor{blue}{Ejercicio 14A01.}} Sea 
+$$
+f(x) = \begin{cases}x & \text{ si }0 \leq x \leq 1\\0 & \text{en otro caso}\end{cases}
+$$  
+Usando fórmulas de área sencillas escribe una fórmula sin integrales para 
 
-<!-- ::: {.callout-tip  appearance="minimal"} -->
+$F(x)= \displaystyle\int_0^x f(t)\, dt$
 
-<!-- \small -->
+\textbf{\textcolor{blue}{Ejercicio 14A02.}} Un poco más complicado. Sea 
+$$
+g(x) = \begin{cases}
+    0   & \text{ si }x < 0\\ 
+2 - 2 x &\text{ si }0 \leq x \leq 2\\
+2 x - 6 &\text{ si }0 \leq x \leq 2\\
+    0   &\text{ si }x > 3\end{cases}
+$$  
+Escribe una fórmula sin integrales para 
+$$G(x) = \int_0^x g(t)\, dt$$
 
-<!-- \textbf{\textcolor{blue}{Ejercicio 12A01.}} Fíjate en las dos funciones $f(x) = e^x - 1$ y $g(x) = \log(1 + x)$. ¿Cuál es su recta tangente en $x_0 = 0$? -->
+\textbf{\textcolor{darkgreen}{Ejercicio 14C01.}} Usa el notebook para visualizar las funciones $f(x)$ y $F(x)$, en gráficos adyacentes. Luego haz lo mismo con $g(x)$ y $G(x)$.
 
-<!-- \textbf{\textcolor{darkgreen}{Ejercicio 12C01.}} Usa el notebook para visualizar estas funciones y su recta tangente. ¿Qué puedes decir sobre la *posición* de la recta tangente con respecto a las funciones? -->
+\normalsize
 
-<!-- \textbf{\textcolor{firebrick}{Ejercicio 09B01.}} Calcula la parte principal de $e^{\sin^2 x} - 1$. -->
-
-<!-- \textbf{\textcolor{firebrick}{Ejercicios Hoja 2B GITI 25-26.}} 22 y 24. -->
-
-<!-- \normalsize -->
-
-<!-- ::: -->
+:::
 
 
 
