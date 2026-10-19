@@ -1,0 +1,67 @@
+---
+title: "Sesión 16. Funciones de varias variables."
+lang: es
+format:
+  beamer:
+    theme: Madrid
+    fonttheme: default
+    fontsize: 10pt
+    toc: false          # handled manually below; pandoc's toc:true produces a stray }
+    section-titles: false   # \AtBeginSection in preamble.txt creates the section slide
+    slide-level: 2      # without this, top-level (#) headings become frames directly
+                         # instead of \section commands, so \tableofcontents has nothing
+                         # to list and \AtBeginSection never fires
+    include-in-header:
+      - preambulo_comun.tex
+      - text: |
+          \newcommand{\SesionTitulo}{Sesión 16 \\ Funciones de varias variables.}
+  html: default
+  docx: default
+---
+
+---
+
+**Sesión 16. Funciones de varias variable.**
+
+![](./portadasSesiones/16-Hippo.JPG){width="80%" fig-align="center"}
+
++ [Notebook de la sesión en Colab](https://colab.research.google.com/drive/1srqdvKUUfwySsaMPpxx-TZBWa29YCh-X?usp=sharing)
+
+---
+
+```{=latex}
+  
+  \frametitle{Tabla de contenidos}
+  \tableofcontents
+
+```
+
+
+# Introducción. 
+
+\small
+
+A partir de esta sesión vamos a comenzar a ampliar el campo de aplicación de los métodos del Cálculo. Si hasta ahora nos hemos limitado a considerar funciones $y = f(x)$, ahora pensaremos en funciones con más variables, tanto de entrada como de salida. Al principio esa generalización puede asustar un poco, pero es un paso necesario para poder entender cómo se aplica el Cálculo en la modelización de los procesos del mundo real, que raras veces se limitan a conectar dos variables. 
+
+Veremos además que la intuición que desarrollemos en los ejemplos más sencillos nos servirá de guía en muchos problemas que, por su complejidad o por usar espacios de dimensión muy alta, están más allá de nuestra capacidad de visualización. Los conceptos que vamos a ver en esta y en próximas sesiones sirven de fundamento matemático para comprender problemas muy complicados, desde la Física de los campos electromagnéticos, pasando por los modelos estadísticos e incluso la forma en que se entrenan actualmente los modelos de Inteligencia Artificial. 
+
+\normalsize
+
+# Funciones de varias variables {.fragile}
+
+::: {.callout-note  icon=false}
+
+## Variables de entrada y salida
+
+Hasta ahora hemos trabajado con funciones $y = f(x)$. Puedes pensar en una de estas funciones como una *máquina* en la que *entra* un número $x$ y *sale* (como mucho) un número $y$. Ese tipo de funciones sirven como modelo de muchos problemas del mundo real. Por ejemplo, dado el número $x$ ¿cuál es el área de un cuadrado de lado $x$? La respuesta la da la función $f(x) = x^2$. Pero hay muchos otros problemas que involucran más de un número como *entrada* y que también producen como *salida* más de un número. En general, puedes pensar de nuevo en estas funciones como máquinas de transformación que representamos como
+$$(x_1, \ldots, x_n)\overset{\text{f}}\longrightarrow (y_1, \ldots, y_m)$$
+Este símbolo indica que nuestra función $f$ convierte los $n$ números de entrada $x_1, \ldots, x_n$ en $m$ números de salida $y_1, \ldots, y_m$. Para abreviar decimos que $f(x_1, \ldots, x_n) = (y_1, \ldots, y_m)$ y que $f:\mathbb R^n\mapsto\mathbb R^m$.
+
+\small
+
+
+
+\normalsize
+
+:::
+
