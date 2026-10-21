@@ -51,13 +51,38 @@ Veremos además que la intuición que desarrollemos en los ejemplos más sencill
 
 ::: {.callout-note  icon=false}
 
-## Variables de entrada y salida
+## Variables de entrada y salida. Funciones escalares y vectoriales. 
+
+\small
 
 Hasta ahora hemos trabajado con funciones $y = f(x)$. Puedes pensar en una de estas funciones como una *máquina* en la que *entra* un número $x$ y *sale* (como mucho) un número $y$. Ese tipo de funciones sirven como modelo de muchos problemas del mundo real. Por ejemplo, dado el número $x$ ¿cuál es el área de un cuadrado de lado $x$? La respuesta la da la función $f(x) = x^2$. Pero hay muchos otros problemas que involucran más de un número como *entrada* y que también producen como *salida* más de un número. En general, puedes pensar de nuevo en estas funciones como máquinas de transformación que representamos como
 $$(x_1, \ldots, x_n)\overset{\text{f}}\longrightarrow (y_1, \ldots, y_m)$$
-Este símbolo indica que nuestra función $f$ convierte los $n$ números de entrada $x_1, \ldots, x_n$ en $m$ números de salida $y_1, \ldots, y_m$. Para abreviar decimos que $f(x_1, \ldots, x_n) = (y_1, \ldots, y_m)$ y que $f:\mathbb R^n\mapsto\mathbb R^m$.
+Este símbolo indica que nuestra función $f$ convierte los $n$ números de entrada $x_1, \ldots, x_n$ en $m$ números de salida $y_1, \ldots, y_m$. Para abreviar decimos que $f(x_1, \ldots, x_n) = (y_1, \ldots, y_m)$ y que $f:\mathbb R^n\mapsto\mathbb R^m$.  
+$\quad$
+
+Si $m = 1$ la función es **escalar** (un único número de salida). Si $m > 1$ la función es **vectorial**.
+
+\normalsize
+
+:::
+
+
+---
+
+
+::: {.callout-note  icon=false}
+
+## Un ejemplo importante: $z = f(x, y)$
 
 \small
+
+Vamos a usar en muchos casos las funciones $f:\mathbb R^2\mapsto\mathbb R$ como ejemplo importante y como fuente de inspiración para otros casos más generales. Una de estas funciones tiene dos valores de entrada, que denotamos $(x, y)$ y produce un valor de salida $z$, de manera que es:
+$$z = f(x, y)$$
+Para visualizar estas funciones pensamos en el espacio $\mathbb R^3$. Si para cada par de valores $(x, y)$ del plano $XY$ (plano $z= 0$) pintamos el punto del espacio de coordenadas $(x, y, f(x, y))$ obtendremos la **gráfica** de $f$, que en general será una **superficie**, una especie de paisaje con montañas, hondonadas, planicies, etc. como la de debajo:
+
+[![](./fig/S16-GraficaComoPaisaje.jpeg){width="50%" fig-align="center"}](https://www.geogebra.org/classic/uzw8txum)
+
+Clic en la figura para ir a Geogebra.
 
 
 
@@ -65,3 +90,20 @@ Este símbolo indica que nuestra función $f$ convierte los $n$ números de entr
 
 :::
 
+
+---
+
+
+::: {.callout-note  icon=false}
+
+## Plano tangente
+
+\small
+
+Para estudiar las funciones de una variable $y = f(x)$ hemos insistido mucho en esa idea de hacer zoom en la gráfica de la función hasta verla 
+
+![](./fig/S16-RectaTangenteZoom.jpeg){width="50%" fig-align="center"}
+
+\normalsize
+
+:::
