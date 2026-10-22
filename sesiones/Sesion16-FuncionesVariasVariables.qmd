@@ -25,7 +25,9 @@ format:
 
 ![](./portadasSesiones/16-Hippo.JPG){width="80%" fig-align="center"}
 
-+ [Notebook de la sesión en Colab](https://colab.research.google.com/drive/1srqdvKUUfwySsaMPpxx-TZBWa29YCh-X?usp=sharing)
++ [Notebook de la sesión en Colab](https://colab.research.google.com/drive/1x6uAGMTwIeHT9Q7AOVyMgOQjZ3G7fvHG?usp=sharing)
+
+
 
 ---
 
@@ -140,16 +142,13 @@ La pregunta ahora es ¿cómo elegimos $m_x$ y $m_y$ para que este plano sea el p
 
 \small
 
-Vamos a pensar en detalle en cómo obtener $m_x$. Para mantener $y = y_0$ constante tenemos que pensar en la función auxiliar $f(x, y_0)$. Esta función sólo depende de la $x$. Geométricamente, la función $f(x, y_0)$ representa el corte de la gráfica de $z = f(x, y)$ con un plano vertical $y = y_0$ (paralelo al plano YZ)
+Vamos a pensar en detalle en cómo obtener $m_x$. Para mantener $y = y_0$ constante tenemos que pensar en la función auxiliar 
+$$f(x| y = y_0) = f(x, y_0)$$ 
+Esta función sólo depende de la $x$. Geométricamente, la función $f(x| y =  y_0)$ representa el corte de la gráfica de $z = f(x, y)$ con un plano vertical $y = y_0$ (paralelo al plano YZ). En el notebook de la sesión ilustraremos esta idea. 
 
+![](./fig/S16-GeometriaDerivadasParciales.png){width="40%" fig-align="center"}
 
-Siguiendo con la analogia con las funciones de una variable, para identificar la recta tangente a una función derivable $y = f(x)$ en un punto $(x_0, f(x_0))$ lo primero que hicimos fue escribir la ecuación de esa recta así:
-$$y = f(x_0) + m\cdot (x - x_0)$$
-y entonces nos preguntamos cómo elegir el valor adecuado de la pendiente $m$, que resultó ser $f'(x_0)$.
-
-Ahora queremos hacer lo mismo para $z = f(x, y)$ cerca del punto $P = (x_0, y_0, f(x_0, y_0))$. Empezando por la ecuación del plano: ¿cuántas pendientes se necesitan para identificar un plano? Es fácil ver que (casi siempre) basta con dos: la pendiente $m_x$ en la dirección del eje $X$ y la pendiente $m_y$ en la dirección del eje $Y$. Con ellas, (casi) cualquier plano por el punto $P$ se escribe:
-$$z = f(x_0, y_0) + m_x\cdot (x - x_0) + m_y\cdot (y - y_0)$$
-La pregunta ahora es ¿cómo elegimos $m_x$ y $m_y$ para que este plano sea el plano tangente (el que se ve al hacer zoom)? La idea básica es esta: para obtener $m_x$ hay que moverse en la dirección del eje $X$, **manteniendo fijo el valor** $y = y_0$.
+Así que la pendiente $m_x$ que buscamos es la derivada de $f(x| y = y_0)$. 
 
 \normalsize
 
