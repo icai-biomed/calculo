@@ -23,7 +23,7 @@ format:
 
 **Sesión 16. Funciones de varias variable.**
 
-![](./portadasSesiones/16-Hippo.JPG){width="80%" fig-align="center"}
+\centering ![](./portadasSesiones/16-Hippo.JPG){width="80%"}
 
 + [Notebook de la sesión en Colab](https://colab.research.google.com/drive/1x6uAGMTwIeHT9Q7AOVyMgOQjZ3G7fvHG?usp=sharing)
 
@@ -80,13 +80,9 @@ Si $m = 1$ la función es **escalar** (un único número de salida). Si $m > 1$ 
 
 Vamos a usar en muchos casos las funciones $f:\mathbb R^2\mapsto\mathbb R$ como ejemplo importante y como fuente de inspiración para otros casos más generales. Una de estas funciones tiene dos valores de entrada, que denotamos $(x, y)$ y produce un valor de salida $z$, de manera que es:
 $$z = f(x, y)$$
-Para visualizar estas funciones pensamos en el espacio $\mathbb R^3$. Si para cada par de valores $(x, y)$ del plano $XY$ (plano $z= 0$) pintamos el punto del espacio de coordenadas $(x, y, f(x, y))$ obtendremos la **gráfica** de $f$, que en general será una **superficie**, una especie de paisaje con montañas, hondonadas, planicies, etc. como la de debajo:
+Para visualizar estas funciones pensamos en el espacio $\mathbb R^3$. Si para cada par de valores $(x, y)$ del plano $XY$ (plano $z= 0$) pintamos el punto del espacio de coordenadas $(x, y, f(x, y))$ obtendremos la **gráfica** de $f$, que en general será una **superficie**, una especie de paisaje con montañas, hondonadas, planicies, etc. como la de debajo. Abre esta [\textcolor{blue}{construcción en Geogebra}](https://www.geogebra.org/classic/uzw8txum), la usaremos varias veces.
 
-[![](./fig/S16-GraficaComoPaisaje.jpeg){width="50%" fig-align="center"}](https://www.geogebra.org/classic/uzw8txum)
-
-Clic en la figura para ir a Geogebra.
-
-
+\centering ![](./fig/S16-GraficaComoPaisaje.jpeg){width="50%"} 
 
 \normalsize
 
@@ -104,9 +100,13 @@ Clic en la figura para ir a Geogebra.
 
 Para estudiar las funciones de una variable $y = f(x)$ hemos insistido mucho en esa idea de hacer *zoom* en la gráfica de una función derivable hasta verla covertirse en su recta tangente. 
 
-![](./fig/S16-RectaTangenteZoom.jpeg){width="50%" fig-align="center"}
+\hfil  ![](./fig/S16-RectaTangenteZoom.jpeg){width="50%"} \hfil
 
-Pregúntate ahora: si la gráfica de una función $z = f(x, y)$ es, como hemos dicho, una superficie ¿qué esperamos ver al hacer zoom en un punto genérico de una superficie?
+Pregúntate ahora: si la gráfica de una función $z = f(x, y)$ es, como hemos dicho, una superficie ¿qué esperamos ver al hacer zoom en un punto genérico de una superficie? 
+
+\quad
+
+Naturalmente: un plano, el *plano tangente*.
 
 \normalsize
 
@@ -127,7 +127,7 @@ y entonces nos preguntamos cómo elegir el valor adecuado de la pendiente $m$, q
 
 Ahora queremos hacer lo mismo para $z = f(x, y)$ cerca del punto $P = (x_0, y_0, f(x_0, y_0))$. Empezando por la ecuación del plano: ¿cuántas pendientes se necesitan para identificar un plano? Es fácil ver que (casi siempre) basta con dos: la pendiente $m_x$ en la dirección del eje $X$ y la pendiente $m_y$ en la dirección del eje $Y$. Con ellas, (casi) cualquier plano por el punto $P$ se escribe:
 $$z = f(x_0, y_0) + m_x\cdot (x - x_0) + m_y\cdot (y - y_0)$$
-La pregunta ahora es ¿cómo elegimos $m_x$ y $m_y$ para que este plano sea el plano tangente (el que se ve al hacer zoom)? La idea básica es esta: para obtener $m_x$ hay que moverse en la dirección del eje $X$, **manteniendo fijo el valor** $y = y_0$.
+La pregunta ahora es ¿cómo elegimos $m_x$ y $m_y$ para que este plano sea el plano tangente (el que se ve al hacer zoom)? La idea básica es esta: para obtener $m_x$ hay que moverse en la dirección del eje $X$, **manteniendo fijo el valor** $y = y_0$. Usaremos la figura de la siguiente página para ilustrar esta idea.
 
 \normalsize
 
@@ -135,6 +135,9 @@ La pregunta ahora es ¿cómo elegimos $m_x$ y $m_y$ para que este plano sea el p
 
 ---
 
+\centering ![](./fig/S16-GeometriaPlanoTangenteParciales.jpeg){width="90%"}
+
+---
 
 ::: {.callout-note  icon=false}
 
@@ -144,9 +147,10 @@ La pregunta ahora es ¿cómo elegimos $m_x$ y $m_y$ para que este plano sea el p
 
 Vamos a pensar en detalle en cómo obtener $m_x$. Para mantener $y = y_0$ constante tenemos que pensar en la función auxiliar 
 $$f(x| y = y_0) = f(x, y_0)$$ 
-Esta función sólo depende de la $x$. Geométricamente, la función $f(x| y =  y_0)$ representa el corte de la gráfica de $z = f(x, y)$ con un plano vertical $y = y_0$ (paralelo al plano YZ). En el notebook de la sesión ilustraremos esta idea. 
+Esta función sólo depende de la $x$. Geométricamente, la función $f(x| y =  y_0)$ representa el corte de la gráfica de $z = f(x, y)$ con un plano vertical $y = y_0$ (paralelo al plano YZ). En el [\textcolor{blue}{notebook de la sesión}](https://colab.research.google.com/drive/1x6uAGMTwIeHT9Q7AOVyMgOQjZ3G7fvHG?usp=sharing)  ilustraremos esta idea. 
 
-![](./fig/S16-GeometriaDerivadasParciales.png){width="40%" fig-align="center"}
+ 
+\hfil ![](./fig/S16-GeometriaDerivadasParciales.png){width="40%"} \hfil
 
 Así que la pendiente $m_x$ que buscamos es la derivada de $f(x| y = y_0)$. 
 
@@ -159,19 +163,22 @@ Así que la pendiente $m_x$ que buscamos es la derivada de $f(x| y = y_0)$.
 
 ::: {.callout-note  icon=false}
 
-## Derivadas parciales: definición y reglas de cálculo.
+## Derivadas parciales: definición y reglas de cálculo. Funciones derivables.
 
 \small
 
-A partir de esa idea la definición es  muy natural. La derivada parcial de $z=f(x, y)$ en $(x_0, y_0)$ es 
+Con eso, la definición de derivada parcial de $z=f(x, y)$ en $(x_0, y_0)$ es fácil: 
 $$
-\underbrace{\dfrac{\partial f}{\partial x}(x_0, _0) = f_x(x_0, y_0)}_{\text{dos notaciones frecuentes}} \overset{\text{def}}= \lim_{x\to x_0}\dfrac{f(x, \mathbf{y_0}) - f(x_0, \mathbf{y_0})}{x - x_0}
+\underbrace{\dfrac{\partial f}{\partial x}(x_0, y_0) = f_x(x_0, y_0)}_{\text{dos notaciones frecuentes}}
+\quad \overset{\text{def}}=\quad 
+\underbrace{\lim_{x\to x_0}\dfrac{f(x, \mathbf{y_0}) - f(x_0, \mathbf{y_0})}{x - x_0}}_{\text{Valor fijo de }y_0\text{ en numerador}}
 $$
 
-De la misma forma:
-$$
+De la misma forma: $\displaystyle
 \dfrac{\partial f}{\partial y}(x_0, _0) = f_y(x_0, y_0) \overset{\text{def}}= \lim_{x\to x_0}\dfrac{f(\mathbf{x_0}, y) - f(\mathbf{x_0}, y_0)}{y - y_0}
-$$
+$  
+suponiendo que esos límites existen. Si es así, decimos que $f(x, y)$ es **derivable** en $(x_0, y_0)$.
+
 Pero además esta definición nos dice que no necesitamos aprender a derivar otra vez. Para calcular una derivada parcial se aplican las mismas reglas de derivación, pero considerando la otra variable como constante.
 
 
@@ -183,7 +190,145 @@ Pero además esta definición nos dice que no necesitamos aprender a derivar otr
 ::: {.callout-tip  appearance="minimal"}
 \small
 
-\textbf{\textcolor{blue}{Ejercicio 16A01.}} Calcula las derivadas parciales de $f(x, y) = x^2y^3$ en $(2, 1)$ usando la definición (límite) y mediante las reglas de derivación.
+\textbf{\textcolor{blue}{Ejercicio 16A01.}} (a) Calcula las derivadas parciales de $f(x, y) = x^2y^3$ en $(2, 1)$ usando la definición (límite) y mediante las reglas de derivación.  
+(b) Calcula las derivadas parciales de $f(x, y) = \sin\left(\dfrac{x + y}{x - y}\right)$, pero sólo mediante reglas de derivación, sin límites.
+\normalsize
+
+:::
+
+---
+
+::: {.callout-note  icon=false}
+
+## De vuelta al plano tangente
+
+\small
+
+Ahora que sabemos describir las pendientes del plano, podemos decir que
+si $f(x, y)$ es derivable en $(x_0, y_0)$, entonces nuestro **\textcolor{red}{candidato}** a plano tangente es
+$$
+z = f(x_0, y_0) + f_x(x_0, y_0)\cdot (x - x_0) + f_y(x_0, y_0)\cdot (y - y_0)
+$$
+
+¿Por qué decimos *candidato*? Para entender eso en detalle tendremos que esperar a la próxima sesión. Para preparar esa respuesta vamos a introducir otra idea fundamental que generaliza las derivadas parciales. 
+
+\normalsize
+
+:::
+
+::: {.callout-tip  appearance="minimal"}
+\small
+
+\textbf{\textcolor{blue}{Ejercicio 16A02.}} 
+(a) Calcula las derivadas parciales de 
+$$f(x, y) = 
+\begin{cases}
+\dfrac{|x y|}{|y| + |x - y|}& (x, y)\neq (0, 0)\\[2mm]
+0 &  (x, y) = (0, 0)
+\end{cases}
+$$ 
+en $(0, 0)$ usando la definición (límite).  ¿Cuál es tu candidato a plano tangente?
+
+$(b)$ ¿Cuánto vale ese plano candidato si $x = y$? ¿Cuánto vale $f(x, x)$? ¿Ves algún problema?
+
+\textbf{\textcolor{darkgreen}{Ejercicio 16C01.}} Examina esta función en [GeoGebra](https://www.geogebra.org/m/ur6rdwjq) o en el [notebook](https://colab.research.google.com/drive/1x6uAGMTwIeHT9Q7AOVyMgOQjZ3G7fvHG?usp=sharing).
+
+\normalsize
+
+:::
+
+
+# Derivadas direccionales
+
+::: {.callout-tip  appearance="minimal"}
+\small
+
+\textbf{\textcolor{blue}{Ejercicio 16A03.}}  
+(a) ¿Cuál es el plano tangente a $f(x, y) = \sqrt{3 + x^2 + y^2}$ en $(1, 0)$?  
+(b) Usa esto para aproximar $\sqrt{3 + 1.01^2 + 0.02^2}$
+
+\normalsize
+
+:::
+
+
+::: {.callout-note  icon=false}
+
+# Planos verticales. 
+
+\small
+
+Al introducir las derivadas parciales hemos visto que, por ejemplo $f_y(x_0, _0)$ se puede entender como la derivada de la función (de una variable) $f(y | x = x_0)$. A su vez, la gráfica de esta función es el corte de la superficie gráfica de $z = f(x, y)$ con el *plano vertical* $y = y_0$, paralelo al plano $YZ$.
+
+Pero hay muchos otros planos verticales que pasan por el punto $(x_0, y_0, f(x_0, y_0))$, aparte de los dos planos $x = x_0$ e $y = y_0$. ¿Cómo es la ecuación de uno de esos planos verticales? Una en la que no aparece la $z$:
+$$A (x -x_0) + B (y - y_0) = 0$$
+En esta [\textcolor{blue}{construcción GeoGebra}](https://www.geogebra.org/m/ghnqjfqp) puedes experimentar con esta idea. Y en las siguientes figuras exploraremos la geometría de esta situación con más detalle. 
+
+\normalsize
+
+:::
+
+---
+
+\centering ![](./fig/S16-GeometriaDireccionales.jpg){width="100%"}
+
+---
+
+::: {.callout-note  icon=false}
+
+# Ecuación en función del ángulo con el semieje $x > 0$
+
+\small
+
+La ecuación del plano horizontal $XY$ es $z = 0$. Fijado el punto $(x_0, y_0)$, un plano vertical por ese punto queda caracterizado por su recta de corte con $z = 0$
+
+\hfil ![](./fig/S16-DerivadaDireccional.jpeg){width="40%"} \hfil
+
+Sea $\theta$ el ángulo que esa recta del plano $XY$ hace con el semieje $x > 0$. La pendiente de la función $f(x, y)$ en la dirección de esa recta es la **derivada direccional** de $f$ en ese punto y se representa mediante:
+$$D_{\theta}f(x_0, y_0)$$
+En la figura de la página anterior la pendiente de la curva naranja es $f_x(x_0, y_0)$, la de la curva amarilla es $f_y(x_0, y_0)$ y la de la curva azul es $f_y(x_0, y_0)$.
+
+\normalsize
+
+:::
+
+---
+
+
+::: {.callout-note  icon=false}
+
+# Definición formal de derivadas direccionales mediante límites
+
+\small
+
+Las ecuaciones paramétricas de la recta del plano $XY$ que hace un ángulo $\theta$ con el semieje $x > 0$ son:
+$$
+\begin{cases}
+x = x_0 + u\cdot\cos \theta_0\\[2mm]
+y = y_0 + u\cdot\sin\theta_0
+\end{cases}
+\qquad\text{ Fíjate en que si }u = 0\text{ estás en }(x_0, y_0)
+$$
+Los valores de la función a lo largo de la recta son entonces:
+$$f(x_0 + u\cdot\cos\theta_0, y_0 + u\cdot\sin\theta_0)$$
+La **derivada direccional** correspondiente se define entonces así:
+
+$$D_{\theta}f(x_0, y_0) 
+\, \overset{\text{def}}= \, 
+\lim_{x\to x_0}\dfrac{f(x_0 + u\cdot\cos\theta_0, y_0 + u\cdot\sin\theta_0) - f(x_0, y_0)}{u}
+$$
+En próximas sesiones veremos cómo abordar el cálculo de $D_{\theta}f(x_0, y_0)$ sin límites.
+
+\normalsize
+
+:::
+
+
+
+::: {.callout-tip  appearance="minimal"}
+
+\textbf{\textcolor{blue}{Ejercicio 16A04.}} Halla las derivadas parciales y las direccionales de $f(x, y) = x^2 + y^2$ en $(x_0, y_0) = (1, 2)$ para un ángulo cualquiera $\theta$. ¿Cuánto valen $D_{0}f(1, 2)$, $D_{\pi}f(1, 2)$, $D_{\pi/2}f(1, 2)$ y $D_{-\pi/2}f(1, 2)$?
+
 
 \normalsize
 
