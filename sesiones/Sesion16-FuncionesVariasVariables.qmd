@@ -179,7 +179,7 @@ De la misma forma: $\displaystyle
 $  
 suponiendo que esos límites existen. Si es así, decimos que $f(x, y)$ es **derivable** en $(x_0, y_0)$.
 
-Pero además esta definición nos dice que no necesitamos aprender a derivar otra vez. Para calcular una derivada parcial se aplican las mismas reglas de derivación, pero considerando la otra variable como constante.
+Pero además esta definición nos dice que no necesitamos aprender a derivar otra vez. Para calcular una derivada parcial **se aplican las mismas reglas de derivación, pero considerando la otra variable como constante.**
 
 
 \normalsize
@@ -195,6 +195,27 @@ Pero además esta definición nos dice que no necesitamos aprender a derivar otr
 \normalsize
 
 :::
+
+---
+
+::: {.callout-note  icon=false}
+
+## Práctica de derivación parcial
+
+\small
+
+Calcular derivadas parciales es sencillo pero, como en el caso de una variable, requiere práctica. En [\textcolor{blue}{este enlace}](https://fsansegundo.github.io/webapp/partial-derivative-drills.html) encontrarás una aplicación web (se abre en el navegador) para ejercitarte. 
+
+\hfil ![](./fig/S16-PartialDerivativesWebApp.png){width="40%"} \hfil
+
++ **¡Haz el ejercicio a mano antes de ver la respuesta, no lo desperdicies!**  
++ Puedes ver la respuesta final o puedes pedir una descripción paso a paso de cómo se ha obtenido.
++ Si quieres guardar un ejemplo concreto (por ejemplo para preguntar dudas a tu profesor), puedes descargar un fichero con ese ejercicio. 
+
+\normalsize
+
+:::
+
 
 ---
 
@@ -231,7 +252,7 @@ en $(0, 0)$ usando la definición (límite).  ¿Cuál es tu candidato a plano ta
 
 $(b)$ ¿Cuánto vale ese plano candidato si $x = y$? ¿Cuánto vale $f(x, x)$? ¿Ves algún problema?
 
-\textbf{\textcolor{darkgreen}{Ejercicio 16C01.}} Examina esta función en [GeoGebra](https://www.geogebra.org/m/ur6rdwjq) o en el [notebook](https://colab.research.google.com/drive/1x6uAGMTwIeHT9Q7AOVyMgOQjZ3G7fvHG?usp=sharing).
+\textbf{\textcolor{darkgreen}{Ejercicio 16C01.}} Examina esta función en [GeoGebra](https://www.geogebra.org/classic/ur6rdwjq) o en el [notebook](https://colab.research.google.com/drive/1x6uAGMTwIeHT9Q7AOVyMgOQjZ3G7fvHG?usp=sharing).
 
 \normalsize
 
@@ -254,7 +275,7 @@ $(b)$ ¿Cuánto vale ese plano candidato si $x = y$? ¿Cuánto vale $f(x, x)$? �
 
 ::: {.callout-note  icon=false}
 
-# Planos verticales. 
+## Planos verticales. 
 
 \small
 
@@ -262,7 +283,7 @@ Al introducir las derivadas parciales hemos visto que, por ejemplo $f_y(x_0, _0)
 
 Pero hay muchos otros planos verticales que pasan por el punto $(x_0, y_0, f(x_0, y_0))$, aparte de los dos planos $x = x_0$ e $y = y_0$. ¿Cómo es la ecuación de uno de esos planos verticales? Una en la que no aparece la $z$:
 $$A (x -x_0) + B (y - y_0) = 0$$
-En esta [\textcolor{blue}{construcción GeoGebra}](https://www.geogebra.org/m/ghnqjfqp) puedes experimentar con esta idea. Y en las siguientes figuras exploraremos la geometría de esta situación con más detalle. 
+En esta [\textcolor{blue}{construcción GeoGebra}](https://www.geogebra.org/classic/ghnqjfqp) puedes experimentar con esta idea. Y en las siguientes figuras exploraremos la geometría de esta situación con más detalle. 
 
 \normalsize
 
@@ -270,13 +291,13 @@ En esta [\textcolor{blue}{construcción GeoGebra}](https://www.geogebra.org/m/gh
 
 ---
 
-\centering ![](./fig/S16-GeometriaDireccionales.jpg){width="100%"}
+\hfil ![](./fig/S16-GeometriaDireccionales.jpg){width="100%"} \hfil
 
 ---
 
 ::: {.callout-note  icon=false}
 
-# Ecuación en función del ángulo con el semieje $x > 0$
+## Ecuación en función del ángulo con el semieje $x > 0$
 
 \small
 
@@ -297,7 +318,7 @@ En la figura de la página anterior la pendiente de la curva naranja es $f_x(x_0
 
 ::: {.callout-note  icon=false}
 
-# Definición formal de derivadas direccionales mediante límites
+## Definición formal de  derivadas direccionales mediante límites
 
 \small
 
@@ -317,7 +338,7 @@ $$D_{\theta}f(x_0, y_0)
 \, \overset{\text{def}}= \, 
 \lim_{x\to x_0}\dfrac{f(x_0 + u\cdot\cos\theta_0, y_0 + u\cdot\sin\theta_0) - f(x_0, y_0)}{u}
 $$
-En próximas sesiones veremos cómo abordar el cálculo de $D_{\theta}f(x_0, y_0)$ sin límites.
+En próximas sesiones veremos un método más directo para calcular $D_{\theta}f(x_0, y_0)$.
 
 \normalsize
 
@@ -334,4 +355,127 @@ En próximas sesiones veremos cómo abordar el cálculo de $D_{\theta}f(x_0, y_0
 
 :::
 
+# Otros tipos importantes de funciones $f:\mathbb R^n\mapsto\mathbb R^m$
 
+Nos vamos a fijar mucho en las funciones $z = f(x, y)$ porque podemos visualizar sus gráficas y usar eso para desarrollar la intuición necesaria. Pero no queremos cerrar esta sesión sin adelantar algunos otros ejemplos importantes que vamos a encontrar.
+
+::: {.callout-note  icon=false}
+
+### Funciones escalares de dimensiones más altas.
+
+\small
+
+Una función *escalar* que nos da la temperatura en cada punto del espacio será $T = T(x, y, z)$, es decir $T:\mathbb R^3\mapsto\mathbb R$. No puedes visualizar esta función como una gráfica, pero puedes imaginarte algo así como un termómetro en cada punto del espacio, como trata de sugerir la figura.
+
+\hfil ![](./fig/S16-CampoEscalarTemperaturas.jpeg){width="40%"} \hfil
+
+Si la temperatura cambia con el tiempo serán cuatro variables de entrada $T = T(x, y, z, t)$. Aquí tienes [\textcolor{blue}{ejemplos climáticos}](https://www.floodradar.co.uk/el-nino/tracker).
+
+\normalsize
+
+:::
+
+---
+
+::: {.callout-note  icon=false}
+
+### Curvas paramétricas
+
+\small
+
+Antes hemos usado las ecuaciones paramétricas de una recta que sirven para calcular $(x, y)$ a partir del parámetro $u$. Es decir, $u\mapsto (x,y)$. En general, una **curva paramétrica** en el plano es $c(u) = (x(u), y(u))$; se trata de una función $c:\mathbb R\mapsto\mathbb R^2$. Una curva en el espacio sería $c:\mathbb R \mapsto \mathbb R^3$. 
+
+En Física se usan mucho este tipo de curvas para describir la *trayectoria* de un cuerpo que se mueve. En ese caso el parámetro de la curva es el tiempo, y en lugar de $u$ lo común es usar la variable $t$. Es decir, por ejemplo en el caso plano, para cada instante de tiempo $t$ queremos la posición $(x(t), y(t))$ del cuerpo que se mueve. 
+
+\hfil ![](./fig/S16-CurvaParametricaVencejo.jpeg){width="60%"} \hfil
+
+En $\mathbb R^3$ la curva sería $c(t) = (x(t), y(t), z(t))$. ¿Cómo crees que se calculan la velocidad y aceleración en esta trayectoria?  
+Aparte de curvas paramétricas, hay *superficies paramétricas*. ¿Se te ocurre un ejemplo? Pista: latitud, longitud.
+
+
+\normalsize
+
+:::
+
+
+---
+
+::: {.callout-note  icon=false}
+
+### Campos de vectores
+
+\small
+
+Has estudiado en Física que, de acuerdo con la Ley de la Gravedad de Newton, una partícula de masa $m$ situada en un punto del espacio (supongamos por conveniencia que es el origen) crea en cada punto $(x, y, z)$ del espacio una fuerza $\vec F$ de atracción. Pero  $\vec F$, siendo un vector en el espacio, tiene tres componentes: $\vec F = (F_1, F_2, F_3)$. Así que el campo gravitatorio es, desde el punto de vista del Cálculo, una **función vectorial**
+$$\vec F(x, y, z) = (F_1(x, y, z), F_2(x, y, z), F_3(x, y, z))$$
+es decir, $\vec F:\mathbb R^3\mapsto\mathbb R^3$. 
+
+En Meteorología es frecuente dibujar mapas que muestran en cada punto un pequeño vector que indica la velocidad del viento, como en esta imagen
+
+\hfil ![](./fig/S16-CampoVectorialViento.jpeg){width="35%"} \hfil
+
+Naturalmente, el viento (o la gravedad, o el campo eléctrico) cambian con el tiempo, como puedes ver [\textcolor{blue}{en este ejemplo}](https://es.windfinder.com/#8/70.4506/29.2429). ¿Cómo afecta eso a la función que define el campo?
+
+\normalsize
+
+:::
+
+
+---
+
+::: {.callout-note  icon=false}
+
+### Cambios de variables
+
+\small
+
+Cuando queremos identificar un punto $P$ del plano podemos dar sus *coordenadas cartesianas* $(x, y)$. Pero también podemos dar sus *coordenadas polares* $(r, \theta)$ como se ilustra en la figura:
+
+\hfil ![](./fig/S16-CoordenadasPolares.png){width="20%"} \hfil
+
+La relación entre $(x, y)$ por un lado y $(r, theta)$ por otro se establece con estas **ecuaciones del csmbio de variables:**
+$$
+\begin{cases}
+x = r\cos\theta\\[2mm]
+y = r\sin\theta
+\end{cases}
+$$
+Y está claro que esto se puede ver como una función $\mathbb R^2\mapsto\mathbb R^2$. Los cambios de variable (en dos, tres o más dimensiones)  resultan extremadamente útiles, a veces imprescindibles, para resolver con éxito muchos problemas. Por ejemplo, la gravedad se describe mal en cartesianas y es mucho más sencilla en otras coordenadas.
+
+\normalsize
+
+:::
+
+\small
+
+**Pregunta:** En el campo de velocidades del viento en un mapa, quiénes son $m$ y $n$ en $\mathbb R^n\mapsto\mathbb R^m$? ¿Y en el cambio a coordenadas polares?
+
+\normalsize
+
+---
+
+::: {.callout-note  icon=false}
+
+### Álgebra Lineal. Y más allá...
+
+\small
+
+Podríamos seguir así, poniendo ejemplo tras ejemplo. Queremos invitarte a pensar por ejemplo, en las *aplicaciones lineales* que estudias en Álgebra Lineal. Se trata de aplicaciones $\mathbb R^n\mapsto\mathbb R^m$ que, como decíamos en la introducción llevan 
+$$
+(x_1, \ldots, x_n)\longrightarrow (y_1, \ldots, y_m)
+$$ 
+mediante una matriz $A$ de forma $(m, n)$. Estas aplicaciones del Álgebra son especialmente importantes porque son sencillas y porque sirven para describir el tipo de objetos y comportamientos que esperamos ver cuando, como hemos hecho en varias ocasiones, hacemos *zoom* en un punto de un objeto complicado.
+
+\quad
+
+Y hay mucho más. Cuando miras una imagen en tu pantalla, cada pixel (dos coordenadas) muestra una combinación RGB de tres colores (de rojo, verde, azul en inglés) para enseñarte la imagen o el vídeo que estás mirando. ¿Puedes imaginar qué tipo de funciones describen esas imágenes? Un modelo de lenguaje de Inteligencia Artificial se puede ver como una función en la que entran miles o millones de variables y salen otras tantas, que codifican nuestras preguntas y sus respuestas.
+
+\normalsize
+
+:::
+
+\small
+
+Lo idea central que queremos que transmitan todos estos ejemplos es que mediante el lenguaje de las funciones, podrás aplicar los métodos del Cálculo y el Álgebra a la solución de una enorme variedad de problemas en la Ciencia y la Técnica. 
+
+\normalsize
