@@ -89,9 +89,43 @@ estamos diciendo que podemos conseguir que los valores de $f(x, y)$ se parezcan 
 
 :::
 
-\quad\\
+\quad
 
 Puedes estar preguntándote si este problema es real, o si estamos preocupándonos por algo que sólo ocurre en funciones muy *raras*. Los siguientes ejemplos tratarán de convencerte de que el problema es muy real. 
+
+
+---
+
+::: {.callout-note  icon=false}
+
+## Continuidad
+
+\small
+Los ejemplos anteriores pueden hacernos creer que estudiar límites de funciones de varias variables es un gran problema. Y el problema, como hemos visto, es real y ocurre en funciones sencillas. Pero a menudo está localizado: en los dos ejemplos que hemos visto el problema ocurre en el origen, *y en ningún otro punto.*  
+
+Esta última afirmación se basa en la idea de *continuidad* que es, en este caso sí, igual a la del caso de una variable. La función $f(x, y)$ es **continua** en $(x_0, y_0)$ si el límite (existe y) coincide con el valor:
+$$
+\lim_{(x, y)\to (x_0, y_0)}f(x, y) = f(x_0, y_0)
+$$
+Y la buena noticia es que la continuidad es fácil de demostrar usando los mismos métodos que ya vimos en la Sesión 3. Lo único que tienes que hacer es repasar las páginas desde *"Continuidad de algunas funciones elementales"* hasta *"Indeterminaciones"*
+
+\normalsize
+
+:::
+
+
+::: {.callout-tip  appearance="minimal"}
+
+\small
+
+\textbf{\textcolor{firebrick}{Ejercicios Hoja 8B GITI 25-26.}} Ejercicio 8. No hace falta analizar ahora el punto $(0, 0)$, lo veremos más adelante. 
+
+
+\normalsize
+
+:::
+
+
 
 ---
 
@@ -130,6 +164,9 @@ $(c)$ Ahora estudia el comportamiento de $g(x, y)$ a lo largo de la curva $y = x
 :::
 
 ---
+
+
+
 
 
 ::: {.callout-note  icon=false}
