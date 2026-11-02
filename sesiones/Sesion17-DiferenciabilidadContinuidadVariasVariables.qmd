@@ -14,7 +14,8 @@ format:
     include-in-header:
       - preambulo_comun.tex
       - text: |
-          \newcommand{\SesionTitulo}{Sesión 17 \\ Diferenciabilidad y continuidad en varias variables.\\ \textcolor{yellow}{¡¡PROVISIONAL!!}}
+          \newcommand{\SesionTitulo}{Sesión 17 \\ Diferenciabilidad y continuidad en varias variables.}
+# \\ \textcolor{yellow}{¡¡PROVISIONAL!!}          
   html: default
   docx: default
 ---
@@ -107,7 +108,7 @@ Esta última afirmación se basa en la idea de *continuidad* que es, en este cas
 $$
 \lim_{(x, y)\to (x_0, y_0)}f(x, y) = f(x_0, y_0)
 $$
-Y la buena noticia es que la continuidad es fácil de demostrar usando los mismos métodos que ya vimos en la Sesión 3. Lo único que tienes que hacer es repasar las páginas desde *"Continuidad de algunas funciones elementales"* hasta *"Indeterminaciones"*
+Y la buena noticia es que la continuidad es fácil de demostrar usando los mismos métodos que ya vimos en la Sesión 3. Lo único que tienes que hacer es repasar las páginas desde *"Continuidad de algunas funciones elementales"* hasta *"Indeterminaciones"*. Los teoremas análogos se aplican aquí: la suma de funciones continuas es continua, etc.
 
 \normalsize
 
@@ -157,7 +158,10 @@ Es decir, estudia su comportamiento a lo largo de todas las rectas por el origen
 
 $(c)$ Ahora estudia el comportamiento de $g(x, y)$ a lo largo de la curva $y = x^3$, que también pasa por el origen. 
 
+$(d)$ Estudia la continuidad de $f$ y $g$ en los puntos $(x, y)\neq (0, 0)$.
+
 \textbf{\textcolor{darkgreen}{Ejercicio 17C01.}} Explora sus gráficas en estas dos construcciones GeoGebra [\textcolor{blue}{para f}](https://www.geogebra.org/classic/gjshkuue) y [\textcolor{blue}{para g}](https://www.geogebra.org/classic/nfvm4y3m). ¡Fíjate en que ambas funciones son cocientes de polinomios! 
+
 
 \normalsize
 
@@ -192,13 +196,13 @@ El resumen de los ejemplos y la discusión anterior es, esencialmente, este:
 
 Cuando estudias un punto no ordinario en **el que la función es de hecho continua**, el método anterior no sirve. No puedes examinar *todas las trayectorias posibles para ver si dan lo mismo.*
 
-La herramienta más sencilla, que soluciona algunos de esos casos (¡pero no todos!), es una que ya conoces: la Regla del Sandwich ("cero por acotado"). La versión que necesitamos dice: 
+La herramienta más sencilla, que soluciona algunos de esos casos (¡pero no todos!), es una que ya conoces: la **Regla del Sandwich** ("cero por acotado"). La versión que necesitamos dice: 
 
 Si $\displaystyle\lim_{(x, y)\to(x_0, y_0)}f(x, y) = 0$ y la función $g(x, y)$ está acotada, entonces el límite del producto también es 0:
 $$
 \lim_{(x, y)\to(x_0, y_0)}f(x, y)\,\,g(x, y)= 0
 $$
-Un ejemplo: 
+**Un ejemplo:**
 $\displaystyle\lim_{(x, y)\to(x_0, y_0)}\dfrac{x^4y^2}{x^4 + y^6} = \lim_{(x, y)\to(x_0, y_0)}\underbrace{\dfrac{x^4}{x^4 + y^6}}_{\text{acotada entre 0 y 1}}\,\, y^2 = 0$  
 Aquí usamos que claramente $\displaystyle\lim_{(x, y)\to (0,0)}y^2= 0$ y la siguiente acotación, basada en que $y^6\geq 0$:
 $$0 \leq x^4 \leq x^4 + y^6 \overset{\text{dividiendo}}\Rightarrow 0\leq \dfrac{x^4}{x^4 + y^6}\leq 1$$
@@ -208,37 +212,134 @@ $$0 \leq x^4 \leq x^4 + y^6 \overset{\text{dividiendo}}\Rightarrow 0\leq \dfrac{
 :::
 
 
-
-
-
 # Diferenciabilidad
 
 ::: {.callout-note  icon=false}
 
-## Función diferenciable: cuando el plano es *realmente tangente*.
+## Recapitulación: las parciales y direccionales no bastan.
 
 \small
 
-\quad
+La anterior discusión de continuidad y los ejemplos que la acompañan nos llevan a la siguiente reflexión:
 
++ Las derivadas parciales se basan exclusivamente en la información de $f(x, y)$ a lo largo de dos rectas (los ejes). 
+
++ Las derivadas direccionales exploran todas las rectas que pasan por el punto. Pero ya hemos visto ejemplos en los que eso no es suficiente para entender el comportamiento de la función. Aunque todas las rectas den respuestas coherentes, a lo mejor se obtiene una respuesta distinta usando una parábola, una cúbica o una curva distinta.
+
++ Por lo tanto, **analizar únicamente las derivadas parciales o direccionales en el punto $(x_0, y_0)$ nunca puede servir para garantizar que exista un plano realmente tangente**, uno que realmente aproxime bien a la función.
 \normalsize
 
 :::
 
 
-# Curvas de nivel
+::: {.callout-tip  appearance="minimal"}
+\small
+
+\textbf{\textcolor{blue}{Ejercicio 17A02.}} Vuelve a examinar la función $g$ en los ejercicios 17A01 y 17C01. *Sin calcularlas*, ¿cuánto crees que valen sus derivadas direccionales en $(0, 0)$?
+
+\normalsize
+
+:::
+
+---
+
 
 ::: {.callout-note  icon=false}
 
-## Secciones con planoz horizontales
+## ¿Cuándo es *realmente tangente* un plano?
 
 \small
 
-\quad
+En una variable, si la derivada existe, la recta tangente existe La situación es distinta en dos variables, como hemos visto: aunque las derivadas parciales (y direccionales) existan, puede que no haya plano tangente. Por eso hablábamos de *candidato* a plano tangente.
+
+Hasta ahora nos hemos apoyado en una idea intuitiva de plano tangente: la idea de que al hacer zoom la gráfica de la función se parece cada vez más a ese plano. Pero podemos convertir esta intuición en una idea rigurosa, pensando en que lo que queremos es que la diferencia entre los valores de la función $f(x, y)$ y los del plano tangente $PT(x, y)$ se haga pequeña *rápidamente* al acercarnos al punto. Y aquí *rápidamente* significa que la diferencia 
+$$f(x, y) - PT(x, y)$$
+se haga pequeña  más rápido que la distancia de $(x, y)$ a $(x_0, y_0)$. Usando lo que hemos aprendido de infinitésimos expresamos esto así:
+$$\lim_{(x, y)\to (x_0, y_0)}\dfrac{f(x, y) - PT(x, y)}{\text{distancia }(x, y)\text{ a }(x_0, y_0)} = 0$$
+Este límite dice que el numerador es un infinitésimo en $(x_0, y_0)$ de orden superior al infinitésimo del denominador. Vamos a convertir esto en la versión definitiva de la definición que vamos buscando.
 
 \normalsize
 
 :::
+
+---
+
+::: {.callout-note  icon=false}
+
+## Definición de función diferenciable
+
+\small
+
+La función $f(x, y)$ es **diferenciable** en $(x_0, y_0)$ si se cumple:
+$$
+\lim_{(x, y)\to (x_0, y_0)}\dfrac{f(x, y) - \left( f(x_0, y_0) + f_x(x_0, y_0)\cdot(x -x_0) + f_y(x_0, y_0)\cdot(y -y_0)\right)}{\sqrt{(x - x_0)^2 + (y- y_0)^2}} = 0
+$$
+Y en ese caso el **plano tangente** a $f(x, y)$ en $(x_0, y_0)$ es la expresión que ya conocemos:
+$$z = f(x_0, y_0) + f_x(x_0, y_0)\cdot(x -x_0) + f_y(x_0, y_0)\cdot(y -y_0)$$
+  \normalsize
+
+:::
+
+\small
+
+::: {.callout-tip  appearance="minimal"}
+\small
+
+\textbf{\textcolor{blue}{Ejercicio 17A03.}} Usa la Regla del Sandwich para demostrar que $f(x, y) = \dfrac{x^4y^2}{x^4 + y^6}$ con $f(0, 0) = 0$ es diferenciable en $(0, 0)$.
+
+\normalsize
+
+:::
+\small
+
+Teniendo en cuenta nuestra discusión previa sobre lo difícil que puede ser un límite en dos variables y la información limitada que proporcionan las derivadas parciales y direccionales, es posible que estés pensando que estudiar la diferenciabilidad de una función puede ser algo muy complicado. Afortunadamente, el siguiente resultado lo hace muy fácil en la mayoría de los casos.
+
+---
+
+
+::: {.callout-note  icon=false}
+
+## Diferenciabilidad en la práctica
+
+\small
+
+**Teorema:** supongamos que las derivadas parciales de $z = f(x, y)$ existen y son **continuas en un entorno** de $(x_0, y_0)$. Entonces $f$ es diferenciable en $(x_0, y_0)$. 
+
+Una función cuyas derivadas parciales primeras existen y son continuas en un conjunto $A$ es una función de clase $C^1$ en $A$. El teorema dice que si $f$ es $C^1$ en un entorno de $(x_0, y_0)$ entonces es diferenciable en ese punto (de hecho, en todos los puntos del entorno). 
+
+\normalsize
+
+:::
+
+\small 
+
+**Observaciones:**  
+Este teorema permite reducir el estudio de la diferenciabilidad al cálculo de derivadas parciales (mediante reglas de derivación) y al estudio de su continuidad, identificando sus puntos no ordinarios. En esos puntos no ordinarios es donde las cosas pueden complicarse.  
+No vamos a entrar en la demostración, que usa el Teorema del Valor Medio (ver sesión 10). Pero la continuidad de las derivadas parciales es la que garantiza que al acercarnos por distintas trayectorias la posición de los vectores que determinan el plano tangente tienen que ser coherentes.
+
+
+::: {.callout-tip  appearance="minimal"}
+\small
+
+\textbf{\textcolor{blue}{Ejercicio 17A04.}} Estudia la diferenciabilidad de $f(x, y) = \dfrac{x^4y^2}{x^4 + y^6}$ con $f(0, 0) = 0$ en todos los puntos del plano. **Pista:** lo más difícil ya está hecho,
+
+\normalsize
+
+:::
+
+<!-- # Curvas de nivel -->
+
+<!-- ::: {.callout-note  icon=false} -->
+
+<!-- ## Secciones con planos horizontales -->
+
+<!-- \small -->
+
+<!-- \quad -->
+
+<!-- \normalsize -->
+
+<!-- ::: -->
 
 
 
