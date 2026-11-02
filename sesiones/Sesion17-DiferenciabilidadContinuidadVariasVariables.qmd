@@ -26,7 +26,8 @@ format:
 
 \centering ![](./portadasSesiones/17-tucan.png){width="80%"}
 
-+ [Notebook de la sesión en Colab](https://colab.research.google.com/drive/11GK27MvP4d9AYIWDJp82cK7HY-yf_d2F)
++ [Notebook de la sesión en Colab: usamos el mismo de la anterior sesión](https://colab.research.google.com/drive/1x6uAGMTwIeHT9Q7AOVyMgOQjZ3G7fvHG?usp=sharing)
+
 
 
 
