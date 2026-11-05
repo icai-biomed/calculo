@@ -151,13 +151,28 @@ Estas cuatro funciones son las **derivadas parciales segundas** de $f$. De la mi
 
 ---
 
+En el diagrama anterior hemos destacada el hecho de que $f_{xy} = f_{yx}$. Esto no es una casualidad:
+
 ::: {.callout-note  icon=false}
+
 
 ## Lema de Schwarz, funciones $C^k$
 
 \small
 
+Supongamos que las derivadas parciales segundas de $f$ existen y son continuas en un entorno de un punto $(x_0, y_0)$.  Entonces se cumple (en todos los puntos del entorno):
+$$f_{xy} = f_{yx}$$
+Estas derivadas segundas que sólo se diferencian en el orden de derivación se denominan a menudo **derivadas cruzadas.**
 
+Una función cuyas derivadas segundas son continuas se dice que es de clase $C^2$. De la misma forma se define $C^k$ para $k > 2$. Las funciones $C^{\infty}$ son $C^k$ para todo $k$. Y las $C^0$ son las funciones continuas.
+
+\normalsize
+
+:::
+
+::: {.callout-tip  appearance="minimal"}
+
+\textbf{\textcolor{blue}{Ejercicio 19A01.}} Supongamos que $f$ es $C^{\infty}$. ¿Cuántas derivadas parciales cuartas *distintas* tiene? 
 
 \normalsize
 
