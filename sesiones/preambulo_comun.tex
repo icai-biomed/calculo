@@ -48,6 +48,8 @@
   etiqueta/.style={font=\small\itshape, text=blue!50!black, fill=white, inner sep=1.5pt}
 }
 
+\usepackage{array,colortbl,xcolor}
+
 % ── Setup ───────────────────────────────────────────────────────
 \sloppy
 \epstopdfsetup{outdir=./}
@@ -124,4 +126,11 @@
 
 \definecolor{firebrick}{HTML}{B22222}
 \definecolor{darkgreen}{HTML}{006400}
+
+\newcommand{\pd}[2]{\dfrac{\partial #1}{\partial #2}}
+\definecolor{resalte}{gray}{0.80}          % <- tono del fondo gris
+\newcommand{\gris}{\rowcolor{resalte}}     % resalta una fila
+\newcolumntype{G}{>{\columncolor{resalte}}c} % resalta una columna
+\renewcommand{\arraystretch}{2.1}
+\setlength{\arraycolsep}{5pt}
 

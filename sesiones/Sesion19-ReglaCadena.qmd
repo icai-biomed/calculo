@@ -187,6 +187,28 @@ Una función cuyas derivadas segundas son continuas se dice que es de clase $C^2
 
 \small
 
+En el caso de funciones $z = f(x, y)$ hemos visto que el gradiente $\nabla f = (fx, f_y)$ es una herramienta útil para manejar la información que contienen las derivadas parciales. En el caso de funciones $f:\mathbb R^n\mapsto\mathbb R^m$, que vendrán dadas por sistemas como este:
+$$\begin{cases}
+y_1 = & y_1(x_1, \ldots, x_n)\\
+&\vdots\\
+y_m = & y_m(x_1, \ldots, x_n)
+\end{cases}$$
+el análogo del gradiente es la **matriz jacobiana**, con *todas las derivadas* de $f$;
+$$
+\scriptsize
+\underbrace{Df(x_1,\ldots,x_n)
+= \frac{\partial (y_1,\ldots,y_m)}{\partial (x_1,\ldots,x_n)}}_{\text{notación}}
+\overset{\text{def}}=
+\begin{pmatrix}
+\dfrac{\partial y_1}{\partial x_1} & \dfrac{\partial y_1}{\partial x_2} & \cdots & \dfrac{\partial y_1}{\partial x_n} \\[2ex]
+\dfrac{\partial y_2}{\partial x_1} & \dfrac{\partial y_2}{\partial x_2} & \cdots & \dfrac{\partial y_2}{\partial x_n} \\[1ex]
+\vdots & \vdots & \ddots & \vdots \\[1ex]
+\dfrac{\partial y_m}{\partial x_1} & \dfrac{\partial y_m}{\partial x_2} & \cdots & \dfrac{\partial y_m}{\partial x_n}
+\end{pmatrix}
+\in \mathbb{R}^{m\times n}
+$$
+
+
 \normalsize
 
 :::
@@ -199,11 +221,94 @@ Una función cuyas derivadas segundas son continuas se dice que es de clase $C^2
 
 \small
 
+La primera utilidad que le vamos a encontrar a la matriz Jacobiana es que nos permite expresar de forma muy sencilla la Regla de la Cadena para funciones de varias variables. Recuerda que la Regla de la Cadena nos dice como obtener la derivada de una composición. Es decir de cuando hacemos *dos funciones seguidas* o, de otra manera, aplicamos una segunda función $g$ al resultado de una primera función $f$, lo que denotamos $g\circ f$.
+
+En particular, si tenemos una composición $g\circ f\,:\,\mathbb R^n\mapsto\mathbb R^m\mapsto\mathbb R^p$, con estos nombres para las variables implicadas:
+$$
+\scriptsize
+(x_1, \ldots, x_n)
+\overset{\text{f}}\longrightarrow 
+(y_1, \ldots, y_m)
+\overset{\text{g}}\longrightarrow 
+(z_1, \ldots, z_p)
+$$
+entonces si suponemos que $f$ y $g$ son diferenciables, la composición $g\circ f$ también lo es y su matriz jacobiana es el producto de las matrices jacobianas de $g$ y $f$ (en el único orden posible):
+$$D(g\circ f) = Dg\cdot Df$$
 \normalsize
 
 :::
 
 ---
+
+<!-- ::: {.callout-tip  appearance="minimal"} -->
+
+<!-- \small -->
+<!-- \textbf{\textcolor{blue}{Ejercicio 19A02.}} Dadas las funciones  -->
+<!-- $$f(x_1, x_2) = (x_1^2 + 1, 2x_1 - x_2, x_1 x_2),\qquad g(y_1, y_2, y_3) = (y_1^2 + y_2, 3y_2, y_1^3-2y_2, 2y_2 + 3y_3)$$ -->
+<!-- Encuentra la matriz jacobiana de la composición $h = g\circ f$, con variables -->
+<!-- $$ -->
+<!-- \scriptsize -->
+<!-- (x_1,  x_2) -->
+<!-- \overset{\text{f}}\longrightarrow  -->
+<!-- (y_1, y_2, y_3) -->
+<!-- \overset{\text{g}}\longrightarrow  -->
+<!-- (z_1, z_2, z_3, z_4) -->
+<!-- $$ -->
+
+<!-- \normalsize -->
+
+<!-- ::: -->
+
+\small
+
+Al analizar la estructura de ese producto matricial, el elemento $(i, j)$ es el producto escalar de la fila número $i$ de $Dg$ con la columna número $j$ de $Df$, como se ilustra aquí:
+
+\scriptsize
+$$
+\underbrace{\left(
+\begin{array}{ccccc}
+\pd{z_1}{x_1} & \cdots & \pd{z_1}{x_j} & \cdots & \pd{z_1}{x_n}\\
+\vdots & & \vdots & & \vdots\\
+\pd{z_i}{x_1} & \cdots & \cellcolor{resalte}\pd{z_i}{x_j} & \cdots & \pd{z_i}{x_n}\\
+\vdots & & \vdots & & \vdots\\
+\pd{z_p}{x_1} & \cdots & \pd{z_p}{x_j} & \cdots & \pd{z_p}{x_n}
+\end{array}\right)}_{D{g\circ f}(\vec{x})\;\in\;\mathbb{R}^{p\times n}}
+=
+\underbrace{\left(
+\begin{array}{ccc}
+\pd{z_1}{y_1} & \cdots & \pd{z_1}{y_m}\\
+\vdots & & \vdots\\
+\gris \pd{z_i}{y_1} & \cdots & \pd{z_i}{y_m}\\
+\vdots & & \vdots\\
+\pd{z_p}{y_1} & \cdots & \pd{z_p}{y_m}
+\end{array}\right)}_{Dg(\vec{y})\;\in\;\mathbb{R}^{p\times m}}
+\underbrace{\left(
+\begin{array}{ccGcc}
+\pd{y_1}{x_1} & \cdots & \pd{y_1}{x_j} & \cdots & \pd{y_1}{x_n}\\
+\vdots & & \vdots & & \vdots\\
+\pd{y_m}{x_1} & \cdots & \pd{y_m}{x_j} & \cdots & \pd{y_m}{x_n}
+\end{array}\right)}_{Df(\vec{x})\;\in\;\mathbb{R}^{m\times n}}
+$$
+
+::: {.callout-note  icon=false}
+
+## Estructura de la matriz jacobiana de la composición
+
+Cada derivada parcial de la composición es por lo tanto una suma de productos de derivadas parciales de $f$ y $g$ como esta:
+
+\small
+$$
+\pd{z_i}{x_j}
+=\pd{z_i}{y_1}\pd{y_1}{x_j} + \cdots + \pd{z_i}{y_m}\pd{y_m}{x_j}
+=\sum_{k=1}^{m}\pd{z_i}{y_k}\,\pd{y_k}{x_j}
+$$
+\normalsize
+:::
+
+
+
+---
+
 
 ::: {.callout-note  icon=false}
 
