@@ -1,0 +1,272 @@
+---
+title: "Sesión 19. Derivadas de orden superior. Regla de la Cadena."
+lang: es
+format:
+  beamer:
+    theme: Madrid
+    fonttheme: default
+    fontsize: 10pt
+    toc: false          # handled manually below; pandoc's toc:true produces a stray }
+    section-titles: false   # \AtBeginSection in preamble.txt creates the section slide
+    slide-level: 2      # without this, top-level (#) headings become frames directly
+                         # instead of \section commands, so \tableofcontents has nothing
+                         # to list and \AtBeginSection never fires
+    include-in-header:
+      - preambulo_comun.tex
+      - text: |
+          \newcommand{\SesionTitulo}{Sesión 19 \\  Derivadas de orden superior. Regla de la Cadena.}
+# \\ \textcolor{yellow}{¡¡PROVISIONAL!!}          
+  html: default
+  docx: default
+---
+
+---
+
+**Sesión 19.  Derivadas de orden superior. Regla de la Cadena.**
+
+\centering ![](./portadasSesiones/19-LechuzaGavilana.png){width="80%"}
+
+<!-- + [Notebook de la sesión en Colab: usamos el mismo de la anterior sesión](https://colab.research.google.com/drive/1x6uAGMTwIeHT9Q7AOVyMgOQjZ3G7fvHG?usp=sharing) -->
+
+
+
+
+---
+
+```{=latex}
+  
+  \frametitle{Tabla de contenidos}
+  \tableofcontents
+
+```
+
+
+# Introducción. 
+
+\small
+
+En esta sesión relativamente técnica vamos a aprender más sobre las derivadas parciales. En primer lugar, hablaremos de derivadas parciales de orden superior. Al igual que en una variable, las derivadas parciales segundas, terceras, etc permiten profundizar más en el comportamiento local de una función cuando es necesario. 
+Por el camino descubriremos el lema de [Schwarz](https://es.wikipedia.org/wiki/Hermann_Schwarz), una cierta propiedad de simetría en las derivadas parciales que es nueva para nosotros porque no tiene análogo en funciones de una variable. Y pasaremos por el polinomio de Taylor en varias variables, muy brevemente porque no tenemos tiempo para tratarlo en profundidad.
+
+Finalmente discutiremos la otra idea clave de esta sesión, la Regla de la Cadena, para derivar composiciones de funciones. Formalmente es completamente análoga a la del caso de una variable.Pero en la práctica veremos que es muy importante familiarizarse con ella, para usarla correctamente y entender la información contenida en la estructura de algunas derivadas parciales. 
+
+\normalsize
+
+# Derivadas de orden superior {.fragile}
+
+::: {.callout-note  icon=false}
+
+## Derivadas parciales segundas, terceras, etc.
+
+\small
+
+Una función regular como $f(x, y) = e^x\sin(y^3)$ produce dos derivadas parciales (primeras o de primer orden) como en este ejemplo:
+
+\quad
+
+\begin{center}
+\resizebox{\diagwidth}{!}{%
+\begin{tikzpicture}
+  \node[fbox] (f)  {$f(x,y)=e^{x^{2}}\sen(5y)$};
+  \node[fbox, above right=0.75cm and 2.4cm of f.east, anchor=west] (fx)
+       {$f_x(x,y)=2x\,e^{x^{2}}\sen(5y)$};
+  \node[fbox, below right=0.75cm and 2.4cm of f.east, anchor=west] (fy)
+       {$f_y(x,y)=5\,e^{x^{2}}\cos(5y)$};
+  \draw[flecha] (f.east) to[out=0,in=180] node[etiqueta, above left] {$\partial/\partial x$} (fx.west);
+  \draw[flecha] (f.east) to[out=0,in=180] node[etiqueta, below left] {$\partial/\partial y$} (fy.west);
+\end{tikzpicture}}
+\end{center}
+
+\quad
+
+Pero las expresiones de $f_x(x,y)=2x\,e^{x^{2}}\sen(5y)$ y de $f_y(x,y)=5\,e^{x^{2}}\cos(5y)$ son de nuevo funciones regulares de dos variables, y puedes por tanto calcular sus derivadas parciales.  
+La derivada $f_x(x, y)$ producirá dos derivadas parciales $f_{xx}(x, y),  f_{xy}(x, y)$.  
+Y lo mismo ocurre con $f_y(x, y)$ que produce $f_{yx}(x, y), f_{yy}(x, y)$.  
+
+La siguiente página muestra el resultado de hacer eso en este ejemplo:
+
+\normalsize
+
+:::
+
+---
+
+
+\small
+
+\begin{center}
+\resizebox{0.8\textwidth}{!}{%
+\begin{tikzpicture}
+  % f(x,y) a la izquierda, centrada verticalmente
+  \node[fbox, anchor=west] (f) at (0,0) {$f(x,y)=e^{x^{2}}\sen(5y)$};
+ 
+  % primeras derivadas (columna central)
+  \node[fbox, anchor=west] (fx) at ($(f.east)+(2.4,1.9)$)
+       {$f_x=2x\,e^{x^{2}}\sen(5y)$};
+  \node[fbox, anchor=west] (fy) at ($(f.east)+(2.4,-1.9)$)
+       {$f_y=5\,e^{x^{2}}\cos(5y)$};
+ 
+  % segundas derivadas (columna derecha, alineadas por la izquierda)
+  \node[fbox, anchor=west] (fxx) at ($(fx.east |- f.east)+(2.8, 3.35)$)
+       {$f_{xx}=(2+4x^{2})\,e^{x^{2}}\sen(5y)$};
+  \node[fbox, anchor=west] (fxy) at ($(fx.east |- f.east)+(2.8, 1.55)$)
+       {$f_{xy}=10x\,e^{x^{2}}\cos(5y)$};
+  \node[fbox, anchor=west] (fyx) at ($(fx.east |- f.east)+(2.8,-1.55)$)
+       {$f_{yx}=10x\,e^{x^{2}}\cos(5y)$};
+  \node[fbox, anchor=west] (fyy) at ($(fx.east |- f.east)+(2.8,-3.35)$)
+       {$f_{yy}=-25\,e^{x^{2}}\sen(5y)$};
+ 
+  % flechas: f -> f_x, f_y -> segundas derivadas
+  \foreach \a/\b/\l/\pos in {f/fx/x/above, f/fy/y/below,
+                             fx/fxx/x/above, fx/fxy/y/below,
+                             fy/fyx/x/above, fy/fyy/y/below}
+    \draw[flecha] (\a.east) to[out=0,in=180]
+         node[etiqueta, \pos=0pt, pos=.45] {$\partial/\partial \l$} (\b.west);
+ 
+  % Teorema de Schwarz (Clairaut)
+  \draw[<->, thick, red!60!black, dashed] (fxy.east) -- ++(0.7,0) |-
+       node[pos=.25, right, font=\small, text=red!60!black, align=left]
+       {¡Observa!} (fyx.east);
+\end{tikzpicture}}
+\end{center}
+
+También se utiliza esta notación:
+$$
+f_{xx}(x, y) = \dfrac{\partial^2 f}{\partial x^2},\,\,\,
+f_{xy}(x, y) = \dfrac{\partial^2 f}{\partial x\partial y},\,\,\,
+f_{yx}(x, y) = \dfrac{\partial^2 f}{\partial y\partial x},\,\,\,
+f_{yy}(x, y) = \dfrac{\partial^2 f}{\partial y^2},
+$$
+Estas cuatro funciones son las **derivadas parciales segundas** de $f$. De la misma forma se definen las derivadas parciales terceras, como $f_{xxy}$, derivadas parciales cuartas, etc.
+
+\normalsize
+
+::: {.callout-tip  appearance="minimal"}
+
+\textbf{\textcolor{darkgreen}{Ejercicio 19C01.}} Usa la  [\textcolor{blue}{aplicación de derivadas parciales}](https://fsansegundo.github.io/webapp/partial-derivative-drills.html) La versión actualizada ahora incluye practica de parciales segundas y terceras.
+
+\normalsize
+
+:::
+
+---
+
+::: {.callout-note  icon=false}
+
+## Lema de Schwarz, funciones $C^k$
+
+\small
+
+
+
+\normalsize
+
+:::
+
+
+# Regla de la cadena
+
+::: {.callout-note  icon=false}
+
+## Matriz jacobiana
+
+\small
+
+\normalsize
+
+:::
+
+---
+
+::: {.callout-note  icon=false}
+
+## Regla de la cadena matricial
+
+\small
+
+\normalsize
+
+:::
+
+---
+
+::: {.callout-note  icon=false}
+
+## Regla de la cadena por caminos
+
+\small
+
+\normalsize
+
+:::
+
+---
+
+::: {.callout-note  icon=false}
+
+## Derivación implícita
+
+\small
+
+\normalsize
+
+:::
+
+---
+
+::: {.callout-note  icon=false}
+
+## Teorema de Taylor
+
+\small
+
+\normalsize
+
+:::
+
+---
+
+
+::: {.callout-note  icon=false}
+
+## Versión matricial de Taylor y matriz Hessiana
+
+\small
+
+\normalsize
+
+:::
+
+---
+
+<!-- ################### -->
+<!-- Plantillas -->
+<!-- ################### -->
+
+<!-- \hfil ![](./fig/S18-CurvasNivelGradiente.png){width="25%"} \hfil -->
+
+::: {.callout-note  icon=false}
+
+## Plantilla
+
+\small
+
+
+
+\normalsize
+
+:::
+
+---
+
+
+
+::: {.callout-tip  appearance="minimal"}
+
+\textbf{\textcolor{blue}{Ejercicio 18A04.}}
+
+\textbf{\textcolor{firebrick}{Ejercicios Hoja 8B GITI 25-26.}}
+
+\normalsize
+
+:::

@@ -32,9 +32,21 @@
 \usepackage{ragged2e}
 \usepackage[normalem]{ulem}
 
+\usepackage{graphicx}                         % for \resizebox
+\newcommand{\diagwidth}{0.8\textwidth} 
+
 \usepackage{xcolor}
 \usepackage{multicol}
 
+\usetikzlibrary{arrows.meta,positioning,calc}
+\DeclareMathOperator{\sen}{sen}
+
+\tikzset{
+  fbox/.style={draw=blue!60!black, fill=blue!5, rounded corners=3pt,
+               inner sep=7pt, thick},
+  flecha/.style={-{Stealth[length=3mm]}, thick, blue!60!black},
+  etiqueta/.style={font=\small\itshape, text=blue!50!black, fill=white, inner sep=1.5pt}
+}
 
 % ── Setup ───────────────────────────────────────────────────────
 \sloppy
