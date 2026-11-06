@@ -341,8 +341,6 @@ Hallar la matriz jacobiana de $h = g\circ f$ en $(1, 1)$.
 
 ---
 
-
-
 ::: {.callout-note  icon=false}
 
 ## Un ejemplo importante de estructura
@@ -355,6 +353,7 @@ $$
 \xrightarrow{\;\;T\;\;}
 \underset{\mathbb{R}^{1}}{w}
 $$
+Por lo tanto es una *función escalar de una variable* (entra un número $t$,  sale un número $w$). Tiene una única derivada (no parcial). Y la Regla de la Cadena nos dice entonces como calcularla combinando las jacobianas.
 $$
 \scriptsize
 (T\circ c)'(t)
@@ -367,12 +366,36 @@ $$
 \underbrace{%
 \begin{pmatrix}
 x'(t)\\[1ex] y'(t)\\[1ex] z'(t)
-\end{pmatrix}}_{\begin{subarray}{c}\text{velocidad}\\ \text{de }c\text{ en  }t\end{subarray}}=
-\nabla T(c(t)) \cdot c'(t)
+\end{pmatrix}}_{\begin{subarray}{c}\text{velocidad}\\ \text{de }c\text{ en  }t\end{subarray}}
 $$
-Esta ecuación también puede escribirse
+Es decir, $(T\circ c)'(t)  = \nabla T(c(t)) \cdot c'(t) =$ *gradiente por velocidad*.
+\normalsize
+:::
 
-pero la estructura *gradiente por velocidad* es a menudo más útil para entender la relación entre las dos funciones (la temperatura y la curva en este ejemplo)
+---
+
+::: {.callout-note  icon=false}
+
+## Gradiente y curvas de nivel
+
+\small
+
+Hemos obtenido
+$$
+\small
+(T\circ c)'(t) = \dfrac{d(T(c(t)))}{dt} =
+\nabla T(c(t)) \cdot c'(t) = 
+\dfrac{\partial T}{\partial x}\dfrac{dx}{dt} + 
+\dfrac{\partial T}{\partial y}\dfrac{dy}{dt} + 
+\dfrac{\partial T}{\partial z}\dfrac{dz}{dt}
+$$
+Aunque la última expresión se usa para las cuentas, la estructura *gradiente por velocidad* es a menudo mucho más útil para entender la relación estructural entre las dos funciones (la temperatura y la curva en este ejemplo). 
+
+Por ejemplo, si quiero moverme manteniendo la temperatura constante (con $(T\circ c)'(t) = 0$), entonces el vector velocidad debe ser perpendicular al gradiente. 
+
+Pero moverse a temperatura constante significa que la trayectoria recorre una curva de nivel de la función temperatura. Así que **las curvas de nivel son perpendiculares al gradiente.** 
+
+Esa idea estaba ya presente en las propiedades del gradiente de la Sesión 18, pero aquí queremos ponerla de manifiesto, porque es una idea muy importante.
 
 \normalsize
 :::
