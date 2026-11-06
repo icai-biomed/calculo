@@ -400,6 +400,19 @@ Esa idea estaba ya presente en las propiedades del gradiente de la Sesión 18, p
 \normalsize
 :::
 
+::: {.callout-tip  appearance="minimal"}
+
+
+\textbf{\textcolor{blue}{Ejercicio 19A04.}} Dada la elipse 
+$$\dfrac{x^2}{9} + \dfrac{x^2}{4} = 1$$
+empieza observando que es la curva de nivel 1 de una cierta función $f(x, y)$. ¿Cuál es esa función? Usa esto para hallar la recta tangente a la elipse en el punto $(3/\sqrt{2}, 1/\sqrt[2])$
+
+\normalsize
+:::
+
+
+
+
 ---
 
 
