@@ -38,7 +38,8 @@
 \usepackage{xcolor}
 \usepackage{multicol}
 
-\usetikzlibrary{arrows.meta,positioning,calc}
+\usetikzlibrary{arrows.meta,positioning,calc, matrix,decorations.pathreplacing}
+
 \DeclareMathOperator{\sen}{sen}
 
 \tikzset{
@@ -129,8 +130,20 @@
 
 \newcommand{\pd}[2]{\dfrac{\partial #1}{\partial #2}}
 \definecolor{resalte}{gray}{0.80}          % <- tono del fondo gris
+\definecolor{azul}{RGB}{49,86,172}
+\definecolor{rojo}{RGB}{225,60,60}
+\definecolor{verde}{RGB}{0,100,25}
+\definecolor{naranja}{RGB}{240,140,45}
 \newcommand{\gris}{\rowcolor{resalte}}     % resalta una fila
 \newcolumntype{G}{>{\columncolor{resalte}}c} % resalta una columna
 % \renewcommand{\arraystretch}{2.1}
 % \setlength{\arraycolsep}{5pt}
 
+
+
+ 
+ 
+\tikzset{
+  m/.style={inner sep=0.3pt, text=azul},     % nodos de la expresión
+  cam/.style={-{Stealth[length=2.2mm]}, thick},
+}

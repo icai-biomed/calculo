@@ -26,7 +26,7 @@ format:
 
 \centering ![](./portadasSesiones/19-LechuzaGavilana.png){width="80%"}
 
-<!-- + [Notebook de la sesión en Colab: usamos el mismo de la anterior sesión](https://colab.research.google.com/drive/1x6uAGMTwIeHT9Q7AOVyMgOQjZ3G7fvHG?usp=sharing) -->
++ [\textcolor{blue}{Notebook de la sesión en Colab}](https://colab.research.google.com/drive/109wUurVGjdd5B1e67K7j9qrvkt33RdfG?usp=sharing)
 
 
 
@@ -344,6 +344,7 @@ Hallar la matriz jacobiana de $h = g\circ f$ en $(1, 1)$.
 ::: {.callout-note  icon=false}
 
 ## Un ejemplo importante de estructura
+\label{ejemplo_estructura}
 
 Dada la función $w = T(x, y, z)$ que mide la temperatura en cada punto del espacio y una *curva paramétrica* $c(t) = (x(t), y(t), z(t))$ que describe el movimiento de una partícula en el espacio (ver Sesión 16), nos preguntamos ¿cómo cambia la temperatura en esa trayectoria? Pensamos en la composición $T\circ c$ (temperatura en la curva) que es una función:
 $$
@@ -402,10 +403,10 @@ Esa idea estaba ya presente en las propiedades del gradiente de la Sesión 18, p
 
 ::: {.callout-tip  appearance="minimal"}
 
+\small\label{19A04}
 
-\textbf{\textcolor{blue}{Ejercicio 19A04.}} Dada la elipse 
-$$\dfrac{x^2}{9} + \dfrac{x^2}{4} = 1$$
-empieza observando que es la curva de nivel 1 de una cierta función $f(x, y)$. ¿Cuál es esa función? Usa esto para hallar la recta tangente a la elipse en el punto $(3/\sqrt{2}, 1/\sqrt[2])$
+\textbf{\textcolor{blue}{Ejercicio 19A04.}} Dada la elipse $\dfrac{x^2}{9} + \dfrac{y^2}{4} = 1$
+empieza observando que es la curva de nivel 1 de una cierta función $f(x, y)$. ¿Cuál es esa función? Usa esto para hallar la recta tangente a la elipse en el punto $(3/\sqrt{2}, \sqrt{2})$
 
 \normalsize
 :::
@@ -421,10 +422,109 @@ empieza observando que es la curva de nivel 1 de una cierta función $f(x, y)$. 
 
 ## Regla de la cadena por caminos
 
+\small Aunque la expresión matricial de la página \pageref{ejemplo_estructura} es completamente general, no es la forma habitual de pensar en este tipo de cálculos. Y es bueno que conozcas cómo se aplica a menudo en la práctica la Regla de la Cadena. La forma habitual de proceder es pensar "quiero derivar la temperatura $T$ respecto al tiempo $t$" y entonces buscamos en la función todos los *caminos* que conducen desde $T$ hasta $t$, como se ilustra en la figura, en la que cada camino de flechas utiliza un color diferente:
+```{=latex}
 \small
+\begin{center}
+\resizebox{0.35\textwidth}{!}{%
+\begin{tikzpicture}
+ % ---------- Línea 1: T(c(t)) = T(x(t), y(t), z(t)) ----------
+  \node[m, anchor=west] (lhs) at (0,0) {$T(c(t))\;=$};
+  \node[m, right=4mm of lhs] (T)  {$T$};
+  \node[m, right=0pt of T]   (po) {$\bigl($};
+  \node[m, right=0pt of po]  (x)  {$x$};
+  \node[m, right=0pt of x]   (xt) {$(t)$};
+  \node[m, right=0pt of xt]  (c1) {$,$};
+  \node[m, right=3pt of c1]  (y)  {$y$};
+  \node[m, right=0pt of y]   (yt) {$(t)$};
+  \node[m, right=0pt of yt]  (c2) {$,$};
+  \node[m, right=3pt of c2]  (z)  {$z$};
+  \node[m, right=0pt of z]   (zt) {$(t)$};
+  \node[m, right=0pt of zt]  (pc) {$\bigr)$};
+ 
+  % T depende de x, y, z  (arcos por encima)
+  \foreach \v/\col/\h in {x/rojo/0.55, y/verde/0.95, z/naranja/1.35}
+    \draw[cam, \col] (T.north) .. controls ($(T.north)+(0,\h)$) and ($(\v.north)+(0,\h)$) .. (\v.north);
+ 
+  % x, y, z dependen de t  (arcos por debajo)
+  \foreach \v/\col in {x/rojo, y/verde, z/naranja}
+    \draw[cam, \col] (\v.south) to[out=-80,in=-100,looseness=2.2] (\v t.south);
+\end{tikzpicture}%
+}
+\end{center}
+```
+Para aplicar así la Regla de la Cadena traducimos:
+
+$\bullet$ cada camino en un *sumando*.  
+$\bullet$ cada flecha en una *derivada*, parcial o total según corresponda.  
+$\bullet$ si el camino tiene varios pasos, entonces *multiplicamos las derivadas correspondientes* para obtener el sumando de ese camino.  
+
+En este caso, identificando los sumandos por los mismos colores que los caminos:
+
+```{=latex}
+\begin{center}
+\resizebox{0.4\textwidth}{!}{%
+\begin{tikzpicture}
+  % ---------- Línea 2: regla de la cadena por caminos ----------
+  \node[m, anchor=north west] (der) at ($(lhs.south west)+(0,-1.0)$)
+  {$\displaystyle
+    \dfrac{d\bigl(T(c(t))\bigr)}{dt}\;=\;
+    \textcolor{rojo}{\dfrac{\partial T}{\partial x}\,\dfrac{dx}{dt}}
+    \;+\;
+    \textcolor{verde}{\dfrac{\partial T}{\partial y}\,\dfrac{dy}{dt}}
+    \;+\;
+    \textcolor{naranja}{\dfrac{\partial T}{\partial z}\,\dfrac{dz}{dt}}$};\end{tikzpicture}%
+}
+\end{center}
+```
+que es la misma expresión que hemos obtenido por el método matricial.
 
 \normalsize
 
+:::
+
+---
+
+::: {.callout-note  icon=false}
+
+## Derivadas de orden superior
+
+\small
+
+Aunque lo veremos a través de ejercicios, la regla esencial al calcular derivadas de orden superior usando la Regla de la Cadena se puede formular así:
+
+**las derivadas parciales se calculan en el mismo punto que la función original**
+
+Por ejemplo, al obtener 
+$$
+\small
+(T\circ c)'(t) = \dfrac{d(T(c(t)))}{dt} =
+\nabla T(c(t)) \cdot c'(t) = 
+\dfrac{\partial T}{\partial x}\dfrac{dx}{dt} + 
+\dfrac{\partial T}{\partial y}\dfrac{dy}{dt} + 
+\dfrac{\partial T}{\partial z}\dfrac{dz}{dt}
+$$
+hemos escrito las derivadas parciales como $\dfrac{\partial T}{\partial x}$ en forma abreviada para simplificar. Pero si queremos calcular la derivada segunda $(T\circ c)''(t) = \frac{d^2(T(c(t)))}{dt^2}$ entonces conviene escribir la expresión explícita de la dependencia en $t$ así:
+$$
+\scriptsize
+\begin{array}{l}
+(T\circ c)'(t) =\\[2mm]
+\dfrac{\partial T}{\partial x}(x(t), y(t), z(t))\cdot\dfrac{dx}{dt}(t) + 
+\dfrac{\partial T}{\partial y}(x(t), y(t), z(t))\cdot\dfrac{dy}{dt}(t) + 
+\dfrac{\partial T}{\partial z}(x(t), y(t), z(t))\cdot\dfrac{dz}{dt}(t)
+\end{array}
+$$
+\normalsize
+
+:::
+
+::: {.callout-tip  appearance="minimal"}
+
+\small
+
+\textbf{\textcolor{blue}{Ejercicio 19A05.}} Termina ese cálculo (empieza usando la derivada de un producto y busca los caminos que llevan a $t$).
+
+\normalsize
 :::
 
 ---
@@ -435,65 +535,97 @@ empieza observando que es la curva de nivel 1 de una cierta función $f(x, y)$. 
 
 \small
 
+La Regla de la Cadena amplía el tipo de situaciones en las que podemos usar la *derivación implícita* que vimos en una variable. Por ejemplo, dada la elipse del ejercicio 19A04 (pág. \pageref{19A04}) podemos escribirla como
+$$f(x, y) = 1\quad\text{ para }\quad f(x, y) = \dfrac{x^2}{9} + \dfrac{y^2}{4}$$
+Ahora pensamos que la ecuación de la elipse **define implícitamente a $y$ como función de $x$**:
+$$\scriptsize\dfrac{x^2}{9} + \dfrac{\textcolor{red}{y(x)}^2}{4} =1$$
+Esa $y(x)$ es la función **que obtendrías si despejaras $y$** en la ecuación. ¡Pero no despejamos! Derivamos ambos miembros en $x$, teniendo en cuenta que la derivada de $1$ es 0.
+$$\scriptsize\dfrac{2x}{9} + \dfrac{\textcolor{red}{2y(x)y'(x)}}{4} = 0$$
+Despejando $y'(x) = \frac{-4y}{9x}$. Si conoces las coordenadas $(x, y)$ del punto, esto es todo lo que se necesita. En este método, **en lugar de despejar y derivar (a menudo es imposible), primero derivamos y luego despejamos las derivadas**.
+
+
 \normalsize
 
 :::
 
 ---
+
+
 
 ::: {.callout-note  icon=false}
 
-## Teorema de Taylor
+## Otro ejemplo de derivación implícita
 
 \small
+
+Dada la ecuación de una **esfera** de radio 5:
+$$
+x^2 + y^2 + z^2 = 25
+$$
+La podemos ver como $F(x, y, z) = 0$, pasando el 25 al otro miembro, con 
+$$
+F(x, y, z) = x^2 + y^2 + z^2 - 25
+$$ 
+Ahora pensamos en una función $z(x,y)$ definida por esta ecuación (si *despejáramos* la $z$). Para calcular por ejemplo la derivada parcial $z_x = \frac{\partial z}{\partial x}$ escribimos:
+\begin{center}
+\begin{tikzpicture}
+  % ---------- F(x, y, z(x,y)) = 0 ----------
+  \node[m]                    (F)  {$F$};
+  \node[m, right=0pt of F]    (po) {$\bigl($};
+  \node[m, right=0pt of po]   (x)  {$x$};
+  \node[m, right=0pt of x]    (c1) {$,$};
+  \node[m, right=3pt of c1]   (y)  {$y$};
+  \node[m, right=0pt of y]    (c2) {$,$};
+  \node[m, right=3pt of c2]   (z)  {$z$};
+  \node[m, right=0pt of z]    (zp) {$($};
+  \node[m, right=0pt of zp]   (xz) {$x$};
+  \node[m, right=0pt of xz]   (cz) {$,$};
+  \node[m, right=3pt of cz]   (yz) {$y$};
+  \node[m, right=0pt of yz]   (zq) {$)$};
+  \node[m, right=0pt of zq]   (pc) {$\bigr)\;=\;0$};
+ 
+  % F depende de x (rojo) y de z (verde): arcos por encima
+  \draw[cam, rojo] (F.north) .. controls ($(F.north)+(0,0.35)$) and ($(x.north)+(0,0.35)$) .. (x.north);
+  \draw[cam, verde]     (F.north) .. controls ($(F.north)+(0.1,0.68)$) and ($(z.north)+(-0.1,0.68)$) .. (z.north);
+ 
+  % z depende de x (e y): la flecha apunta a la x dentro de z(x,y)
+  \draw[cam, verde] (z.south) to[out=-80,in=-100, looseness=2] (xz.south);
+\end{tikzpicture}
+\end{center}
+
+y usando esos caminos que conducen a $x$, junto con el hecho de que la derivada de 0 es 0, tenemos:
+$$
+F_x + F_z\cdot z_x = 0\quad\text{ y por tanto}\quad z_x = -\dfrac{F_x}{F_z} = -\dfrac{2x}{2z} = -\dfrac{x}{z}
+$$
+Análogamente, $z_y = -\dfrac{F_y}{F_z}$.
 
 \normalsize
 
 :::
 
 ---
-
-
-::: {.callout-note  icon=false}
-
-## Versión matricial de Taylor y matriz Hessiana
-
-\small
-
-\normalsize
-
-:::
-
----
-
-<!-- ################### -->
-<!-- Plantillas -->
-<!-- ################### -->
-
-<!-- \hfil ![](./fig/S18-CurvasNivelGradiente.png){width="25%"} \hfil -->
-
-::: {.callout-note  icon=false}
-
-## Plantilla
-
-\small
-
-
-
-\normalsize
-
-:::
-
----
-
-
 
 ::: {.callout-tip  appearance="minimal"}
 
-\textbf{\textcolor{blue}{Ejercicio 18A04.}}
+\textbf{\textcolor{blue}{Ejercicio 19A06.}} 
+Usa este resultado y la ecuación 
+$$z = z(x_0, y_0) + z_x(x_0, y_0) (x - x_0) + z_y(x_0, y_0) (y - y_0)$$
+para calcular el plano tangente a la esfera en el punto $(0, 3, 4)$. Necesitarás 
 
-\textbf{\textcolor{firebrick}{Ejercicios Hoja 8B GITI 25-26.}}
+\textbf{\textcolor{blue}{Ejercicio 19A07.}} El cálculo anterior funcionaría en cualquier punto de la esfera con $z\neq 0$, pero no por ejemplo en $(4, 3, 0)$. ¿Qué hace especiales a esos puntos, dónde están situados en la esfera?
+
+\textbf{\textcolor{blue}{Ejercicio 19A08.}} Las fórmulas 
+$$z_x = -\dfrac{F_x}{F_z},\quad z_y = -\dfrac{F_y}{F_z}$$
+que hemos obtenido valen para cualquier $F(x, y, z)$ diferenciable, no sólo esa esfera. Úsalas para hallar el plano tangente a la superficie $9x^2 + 4y^2 - 4 z^2 = 9$ en el punto $(1, 1, 1)$.  
+
+\textbf{\textcolor{blue}{Ejercicio 19A09.}} Hemos hablado de curvas de nivel, pero también hay *superficies de nivel*. Usa esa idea y el ejercicio 19A04 para repetir, más rápido, los ejercicios 19A06 y el 19A08.
+
+\textbf{\textcolor{darkgreen}{Ejercicio 19C02.}} Visualiza el ejercicio 19A08 [con \textcolor{blue}{GeoGebra}](https://www.geogebra.org/classic/wbg6pyqz) y el [\textcolor{blue}{notebook}](https://colab.research.google.com/drive/109wUurVGjdd5B1e67K7j9qrvkt33RdfG?usp=sharing).  
+
+\textbf{\textcolor{firebrick}{Hoja 9B GITI: Ejercicios 7, 8, 9, 11 y del 13 al 18.}}
 
 \normalsize
 
 :::
+
+

@@ -1,0 +1,299 @@
+---
+title: "Sesión 20. Extremos de funciones de varias variables."
+lang: es
+format:
+  beamer:
+    theme: Madrid
+    fonttheme: default
+    fontsize: 10pt
+    toc: false          # handled manually below; pandoc's toc:true produces a stray }
+    section-titles: false   # \AtBeginSection in preamble.txt creates the section slide
+    slide-level: 2      # without this, top-level (#) headings become frames directly
+                         # instead of \section commands, so \tableofcontents has nothing
+                         # to list and \AtBeginSection never fires
+    include-in-header:
+      - preambulo_comun.tex
+      - text: |
+          \newcommand{\SesionTitulo}{Sesión 20 \\ Extremos de funciones de varias variables.}
+# \\ \textcolor{yellow}{¡¡PROVISIONAL!!}          
+  html: default
+  docx: default
+---
+
+---
+
+**Sesión 20.  Extremos de funciones de varias variables.**
+
+\centering ![](./portadasSesiones/20-Great_White_Pelican.JPG){width="80%"}
+
++ [\textcolor{blue}{Notebook de la sesión en Colab}](https://colab.research.google.com/drive/109wUurVGjdd5B1e67K7j9qrvkt33RdfG?usp=sharing)
+
+
+
+---
+
+```{=latex}
+  
+  \frametitle{Tabla de contenidos}
+  \tableofcontents
+
+```
+
+
+# Introducción. 
+
+\small
+
+
+\normalsize
+
+# Extremos locales de funciones de varias variables.
+
+\small
+
+::: {.callout-note  icon=false}
+
+## Máximos y mínimos locales. Puntos críticos. puntos de silla.
+
+
+Los máximos y mínimos locales de una función $z = f(x, y)$ son las cumbres y los hoyos en el paisaje de la gráfica de la función. Formalmente, $f$ tiene un **mínimo** ( respectivamente **máximo**) relativo o local en $P = (x_0, y0)$ si existe un entorno $D$ del punto tal que
+$$f(x, y) \geqslant f(x_0, y_0) \quad (\text{ respectivamente } f(x) \leqslant f(x_0)) \quad \text{ para todos los } x \text{ en }D$$
+Usamos el nombre **extremo local** para referirnos indistintamente a un máximo o mínimo local. Queremos usar las derivadas parciales para buscar los extremos locales. Pero primero debemos aprender las lecciones de un par de ejemplos. 
+:::
+
+
+\small
+
+
+::: {.callout-tip  appearance="minimal"}
+
+\textbf{\textcolor{blue}{Ejercicio 20A01.}} (a) Piensa en la función $f(x, y) = \sqrt{x^2 + y^2}$. Estudia sus curvas de nivel y su perfil (por ejemplo el corte con el plano $XZ$) para identificar qué tipo de superficie (bien conocida) es su gráfica.  (b) ¿Existen las parciales de $f(x, y)$ en $(0, 0)$? Pista: tendrás que usar límites. ¿Es $f$ diferenciable en ese punto, hay plano tangente? (c) ¿Tiene $f(x, y)$ un extremo local en $(0, 0)$?
+
+\normalsize
+
+:::
+
+
+---
+
+\small
+
+::: {.callout-tip  appearance="minimal"}
+
+\textbf{\textcolor{blue}{Ejercicio 20A02.}} (a) Piensa en la función $f(x, y) = x^2 - y^2$. Es un parabolide hiperbólico y ya vimos su gráfica en la sesión 16.  (b) ¿Cuánto las parciales de $f(x, y)$ en $(0, 0)$? ¿Es $f$ diferenciable en ese punto? Muy importante: si hay plano tangente, ¿cuál es? (c) ¿Tiene $f(x, y)$ un extremo local en $(0, 0)$?
+
+\normalsize
+
+:::
+
+::: {.callout-note  icon=false}
+
+
+## Puntos críticos. 
+
+Vamos a resumir las lecciones de los dos últimos ejemplos. Empezamos observando que si  $f$ tiene un *extremo local* en $P = (x_0, y0)$ y es diferenciable en $P$, entonces su plano tangente en $P$ tiene que ser horizontal y por tanto $f_x(P) = 0,\quad f_y(P) = 0$.
+
+Un **punto crítico** de $z = f(x, y)$ es un punto $P = (x_0, y_0)$ en el que sucede una de estas dos cosas:  
+$\bullet$ $f$ no es diferenciable.  
+$\bullet$ $f$ es diferenciable, con $f_x(x_0, y_0) =0,  f_y(x_0, y_0) = 0$ (plano tangente horizontal en $P$).  
+Y la relación con el problema de los extremos locales es que:  
+$(1)$ Todos los extremos locales son puntos críticos.  
+$(2)$ Pero no todos los puntos críticos son extremos locales. Si $f$ es diferenciable en un punto crítico $(x_0, y_0)$ que **no** es un extremo, decimos que $(x_0, y_0)$ es un **punto de silla** (punto con plano tangente horizontal pero no extremo). 
+
+Todas estas ideas se generalizan de forma natural a **funciones escalares** $f:\mathbb R^n\mapsto\mathbb R$
+:::
+
+---
+
+\small
+Los puntos críticos nos proporcionan los **candidatos** a extremos (y puntos de silla). Ahora debemos aprender a distinguir entre máximos. mínimos, etc. 
+
+::: {.callout-note  icon=false}
+
+## Matriz Hessiana
+
+La matriz hessiana de una función escalar $f:\mathbb R^n\mapsto\mathbb R$ con variables $(x_1,\ldots, x_n)$ es la matriz de todas sus derivadas parciales segundas ( y es simétrica si $f$ es $C^2$ por el Lema de Schwarz):
+<!-- $$ -->
+<!-- H_f =  -->
+<!-- \begin{pmatrix}  -->
+<!-- f_{x_1 x_1}(x) & f_{x_1 x_2}(x) & \cdots & f_{x_1 x_n}(x) \\  -->
+<!-- f_{x_2 x_1}(x) & f_{x_2 x_2}(x) & \cdots & f_{x_2 x_n}(x) \\  -->
+<!-- \vdots & \vdots & \ddots & \vdots \\  -->
+<!-- f_{x_n x_1}(x) & f_{x_n x_2}(x) &\cdots & f_{x_n x_n}(x)  -->
+<!-- \end{pmatrix} -->
+<!-- $$ -->
+\begin{center}
+\resizebox{0.5\textwidth}{!}{%
+\begin{tikzpicture}
+  \matrix (M) [matrix of math nodes,
+               left delimiter={(}, right delimiter={)},
+               nodes={inner sep=2pt, font=\large, minimum width=1.8cm, minimum height=0.7cm},
+               row sep=0pt, column sep=0pt,
+               ampersand replacement=\&]
+  {
+    f_{x_1x_1}(x) \& f_{x_1x_2}(x) \& \cdots \& f_{x_1x_n}(x) \\
+    f_{x_2x_1}(x) \& f_{x_2x_2}(x) \& \cdots \& f_{x_2x_n}(x) \\
+    \vdots        \& \vdots        \& \ddots \& \vdots        \\
+    f_{x_nx_1}(x) \& f_{x_nx_2}(x) \& \cdots \& f_{x_nx_n}(x) \\
+  };
+  \node[anchor=east] at ($(M.west)+(-0.45,0)$) {$H_f=$};
+ 
+  % Menores principales: línea vertical a la derecha de la columna c,
+  % línea horizontal bajo la fila r, y etiqueta Delta arriba
+  \foreach \k/\lab in {1/1, 2/2, 4/n}{
+    \draw[azul, thick]
+      ($(M-1-\k.east |- M-1-1.north)+(0.05,0.1)$)
+        node[above, azul] {$\Delta_{\lab}$}
+      -- ($(M-1-\k.east |- M-\k-1.south)+(0.05,-0.05)$)
+      -- ($(M-\k-1.west |- M-\k-1.south)+(0,-0.05)$);
+  }
+\end{tikzpicture}
+}
+\end{center}
+
+Las líneas azules que hemos incluido muestran indican las matrices que usamos para calcular los **menores principales** $\Delta_1, \Delta_2,\ldots,\Delta_n$ de esta matriz hessiana. Son los determinantes de las matrices 1x1, 2x2, etc. que se apoyan sobre la diagonal principal de la hessiana. Para una función de dos variables $z = f(x, y)$ son solo dos menores principales:
+$$
+\Delta_1 = f_{xx},\qquad 
+\Delta_2 = \det\begin{pmatrix}
+f_{xx} & f_{xy}\\
+f_{yx} & f_{yy}
+\end{pmatrix}
+$$
+\normalsize
+
+:::
+
+---
+
+\small
+
+::: {.callout-note  icon=false}
+
+## Clasificación con la hessiana de los puntos críticos de una función escalar
+
+Sea $f(x_1,\ldots,x_n)$ una función escalar de clase $C^2$ y sea $\vec x_0$ un punto crítico de $f$. Consideramos los menores principales $\Delta_1,\ldots, \Delta_n$ de la matriz hessiana $H_f(\vec x_0)$ de $f$ calculados en $\vec x_0$. Entonces:
+
+$\bullet$ Si $\Delta_k > 0 \ \ \text{ para todos los } k = 1,\dots,n$, entonces $f$ tiene un **mínimo relativo** en $\vec x_0$. Signos de los $\Delta_k$: $+++\cdots+$   
+$\bullet$ Si $H_k < 0$ cuando $k$ es impar y $H_k > 0$ cuando $k$ es par, entonces $f$ tiene un **máximo relativo** en $\vec x_0$. Signos de los $\Delta_k$: $-+-+\cdots$ (alternan, primero negativo)  
+$\bullet$ Si existe algún $k$ par tal que $H_k < 0$, entonces $f$ tiene un **punto de silla** en $\vec x_0$.  
+
+En el caso 2x2:  
+$\bullet$ $\Delta_1  > 0, \Delta_2 > 0$ es máximo local.  
+$\bullet$ $\Delta_1  < 0, \Delta_2 > 0$ es mínimo local.  
+$\bullet$ $\Delta_2 < 0$ es punto de silla.
+
+Observa también que hay muchos casos no cubiertos; por ejemplo si un $\Delta_k = 0$. **En esos casos **no podemos usar este método para clasificar putos crítivos.
+
+\normalsize
+
+:::
+
+::: {.callout-tip  appearance="minimal"}
+
+\textbf{\textcolor{blue}{Ejercicio 20A03.}} Hallar los extremos relativos de las siguientes funciones:  
+(a) $f(x, y) = 3y e^x - y^3 - e^{3x}$  
+(b) $f(x, y) = x^2 - xz +3 y^2 - 6y + z^2$
+
+\textbf{\textcolor{firebrick}{Hoja 10B GITI 25-26.}} Ejercicios 1 al 4.
+
+\normalsize
+
+:::
+
+# Extremos condicionados, multiplicadores de Lagrange,
+
+\small
+
+::: {.callout-note  icon=false}
+
+## Extremos de una función sobre una curva, velocidad y gradiente.
+
+En la anterior sesión hemos usado varias veces el ejemplo de la función temperatura $T(x, y, z)$ calculada en cada punto de una trayectoria dada por la curva paramétrica $c(t) = (x(t), y(t), z(t))$. En ese contexto, es natural preguntarse: ¿en qué puntos de la curva se alcanzarán temperaturas extremas, máximas o mínimas? Y ya hemos visto que:
+$$(T\circ c)'(t)  = \nabla T(c(t)) \cdot c'(t) \qquad \text{(gradiente por velocidad)}$$
+Asi que en un extremo de $T$ en la curva, para que sea $(T\circ c)'(t)=0$ el gradiente ha de ser perpendicular a la velocidad de la curva. Ese vector velocidad de la curva apunta siempre en la dirección tangente a la curva. Así que, si lo piensas brevemente, verás que otra forma equivalente de decir esto es: **en los extremos de $T$ en la curva, el gradiente $\nabla T$ es perpendicular a la curva**. 
+
+:::
+
+\small
+
+
+::: {.callout-tip  appearance="minimal"}
+
+\textbf{\textcolor{blue}{Ejercicio 20A04.}} Para simplificar, empezamos en el plano. Supongamos que la temperatura es $T(x, y) = x y$, mientras la curva es $c(t) = (3\cos(t), 3\sen(t))$ para $0\leq t\leq 2\pi$. (a) ¿Qué curva es esta? (b) Localiza los puntos de la curva donde la temperatura es máxima o mínima. (c) Usa [\textcolor{blue}{GeoGebra}](https://www.geogebra.org/classic/zktc9ajh) para visualizar la solución.
+
+\normalsize
+
+:::
+
+---
+
+\small
+
+::: {.callout-note  icon=false}
+
+## Curva dada como una ligadura. Multiplicadores de Lagrange.
+
+En esta discusión hemos aprovechado que teníamos disponible una *parametrización* de la curva. Pero en muchos problemas la curva no está parametrizada; en su lugar, tenemos la curva definida como una curva de nivel de una función $g(x, y)$. Podemos suponer que es el nivel 0 sin pérdida de generalidad. Así que la curva vendrá dada como:
+$$g(x, y) = 0$$
+La pregunta ahora se formula así: *Encontrar los extremos de la función $z = f(x, y)$ entre los puntos de la curva $g(x, y) = 0$.*
+
+Cuando se escribe el problema así, la función $f$ es la **función objetivo** y la función $g$ es la (condición o) **ligadura**. El problema se denomina un problema de **extremos condicionados**.
+
+Aunque cambiamos la formulación, la idea es la misma: en los extremos condicionados, el gradiente $\nabla f$ es perpendicular a la curva. Pero como la curva es una curva de nivel de $g$, el gradiente $\nabla g$ **también es perpendicular a la curva** (ver Sesión 18). Así que los dos gradientes son paralelos y los extremos condicionados son las soluciones del sistema:
+$$
+\small
+\begin{cases}
+\nabla f(x, y) = \lambda\nabla g(x, y)&\quad \text{(gradientes paralelos}\\
+g(x, y) = 0& \quad \text{en un punto de la curva)}
+\end{cases}
+$$
+El número $\lambda$ se denomina **multiplicador de Lagrange** y da nombre a este método.
+:::
+
+
+---
+
+\small
+
+
+::: {.callout-tip  appearance="minimal"}
+
+\textbf{\textcolor{blue}{Ejercicio 20A05.}} La curva del ejercicio 20A04 es la curva de nivel 0 de
+$$g(x, y) = x^2 + y^2 - 3^2$$
+Usa el método de los multiplicadores de Lagrange para recuperar la solución del ejercicio 20A05. Y vuelve a  [\textcolor{blue}{GeoGebra}](https://www.geogebra.org/classic/zktc9ajh) para terminar de entender la geometría de este problema.
+\normalsize
+
+\textbf{\textcolor{blue}{Ejercicio 20A06.}} Hallar los puntos de la circunferencia $x^2 + y^2 = 45$ que están a mayor y menor distancia del punto $(1, 2)$, calculando dichas distancias.
+
+\textbf{\textcolor{blue}{Ejercicio 20A07.}} Dada la esfera de ecuación $x^2 + y^2 + z^2 =9$ y la función $T (x, y, z) = x + 2y + 2z$, que nos da la temperatura en los puntos de dicha superficie,  hallar los puntos de la esfera donde la temperatura es máxima y mínima, así como dichas temperaturas.
+
+\textbf{\textcolor{firebrick}{Hoja 10B GITI 25-26.}} Ejercicio 5. 
+
+:::
+
+
+<!-- ::: {.callout-note  icon=false} -->
+
+<!-- ## Plantilla -->
+
+<!-- \small -->
+
+
+
+<!-- \normalsize -->
+
+<!-- ::: -->
+
+<!-- --- -->
+
+
+
+<!-- ::: {.callout-tip  appearance="minimal"} -->
+
+<!-- \textbf{\textcolor{blue}{Ejercicio 18A04.}} -->
+
+<!-- \textbf{\textcolor{firebrick}{Ejercicios Hoja 8B GITI 25-26.}} -->
+
+<!-- \normalsize -->
+
+<!-- ::: -->
