@@ -1,0 +1,307 @@
+---
+title: "Sesión 21. Integrales dobles: definición y propiedades."
+lang: es
+format:
+  beamer:
+    theme: Madrid
+    fonttheme: default
+    fontsize: 10pt
+    toc: false          # handled manually below; pandoc's toc:true produces a stray }
+    section-titles: false   # \AtBeginSection in preamble.txt creates the section slide
+    slide-level: 2      # without this, top-level (#) headings become frames directly
+                         # instead of \section commands, so \tableofcontents has nothing
+                         # to list and \AtBeginSection never fires
+    include-in-header:
+      - preambulo_comun.tex
+      - text: |
+          \newcommand{\SesionTitulo}{Sesión 21 \\ Integrales dobles: definición y propiedades.}
+  html: default
+  docx: default
+---
+
+---
+
+**Sesión 21. Integrales dobles: definición y propiedades.**
+
+![](./portadasSesiones/21-CorredorSahariano.jpeg){width="80%" fig-align="center"}
+
++ [Notebook de la sesión en Colab]()
+
+---
+
+```{=latex}
+
+  \frametitle{Tabla de contenidos}
+  \tableofcontents
+
+```
+
+# Introducción
+
+\small
+
+En la Sesión 13 dijimos que la integral de una función de una variable es mucho más que "el área bajo una gráfica": es una herramienta para pasar de lo microscópico (el valor de una cantidad en un punto) a lo macroscópico (el efecto combinado de esa cantidad en todo un intervalo). En esta sesión damos el mismo paso, pero para funciones de **dos variables** $f(x, y)$, cuyo dominio ya no es un intervalo sino una región del plano.
+
+El ejemplo geométrico más intuitivo (y el que usaremos para construir todas las ideas) es el **volumen bajo una superficie**. Pero, igual que con el área en la Sesión 13, no es ni mucho menos la única aplicación: masa a partir de una densidad superficial, población total a partir de una densidad de población, o la dosis total recibida en una región de un tejido a partir de un mapa de intensidad, son todas, sin excepción, integrales dobles.
+
+\normalsize
+
+::: {.callout-tip  appearance="minimal"}
+
+\small
+
+\textbf{\textcolor{firebrick}{Importante.}} Esta sesión se dedica **solo** a la definición y las propiedades básicas. Todavía no vamos a calcular ninguna integral doble de forma práctica: eso llegará en la próxima sesión, con el Teorema de Fubini.
+
+\normalsize
+
+:::
+
+# El problema del volumen bajo una superficie
+
+::: {.callout-note  icon=false}
+
+## Volumen bajo una superficie
+
+\small
+
+Sea $R = [a, b]\times[c, d]$ un rectángulo del plano y sea $f(x, y) \geq 0$ una función continua en $R$. Queremos calcular el volumen del sólido comprendido entre el rectángulo $R$ (abajo) y la gráfica de $f$ (arriba), es decir, la superficie de ecuación $z = f(x, y)$.
+
+\begin{center}
+\textit{\small [Figura pendiente: superficie $z=f(x,y)$ sobre $R$, p.ej. construcción GeoGebra 3D o gráfica de \texttt{matplotlib}]}
+\end{center}
+
+\normalsize
+
+:::
+
+::: {.callout-tip  appearance="minimal"}
+
+\small
+
+\textbf{\textcolor{blue}{Ejercicio 21A01.}} Si $f(x, y) = k$ es constante, el sólido es un ortoedro (una "caja"). ¿Cuánto vale su volumen? Guarda la respuesta, la necesitaremos enseguida.
+
+\normalsize
+
+:::
+
+# Particiones de un rectángulo y sumas de Riemann dobles
+
+::: {.callout-note  icon=false}
+
+## Partición de un rectángulo
+
+\small
+
+Para generalizar las particiones de la Sesión 13 a dos dimensiones, partimos $[a, b]$ con puntos $a = x_0 < x_1 < \cdots < x_m = b$ y $[c, d]$ con puntos $c = y_0 < y_1 < \cdots < y_n = d$. Esto divide $R$ en $m \times n$ **subrectángulos**
+$$R_{ij} = [x_{i-1}, x_i]\times[y_{j-1}, y_j]$$
+de área $\Delta A_{ij} = \Delta x_i\, \Delta y_j = (x_i - x_{i-1})(y_j - y_{j-1})$.
+
+$$
+\begin{tikzpicture}[scale=0.62]
+  \draw[thick] (0,0) rectangle (6,4);
+  \foreach \x in {1,2,3,4,5} \draw[gray!70] (\x,0) -- (\x,4);
+  \foreach \y in {1,2,3} \draw[gray!70] (0,\y) -- (6,\y);
+  \fill[blue!15] (2,1) rectangle (3,2);
+  \draw[blue, thick] (2,1) rectangle (3,2);
+  \fill (2.4,1.65) circle (1.6pt);
+  \node[below right] at (2.35,1.65) {\footnotesize $(x_{ij}^*, y_{ij}^*)$};
+  \node at (2.5,0.5) {\footnotesize $R_{ij}$};
+  \draw[-{Stealth[length=2.2mm]}] (-0.4,0) -- (6.8,0) node[right] {$x$};
+  \draw[-{Stealth[length=2.2mm]}] (0,-0.4) -- (0,4.8) node[above] {$y$};
+  \node[below] at (0,-0.05) {\footnotesize $a$};
+  \node[below] at (6,-0.05) {\footnotesize $b$};
+  \node[left] at (-0.05,0) {\footnotesize $c$};
+  \node[left] at (-0.05,4) {\footnotesize $d$};
+  \node[below] at (2,-0.05) {\footnotesize $x_{i-1}$};
+  \node[below] at (3,-0.05) {\footnotesize $x_i$};
+  \node[left] at (-0.05,1) {\footnotesize $y_{j-1}$};
+  \node[left] at (-0.05,2) {\footnotesize $y_j$};
+\end{tikzpicture}
+$$
+
+\normalsize
+
+:::
+
+---
+
+::: {.callout-note  icon=false}
+
+## Suma de Riemann doble
+
+\small
+
+Elegimos en cada subrectángulo $R_{ij}$ un punto de muestra $(x_{ij}^*, y_{ij}^*)$. La **suma de Riemann doble** asociada es
+$$S = \sum_{i=1}^m\sum_{j=1}^n f(x_{ij}^*, y_{ij}^*)\, \Delta A_{ij}$$
+Cada sumando $f(x_{ij}^*, y_{ij}^*)\, \Delta A_{ij}$ es el volumen de una "columna" o prisma de base $R_{ij}$ y altura $f(x_{ij}^*, y_{ij}^*)$: $S$ aproxima el volumen bajo la superficie apilando muchas columnas finas, exactamente como en la Sesión 13 aproximábamos el área apilando rectángulos.
+
+\normalsize
+
+:::
+
+::: {.callout-tip  appearance="minimal"}
+
+\small
+
+\textbf{\textcolor{blue}{Ejercicio 21A02.}} Sea $R = [0, 2]\times[0, 2]$ con la partición más sencilla posible, $m = n = 2$ (cuatro subrectángulos de lado 1), y $f(x, y) = x + y$. Usando como $(x_{ij}^*, y_{ij}^*)$ la esquina inferior izquierda de cada subrectángulo, calcula a mano la suma de Riemann $S$.
+
+\normalsize
+
+:::
+
+# Sumas superiores e inferiores. La integral doble
+
+::: {.callout-note  icon=false}
+
+## Sumas superiores e inferiores
+
+\small
+
+Igual que en la Sesión 13, si $f$ es continua en $R$ (cerrado y acotado), en cada subrectángulo $R_{ij}$ existen
+$$m_{ij} = \min_{R_{ij}} f, \qquad M_{ij} = \max_{R_{ij}} f$$
+Con ellos definimos la **suma inferior** y la **suma superior** de la partición $P$:
+$$L(f, P) = \sum_{i,j} m_{ij}\,\Delta A_{ij}, \qquad U(f, P) = \sum_{i,j} M_{ij}\,\Delta A_{ij}$$
+Para cualquier elección de puntos de muestra, $L(f,P) \leq S \leq U(f,P)$: las sumas superior e inferior *atrapan* toda suma de Riemann posible.
+
+\normalsize
+
+:::
+
+---
+
+::: {.callout-note  icon=false}
+
+## La integral doble sobre un rectángulo
+
+\small
+
+Si, al tomar particiones con subrectángulos cada vez más pequeños, la diferencia $U(f, P) - L(f, P)$ puede hacerse tan pequeña como se quiera, decimos que $f$ es **integrable** en $R$ y existe un único número, la **integral doble** de $f$ en $R$, que denotamos
+$$\iint_R f(x, y)\, dA$$
+tal que $L(f, P) \leq \displaystyle\iint_R f\, dA \leq U(f, P)$ para toda partición $P$. Como en la Sesión 13, **toda función continua en $R$ es integrable**.
+
+\normalsize
+
+:::
+
+::: {.callout-tip  appearance="minimal"}
+
+\small
+
+\textbf{\textcolor{firebrick}{Cuidado con la notación.}} También se escribe $\displaystyle\iint_R f(x,y)\,dx\,dy$. De momento $dx\,dy$ es solo otra forma de escribir el elemento de área $dA$, **no** una instrucción de "integra primero en $x$ y luego en $y$": todavía no sabemos calcular estas integrales. Eso es, precisamente, el Teorema de Fubini de la próxima sesión.
+
+\normalsize
+
+:::
+
+# Regiones generales y volumen con signo
+
+::: {.callout-note  icon=false}
+
+## Integrales dobles sobre regiones generales
+
+\small
+
+¿Qué hacemos si el dominio no es un rectángulo sino una región acotada $D$ más general? La idea es reducirlo al caso anterior: tomamos un rectángulo $R$ que contenga a $D$ y extendemos $f$ a todo $R$ definiéndola como $0$ fuera de $D$. Entonces, por definición,
+$$\iint_D f(x, y)\, dA \;:=\; \iint_R f(x, y)\, dA$$
+
+$$
+\begin{tikzpicture}[scale=0.62]
+  \draw[thick, dashed] (0,0) rectangle (6,4.2);
+  \node[below left] at (0,0) {\footnotesize $R$};
+  \draw[thick, fill=blue!12]
+    plot [smooth cycle, tension=0.9] coordinates {
+      (1.2,2.0) (1.6,3.2) (3.0,3.7) (4.6,3.3)
+      (5.2,2.2) (4.6,1.0) (3.2,0.5) (1.8,0.9)
+    };
+  \node at (3.1,2.1) {\footnotesize $D$};
+  \node[align=center] at (3.1,1.5) {\footnotesize $f(x,y)$};
+  \node[align=center, text width=2.6cm] at (4.9,3.55) {\footnotesize $f$ extendida $= 0$ aquí};
+  \draw[-{Stealth[length=1.8mm]}, gray] (4.5,3.15) -- (5.35,2.75);
+\end{tikzpicture}
+$$
+
+Esta extensión suele introducir discontinuidades de $f$ en la frontera de $D$, pero $f$ sigue siendo integrable siempre que esa frontera sea "razonable" (unión de finitas curvas suaves, sin "llenar" nada de área). No profundizaremos en esto: **todas las regiones que usaremos en el curso cumplen esta condición**.
+
+\normalsize
+
+:::
+
+---
+
+::: {.callout-note  icon=false}
+
+## Volumen con signo
+
+\small
+
+Si $f$ cambia de signo en $D$, igual que en la Sesión 13, interpretamos $\displaystyle\iint_D f\, dA$ como **volumen con signo**: positivo donde $f > 0$ (sólido sobre el plano $XY$), negativo donde $f < 0$ (sólido bajo el plano $XY$), y la integral es la diferencia entre ambos volúmenes.
+
+\normalsize
+
+:::
+
+::: {.callout-tip  appearance="minimal"}
+
+\small
+
+\textbf{\textcolor{firebrick}{Ejercicio 21B01.}} Si $f(x, y) \geq 0$ en la mitad de $D$ y $f(x,y)\le 0$, con los mismos valores absolutos, en la otra mitad, ¿qué puedes decir de $\displaystyle\iint_D f\,dA$ sin calcular nada?
+
+\normalsize
+
+:::
+
+# Propiedades de la integral doble
+
+::: {.callout-note  icon=false}
+
+## Propiedades básicas
+
+\small
+
+Sean $f, g$ integrables en $D$ y $\alpha, \beta \in \mathbb{R}$:
+
++ **Linealidad:** $\displaystyle\iint_D (\alpha f + \beta g)\, dA = \alpha\iint_D f\, dA + \beta \iint_D g\, dA$
++ **Monotonía:** si $f(x,y) \leq g(x,y)$ en todo $D$, entonces $\displaystyle\iint_D f\, dA \leq \iint_D g\, dA$
++ **Aditividad respecto al dominio:** si $D = D_1 \cup D_2$ y $D_1$, $D_2$ no se solapan (como mucho comparten frontera), entonces
+$$\iint_D f\, dA = \iint_{D_1} f\, dA + \iint_{D_2} f\, dA$$
+
+\normalsize
+
+:::
+
+---
+
+::: {.callout-note  icon=false}
+
+## El área como integral doble
+
+\small
+
++ **Acotación:** si $m \leq f(x,y) \leq M$ en todo $D$, entonces $m\cdot\text{Área}(D) \leq \displaystyle\iint_D f\, dA \leq M\cdot\text{Área}(D)$.
++ **Caso particular clave:** tomando $f(x,y) = 1$ (constante), cada columna de la suma de Riemann tiene altura 1, así que su "volumen" es numéricamente igual al área de su base. Por tanto
+$$\iint_D 1\, dA = \text{Área}(D)$$
+El cálculo de áreas de regiones planas (¡de cualquier forma razonable!) es así un caso particular del cálculo de integrales dobles.
+
+\normalsize
+
+:::
+
+---
+
+::: {.callout-tip  appearance="minimal"}
+
+\small
+
+\textbf{\textcolor{blue}{Ejercicio 21A03.}} Sabiendo que $\displaystyle\iint_D f\, dA = 6$ y que $\text{Área}(D) = 4$, calcula $\displaystyle\iint_D (3f(x,y) - 2)\, dA$.
+
+$\quad$
+
+\textbf{\textcolor{firebrick}{Ejercicio 21B02.}} Usa la definición de la integral doble como límite de sumas de Riemann para justificar la propiedad de linealidad. Indicación: escribe la suma de Riemann de $\alpha f + \beta g$ y reorganiza los términos.
+
+$\quad$
+
+\textbf{\textcolor{darkgreen}{Ejercicio 21C01.}} En el notebook de la sesión: (1) programa la suma de Riemann doble del Ejercicio 21A02 para una partición arbitraria $m \times n$ y compruébala con tu respuesta manual; (2) usa `scipy.integrate.dblquad` para obtener un valor de referencia de alta precisión de esa misma integral y compara con tu suma de Riemann al aumentar $m$ y $n$; (3) haz una gráfica 3D de la superficie junto con las columnas de la suma de Riemann para $m = n = 2$ y para $m = n = 20$.
+
+\normalsize
+
+:::
