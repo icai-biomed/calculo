@@ -60,31 +60,27 @@ El ejemplo geométrico más intuitivo (y el que usaremos para construir todas la
 
 ::: {.callout-note  icon=false}
 
-## Volumen bajo una superficie
+## Volumen bajo una superficie e integral doble.
 
 \small
 
-Sea $R = [a, b]\times[c, d]$ un rectángulo del plano y sea $f(x, y) \geq 0$ una función continua en $R$. Queremos calcular el volumen del sólido comprendido entre el rectángulo $R$ (abajo) y la gráfica de $f$ (arriba), es decir, la superficie de ecuación $z = f(x, y)$.
+Sea $z = f(x, y)$ una función continua en un **rectángulo** $R = [a, b]\times[c, d]$ del plano. Queremos calcular el **volumen del sólido** comprendido entre el rectángulo $R$ (suelo) y la gráfica de $f$ (techo), como en la figura y en esta [\textcolor{blue}{construcción GeoGebra}](https://www.geogebra.org/classic/pz5scgy6)
 
-\begin{center}
-\textit{\small [Figura pendiente: superficie $z=f(x,y)$ sobre $R$, p.ej. construcción GeoGebra 3D o gráfica de \texttt{matplotlib}]}
-\end{center}
+\hfil ![](./fig/S20-IntegralFuncionSobreRectangulo.png){width="35%"} \hfil
+
+En este planteamiento del problema del volumen hacemos tres simplificaciones:  
+$(1)$ La función $f$ es como hemos dicho continua.  
+$(2)$ La base de la figura es un rectángulo (añadimos las paredes para visualizarlo).  
+$(3)$ En $R$ es $f(x)\ge 0$.  
+
+El volumen buscado se calcula con la **integral doble** $V = \iint_R f(x, y)\,dx\,dy$
 
 \normalsize
 
 :::
 
-::: {.callout-tip  appearance="minimal"}
 
-\small
-
-\textbf{\textcolor{blue}{Ejercicio 21A01.}} Si $f(x, y) = k$ es constante, el sólido es un ortoedro (una "caja"). ¿Cuánto vale su volumen? Guarda la respuesta, la necesitaremos enseguida.
-
-\normalsize
-
-:::
-
-# Particiones de un rectángulo y sumas de Riemann dobles
+# Particiones y sumas de Riemann
 
 ::: {.callout-note  icon=false}
 
@@ -92,12 +88,15 @@ Sea $R = [a, b]\times[c, d]$ un rectángulo del plano y sea $f(x, y) \geq 0$ una
 
 \small
 
-Para generalizar las particiones de la Sesión 13 a dos dimensiones, partimos $[a, b]$ con puntos $a = x_0 < x_1 < \cdots < x_m = b$ y $[c, d]$ con puntos $c = y_0 < y_1 < \cdots < y_n = d$. Esto divide $R$ en $m \times n$ **subrectángulos**
-$$R_{ij} = [x_{i-1}, x_i]\times[y_{j-1}, y_j]$$
-de área $\Delta A_{ij} = \Delta x_i\, \Delta y_j = (x_i - x_{i-1})(y_j - y_{j-1})$.
+Para generalizar las particiones de la Sesión 13 a dos dimensiones, dividimos $R$ en $m \times n$ **subrectángulos** así:  
+$(1)$ el intervalo $[a, b]$ $m$ con puntos $a = x_0 < x_1 < \cdots < x_m = b.$  
+$(2)$ el intervalo $[c, d]$ con $n$ puntos $c = y_0 < y_1 < \cdots < y_n = d.$.  
+Los subrectángulos son entonces 
+$$\small R_{ij} = [x_{i-1}, x_i]\times[y_{j-1}, y_j]$$
+con área $\Delta A_{ij} = \Delta x_i\, \Delta y_j = (x_i - x_{i-1})(y_j - y_{j-1})$.
 
 $$
-\begin{tikzpicture}[scale=0.62]
+\begin{tikzpicture}[scale=0.4]
   \draw[thick] (0,0) rectangle (6,4);
   \foreach \x in {1,2,3,4,5} \draw[gray!70] (\x,0) -- (\x,4);
   \foreach \y in {1,2,3} \draw[gray!70] (0,\y) -- (6,\y);
@@ -131,10 +130,14 @@ $$
 
 \small
 
-Elegimos en cada subrectángulo $R_{ij}$ un punto de muestra $(x_{ij}^*, y_{ij}^*)$. La **suma de Riemann doble** asociada es
+Los rectángulos de la partición nos dan las bases. Para las alturas, elegimos en cada subrectángulo $R_{ij}$ un punto $(x_{ij}^*, y_{ij}^*)$. La **suma de Riemann doble** asociada es
 $$S = \sum_{i=1}^m\sum_{j=1}^n f(x_{ij}^*, y_{ij}^*)\, \Delta A_{ij}$$
-Cada sumando $f(x_{ij}^*, y_{ij}^*)\, \Delta A_{ij}$ es el volumen de una "columna" o prisma de base $R_{ij}$ y altura $f(x_{ij}^*, y_{ij}^*)$: $S$ aproxima el volumen bajo la superficie apilando muchas columnas finas, exactamente como en la Sesión 13 aproximábamos el área apilando rectángulos.
-
+Cada sumando $f(x_{ij}^*, y_{ij}^*)\, \Delta A_{ij}$ es el volumen de una "columna" o prisma de base $R_{ij}$ y altura $f(x_{ij}^*, y_{ij}^*)$. 
+Como en la Sesión 13 tenemos una aproximación:
+$$
+\iint_R f(x, y)\,dx\,dy\approx \sum_{i=1}^m\sum_{j=1}^n f(x_{ij}^*, y_{ij}^*)\, \Delta A_{ij}
+$$
+y esperamos que esa aproximación sea cada vez mejor a medida que usamos particiones de diámetros más pequeños.
 \normalsize
 
 :::
@@ -143,7 +146,7 @@ Cada sumando $f(x_{ij}^*, y_{ij}^*)\, \Delta A_{ij}$ es el volumen de una "colum
 
 \small
 
-\textbf{\textcolor{blue}{Ejercicio 21A02.}} Sea $R = [0, 2]\times[0, 2]$ con la partición más sencilla posible, $m = n = 2$ (cuatro subrectángulos de lado 1), y $f(x, y) = x + y$. Usando como $(x_{ij}^*, y_{ij}^*)$ la esquina inferior izquierda de cada subrectángulo, calcula a mano la suma de Riemann $S$.
+\textbf{\textcolor{blue}{Ejercicio 21A01.}} Sea $R = [0, 2]\times[0, 2]$ con la partición más sencilla posible, $m = n = 2$ (cuatro subrectángulos de lado 1), y $f(x, y) = x + y$. Usando como $(x_{ij}^*, y_{ij}^*)$ la esquina inferior izquierda de cada subrectángulo, calcula a mano la suma de Riemann $S$.
 
 \normalsize
 
