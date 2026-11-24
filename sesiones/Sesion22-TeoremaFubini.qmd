@@ -1,0 +1,307 @@
+---
+title: "Sesión 22. Teorema de Fubini."
+lang: es
+format:
+  beamer:
+    theme: Madrid
+    fonttheme: default
+    fontsize: 10pt
+    toc: false          # handled manually below; pandoc's toc:true produces a stray }
+    section-titles: false   # \AtBeginSection in preamble.txt creates the section slide
+    slide-level: 2      # without this, top-level (#) headings become frames directly
+                         # instead of \section commands, so \tableofcontents has nothing
+                         # to list and \AtBeginSection never fires
+    include-in-header:
+      - preambulo_comun.tex
+      - text: |
+          \newcommand{\SesionTitulo}{Sesión 22 \\ Teorema de Fubini.}
+  html: default
+  docx: default
+---
+
+---
+
+**Sesión 22. Teorema de Fubini.**
+
+\textit{[Foto de portada pendiente]}
+
++ [Notebook de la sesión en Colab]()
+
+---
+
+```{=latex}
+
+  \frametitle{Tabla de contenidos}
+  \tableofcontents
+
+```
+
+# Introducción
+
+::: {.callout-note  icon=false}
+
+\small
+
+En la Sesión 21 definimos la integral doble $\iint_R f(x, y)\,dxdy$ mediante sumas de Riemann, pero no obtuvimos ninguna forma práctica de **calcularla**: solo sabíamos aproximarla, o deducir su valor a partir de propiedades (linealidad, área, etc.) en casos muy particulares.
+
+El Teorema de Fubini resuelve este problema: reduce el cálculo de una integral doble al cálculo de **dos integrales de una variable**, que ya sabemos hacer (Sesiones 13 a 15). Es, para las integrales dobles, el análogo de lo que la Regla de Barrow fue para las integrales simples.
+
+También recordarás el **Principio de Cavalieri** de la sesión anterior: calcular un volumen cortándolo en secciones y después integrando el área de esas secciones. El Teorema de Fubini es, esencialmente, el Principio de Cavalieri aplicado al problema del volumen bajo una superficie.
+
+\normalsize
+
+:::
+
+# Integrales iteradas sobre un rectángulo
+
+::: {.callout-note  icon=false}
+
+## Secciones del sólido: la función $A(x)$
+
+\small
+
+Sea $f(x,y)$ continua en $R = [a,b]\times[c,d]$. Fijado un valor de $x$, la función $y \mapsto f(x, y)$ es una función de una variable, continua en $[c, d]$, y por tanto integrable. Definimos
+$$A(x) = \int_c^d f(x, y)\, dy$$
+Como en el Principio de Cavalieri, $A(x)$ es el área de la sección del sólido al cortarlo con el plano vertical paralelo al eje $Y$ que pasa por $x$. Si cortamos el sólido en muchas de estas secciones (una para cada $x$ de $[a,b]$) y "sumamos" sus áreas, deberíamos recuperar el volumen total:
+$$V = \int_a^b A(x)\, dx = \int_a^b \left(\int_c^d f(x,y)\, dy\right) dx$$
+Esta expresión se llama una **integral iterada**.
+
+\normalsize
+
+:::
+
+---
+
+::: {.callout-note  icon=false}
+
+## Un ejemplo introductorio
+
+\small
+
+Sea $R = [0,1]\times[0,2]$ y $f(x, y) = x + y$ (la misma función del Ejercicio 21A01). Calculemos $V = \displaystyle\int_0^1\left(\int_0^2 (x+y)\, dy\right) dx$.
+
+Primero, con $x$ fijo, integramos en $y$:
+$$A(x) = \int_0^2 (x + y)\, dy = \Big[xy + \tfrac{y^2}{2}\Big]_{y=0}^{y=2} = 2x + 2$$
+Ahora integramos $A(x)$ en $x$:
+$$V = \int_0^1 (2x + 2)\, dx = \Big[x^2 + 2x\Big]_0^1 = 3$$
+
+¿Y si integramos en el otro orden? Comprobemos que $\displaystyle\int_0^2\left(\int_0^1 (x+y)\, dx\right) dy$ da también $3$: la integral interior es $\tfrac12 + y$, y $\displaystyle\int_0^2\left(\tfrac12 + y\right) dy = 1 + 2 = 3$. ¡El mismo valor!
+
+\normalsize
+
+:::
+
+# El Teorema de Fubini
+
+::: {.callout-note  icon=false}
+
+## El Teorema de Fubini (caso de un rectángulo)
+
+\small
+
+Sea $f(x,y)$ continua en $R = [a,b]\times[c,d]$. Entonces $f$ es integrable en $R$ y
+$$\iint_R f(x,y)\, dxdy \;=\; \int_a^b\left(\int_c^d f(x,y)\, dy\right) dx$$
+$$\iint_R f(x,y)\, dxdy \;=\; \int_c^d\left(\int_a^b f(x,y)\, dx\right) dy$$
+Es decir, la integral doble se puede calcular mediante **integrales iteradas**, en **cualquiera de los dos órdenes**, con el mismo resultado. Normalmente se omiten los paréntesis y se escribe simplemente
+$$\int_a^b\int_c^d f(x,y)\, dy\, dx$$
+donde el **orden de los diferenciales indica el orden de integración** (aquí, primero $y$, luego $x$).
+
+\normalsize
+
+:::
+
+---
+
+::: {.callout-note  icon=false}
+
+## Idea de la demostración: reagrupando las sumas de Riemann
+
+\small
+
+Partimos $R$ en subrectángulos $R_{ij}$ como en la Sesión 21. La suma de Riemann doble se puede reagrupar así:
+$$S = \sum_{i=1}^m\sum_{j=1}^n f(x_i^*, y_j^*)\, \Delta x_i\, \Delta y_j = \sum_{i=1}^m \left(\sum_{j=1}^n f(x_i^*, y_j^*)\, \Delta y_j\right) \Delta x_i$$
+Para cada $i$ fijo, la suma entre paréntesis es justo una suma de Riemann (¡de una variable!) para $A(x_i^*) = \int_c^d f(x_i^*, y)\, dy$. Cuando el diámetro de la partición tiende a $0$:
+$$S \;\longrightarrow\; \sum_{i=1}^m A(x_i^*)\, \Delta x_i \;\longrightarrow\; \int_a^b A(x)\, dx$$
+Y como $S \to \iint_R f\, dxdy$ por definición, se obtiene el teorema. El mismo argumento, agrupando primero por filas en vez de columnas, da el otro orden.
+
+\normalsize
+
+:::
+
+::: {.callout-tip  appearance="minimal"}
+
+\small
+
+\textbf{\textcolor{blue}{Ejercicio 22A01.}} Calcula $\displaystyle\iint_R xy^2\, dxdy$ con $R = [0,3]\times[-1,1]$, en los dos órdenes posibles, y comprueba que obtienes el mismo resultado.
+
+\normalsize
+
+:::
+
+# Regiones verticalmente simples y horizontalmente simples
+
+::: {.callout-note  icon=false}
+
+## Regiones verticalmente simples
+
+\small
+
+Una región $D$ es **verticalmente simple** si existen $a < b$ y funciones continuas $g_1(x) \leq g_2(x)$ en $[a,b]$ tales que
+$$D = \{(x,y) : a \leq x \leq b,\ g_1(x) \leq y \leq g_2(x)\}$$
+El nombre viene de que, para cada $x_0$ fijo, un **segmento vertical** recorre $D$ desde $y = g_1(x_0)$ hasta $y = g_2(x_0)$: esos son justo los límites del diferencial que se integra primero.
+
+$$
+\begin{tikzpicture}[scale=0.42]
+  \draw[-{Stealth[length=2mm]}] (-0.5,0) -- (7,0) node[right] {\scriptsize$x$};
+  \draw[-{Stealth[length=2mm]}] (0,-0.5) -- (0,4.3) node[above] {\scriptsize$y$};
+  \fill[blue!12]
+    plot [smooth, tension=0.8] coordinates {(0.8,1.0) (2.2,0.4) (3.5,0.6) (5,0.3) (6.2,1.1)}
+    -- plot [smooth, tension=0.8] coordinates {(6.2,1.1) (5,2.8) (3.5,3.5) (2,2.6) (0.8,1.0)}
+    -- cycle;
+  \draw[thick] plot [smooth, tension=0.8] coordinates {(0.8,1.0) (2.2,0.4) (3.5,0.6) (5,0.3) (6.2,1.1)};
+  \draw[thick] plot [smooth, tension=0.8] coordinates {(0.8,1.0) (2,2.6) (3.5,3.5) (5,2.8) (6.2,1.1)};
+  \draw[dashed] (3.5,0) -- (3.5,4.0);
+  \draw[very thick, red] (3.5,0.6) -- (3.5,3.5);
+  \fill (3.5,0.6) circle (1.6pt);
+  \fill (3.5,3.5) circle (1.6pt);
+  \node at (2.8,2) {\scriptsize $D$};
+  \node[below] at (0.8,0) {\scriptsize $a$};
+  \node[below] at (6.2,0) {\scriptsize $b$};
+  \node[below] at (3.5,-0.05) {\scriptsize $x_0$};
+  \node[right] at (3.55,0.6) {\scriptsize $g_1(x)$};
+  \node[right] at (3.55,3.5) {\scriptsize $g_2(x)$};
+\end{tikzpicture}
+$$
+
+Fubini, para una región verticalmente simple: $\displaystyle\iint_D f\, dxdy = \int_a^b\left(\int_{g_1(x)}^{g_2(x)} f(x,y)\, dy\right) dx$
+
+\normalsize
+
+:::
+
+---
+
+::: {.callout-note  icon=false}
+
+## Regiones horizontalmente simples
+
+\small
+
+De forma análoga, $D$ es **horizontalmente simple** si existen $c < d$ y funciones continuas $h_1(y) \leq h_2(y)$ en $[c,d]$ tales que
+$$D = \{(x,y) : c \leq y \leq d,\ h_1(y) \leq x \leq h_2(y)\}$$
+Ahora es un **segmento horizontal**, a altura $y_0$ fija, el que recorre $D$ desde $x=h_1(y_0)$ hasta $x=h_2(y_0)$.
+
+$$
+\begin{tikzpicture}[scale=0.42]
+  \draw[-{Stealth[length=2mm]}] (-0.5,0) -- (6,0) node[right] {\scriptsize$x$};
+  \draw[-{Stealth[length=2mm]}] (0,-0.5) -- (0,5.3) node[above] {\scriptsize$y$};
+  \fill[blue!12]
+    plot [smooth, tension=0.8] coordinates {(1.3,0.8) (0.6,2.0) (1.0,3.2) (0.7,4.3) (1.6,5.0)}
+    -- plot [smooth, tension=0.8] coordinates {(1.6,5.0) (3.4,4.4) (3.0,3.2) (3.6,2.0) (1.3,0.8)}
+    -- cycle;
+  \draw[thick] plot [smooth, tension=0.8] coordinates {(1.3,0.8) (0.6,2.0) (1.0,3.2) (0.7,4.3) (1.6,5.0)};
+  \draw[thick] plot [smooth, tension=0.8] coordinates {(1.3,0.8) (3.6,2.0) (3.0,3.2) (3.4,4.4) (1.6,5.0)};
+  \draw[dashed] (0,3.2) -- (5.3,3.2);
+  \draw[very thick, red] (1.0,3.2) -- (3.0,3.2);
+  \fill (1.0,3.2) circle (1.6pt);
+  \fill (3.0,3.2) circle (1.6pt);
+  \node at (2.0,2.2) {\scriptsize $D$};
+  \node[left] at (0,0.8) {\scriptsize $c$};
+  \node[left] at (0,5.0) {\scriptsize $d$};
+  \node[left] at (-0.05,3.2) {\scriptsize $y_0$};
+  \node[above left] at (0.85,3.3) {\scriptsize $h_1(y)$};
+  \node[above right] at (3.1,3.3) {\scriptsize $h_2(y)$};
+\end{tikzpicture}
+$$
+
+Fubini, para una región horizontalmente simple: $\displaystyle\iint_D f\, dxdy = \int_c^d\left(\int_{h_1(y)}^{h_2(y)} f(x,y)\, dx\right) dy$
+
+\normalsize
+
+:::
+
+---
+
+::: {.callout-note  icon=false}
+
+## Regiones de ambos tipos, o de ninguno
+
+\small
+
+Un mismo $D$ puede ser verticalmente simple, horizontalmente simple, **las dos cosas a la vez** (por ejemplo, un rectángulo, o un disco), o **ninguna de las dos** (por ejemplo, una región en forma de anillo o de estrella).
+
++ Si $D$ es de **ambos tipos**, puedes elegir el orden de integración: normalmente conviene el que dé las **integrales interiores más sencillas**.
++ Si $D$ **no es simple de ninguna forma**, casi siempre se puede **partir en varias piezas** que sí lo sean, y usar la propiedad de aditividad respecto al dominio de la Sesión 21: $\displaystyle\iint_D f\,dxdy = \iint_{D_1} f\,dxdy + \iint_{D_2} f\,dxdy + \cdots$
+
+\normalsize
+
+:::
+
+::: {.callout-tip  appearance="minimal"}
+
+\small
+
+\textbf{\textcolor{blue}{Ejercicio 22A02.}} Sea $D$ el triángulo de vértices $(0,0)$, $(1,0)$ y $(1,1)$. Descríbelo como región verticalmente simple y como región horizontalmente simple, y calcula $\displaystyle\iint_D xy\, dxdy$ usando el orden que prefieras.
+
+$\quad$
+
+\textbf{\textcolor{blue}{Ejercicio 22A03.}} Sea $D$ la región comprendida entre las parábolas $y = x^2$ e $y = 2 - x^2$. ¿Es verticalmente simple? ¿Horizontalmente simple? Calcula $\displaystyle\iint_D y\, dxdy$.
+
+\normalsize
+
+:::
+
+# Simetría en integrales dobles
+
+::: {.callout-note  icon=false}
+
+## Simetría respecto al eje $Y$
+
+\small
+
+Sea $D$ **simétrica respecto al eje $Y$**, es decir $(x,y) \in D \Leftrightarrow (-x, y) \in D$, y supongamos $D$ horizontalmente simple con $h_2(y) = -h_1(y)$ (a cada altura $y$, $D$ es un intervalo en $x$ centrado en $0$). Entonces:
+
++ Si $f$ es **impar en $x$** ($f(-x,y) = -f(x,y)$), entonces $\displaystyle\iint_D f\, dxdy = 0$
++ Si $f$ es **par en $x$** ($f(-x,y) = f(x,y)$), entonces $\displaystyle\iint_D f\, dxdy = 2\iint_{D^+} f\, dxdy$, donde $D^+ = D \cap \{x \geq 0\}$
+
+**Demostración (caso impar):** por Fubini, para cada $y$ fijo la integral interior es $\displaystyle\int_{-h_2(y)}^{h_2(y)} f(x,y)\, dx = 0$, por la propiedad de simetría de la Sesión 14 aplicada a la función (de una variable) $x \mapsto f(x,y)$. Integrando en $y$ queda $\displaystyle\int_c^d 0\, dy = 0$.
+
+\normalsize
+
+:::
+
+::: {.callout-tip  appearance="minimal"}
+
+\small
+
+\textbf{\textcolor{firebrick}{Importante.}} El resultado depende de **la región Y la función a la vez**: si $D$ es simétrica pero $f$ no es par ni impar en $x$, o si $f$ es par o impar pero $D$ no es simétrica, el atajo **no se aplica** (exactamente como en la Sesión 14).
+
+\normalsize
+
+:::
+
+---
+
+::: {.callout-tip  appearance="minimal"}
+
+\small
+
+\textbf{\textcolor{firebrick}{Ejercicio 22B01.}} Enuncia y demuestra, usando el Teorema de Fubini y la Sesión 14, el resultado análogo de simetría respecto al **eje $X$** (función par o impar en $y$, con $D$ simétrica respecto al eje $X$).
+
+$\quad$
+
+\textbf{\textcolor{blue}{Ejercicio 22A04.}} Sea $D$ el disco $x^2 + y^2 \leq 1$. ¿Cuánto vale $\displaystyle\iint_D xy\, dxdy$? Intenta justificarlo sin calcular nada, usando simetría. ¿Y $\displaystyle\iint_D x^2y\, dxdy$?
+
+\normalsize
+
+:::
+
+::: {.callout-tip  appearance="minimal"}
+
+\small
+
+\textbf{\textcolor{darkgreen}{Ejercicio 22C01.}} En el notebook de la sesión: (1) comprueba con `scipy.integrate.dblquad` los resultados de los Ejercicios 22A01 a 22A04; (2) dibuja con `matplotlib` una región verticalmente simple y otra horizontalmente simple, sombreando el área entre las curvas correspondientes.
+
+\normalsize
+
+:::
