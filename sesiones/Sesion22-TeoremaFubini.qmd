@@ -15,7 +15,8 @@ format:
       - preambulo_comun.tex
       - text: |
           \newcommand{\SesionTitulo}{Sesión 22 \\ Teorema de Fubini.\\
-          \textcolor{yellow}{¡¡PROVISIONAL!!}}
+          %\textcolor{yellow}{¡¡PROVISIONAL!!}
+          }
   html: default
   docx: default
 ---
@@ -26,7 +27,7 @@ format:
 
 ![](./portadasSesiones/22-MartinPescadorSulawesi.JPG){width="80%" fig-align="center"}
 
-+ [Notebook de la sesión en Colab]()
+<!-- + [Notebook de la sesión en Colab]() -->
 
 ---
 
@@ -164,90 +165,6 @@ $$\int_0^2\left(\tfrac12 + y\right) dy = 1 + 2 = 3$$
 \normalsize
 :::
 
-
-<!-- ::: {.callout-note  icon=false} -->
-
-<!-- ## Secciones del sólido: la función $A(x)$ -->
-
-<!-- \small -->
-
-<!-- Sea $f(x,y)$ continua en $R$. Fijado un valor de $x$, la función $y \mapsto f(x, y)$ es una función de una variable, continua en $[c, d]$, y por tanto integrable. Definimos -->
-<!-- $$A(x) = \int_c^d f(x, y)\, dy$$ -->
-<!-- Como en el Principio de Cavalieri, $A(x)$ es el área de la sección del sólido al cortarlo con el plano vertical paralelo al eje $Y$ que pasa por $x$. Si cortamos el sólido en muchas de estas secciones (una para cada $x$ de $[a,b]$) y "sumamos" sus áreas, deberíamos recuperar el volumen total: -->
-<!-- $$V = \int_a^b A(x)\, dx = \int_a^b \left(\int_c^d f(x,y)\, dy\right) dx$$ -->
-<!-- Esta expresión se llama una **integral iterada**. -->
-
-<!-- \normalsize -->
-
-<!-- ::: -->
-
-<!-- --- -->
-
-<!-- ::: {.callout-note  icon=false} -->
-
-<!-- ## Un ejemplo introductorio -->
-
-<!-- \small -->
-
-<!-- Sea $R = [0,1]\times[0,2]$ y $f(x, y) = x + y$ (la misma función del Ejercicio 21A01). Calculemos $V = \displaystyle\int_0^1\left(\int_0^2 (x+y)\, dy\right) dx$. -->
-
-<!-- Primero, con $x$ fijo, integramos en $y$: -->
-<!-- $$A(x) = \int_0^2 (x + y)\, dy = \Big[xy + \tfrac{y^2}{2}\Big]_{y=0}^{y=2} = 2x + 2$$ -->
-<!-- Ahora integramos $A(x)$ en $x$: -->
-<!-- $$V = \int_0^1 (2x + 2)\, dx = \Big[x^2 + 2x\Big]_0^1 = 3$$ -->
-
-<!-- ¿Y si integramos en el otro orden? Comprobemos que $\displaystyle\int_0^2\left(\int_0^1 (x+y)\, dx\right) dy$ da también $3$: la integral interior es $\tfrac12 + y$, y $\displaystyle\int_0^2\left(\tfrac12 + y\right) dy = 1 + 2 = 3$. ¡El mismo valor! -->
-
-<!-- \normalsize -->
-
-<!-- ::: -->
-
-<!-- # El Teorema de Fubini -->
-
-<!-- ::: {.callout-note  icon=false} -->
-
-<!-- ## El Teorema de Fubini (caso de un rectángulo) -->
-
-<!-- \small -->
-
-<!-- Sea $f(x,y)$ continua en $R = [a,b]\times[c,d]$. Entonces $f$ es integrable en $R$ y -->
-<!-- $$\iint_R f(x,y)\, dxdy \;=\; \int_a^b\left(\int_c^d f(x,y)\, dy\right) dx$$ -->
-<!-- $$\iint_R f(x,y)\, dxdy \;=\; \int_c^d\left(\int_a^b f(x,y)\, dx\right) dy$$ -->
-<!-- Es decir, la integral doble se puede calcular mediante **integrales iteradas**, en **cualquiera de los dos órdenes**, con el mismo resultado. Normalmente se omiten los paréntesis y se escribe simplemente -->
-<!-- $$\int_a^b\int_c^d f(x,y)\, dy\, dx$$ -->
-<!-- donde el **orden de los diferenciales indica el orden de integración** (aquí, primero $y$, luego $x$). -->
-
-<!-- \normalsize -->
-
-<!-- ::: -->
-
-<!-- --- -->
-
-<!-- ::: {.callout-note  icon=false} -->
-
-<!-- ## Idea de la demostración: reagrupando las sumas de Riemann -->
-
-<!-- \small -->
-
-<!-- Partimos $R$ en subrectángulos $R_{ij}$ como en la Sesión 21. La suma de Riemann doble se puede reagrupar así: -->
-<!-- $$S = \sum_{i=1}^m\sum_{j=1}^n f(x_i^*, y_j^*)\, \Delta x_i\, \Delta y_j = \sum_{i=1}^m \left(\sum_{j=1}^n f(x_i^*, y_j^*)\, \Delta y_j\right) \Delta x_i$$ -->
-<!-- Para cada $i$ fijo, la suma entre paréntesis es justo una suma de Riemann (¡de una variable!) para $A(x_i^*) = \int_c^d f(x_i^*, y)\, dy$. Cuando el diámetro de la partición tiende a $0$: -->
-<!-- $$S \;\longrightarrow\; \sum_{i=1}^m A(x_i^*)\, \Delta x_i \;\longrightarrow\; \int_a^b A(x)\, dx$$ -->
-<!-- Y como $S \to \iint_R f\, dxdy$ por definición, se obtiene el teorema. El mismo argumento, agrupando primero por filas en vez de columnas, da el otro orden. -->
-
-<!-- \normalsize -->
-
-<!-- ::: -->
-
-<!-- ::: {.callout-tip  appearance="minimal"} -->
-
-<!-- \small -->
-
-<!-- \textbf{\textcolor{blue}{Ejercicio 22A01.}} Calcula $\displaystyle\iint_R xy^2\, dxdy$ con $R = [0,3]\times[-1,1]$, en los dos órdenes posibles, y comprueba que obtienes el mismo resultado. -->
-
-<!-- \normalsize -->
-
-<!-- ::: -->
 
 # Regiones verticalmente simples y horizontalmente simples
 
@@ -476,6 +393,9 @@ $\quad$
 
 :::
 
+$$\textcolor{red}{\boxed{\text{\large ¡DIBUJA SIEMPRE LAS REGIONES EN ESTOS EJERCICIOS!}}}$$
+
+
 ---
 
 ::: {.callout-note  icon=false}
@@ -534,89 +454,89 @@ siendo $D$ la región del plano limitada por el eje $Y$, la recta $y = 2$ y la r
 
 :::
 
+# Simetrías en la integral doble
 
-<!-- --- -->
+::: {.callout-note  icon=false}
 
-<!-- ::: {.callout-note  icon=false} -->
+### Simetría respecto del eje $Y$
 
-<!-- ## Regiones de ambos tipos, o de ninguno -->
+\small
+Supongamos que el recinto $D$ es simétrico **respecto del eje $Y$** (como en la figura).  
 
-<!-- \small -->
+$\bullet$ Entonces si la función es **par en $x$**, es decir $f(-x, y) = f(x, y)$, para todo $(x,y) \in D$. Entonces
+$$\small\iint_D f(x, y)\, dxdy = 2 \iint_{D_1} f(x, y)\, dxdy , \quad$$
+siendo $D_1$ la mitad de $D$ en el semiplano derecho $x \ge 0$ (sombreado en la figura).
 
-<!-- Un mismo $D$ puede ser verticalmente simple, horizontalmente simple, **las dos cosas a la vez** (por ejemplo, un rectángulo, o un disco), o **ninguna de las dos** (por ejemplo, una región en forma de anillo o de estrella). -->
+$\bullet$ Pero si la función es **impar en $x$**, es decir $f(-x, y) = -f(x, y)$, para todo $(x,y) \in D$, entonces
+$$\small\iint_D f(x, y)\, dxdy = 0$$
+\hfil ![](fig/S22-simY.png){width="15%" fig-align="center"}\hfil 
 
-<!-- + Si $D$ es de **ambos tipos**, puedes elegir el orden de integración: normalmente conviene el que dé las **integrales interiores más sencillas**. -->
-<!-- + Si $D$ **no es simple de ninguna forma**, casi siempre se puede **partir en varias piezas** que sí lo sean, y usar la propiedad de aditividad respecto al dominio de la Sesión 21: $\displaystyle\iint_D f\,dxdy = \iint_{D_1} f\,dxdy + \iint_{D_2} f\,dxdy + \cdots$ -->
+\normalsize
 
-<!-- \normalsize -->
+:::
 
-<!-- ::: -->
+---
 
-<!-- ::: {.callout-tip  appearance="minimal"} -->
+::: {.callout-note  icon=false}
 
-<!-- \small -->
+### Simetría respecto del eje $X$
 
-<!-- \textbf{\textcolor{blue}{Ejercicio 22A02.}} Sea $D$ el triángulo de vértices $(0,0)$, $(1,0)$ y $(1,1)$. Descríbelo como región verticalmente simple y como región horizontalmente simple, y calcula $\displaystyle\iint_D xy\, dxdy$ usando el orden que prefieras. -->
+\small
+Supongamos ahora que el recinto $D$ es simétrico **respecto del eje $X$** (como en la figura).  
 
-<!-- $\quad$ -->
+$\bullet$ Entonces si la función es **par en $y$**, es decir $f(x, -y) = f(x, y)$, para todo $(x,y) \in D$. Entonces
+$$\small\iint_D f(x, y)\, dxdy = 2 \iint_{D_1} f(x, y)\, dxdy , \quad$$
+siendo $D_1$ la mitad de $D$ en el semiplano superior $y \ge 0$ (sombreado en la figura).
 
-<!-- \textbf{\textcolor{blue}{Ejercicio 22A03.}} Sea $D$ la región comprendida entre las parábolas $y = x^2$ e $y = 2 - x^2$. ¿Es verticalmente simple? ¿Horizontalmente simple? Calcula $\displaystyle\iint_D y\, dxdy$. -->
+$\bullet$ Pero si la función es **impar en $y$**, es decir $f(x, -y) = -f(x, y)$, para todo $(x,y) \in D$, entonces
+$$\small\iint_D f(x, y)\, dxdy = 0$$
+\hfil ![](fig/S22-simX.png){width="25%" fig-align="center"}\hfil 
 
-<!-- \normalsize -->
+\normalsize
 
-<!-- ::: -->
+:::
 
-<!-- # Simetría en integrales dobles -->
 
-<!-- ::: {.callout-note  icon=false} -->
+---
 
-<!-- ## Simetría respecto al eje $Y$ -->
+::: {.callout-note  icon=false}
 
-<!-- \small -->
+### Simetría respecto de ambos ejes
 
-<!-- Sea $D$ **simétrica respecto al eje $Y$**, es decir $(x,y) \in D \Leftrightarrow (-x, y) \in D$, y supongamos $D$ horizontalmente simple con $h_2(y) = -h_1(y)$ (a cada altura $y$, $D$ es un intervalo en $x$ centrado en $0$). Entonces: -->
+\small
+Supongamos ahora que el recinto $D$ es simétrico **respecto de ambos ejes** (como en la figura).  
 
-<!-- + Si $f$ es **impar en $x$** ($f(-x,y) = -f(x,y)$), entonces $\displaystyle\iint_D f\, dxdy = 0$ -->
-<!-- + Si $f$ es **par en $x$** ($f(-x,y) = f(x,y)$), entonces $\displaystyle\iint_D f\, dxdy = 2\iint_{D^+} f\, dxdy$, donde $D^+ = D \cap \{x \geq 0\}$ -->
+$\bullet$ Entonces si la función es **par en $x$ y también en $y$**, es decir 
+$$\begin{cases}
+f(x, -y) = f(x, y)\\[2mm]
+f(-x, y) = f(x, y)
+\end{cases}
+$$
+para todo $(x,y) \in D$. Entonces
+$$\small\iint_D f(x, y)\, dxdy = 4 \iint_{D_1} f(x, y)\, dxdy, \quad$$
+siendo $D_1$ la parte de $D$ en el primer cuadrante (sombreado en la figura).
 
-<!-- **Demostración (caso impar):** por Fubini, para cada $y$ fijo la integral interior es $\displaystyle\int_{-h_2(y)}^{h_2(y)} f(x,y)\, dx = 0$, por la propiedad de simetría de la Sesión 14 aplicada a la función (de una variable) $x \mapsto f(x,y)$. Integrando en $y$ queda $\displaystyle\int_c^d 0\, dy = 0$. -->
+\hfil ![](fig/S22-simXY.png){width="15%" fig-align="center"}\hfil 
 
-<!-- \normalsize -->
+\normalsize
 
-<!-- ::: -->
+:::
 
-<!-- ::: {.callout-tip  appearance="minimal"} -->
+---
 
-<!-- \small -->
+$$\textcolor{red}{\boxed{\text{\,\,\large LA SIMETRÍA SIEMPRE COMBINA REGIÓN + FUNCIÓN\,\,}}}$$
 
-<!-- \textbf{\textcolor{firebrick}{Importante.}} El resultado depende de **la región Y la función a la vez**: si $D$ es simétrica pero $f$ no es par ni impar en $x$, o si $f$ es par o impar pero $D$ no es simétrica, el atajo **no se aplica** (exactamente como en la Sesión 14). -->
+::: {.callout-tip  appearance="minimal"}
 
-<!-- \normalsize -->
+\small
 
-<!-- ::: -->
+\textbf{\textcolor{blue}{Ejercicio 22A05.}} Calcula 
+$$\iint_D x^3y^2\, dxdy$$
+siendo 
+$$D =\{(x, y) \,/\, \dfrac{x^2}{4} + \dfrac{y^2}{9}\le 1 \}$$ 
 
-<!-- --- -->
+\normalsize
 
-<!-- ::: {.callout-tip  appearance="minimal"} -->
+:::
 
-<!-- \small -->
 
-<!-- \textbf{\textcolor{firebrick}{Ejercicio 22B01.}} Enuncia y demuestra, usando el Teorema de Fubini y la Sesión 14, el resultado análogo de simetría respecto al **eje $X$** (función par o impar en $y$, con $D$ simétrica respecto al eje $X$). -->
-
-<!-- $\quad$ -->
-
-<!-- \textbf{\textcolor{blue}{Ejercicio 22A04.}} Sea $D$ el disco $x^2 + y^2 \leq 1$. ¿Cuánto vale $\displaystyle\iint_D xy\, dxdy$? Intenta justificarlo sin calcular nada, usando simetría. ¿Y $\displaystyle\iint_D x^2y\, dxdy$? -->
-
-<!-- \normalsize -->
-
-<!-- ::: -->
-
-<!-- ::: {.callout-tip  appearance="minimal"} -->
-
-<!-- \small -->
-
-<!-- \textbf{\textcolor{darkgreen}{Ejercicio 22C01.}} En el notebook de la sesión: (1) comprueba con `scipy.integrate.dblquad` los resultados de los Ejercicios 22A01 a 22A04; (2) dibuja con `matplotlib` una región verticalmente simple y otra horizontalmente simple, sombreando el área entre las curvas correspondientes. -->
-
-<!-- \normalsize -->
-
-<!-- ::: -->
