@@ -257,11 +257,13 @@ $$\int_0^2\left(\tfrac12 + y\right) dy = 1 + 2 = 3$$
 
 \small
 
+Al igual que en la sesión anterior, nuestro siguiente objetivo es poder extender el Teorema de Fubini a regiones de integración más generales que los rectángulos. 
+
 Una región $D$ es **verticalmente simple** si existen $a < b$ y funciones continuas $\phi_1(x) \leq \phi_2(x)$ en $[a,b]$ tales que
 $$D = \{(x,y) : a \leq x \leq b,\ \phi_1(x) \leq y \leq \phi_2(x)\}$$
 \begin{center}
 \begin{tikzpicture}[
-    scale=0.65,
+    scale=0.55,
     >=Stealth,
     axis/.style={->, thick, black!80},
     curve/.style={thick, blue!65!black},
@@ -441,21 +443,24 @@ El nombre proviene de que, para cada $x_0$ fijo, un **segmento vertical** recorr
 
 
 
-<!-- --- -->
+---
 
-<!-- ::: {.callout-note  icon=false} -->
+::: {.callout-note  icon=false}
 
-<!-- ## Regiones verticalmente simples -->
+## Teorema de Fubini en regiones verticalmente simples
 
-<!-- \small -->
+\small
 
-<!-- El nombre viene de que, para cada $x_0$ fijo, un **segmento vertical** recorre $D$ desde $y = \phi_1(x_0)$ hasta $y = \phi_2(x_0)$: esos son justo los límites del diferencial que se integra primero. -->
+Si  la región $D$ es verticalmente simple con 
+$$a\le x\le b\text{ y para cada uno de esos }x\text{ es } \phi_1(x)\le y\le \phi_2(x)$$
+entonces:
+$$\iint_D f(x, y)\, dxdy = 
+\int_{x = a}^{x=b}\left(\int_{y = \phi_1(x)}^{\phi_2(x)} f(x,y)\, dy\right) dx
+$$
 
-<!-- Fubini, para una región verticalmente simple: $\displaystyle\iint_D f\, dxdy = \int_a^b\left(\int_{\phi_1(x)}^{\phi_2(x)} f(x,y)\, dy\right) dx$ -->
+\normalsize
 
-<!-- \normalsize -->
-
-<!-- ::: -->
+:::
 
 
 
