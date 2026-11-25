@@ -455,14 +455,26 @@ Si  la región $D$ es verticalmente simple con
 $$a\le x\le b\text{ y para cada uno de esos }x\text{ es } \phi_1(x)\le y\le \phi_2(x)$$
 entonces:
 $$\iint_D f(x, y)\, dxdy = 
-\int_{x = a}^{x=b}\left(\int_{y = \phi_1(x)}^{\phi_2(x)} f(x,y)\, dy\right) dx
+\int_{x = a}^{x=b}\left(\int_{y = \phi_1(x)}^{y = \phi_2(x)} f(x,y)\, dy\right) dx
 $$
 
 \normalsize
 
 :::
 
+::: {.callout-tip  appearance="minimal"}
 
+\small
+
+\textbf{\textcolor{blue}{Ejercicio 22A01.}} Sea $D$ el triángulo de vértices $(0,0)$, $(1,0)$ y $(1,1)$. Dibújalo y escríbelo como región verticalmente simple. Es decir, identifica $a, b$ y también $\phi_1(x), \phi_2(x)$. Usa esto para calcular $\displaystyle\iint_D xy\, dxdy$.
+
+$\quad$
+
+\textbf{\textcolor{blue}{Ejercicio 22A02.}} Sea $D$ la región comprendida entre las parábolas $y = x^2$ e $y = 2 - x^2$. ¿Es verticalmente simple? Calcula $\displaystyle\iint_D y\, dxdy$.
+
+\normalsize
+
+:::
 
 ---
 
@@ -471,39 +483,57 @@ $$
 ## Regiones horizontalmente simples
 
 \small
-
 De forma análoga, $D$ es **horizontalmente simple** si existen $c < d$ y funciones continuas $h_1(y) \leq h_2(y)$ en $[c,d]$ tales que
-$$D = \{(x,y) : c \leq y \leq d,\ h_1(y) \leq x \leq h_2(y)\}$$
-Ahora es un **segmento horizontal**, a altura $y_0$ fija, el que recorre $D$ desde $x=h_1(y_0)$ hasta $x=h_2(y_0)$.
-
+$$D = \{(x,y) : c \leq y \leq d,\ \psi_1(y) \leq x \leq \psi_2(y)\}$$
+Ahora, para cada valor $y_0$ entre $c$ y $d$,  es un **segmento horizontal**, a altura $y_0$ fija, el que recorre $D$ desde $x=\psi_1(y_0)$ hasta $x=\psi_2(y_0)$.
 $$
 \begin{tikzpicture}[scale=0.42]
   \draw[-{Stealth[length=2mm]}] (-0.5,0) -- (6,0) node[right] {\scriptsize$x$};
   \draw[-{Stealth[length=2mm]}] (0,-0.5) -- (0,5.3) node[above] {\scriptsize$y$};
   \fill[blue!12]
-    plot [smooth, tension=0.8] coordinates {(1.3,0.8) (0.6,2.0) (1.0,3.2) (0.7,4.3) (1.6,5.0)}
-    -- plot [smooth, tension=0.8] coordinates {(1.6,5.0) (3.4,4.4) (3.0,3.2) (3.6,2.0) (1.3,0.8)}
+    plot [smooth, tension=0.8] coordinates {(2.3,0.8) (1.6,2.0) (2.0,3.2) (1.7,4.3) (2.6,5.0)}
+    -- plot [smooth, tension=0.8] coordinates {(2.6,5.0) (4.4,4.4) (4.0,3.2) (4.6,2.0) (2.3,0.8)}
     -- cycle;
-  \draw[thick] plot [smooth, tension=0.8] coordinates {(1.3,0.8) (0.6,2.0) (1.0,3.2) (0.7,4.3) (1.6,5.0)};
-  \draw[thick] plot [smooth, tension=0.8] coordinates {(1.3,0.8) (3.6,2.0) (3.0,3.2) (3.4,4.4) (1.6,5.0)};
+  \draw[thick] plot [smooth, tension=0.8] coordinates {(2.3,0.8) (1.6,2.0) (2.0,3.2) (1.7,4.3) (2.6,5.0)};
+  \draw[thick] plot [smooth, tension=0.8] coordinates {(2.3,0.8) (4.6,2.0) (4.0,3.2) (4.4,4.4) (2.6,5.0)};
   \draw[dashed] (0,3.2) -- (5.3,3.2);
-  \draw[very thick, red] (1.0,3.2) -- (3.0,3.2);
-  \fill (1.0,3.2) circle (1.6pt);
-  \fill (3.0,3.2) circle (1.6pt);
+  \draw[very thick, red] (2.0,3.2) -- (4.0,3.2);
+  \fill (2.0,3.2) circle (2.6pt);
+  \fill (4.0,3.2) circle (2.6pt);
   \node at (2.0,2.2) {\scriptsize $D$};
   \node[left] at (0,0.8) {\scriptsize $c$};
   \node[left] at (0,5.0) {\scriptsize $d$};
   \node[left] at (-0.05,3.2) {\scriptsize $y_0$};
-  \node[above left] at (0.85,3.3) {\scriptsize $h_1(y)$};
-  \node[above right] at (3.1,3.3) {\scriptsize $h_2(y)$};
+  \node[above left] at (2.85,3.3) {\scriptsize $\psi_1(y)$};
+  \node[above right] at (4.1,3.3) {\scriptsize $\psi_2(y)$};
 \end{tikzpicture}
 $$
+El Teorema de Fubini, para una región horizontalmente simple dice: 
+$$\iint_D f\, dxdy = \int_{y = c}^{y = d}\left(\int_{x = \psi_1(y)}^{x = \psi_2(y)} f(x,y)\, dx\right) dy$$
 
-Fubini, para una región horizontalmente simple: $\displaystyle\iint_D f\, dxdy = \int_c^d\left(\int_{h_1(y)}^{h_2(y)} f(x,y)\, dx\right) dy$
 
 \normalsize
 
 :::
+
+---
+
+::: {.callout-tip  appearance="minimal"}
+
+\small
+
+\textbf{\textcolor{blue}{Ejercicio 22A03.}} Vuelve a hacer el ejercicio 22A01, pero ahora considerando al triángulo $T$ como una región horizontalmente simple. ¿Puedes hacer lo mismo en el 22A02?
+
+\textbf{\textcolor{blue}{Ejercicio 22A04.}} Calcula 
+$$\iint_D e^{y^2}\, dxdy$$
+siendo $D$ la región del plano limitada por el eje $Y$, la recta $y = 2$ y la recta $y = \frac{x}{2}$.
+
+\textbf{\textcolor{firebrick}{Ejercicios Hoja 11B GITI 25-26.} Ejercicios 3 a 5, 8 y 9.}
+
+\normalsize
+
+:::
+
 
 <!-- --- -->
 
