@@ -1,0 +1,296 @@
+---
+title: "Sesión 23. Integrales triples. Aplicaciones de la integral."
+lang: es
+format:
+  beamer:
+    theme: Madrid
+    fonttheme: default
+    fontsize: 10pt
+    toc: false          # handled manually below; pandoc's toc:true produces a stray }
+    section-titles: false   # \AtBeginSection in preamble.txt creates the section slide
+    slide-level: 2      # without this, top-level (#) headings become frames directly
+                         # instead of \section commands, so \tableofcontents has nothing
+                         # to list and \AtBeginSection never fires
+    include-in-header:
+      - preambulo_comun.tex
+      - text: |
+          \newcommand{\SesionTitulo}{Sesión 23 \\ Integrales triples. Aplicaciones de la integral.}
+  html: default
+  docx: default
+---
+
+---
+
+**Sesión 23. Integrales triples. Aplicaciones de la integral.**
+
+\textit{[Foto de portada pendiente]}
+
++ [Notebook de la sesión en Colab]()
+
+---
+
+```{=latex}
+
+  \frametitle{Tabla de contenidos}
+  \tableofcontents
+
+```
+
+# Integrales triples
+
+::: {.callout-note  icon=false}
+
+\small
+
+Hoy damos dos pasos. Primero, una extensión rápida: las integrales triples, para funciones $w = f(x,y,z)$ de tres variables. Después, la pregunta que de verdad nos interesa: ¿para qué sirve todo esto? Veremos que la integral (simple, doble o triple) es el lenguaje natural para expresar **tamaño**, **promedio**, **masa** y **centro de masa** de un objeto.
+
+\normalsize
+
+:::
+
+::: {.callout-note  icon=false}
+
+## De las integrales dobles a las triples
+
+\small
+
+La teoría de la Sesión 21 se traslada a tres dimensiones **casi sin cambios**:
+
+$(1)$ Partimos una caja $\Omega_0 = [a,b]\times[c,d]\times[e,g]$ en subcajas, con volúmenes $\Delta V_{ijk} = \Delta x_i\, \Delta y_j\, \Delta z_k$ en lugar de áreas $\Delta A_{ij}$.
+$(2)$ La suma de Riemann **triple** es $\displaystyle S = \sum_{i,j,k} f(x_i^*, y_j^*, z_k^*)\, \Delta V_{ijk}$, y la integral triple $\displaystyle\iiint_{\Omega_0} f\, dxdydz$ se define exactamente igual, atrapándola entre sumas superiores e inferiores.
+$(3)$ Las funciones continuas (y, más en general, las acotadas con discontinuidades de medida cero) son integrables.
+$(4)$ Valen las mismas propiedades: linealidad, monotonía, aditividad en el dominio.
+$(5)$ Para integrar sobre un recinto acotado $\Omega$ que no es una caja, extendemos $f$ por $0$ fuera de $\Omega$, exactamente como en la Sesión 21.
+
+\normalsize
+
+:::
+
+# El Teorema de Fubini en el espacio
+
+::: {.callout-note  icon=false}
+
+## Regiones simples respecto a $z$
+
+\small
+
+Igual que en el plano, el Teorema de Fubini también reduce una integral triple a integrales de menos variables. Decimos que $\Omega$ es **simple respecto a $z$** si existe una región $D$ del plano $XY$ (verticalmente u horizontalmente simple, como en la Sesión 22) y funciones continuas $\psi_1(x,y) \leq \psi_2(x,y)$ en $D$ tales que
+$$\Omega = \{(x,y,z) : (x,y) \in D,\ \psi_1(x,y) \leq z \leq \psi_2(x,y)\}$$
+Entonces
+$$\iiint_\Omega f(x,y,z)\, dxdydz = \iint_D \left(\int_{\psi_1(x,y)}^{\psi_2(x,y)} f(x,y,z)\, dz\right) dxdy$$
+Y la integral doble que queda sobre $D$ se calcula exactamente como en la Sesión 22. Para describir $\Omega$, pensamos en una recta vertical (paralela al eje $Z$) que atraviesa $\Omega$ entrando por $z = \psi_1(x,y)$ y saliendo por $z = \psi_2(x,y)$.
+
+\normalsize
+
+:::
+
+---
+
+::: {.callout-note  icon=false}
+
+## Un ejemplo: un cono
+
+\small
+
+Sea $\Omega$ el sólido cónico de radio $R$ y altura $h$, con vértice en el origen y tapa plana circular a altura $h$ (como en esta [\textcolor{blue}{construcción GeoGebra}](https://www.geogebra.org/m/wffrjunh)). Su proyección sobre el plano $XY$ es el disco $D: x^2+y^2\leq R^2$, que describimos horizontalmente simple:
+$$-R \leq y \leq R, \qquad \varphi_1(y) = -\sqrt{R^2-y^2} \;\leq\; x \;\leq\; \varphi_2(y) = \sqrt{R^2-y^2}$$
+Y, para cada $(x,y) \in D$, $z$ recorre $\Omega$ desde la superficie lateral del cono hasta la tapa:
+$$\psi_1(x,y) = \frac{h}{R}\sqrt{x^2+y^2} \;\leq\; z \;\leq\; \psi_2(x,y) = h$$
+Así, el volumen de $\Omega$ es
+$$V = \int_{-R}^{R}\int_{\varphi_1(y)}^{\varphi_2(y)}\int_{\psi_1(x,y)}^{\psi_2(x,y)} 1\, dz\, dx\, dy$$
+
+\normalsize
+
+:::
+
+::: {.callout-tip  appearance="minimal"}
+
+\small
+
+\textbf{\textcolor{darkgreen}{Ejercicio 23C01.}} Termina de calcular la integral anterior (¡usa `sympy`!) y comprueba que obtienes $V = \tfrac13\pi R^2 h$, el mismo valor que ya habías encontrado con el Principio de Cavalieri en el Ejercicio 21A03.
+
+\normalsize
+
+:::
+
+::: {.callout-tip  appearance="minimal"}
+
+\small
+
+\textbf{\textcolor{blue}{Ejercicio 23A01.}} Sea $\Omega$ el sólido limitado por los planos coordenados y el plano $x+y+z=1$ (un tetraedro). Descríbelo como una región simple respecto a $z$ (identifica $D$ y $\psi_1, \psi_2$) y calcula $\displaystyle\iiint_\Omega x\, dxdydz$.
+
+\normalsize
+
+:::
+
+# Aplicaciones de la integral
+
+::: {.callout-note  icon=false}
+
+\small
+
+Ya vimos en la Sesión 21 que $\displaystyle\iint_D 1\, dxdy$ es el área de $D$: la integral de la función constante $1$ mide el **tamaño** del conjunto. Esa no es una coincidencia aislada, sino la primera aparición de un patrón que se repite una y otra vez en las aplicaciones del Cálculo: muchas magnitudes (tamaño, promedio, masa, centro de masa...) se obtienen **sumando contribuciones infinitesimales**, es decir, integrando. Dedicamos el resto de la sesión a explorar este patrón, siempre en paralelo en una, dos y tres dimensiones.
+
+\normalsize
+
+:::
+
+# Midiendo conjuntos: longitud, área y volumen
+
+::: {.callout-note  icon=false}
+
+## La integral de la función $1$
+
+\small
+
+En cualquier dimensión, integrar la función constante $1$ sobre un conjunto mide su tamaño:
+
+$(1)$ $[a,b] \subset \mathbb{R}$: $\quad\displaystyle\int_a^b 1\, dx = b - a \quad$ (longitud del intervalo)
+$(2)$ $D \subset \mathbb{R}^2$ (acotado): $\quad\displaystyle\iint_D 1\, dxdy = \text{Área}(D)\quad$ (Sesión 21)
+$(3)$ $\Omega \subset \mathbb{R}^3$ (acotado): $\quad\displaystyle\iiint_\Omega 1\, dxdydz = \text{Vol}(\Omega)$
+
+El patrón es siempre el mismo: una caja (o rectángulo, o intervalo) diminuta de "tamaño" $\Delta x$ (o $\Delta A$, o $\Delta V$) contribuye exactamente ese tamaño a la suma de Riemann, porque la altura que multiplica es $1$.
+
+\normalsize
+
+:::
+
+::: {.callout-tip  appearance="minimal"}
+
+\small
+
+\textbf{\textcolor{blue}{Ejercicio 23A02.}} Calcula el volumen del sólido $\Omega$ comprendido entre el plano $z=0$ y el plano $z = x+y+2$, sobre el cuadrado $[0,1]\times[0,1]$.
+
+\normalsize
+
+:::
+
+# El valor medio de una función
+
+::: {.callout-note  icon=false}
+
+## Promedio de una función sobre un conjunto
+
+\small
+
+¿Cómo se generaliza "la media de varios números" a una función que varía de forma continua? Se promedia dividiendo entre el tamaño del conjunto en lugar de entre el número de datos:
+
+$(1)$ $y = f(x)$ en $[a, b]$: $\quad\text{promedio} = \dfrac{1}{b - a}\displaystyle\int_a^b f(x)\, dx$
+
+$(2)$ $z = f(x, y)$ en $D \subset \mathbb{R}^2$: $\quad\text{promedio} = \dfrac{1}{\text{Área}(D)}\displaystyle\iint_D f(x,y)\, dxdy$
+
+$(3)$ $w = f(x,y,z)$ en $\Omega \subset \mathbb{R}^3$: $\quad\text{promedio} = \dfrac{1}{\text{Vol}(\Omega)}\displaystyle\iiint_\Omega f(x,y,z)\, dxdydz$
+
+En los tres casos, "promedio $\times$ tamaño $=$ integral": si repartieras el valor promedio de manera uniforme por todo el conjunto, la integral (el "total acumulado") no cambiaría.
+
+\normalsize
+
+:::
+
+---
+
+::: {.callout-tip  appearance="minimal"}
+
+\small
+
+\textbf{\textcolor{blue}{Ejercicio 23A03.}} Calcula el valor promedio de $f(x,y) = xy$ en el cuadrado $[0,1]\times[0,1]$.
+
+$\quad$
+
+\textbf{\textcolor{blue}{Ejercicio 23A04.}} Calcula el valor promedio de $f(x,y,z) = x + y + z$ en el cubo $[0,1]\times[0,1]\times[0,1]$. Antes de calcular nada, ¿puedes adivinar el resultado pensando en la simetría del cubo?
+
+\normalsize
+
+:::
+
+# Densidad y masa
+
+::: {.callout-note  icon=false}
+
+## Densidad de masa en el espacio
+
+\small
+
+Seguramente ya conoces de Física la idea de **densidad** $=$ masa / volumen para un objeto homogéneo. Si el objeto $\Omega$ **no** es homogéneo, la densidad $\rho(x,y,z)$ (masa por unidad de volumen) varía de un punto a otro. En una caja diminuta de volumen $\Delta V$ alrededor de $(x,y,z)$, la masa es aproximadamente $\rho(x,y,z)\, \Delta V$. Sumando (¡una suma de Riemann!) y pasando al límite, la **masa total** es
+$$M = \iiint_\Omega \rho(x,y,z)\, dxdydz$$
+
+**La misma idea sirve para carga eléctrica:** si $\rho$ representa densidad de carga, la fórmula anterior da la carga total $Q$.
+
+\normalsize
+
+:::
+
+---
+
+::: {.callout-note  icon=false}
+
+## Bajando de dimensión: láminas y varillas
+
+\small
+
+La misma idea, aplanada o estirada, da la densidad en dimensiones menores:
+
+$(1)$ Para una **lámina** delgada $D \subset \mathbb{R}^2$, la densidad superficial $\sigma(x,y)$ (masa por unidad de **área**) da
+$$M = \iint_D \sigma(x,y)\, dxdy$$
+
+$(2)$ Para una **varilla** delgada en $[a,b]$, la densidad lineal $\lambda(x)$ (masa por unidad de **longitud**) da $\displaystyle M = \int_a^b \lambda(x)\, dx$.
+
+\normalsize
+
+:::
+
+::: {.callout-tip  appearance="minimal"}
+
+\small
+
+\textbf{\textcolor{blue}{Ejercicio 23A05.}} Una lámina triangular $D$ tiene vértices $(0,0)$, $(1,0)$ y $(0,1)$, con densidad superficial $\sigma(x,y) = 1 + x + y$ (en $\text{kg/m}^2$). Calcula su masa total.
+
+\normalsize
+
+:::
+
+# Centro de masa
+
+::: {.callout-note  icon=false}
+
+## Momentos y centro de masa
+
+\small
+
+Para localizar el "punto de equilibrio" de un objeto con densidad variable necesitamos, además de la masa $M$, los **momentos** respecto a cada eje: para una lámina $D$ con densidad $\sigma(x,y)$,
+$$M_x = \iint_D x\, \sigma(x,y)\, dxdy, \qquad M_y = \iint_D y\, \sigma(x,y)\, dxdy$$
+y el **centro de masa** es el punto $(\bar x, \bar y)$ con
+$$\bar x = \frac{M_x}{M}, \qquad \bar y = \frac{M_y}{M}$$
+Para un sólido $\Omega$ con densidad $\rho(x,y,z)$, se añade $\displaystyle M_z = \iiint_\Omega z\, \rho\, dxdydz$, y el centro de masa es $(\bar x, \bar y, \bar z) = (M_x/M,\, M_y/M,\, M_z/M)$.
+
+**Cuidado:** algunos libros llaman $M_x$ al momento respecto al eje $X$ (que usan para calcular $\bar y$, no $\bar x$). Aquí $M_x$ es, más sencillamente, "el momento que necesitas para $\bar x$".
+
+\normalsize
+
+:::
+
+---
+
+::: {.callout-tip  appearance="minimal"}
+
+\small
+
+\textbf{\textcolor{firebrick}{Ejercicio 23B01.}} Si la densidad $\rho$ (o $\sigma$) es **constante**, demuestra que el centro de masa coincide con el **promedio** de la posición sobre el conjunto: $\bar x$ es el valor promedio de $f(x,y,z) = x$ en $\Omega$ (¡la densidad constante se cancela entre $M_x$ y $M$!). En este caso especial, el centro de masa se llama también **centroide**, y depende solo de la forma del conjunto, no de su densidad.
+
+$\quad$
+
+\textbf{\textcolor{blue}{Ejercicio 23A06.}} Calcula el centro de masa de la lámina triangular del Ejercicio 23A05.
+
+\normalsize
+
+:::
+
+::: {.callout-tip  appearance="minimal"}
+
+\small
+
+\textbf{\textcolor{darkgreen}{Ejercicio 23C02.}} En el notebook de la sesión: calcula con `scipy.integrate.tplquad` la masa y el centro de masa de una pirámide o un cono con densidad $\rho(x,y,z) = z$ (más denso cerca de la tapa que del vértice). ¿El centro de masa está más cerca de la tapa o del vértice? ¿Te parece razonable?
+
+\normalsize
+
+:::
