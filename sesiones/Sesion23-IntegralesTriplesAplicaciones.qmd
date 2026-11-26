@@ -123,6 +123,32 @@ $$V = \int_{-R}^{R}\int_{\varphi_1(y)}^{\varphi_2(y)}\int_{\psi_1(x,y)}^{\psi_2(
 
 :::
 
+# Simetría en integrales triples
+
+::: {.callout-note  icon=false}
+
+## Simetría respecto a un plano coordenado
+
+\small
+
+Como en la Sesión 22, la simetría de $\Omega$ combinada con la paridad de $f$ permite a veces evitar el cálculo por completo. Por ejemplo, supongamos que $\Omega$ es **simétrico respecto al plano $YZ$**, es decir $(x,y,z) \in \Omega \Leftrightarrow (-x,y,z) \in \Omega$, y que $f$ es **impar en $x$**: $f(-x,y,z) = -f(x,y,z)$ para todo $(x,y,z)\in\Omega$. Entonces
+$$\iiint_\Omega f(x,y,z)\, dxdydz = 0$$
+La razón es la misma que en la Sesión 22: fijado $(y,z)$, por Fubini integramos primero en $x$ sobre un intervalo simétrico respecto a $0$ (la sección de $\Omega$ en ese $(y,z)$), y la integral de una función impar en un intervalo simétrico es $0$ (Sesión 14). El resto de la integral (en $y$ y $z$) es entonces la integral de la función $0$.
+
+\normalsize
+
+:::
+
+::: {.callout-tip  appearance="minimal"}
+
+\small
+
+\textbf{\textcolor{firebrick}{Ejercicio 23B01.}} Generaliza la discusión anterior, como hicimos en la Sesión 22 para el plano: (a) ¿Qué cambia si $f$ es **par** en $x$, en vez de impar? (b) Enuncia los resultados análogos para simetría de $\Omega$ respecto a los planos $XZ$ y $XY$ (con $f$ par o impar en $y$, o en $z$, respectivamente). (c) Si $\Omega$ es simétrico respecto a los **tres** planos coordenados y $f$ es par en $x$, en $y$ y en $z$, ¿cómo se relaciona $\displaystyle\iiint_\Omega f\, dxdydz$ con la integral sobre $\Omega \cap \{x\geq0, y\geq0, z\geq0\}$?
+
+\normalsize
+
+:::
+
 # Aplicaciones de la integral
 
 ::: {.callout-note  icon=false}
@@ -275,7 +301,7 @@ Para un sólido $\Omega$ con densidad $\rho(x,y,z)$, se añade $\displaystyle M_
 
 \small
 
-\textbf{\textcolor{firebrick}{Ejercicio 23B01.}} Si la densidad $\rho$ (o $\sigma$) es **constante**, demuestra que el centro de masa coincide con el **promedio** de la posición sobre el conjunto: $\bar x$ es el valor promedio de $f(x,y,z) = x$ en $\Omega$ (¡la densidad constante se cancela entre $M_x$ y $M$!). En este caso especial, el centro de masa se llama también **centroide**, y depende solo de la forma del conjunto, no de su densidad.
+\textbf{\textcolor{firebrick}{Ejercicio 23B02.}} Si la densidad $\rho$ (o $\sigma$) es **constante**, demuestra que el centro de masa coincide con el **promedio** de la posición sobre el conjunto: $\bar x$ es el valor promedio de $f(x,y,z) = x$ en $\Omega$ (¡la densidad constante se cancela entre $M_x$ y $M$!). En este caso especial, el centro de masa se llama también **centroide**, y depende solo de la forma del conjunto, no de su densidad.
 
 $\quad$
 
